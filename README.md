@@ -7,7 +7,7 @@ npm install
 
 ### Compiles and hot-reloads for development
 ```
-1. npm run serve
+1. npm run serve on command line
 2. Open localhost:8080 to access the application
 ```
 
