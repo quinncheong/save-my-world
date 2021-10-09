@@ -38,9 +38,8 @@
       "node": true
     },
     "extends": [
-      "plugin:vue/vue3-essential",
+      "plugin:vue/essential", 
       "eslint:recommended"
-      
     ],
     "parserOptions": {
       "parser": "babel-eslint"
@@ -51,7 +50,8 @@
       "func-names": "off",
       "no-process-exit": "off",
       "object-shorthand": "off",
-      "class-methods-use-this": "off"
+      "class-methods-use-this": "off",
+      "vue/no-multiple-template-root": "off"
     }
   },
   "browserslist": [
