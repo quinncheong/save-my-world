@@ -12,23 +12,35 @@
 </template>
 
 <style lang="scss">
-// CSS reset 
+// CSS reset
 html {
   box-sizing: border-box;
   font-size: $font-size-primary;
 }
 
-*, *:before, *:after {
+*,
+*:before,
+*:after {
   box-sizing: inherit;
 }
 
-body, h1, h2, h3, h4, h5, h6, p, ol, ul {
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ol,
+ul {
   margin: 0;
   padding: 0;
   font-weight: normal;
 }
 
-ol, ul {
+ol,
+ul {
   list-style: none;
 }
 
@@ -54,12 +66,11 @@ img {
   background-color: $bg-color-primary;
   display: flex;
   justify-content: flex-end;
-  
 
   #home {
     margin-right: auto;
   }
-  
+
   a {
     font-weight: bold;
     color: $font-color-primary;
