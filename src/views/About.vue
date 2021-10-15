@@ -1,5 +1,6 @@
 <template>
   <div class="community">
+    <!-- header -->
     <div class="row">
         <div class="col-sm-6">
              <h1>Do what you can for the community</h1>
@@ -8,6 +9,7 @@
             <img src="@/assets/img/community.png" alt="">
         </div>
     </div>
+    <!-- line breaking the header and the seachbar + campaigns -->
     <hr>
     <Searchbar />
     <br>

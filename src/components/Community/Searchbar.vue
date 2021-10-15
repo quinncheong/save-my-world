@@ -8,6 +8,7 @@
       </div>
     </div>
   </div>
+  <!-- added in a button beside the search bar -->
   <div class="col-sm-5">
       <button class="btn">Create Campaign</button>
   </div>
