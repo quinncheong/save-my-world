@@ -19,8 +19,6 @@ export default {
 </script>
 
 <style lang="scss">
-// @use "@/assets/scss/styles.scss";
-
 .gg {
   color: $testing-variable;
 }
