@@ -1,30 +1,40 @@
 <template>
-  <div class="container-fluid">
-
-    <div class="row bg-success">
+<header class='page-header'>
+  <div class="container-fluid ">
+<!-- This would be where the globe would be  -->
+    <div class="row  py-5" id='login'>
       <div class="col">
-        Picture goes here
+        Earth globe thingy goes here (Not that important yet)
       </div>
 
-      <div class="col">
-        Login screen goes here 
+      <div class="col text-start">
+        <h1 class='mt-3 text-center'>You have to power to <span id='savemyworld'>#SaveOurWorld</span></h1>
+
+        <div class="login mt-3 ">
+          <div class="mb-3">
+            <label for="password" class="form-label">Username</label>
+            <input type="email" class="form-control" placeholder="Username">
+          </div>
+
+          <div class="mb-3">
+            <label for="password" class="form-label">Password</label>
+            <input type="email" class="form-control" id='password'  placeholder="Password">
+          </div>
+
+        </div>
       </div>
     </div>
+  </div>
+</header>
+
 
   <!-- Guides -->
-    <div class="row">
-      <div class="col">
-        Pic 1 with relevant text
-      </div>
-       <div class="col">
-        Pic 2 with relevant text
-      </div>
+    
 
-       <div class="col">
-        Pic 3 with relevant text
-      </div>
-    </div>
 
+
+
+  
 
     <!-- Footer goes here -->
 
@@ -32,7 +42,6 @@
 
 
     
-  </div>
 </template>
 
 <script>
@@ -47,4 +56,10 @@ export default {
 .gg {
   color: $testing-variable;
 }
+
+#savemyworld{
+  color: yellow;
+}
+
+
 </style>
