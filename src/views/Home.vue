@@ -54,6 +54,53 @@
 
 <!-- Guides -->
 
+<div class="container-fluid mt-5 guide">
+
+  <!-- Cards -->
+  <div class="row px-2 pb-5 ">
+    <div class="col mt-5 border-end border-secondary background-transparent">
+
+        <img class='imgsize' src="@/assets/img/planetearth.png">
+      <h6>Lorem.</h6> 
+
+
+      <h6>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod saepe necessitatibus molestias libero optio fuga sapiente atque, fugiat, velit deleniti similique quasi cumque laborum ipsum tempora eaque consequatur? Laudantium provident soluta non quis cumque. Est quae unde recusandae sapiente nostrum!
+        </h6>
+
+
+
+      
+
+    </div>
+
+   <div class="col mt-5 border-end border-secondary background-transparent">
+
+
+      <img class='imgsize' src="@/assets/img/clothes.png">
+      <h6>Lorem</h6> 
+
+
+      <h6>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod saepe necessitatibus molestias libero optio fuga sapiente atque, fugiat, velit deleniti similique quasi cumque laborum ipsum tempora eaque consequatur? Laudantium provident soluta non quis cumque. Est quae unde recusandae sapiente nostrum!
+        </h6>
+
+    </div>
+
+
+  <div class="col mt-5  background-transparent">
+
+
+      <img class='imgsize' src="@/assets/img/recyclingbin.png">
+      <h6>Lorem</h6> 
+
+
+      <h6>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod saepe necessitatibus molestias libero optio fuga sapiente atque, fugiat, velit deleniti similique quasi cumque laborum ipsum tempora eaque consequatur? Laudantium provident soluta non quis cumque. Est quae unde recusandae sapiente nostrum!
+        </h6>
+
+    </div>
+
+  </div>
+</div>
+
 
 
     
@@ -74,12 +121,23 @@
 <script>
 // @ is an alias to /src
 import Globe from "@/assets/img/globe.png";
+import Guide from "@/assets/img/guidebackgroundimg.jpg";
+import Recycle from "@/assets/img/recyclingbin.png";
+import GlobeGuide from "@/assets/img/planetearth.png";
+import Clothes from "@/assets/img/clothes.png";
+
+
+
 
 export default {
   name: "Home",
   data() {
     return {
-      Globe
+      Globe,
+      Guide,
+      Recycle,
+      GlobeGuide,
+      Clothes
     }
   }
   
@@ -102,6 +160,25 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.guide{
+  background-image: url('~@/assets/img/guidebackgroundimg.jpg');
+  background-size: contain,cover;
+
+}
+
+.imgsize{
+  width: 200px;
+  height:200px;
+  margin-top: 20px;
+}
+
+.background-transparent{
+  background:rgba(160, 154, 154, 0.445);
+  margin-left: 10px;
+  margin-bottom: 10px;
+  border-radius: 25px;
 }
 
 
