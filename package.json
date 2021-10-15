@@ -38,14 +38,27 @@
       "node": true
     },
     "extends": [
-      "plugin:vue/vue3-essential",
-      "eslint:recommended",
-      "@vue/prettier"
+      "plugin:vue/essential",
+      "eslint:recommended"
     ],
     "parserOptions": {
       "parser": "babel-eslint"
     },
-    "rules": {}
+    "rules": {
+      "no-unused-vars": "warn",
+      "no-console": "off",
+      "func-names": "off",
+      "no-process-exit": "off",
+      "object-shorthand": "off",
+      "class-methods-use-this": "off",
+      "vue/no-multiple-template-root": "off",
+      "vue/comment-directive": [
+        "error",
+        {
+          "reportUnusedDisableDirectives": false
+        }
+      ]
+    }
   },
   "browserslist": [
     "> 1%",
