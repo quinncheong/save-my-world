@@ -18,6 +18,7 @@ const routes = [
   },
 ];
 
+// testing
 const router = createRouter({
   history: createWebHashHistory(),
   routes,
