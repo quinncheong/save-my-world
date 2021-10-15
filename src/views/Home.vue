@@ -1,7 +1,7 @@
 <template>
-  <div class="home">
+  <div class="container-fluid">
 
-    <div class="row">
+    <div class="row bg-success">
       <div class="col">
         Picture goes here
       </div>
