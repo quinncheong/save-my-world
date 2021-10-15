@@ -1,7 +1,16 @@
 <template>
   <div class="community">
-    <h1>Do what you can for the community</h1>
+    <div class="row">
+        <div class="col-sm-6">
+             <h1>Do what you can for the community</h1>
+        </div>
+        <div class="col-sm-6">
+            <img src="@/assets/img/community.png" alt="">
+        </div>
+    </div>
+    <hr>
     <Searchbar />
+    <br>
     <Campaigns />
   </div>
 </template>
@@ -23,5 +32,9 @@ export default {
 .community {
   display: flex;
   flex-direction: column;
+}
+
+hr {
+  border: solid 2px white;
 }
 </style>
