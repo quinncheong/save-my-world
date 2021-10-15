@@ -52,11 +52,12 @@
   </div>
 
 
-<!-- Guides -->
+<!-- Guide section -->
 
 <div class="container-fluid mt-5 guide">
 
-  <!-- Cards -->
+  <!-- Individual steps for the guide -->
+
   <div class="row px-2 pb-5 ">
     <div class="col mt-5 border-end border-secondary background-transparent">
 
@@ -177,7 +178,6 @@ export default {
 .background-transparent{
   background:rgba(160, 154, 154, 0.445);
   margin-left: 10px;
-  margin-bottom: 10px;
   border-radius: 25px;
 }
 
