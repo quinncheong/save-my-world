@@ -61,6 +61,51 @@
 
         </div><!--this ending div tag is for the first row-->
 
+        <!--start of the 2nd row, consist of donation and badges & campaigns-->
+        <div class="row justify-content-center mt-4 sameRow2">
+            <!--This column is for the Badges and Campaign  -->
+            <div class="col-5 SameHeight2">
+                <div class="card">
+                    <div class="row m-2">
+                        <h2>Badges and Campaign</h2>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <h6 class="mb-0">Badges Attained</h6>
+                        </div>
+                        <div class="col-sm-9 text-secondary ">
+                            <img src="./../assets/logo.png" alt="" width="40">
+                            <img src="./../assets/logo.png" alt="" width="40">
+                            <img src="./../assets/logo.png" alt="" width="40">
+                            <img src="./../assets/logo.png" alt="" width="40">
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row ">
+                    <div class="col-sm-3">
+                        <h6 class="mb-0">Campaigns</h6>
+                    </div>
+
+                    <!-- <div class="col-sm-9 text-secondary"> -->
+                    <div class="col-sm-9  ">
+                        <div class="cover-container">
+                        <div class="cover-item" style="background-color:pink"></div>
+                        <div class="cover-item" style="background-color:pink"></div>
+                        <div class="cover-item" style="background-color:pink"></div>
+                        <div class="cover-item" style="background-color:pink"></div>
+                        <div class="cover-item" style="background-color:pink"></div>
+                        <div class="cover-item" style="background-color:pink"></div>
+                    </div>
+                </div>
+                </div>
+            </div>
+            </div>
+
+
+
+
+        </div> <!--this is the ending tag for the 2nd row-->
+
 
     </div> <!--this ending div tag is for the container-->
 
@@ -136,5 +181,29 @@ export default {
     color: black;
 
 }
+
+/*The following styling is for the campaign scroll */
+
+.cover-container {
+    height: 180px;
+    width: 100%;
+    white-space: nowrap;
+    overflow-x: scroll;
+    overflow-y: hidden;
+}
+.cover-item {
+    position: relative;
+    display: inline-block;
+    margin: 8px 8px;
+    box-shadow: 2px 2px 4px #bbb;
+    border-top-right-radius: 4px;
+    width: 116px;
+    height: 158px;
+    vertical-align: bottom;
+    background-position: top left;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
 
 </style>
