@@ -101,6 +101,51 @@
             </div>
             </div>
 
+             <!--this column is for the donation-->
+            <div class="col-5 sameHeight2">
+                <div class="card">
+                    <div class="row m-2">
+                        <h2>Donation History</h2>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <h6 class="mb-0">Year</h6>
+                        </div>
+                        <div class="col-sm-9">
+                            <h6 class="mb-0">Cause</h6>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <h6 class="mb-0">Year</h6>
+                        </div>
+                        <div class="col-sm-9">
+                            <h6 class="mb-0">Cause</h6>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <h6 class="mb-0">Year</h6>
+                        </div>
+                        <div class="col-sm-9">
+                            <h6 class="mb-0">Cause</h6>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <h6 class="mb-0">Year</h6>
+                        </div>
+                        <div class="col-sm-9">
+                            <h6 class="mb-0">Cause</h6>
+                        </div>
+                    </div>
+                    <hr>
+              </div>
+              </div>
+
 
 
 
