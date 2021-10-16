@@ -15,6 +15,49 @@
             </div>
             </div>
 
+            <!-- this would be for the account settings -->
+            <div class="col-md-6 sameHeight1">
+                <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <h6 class="mb-0">Full Name</h6>
+                        </div>
+                        <div class="col-sm-9 text-secondary">Park Jin Woo</div>
+                    </div>
+                <hr>
+                <div class="row">
+                    <div class="col-sm-3">
+                        <h6 class="mb-0">Email</h6>
+                    </div>
+                        <div class="col-sm-9 text-secondary">PJW@korea.com</div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-sm-3">
+                        <h6 class="mb-0">Mobile</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                        12345678
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-sm-3">
+                        <h6 class="mb-0">Address</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">Singapore Management University</div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <a class="btn btn-info" target="__blank" href="#">Edit</a>
+                    </div>
+                </div>
+                </div>
+            </div>
+            </div>
+
 
         </div><!--this ending div tag is for the first row-->
 
@@ -78,6 +121,20 @@ export default {
 }
 
 
+/*the following style is for account settings */
 
+.card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: white;
+    background-clip: border-box;
+    border: 2px solid rgba(0,0,0,.125);
+    border-radius: .75rem;
+    color: black;
+
+}
 
 </style>
