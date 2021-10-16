@@ -6,7 +6,7 @@
       <router-link to="/news">News</router-link>
       <router-link to="/about">Community</router-link>
       <router-link to="/login">Login</router-link>
-      <router-link to="/signup">Sign up</router-link>
+      <router-link to="/profile">Profile</router-link>
     </div>
     <router-view />
   </div>
