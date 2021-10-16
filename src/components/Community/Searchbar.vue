@@ -1,10 +1,19 @@
 <template>
-  <div class="searchbar-wrapper">
-    <div class="searchbar-outline">
-      <img src="@/assets/img/search-icon.png" alt="searchicon" />
-      <input type="text" placeholder="Search..." />
+<div class="row justify-content-center">
+  <div class="col-sm-7">
+    <div class="searchbar-wrapper">
+      <div class="searchbar-outline">
+        <img src="@/assets/img/search-icon.png" alt="searchicon" />
+        <input type="text" placeholder="Search..." />
+      </div>
     </div>
   </div>
+  <!-- added in a button beside the search bar -->
+  <div class="col-sm-5">
+      <button class="btn">Create Campaign</button>
+  </div>
+</div>
+  
 </template>
 
 <script>
@@ -59,5 +68,10 @@ export default {
       }
     }
   }
+}
+
+button {
+  background-color: darkgray;
+  color: white;
 }
 </style>
