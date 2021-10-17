@@ -1,6 +1,6 @@
 <template>
   <div class="navbar-wrapper">
-    <p>Hello world</p>
+
   </div>
 </template>
 

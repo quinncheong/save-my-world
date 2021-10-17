@@ -1,11 +1,12 @@
 <template>
   <div>
     <div id="nav">
-      <router-link id="home" to="/">Home img</router-link>
+      <!-- <router-link id="home" to="/">Home img</router-link> -->
+      <router-link id="home" to="/"><img class="homeimg" src="@/assets/img/world.png" alt=""></router-link>
       <router-link to="/news">News</router-link>
       <router-link to="/about">Community</router-link>
       <router-link to="/login">Login</router-link>
-      <router-link to="/signup">Sign up</router-link>
+      <router-link to="/profile">Profile</router-link>
     </div>
     <router-view />
   </div>
@@ -90,4 +91,13 @@ img {
     }
   }
 }
+
+.homeimg {
+  border-radius: 50%;
+}
+
 </style>
+
+
+
+
