@@ -1,88 +1,52 @@
 <template>
-<!-- campaign cards -->
+  <!-- campaign cards -->
   <div class="container">
     <div class="row">
-      <div class="col-sm-3">
-          <div class="card">
-              <!-- image of the campaign -->
-              <img class="card-img-top" src="@/assets/img/tree.png" alt="Card image cap">
-              <div class="card-body">
-                  <!-- amount that the campaign has raised so far -->
-                  <p>$13000</p>
-                  <div class="progress">
-                      <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="" aria-valuemin="0" aria-valuemax="100"></div>
-                  </div>
-                  <br>
-                  <!-- description for the campaigns -->
-                  <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. </p>
-                  <br>
-                  <a href="#" class="btn btn-dark">Donate</a>
-              </div>
-          </div>
-      </div>
-      <div class="col-sm-3">
-          <div class="card">
-              <img class="card-img-top" src="@/assets/img/tree.png" alt="Card image cap">
-              <div class="card-body">
-                  <p>$13000</p>
-                  <div class="progress">
-                      <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="" aria-valuemin="0" aria-valuemax="100"></div>
-                  </div>
-                  <br>
-                  <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. </p>
-                  <br>
-                  <a href="#" class="btn btn-dark">Donate</a>
-              </div>
-          </div>
-      </div>
-      <div class="col-sm-3">
-          <div class="card">
-              <img class="card-img-top" src="@/assets/img/tree.png" alt="Card image cap">
-              <div class="card-body">
-                  <p>$13000</p>
-                  <div class="progress">
-                      <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="" aria-valuemin="0" aria-valuemax="100"></div>
-                  </div>
-                  <br>
-                  <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. </p>
-                  <br>
-                  <a href="#" class="btn btn-dark">Donate</a>
-              </div>
-          </div>
-      </div>
-      <div class="col-sm-3">
-          <div class="card">
-              <img class="card-img-top" src="@/assets/img/tree.png" alt="Card image cap">
-              <div class="card-body">
-                  <p>$13000</p>
-                  <div class="progress">
-                      <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="" aria-valuemin="0" aria-valuemax="100"></div>
-                  </div>
-                  <br>
-                  <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. </p>
-                  <br>
-                  <a href="#" class="btn btn-dark">Donate</a>
-              </div>
-          </div>
-      </div>
+      <Campaign
+        v-for="{ id, text, cost } in allCampaigns"
+        :key="id"
+        :text="text"
+        :cost="cost"
+      />
     </div>
   </div>
-  
 </template>
 
 <script>
+import Campaign from "./Campaign.vue";
+
 export default {
   name: "Campaigns",
+  components: {
+    Campaign,
+  },
+  data() {
+    return {
+      allCampaigns: [
+        {
+          id: 1,
+          text: "Hello this is a mock campaign",
+          cost: 13000,
+        },
+        {
+          id: 2,
+          text: "Hello this is a mock campaign",
+          cost: 13000,
+        },
+        {
+          id: 3,
+          text: "Hello this is a mock campaign",
+          cost: 13000,
+        },
+        {
+          id: 4,
+          text: "Hello this is a mock campaign",
+          cost: 13000,
+        },
+      ],
+    };
+  },
 };
 </script>
 
-<style lang="scss" scoped>
-  .card-body {
-    color: black;
-    text-align: left;
-  }
-
-  .progress-bar{
-        background-color: #93EE93;
-    }
-</style>
+<style lang="scss" scoped></style>

@@ -2,17 +2,17 @@
   <div class="community">
     <!-- header -->
     <div class="row">
-        <div class="col-sm-6">
-             <h1>Do what you can for the community</h1>
-        </div>
-        <div class="col-sm-6">
-            <img src="@/assets/img/community.png" alt="">
-        </div>
+      <div class="col-sm-6">
+        <h1>Do what you can for the community</h1>
+      </div>
+      <div class="col-sm-6">
+        <img src="@/assets/img/community.png" alt="" />
+      </div>
     </div>
     <!-- line breaking the header and the seachbar + campaigns -->
-    <hr>
+    <hr />
     <Searchbar />
-    <br>
+    <br />
     <Campaigns />
   </div>
 </template>
