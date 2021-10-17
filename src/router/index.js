@@ -2,6 +2,8 @@ import { createRouter, createWebHashHistory } from "vue-router";
 import Home from "../views/Home.vue";
 import Community from "../views/Community.vue";
 import Profile from "../views/Profile.vue";
+import Visualise from "@/views/Visualise.vue"
+import Charts from "@/views/Charts.vue"
 
 const routes = [
   {
@@ -21,8 +23,13 @@ const routes = [
   },
   {
     path: "/news",
-    name: "Profile",
-    component: Profile,
+    name: "Charts",
+    component: Charts,
+  },
+  {
+    path: "/visualise",
+    name: "Visualise",
+    component: Visualise,
   },
 ];
 
