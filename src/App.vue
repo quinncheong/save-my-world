@@ -1,7 +1,9 @@
 <template>
   <div>
     <Navbar />
-    <router-view />
+    <div class="children-wrapper">
+      <router-view />
+    </div>
   </div>
 </template>
 
@@ -11,7 +13,7 @@ import Navbar from "@/components/Layout/Navbar.vue";
 export default {
   name: "App",
   components: {
-    Navbar
+    Navbar,
   },
 };
 </script>
@@ -54,8 +56,7 @@ img {
   height: auto;
 }
 
-// CSS of the app and navbar
-
+// CSS of the app
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
