@@ -19,6 +19,11 @@ const routes = [
     name: "Profile",
     component: Profile,
   },
+  {
+    path: "/news",
+    name: "Profile",
+    component: Profile,
+  },
 ];
 
 // testing

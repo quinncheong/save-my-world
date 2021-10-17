@@ -1,5 +1,5 @@
 <template>
-  <nav class="nav" v-if="windowWidth > 800">
+  <nav class="nav" v-if="fullView">
     <!-- <router-link id="home" to="/">Home img</router-link> -->
     <router-link id="home" to="/">
       <img class="homeimg" src="@/assets/img/world.png" alt="Globe Icon" />
@@ -32,7 +32,7 @@ export default {
   name: "Navbar",
   data() {
     return {
-      windowWidth: 0,
+      fullView: true,
       dropdownClass: "dropdown-content",
       dropdownShown: false,
       views: ["News", "Community", "Login", "Profile"],
@@ -41,22 +41,24 @@ export default {
   methods: {
     showButton() {
       if (this.dropdownShown) {
-        this.dropdownShown = !this.dropdownShown;
+        this.dropdownShown = false;
         this.dropdownClass = "dropdown-content";
       } else {
-        this.dropdownShown = !this.dropdownShown;
+        this.dropdownShown = true;
         this.dropdownClass = "dropdown-content show-content";
       }
     },
   },
-  mounted() {
+  created() {
     //   track the width on resize
     window.addEventListener("resize", () => {
-      this.windowWidth = window.innerWidth;
       if (window.innerWidth > 800) {
         //   reset it if you expand the screen
         this.dropdownShown = false;
         this.dropdownClass = "dropdown-content";
+        this.fullView = true;
+      } else {
+        this.fullView = false;
       }
     });
   },
