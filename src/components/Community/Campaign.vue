@@ -1,5 +1,5 @@
 <template>
-<div class="col-sm-3">
+<div class="col-sm-6 col-lg-3">
   <div class="card">
     <!-- image of the campaign -->
     <img
