@@ -4,10 +4,9 @@
     <router-link id="home" to="/">
       <img class="homeimg" src="@/assets/img/world.png" alt="Globe Icon" />
     </router-link>
-    <router-link to="/news">News</router-link>
-    <router-link to="/community">Community</router-link>
-    <router-link to="/login">Login</router-link>
-    <router-link to="/profile">Profile</router-link>
+    <router-link :key="view" :to="view.toLowerCase()" v-for="view in views">
+      {{ view }}
+    </router-link>
   </nav>
 
   <nav class="nav small" v-else>
@@ -21,10 +20,9 @@
       </button>
     </div>
     <div :class="dropdownClass">
-      <router-link to="/news">News</router-link>
-      <router-link to="/community">Community</router-link>
-      <router-link to="/login">Login</router-link>
-      <router-link to="/profile">Profile</router-link>
+      <router-link :key="view" :to="view.toLowerCase()" v-for="view in views">
+        {{ view }}
+      </router-link>
     </div>
   </nav>
 </template>
@@ -37,6 +35,7 @@ export default {
       windowWidth: 0,
       dropdownClass: "dropdown-content",
       dropdownShown: false,
+      views: ["News", "Community", "Login", "Profile"],
     };
   },
   methods: {
@@ -73,6 +72,7 @@ export default {
 
   #home {
     margin-right: auto;
+    margin-left: 0px;
     .homeimg {
       border-radius: 50%;
       height: 30px;
