@@ -1,5 +1,6 @@
 <template>
-  <div>
+
+  <div id='map'>
     Hello this is a chart element
   </div>
 </template>
@@ -8,6 +9,8 @@
 export default {
   name: "Charts",
 };
+
+
 </script>
 
 <style lang="scss" scoped></style>
