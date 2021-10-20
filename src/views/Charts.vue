@@ -1,12 +1,11 @@
 <template>
-
-  <div id='map'>
+  <div class="chart-wrapper">
     Hello this is a chart element
-    <iframe
+    <!-- <iframe
       src="https://datahub.io/core/co2-ppm/view/1"
       height="100%"
       frameborder="0"
-    ></iframe>
+    ></iframe> -->
   </div>
 </template>
 
@@ -14,8 +13,11 @@
 export default {
   name: "Charts",
 };
-
-
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.chart-wrapper {
+  height: 100%;
+}
+
+</style>
