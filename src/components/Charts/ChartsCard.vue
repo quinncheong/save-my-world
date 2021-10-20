@@ -1,5 +1,5 @@
 <template>
-  <div class="card-bg col-5 col-md-3">
+  <div class="card-bg col-5 col-sm-3">
     <img src="@/assets/img/globe.png" alt="" />
     <p class="card-title">
       {{ name }}
@@ -40,9 +40,10 @@ export default {
   }
 }
 
-@media screen and (max-width: 380px) {
+@media screen and (max-width: 300px) {
   .card-bg {
-    font-size: 11px;
+    font-size: 18px;
+    width: 100%;
   }
 }
 </style>

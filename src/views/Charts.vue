@@ -9,23 +9,36 @@
     <p class="chart-select mb-3">Select a chart to explore more</p>
 
     <div class="charts-card-wrapper mb-3">
-      <ChartsCard v-for="chart in charts" :key="chart.id" :name="chart.name" :src="chart.src" />
+      <ChartsCard
+        v-for="chart in charts"
+        :key="chart.id"
+        :name="chart.name"
+        :src="chart.src"
+      />
     </div>
-    <!-- <iframe
-      src="https://datahub.io/core/co2-ppm/view/1"
-      height="500px"
-      width="400px"
-      frameborder="0"
-    ></iframe> -->
+    <MainChart/>
+
+
+    <!-- <div class="main-chart">
+      <iframe
+        src="https://datahub.io/core/co2-ppm/view/1"
+        height="100vh"
+        width="100%"
+        frameborder="0"
+      ></iframe>
+    </div> -->
   </div>
 </template>
 
 <script>
 import ChartsCard from "../components/Charts/ChartsCard.vue";
+import MainChart from "@/components/Charts/MainChart.vue";
+
 export default {
   name: "Charts",
   components: {
     ChartsCard,
+    MainChart,
   },
   data() {
     return {
@@ -54,6 +67,7 @@ export default {
 <style lang="scss" scoped>
 .chart-wrapper {
   height: 100%;
+  width: 100%;
   width: 70%;
   display: flex;
   flex-direction: column;
@@ -71,5 +85,22 @@ export default {
     justify-content: space-around;
   }
 
+  .main-chart {
+    // display: none;
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    padding-top: 100%; /* 16:9 Aspect Ratio (divide 9 by 16 = 0.5625) */
+
+    iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      width: 100%;
+      height: 100%;
+    }
+  }
 }
 </style>
