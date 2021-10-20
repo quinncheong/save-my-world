@@ -58,7 +58,8 @@ export default {
   display: flex;
   flex-direction: column;
   margin: auto;
-  justify-content: space-around;
+  justify-content: space-between;
+  font-size: $variable-font;
 
   .chart-select {
     font-weight: bold;
