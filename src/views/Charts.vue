@@ -1,5 +1,6 @@
 <template>
-  <div>
+
+  <div id='map'>
     Hello this is a chart element
     <iframe
       src="https://datahub.io/core/co2-ppm/view/1"
@@ -13,6 +14,8 @@
 export default {
   name: "Charts",
 };
+
+
 </script>
 
 <style lang="scss" scoped></style>
