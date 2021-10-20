@@ -6,7 +6,7 @@
       climate indicators are changing throughout history
     </p>
 
-    <p class="chart-select mb-3">Select a chart to explore</p>
+    <p class="chart-select mb-3">Select a chart to explore more</p>
 
     <div class="charts-card-wrapper mb-3">
       <ChartsCard v-for="chart in charts" :key="chart.id" :name="chart.name" :src="chart.src" />
@@ -58,13 +58,17 @@ export default {
   display: flex;
   flex-direction: column;
   margin: auto;
-  text-justify: auto;
   justify-content: space-around;
+
+  .chart-select {
+    font-weight: bold;
+  }
 
   .charts-card-wrapper {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
   }
+
 }
 </style>

@@ -65,6 +65,7 @@ img {
   color: $font-color-primary;
   background-color: $bg-color-primary;
   height: 100vh;
+  font-size: $variable-font;
 }
 
 .app-content-wrapper {

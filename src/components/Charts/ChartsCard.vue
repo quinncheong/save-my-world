@@ -1,5 +1,6 @@
 <template>
-  <div class="card-bg col-12 col-sm-6 col-md-3 col-lg-4">
+  <div class="card-bg col-12 col-sm-3 col-md-3">
+    <img src="@/assets/img/globe.png" alt="" />
     <p class="card-title">
       {{ name }}
     </p>
@@ -20,18 +21,21 @@ export default {
 <style lang="scss">
 .card-bg {
   @extend %bg-card-rounded;
-  color: white;
+  background-color: $tertiary-color-opacity;
   display: flex;
   flex-direction: column;
+  padding: 1rem;
+  border: 1px solid white;
 
   &:hover {
-    opacity: 1;
+    background-color: $bg-color-secondary;
     cursor: pointer;
   }
 
   .card-title {
     text-overflow: clip;
     word-wrap: break-word;
+    align-self: center;
   }
 }
 </style>
