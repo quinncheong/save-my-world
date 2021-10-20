@@ -1,7 +1,5 @@
 <template>
-  <div
-    class="temp-chart-bg"
-  >
+  <div class="temp-chart-bg">
     <form @submit="handleClick">
       <label>
         Select a country:
@@ -60,13 +58,13 @@ export default {
             label: "Temperature Over Time",
             backgroundColor: [
               "#41B883",
-              "#E46651",
+              // "#E46651",
               // '#00D8FF',
               // '#DD1B16'
             ],
             borderColor: "#41B883",
             data: [65, 59, 80, 81, 56, 55, 40],
-            fill: true,
+            fill: false,
           },
         ],
       },
@@ -108,7 +106,10 @@ export default {
           yAxes: {
             display: true,
             stacked: false,
-            fontColor: '#4848EE',
+            // fontColor: '#4848EE',
+          },
+          xAxes: {
+            display: false,
           },
           // xAxes: {
           //   display: true,
@@ -150,8 +151,27 @@ export default {
 
         console.log(res.data);
         // Manipulate the data
+        let updatedDataset = [];
+        let updatedLabels = [];
+        let count = 1;
+        for (let data of res.data) {
+          updatedDataset.push(data.annualData[0]);
+          updatedLabels.push(count);
+          count += 1;
+        }
 
-
+        lineChart.data.labels = updatedLabels;
+        lineChart.data.datasets = [
+          {
+            label: "Temperature Over Time",
+            backgroundColor: ["#41B883"],
+            borderColor: "#41B883",
+            data: updatedDataset,
+            fill: false,
+          },
+        ];
+        
+        chartRef.value.update(null);
       } catch (error) {
         console.log(error);
       }
@@ -165,8 +185,11 @@ export default {
       lineChart.data.labels = ["Cats", "Dogs", "Hamsters", "Dragons"];
       lineChart.data.datasets = [
         {
-          backgroundColor: ["#333333", "#E46651", "#00D8FF", "#DD1B16"],
-          data: [100, 20, 800, 20],
+          label: "Temperature Over Time",
+          backgroundColor: ["#41B883"],
+          borderColor: "#41B883",
+          data: [65, 59, 80, 81, 56, 55, 40],
+          fill: false,
         },
       ];
 
