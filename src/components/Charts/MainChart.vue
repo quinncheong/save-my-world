@@ -16,8 +16,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.small {
-  max-width: 600px;
-  margin: 150px auto;
-}
+// .small {
+//   max-width: 600px;
+//   margin: 150px auto;
+// }
 </style>

@@ -1,12 +1,18 @@
 <template>
   <div
-    style="height: 600px; width: 600px; display: flex; flex-direction: column"
+    class="temp-chart-bg"
   >
     <form @submit="handleClick">
       <label>
         Select a country:
-        <select v-model="country" >
-          <option :key="country.name" v-for="country in countries" :value="country.name">{{country.name}}</option>
+        <select v-model="country">
+          <option
+            :key="country.name"
+            v-for="country in countries"
+            :value="country.name"
+          >
+            {{ country.name }}
+          </option>
         </select>
       </label>
 
@@ -14,17 +20,16 @@
         Select a year (must be multiples of 20):
         <input v-model="year" type="number" required />
       </label>
-      <button >Get Data</button>
+      <button>Get Data</button>
     </form>
 
     <vue3-chart-js
-      :id="doughnutChart.id"
+      :id="lineChart.id"
       ref="chartRef"
-      :type="doughnutChart.type"
-      :data="doughnutChart.data"
-      :options="doughnutChart.options"
+      :type="lineChart.type"
+      :data="lineChart.data"
+      :options="lineChart.options"
     />
-
   </div>
 </template>
 
@@ -43,27 +48,86 @@ export default {
   setup() {
     const chartRef = ref(null);
     const country = ref("");
-    const year = ref(2000);
+    const year = ref(2020);
 
-    const doughnutChart = {
-      id: "doughnut",
-      type: "doughnut",
+    const lineChart = {
+      id: "line",
+      type: "line",
       data: {
-        labels: [""],
+        labels: ["2020", 2040],
         datasets: [
           {
+            label: "Temperature Over Time",
             backgroundColor: [
               "#41B883",
-              // '#E46651',
+              "#E46651",
               // '#00D8FF',
               // '#DD1B16'
             ],
-            data: [40, 20, 80, 10],
+            borderColor: "#41B883",
+            data: [65, 59, 80, 81, 56, 55, 40],
+            fill: true,
           },
         ],
       },
       options: {
-        plugins: {},
+        responsive: true,
+        // plugins: {
+        //   animation: false,
+        //   parsing: false,
+        //   title: {
+        //     display: false,
+        //     text: "Sentiments over runtime",
+        //     fontSize: 20,
+        //     position: "bottom",
+        //   },
+        //   legend: {
+        //     display: true,
+        //     position: "bottom",
+        //     align: "start",
+        //     labels: {
+        //       usePointStyle: true,
+        //       padding: 30,
+        //       boxHeight: 6,
+        //       boxWidth: 6,
+        //       pointStyle: "circle",
+        //     },
+        //   },
+        //   tooltip: {
+        //     usePointStyle: true,
+        //     boxHeight: 6,
+        //     boxWidth: 6,
+        //   },
+        //   decimation: {
+        //     enabled: false,
+        //     algorithm: "LTTB",
+        //   },
+        //   maintainAspectRatio: false,
+        // },
+        scales: {
+          yAxes: {
+            display: true,
+            stacked: false,
+            fontColor: '#4848EE',
+          },
+          // xAxes: {
+          //   display: true,
+          //   stacked: false,
+          //   type: "time",
+          //   time: {
+          //     unit: "second",
+          //     tooltipFormat: "hh:mm:ss",
+          //     displayFormats: {
+          //       second: "hh:mm:ss",
+          //     },
+          //   },
+          //   ticks: {
+          //     autoSkip: true,
+          //     maxTicksLimit: 5,
+          //     maxRotation: 0,
+          //   },
+          // },
+        },
       },
     };
 
@@ -77,7 +141,7 @@ export default {
       let endYear = startYear + 19;
       let fullUrl = `${baseUrl}/${startYear}/${endYear}/${isoCountry}`;
       console.log(fullUrl);
-      
+
       try {
         let res = await axios.get(fullUrl);
         if (!res) {
@@ -85,18 +149,21 @@ export default {
         }
 
         console.log(res.data);
+        // Manipulate the data
+
+
       } catch (error) {
         console.log(error);
       }
     };
 
     const updateChart = () => {
-      doughnutChart.options.plugins.title = {
+      lineChart.options.plugins.title = {
         text: "Updated no Chart",
         display: true,
       };
-      doughnutChart.data.labels = ["Cats", "Dogs", "Hamsters", "Dragons"];
-      doughnutChart.data.datasets = [
+      lineChart.data.labels = ["Cats", "Dogs", "Hamsters", "Dragons"];
+      lineChart.data.datasets = [
         {
           backgroundColor: ["#333333", "#E46651", "#00D8FF", "#DD1B16"],
           data: [100, 20, 800, 20],
@@ -107,7 +174,7 @@ export default {
     };
 
     return {
-      doughnutChart,
+      lineChart,
       chartRef,
       year,
       country,
@@ -117,49 +184,17 @@ export default {
     };
   },
 };
-
-// Old options api
-// export default {
-//   name: "TempChart",
-//   components: {
-//     Vue3ChartJs,
-//   },
-//   data() {
-//     return {
-//       chartId: "doughnut",
-//       chartType: "doughnut",
-//       labels: ["vvvvv", "EmberJs", "ReactJs", "AngularJs"],
-//       datasets: [
-//         {
-//           backgroundColor: ["#41B883", "#E46651", "#00D8FF", "#DD1B16"],
-//           data: [40, 20, 80, 10],
-//         },
-//       ],
-//       options: {
-//         plugins: {}
-//       }
-//     };
-//   },
-//   methods: {
-//     changeData() {
-//       console.log("inside the change");
-//       this.labels = ["VueeeeeJs", "EmberJs", "ReactJs", "AngularJs"];
-//       this.datasets = [
-//         {
-//           backgroundColor: ["#41B883", "#E46651", "#00D8FF", "#DD1B16"],
-//           data: [10, 20, 80, 10],
-//         }
-//       ]
-//     },
-//   },
-//   computed: {
-//     getData() {
-//       let options = {
-//         plugins: {}
-//       }
-//       let data = { labels: this.labels, datasets: this.datasets, options };
-//       return data
-//     },
-//   },
-// };
 </script>
+
+<style lang="scss" scoped>
+.temp-chart-bg {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  background-color: white;
+  color: black;
+  justify-content: center;
+  margin: auto;
+  width: 100%;
+}
+</style>
