@@ -22,12 +22,12 @@ const routes = [
     component: Profile,
   },
   {
-    path: "/news",
+    path: "/charts",
     name: "Charts",
     component: Charts,
   },
   {
-    path: "/visualise",
+    path: "/news",
     name: "Visualise",
     component: Visualise,
   },

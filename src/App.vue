@@ -62,6 +62,6 @@ img {
   text-align: center;
   color: $font-color-primary;
   background-color: $bg-color-primary;
-  height: 100vh;
+  height: 100%;
 }
 </style>

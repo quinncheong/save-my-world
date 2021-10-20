@@ -1,6 +1,11 @@
 <template>
   <div>
     Hello this is a chart element
+    <iframe
+      src="https://datahub.io/core/co2-ppm/view/1"
+      height="100%"
+      frameborder="0"
+    ></iframe>
   </div>
 </template>
 
