@@ -3,7 +3,7 @@
     <!-- header -->
     <h1>Start saving the environment now</h1>
     <!-- Container to hold  the map -->
-    <div id='app'></div>
+    <div id='map'></div>
 
 
   </div>
