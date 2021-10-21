@@ -16,8 +16,7 @@
         :src="chart.src"
       />
     </div>
-    <MainChart/>
-
+    <MainChart />
 
     <!-- <div class="main-chart">
       <iframe
