@@ -35,6 +35,7 @@
 import { ref } from "vue";
 import Vue3ChartJs from "@j-t-mcc/vue3-chartjs";
 import axios from "axios";
+import moment from "moment";
 import { countries } from "countries-list";
 import iso from "iso-3166-1"; // Library to key in country name and get iso no.
 
@@ -135,53 +136,67 @@ export default {
     // Function to load the new data
     const handleClick = async (e) => {
       e.preventDefault();
+
+      //   First portion is to do forward geocoding to get the lat and long
       let geolocationUrl = "http://api.positionstack.com/v1/forward";
       let access_key = process.env.VUE_APP_POSITIONSTACK_API_KEY;
-      let query = country.value
-
-      try {
-          let res = await axios.get(geolocationUrl, {
-              params: {
-                  access_key,
-                  query
-              }
-          })
-            if (!res) {
-                throw Error('Error with access forward geolocation API')
-            }
-
-      } catch (err) {
-          console.log(err)
-      }
-
-      let baseUrl =
-        "http://api.openweathermap.org/data/2.5/air_pollution/history";
+      let query = country.value;
       let isoCountry = iso.whereCountry(country.value).alpha3;
 
-      let appid = process.env.VUE_APP_OPENWEATHER_API_KEY;
-      let lat;
-      let long;
-      let startYear = year.value;
-      let endYear = startYear + 19;
-
-      console.log(fullUrl);
-
       try {
-        let res = await axios.get(fullUrl);
+        let res = await axios.get(geolocationUrl, {
+          params: {
+            access_key,
+            query,
+          },
+        });
         if (!res) {
-          throw Error("Error in accessing API");
+          throw new Error("Error with access forward geolocation API");
         }
+        let geolocation = {};
+        for (let country of res.data.data) {
+          console.log(country);
+          console.log(isoCountry);
+          if (country.country_code === isoCountry) {
+            geolocation.lat = country.latitude;
+            geolocation.lon = country.longitude;
+            break;
+          }
+        }
+        console.log("Completed the first API request: ");
+        console.log(geolocation);
+        // After getting the lat and long, we can make a call
+        // to get the air pollution history
 
-        console.log(res.data);
-        // Manipulate the data
-        let updatedDataset = [];
-        let updatedLabels = [];
-        let count = 1;
-        for (let data of res.data) {
-          updatedDataset.push(data.annualData[0]);
-          updatedLabels.push(count);
-          count += 1;
+        let baseUrl =
+          "http://api.openweathermap.org/data/2.5/air_pollution/history";
+
+        let appid = process.env.VUE_APP_OPENWEATHER_API_KEY;
+        let { lat, lon } = geolocation;
+        let startYear = moment(year.value).unix();
+        let endYear = moment(year.value + 10).unix();
+
+        console.log(startYear)
+        console.log(endYear)
+
+        let res2 = await axios.get(baseUrl, {
+          params: {
+            lat,
+            lon,
+            start: startYear,
+            end: endYear,
+            appid,
+          },
+        });
+
+        if (!res2) {
+          throw Error("Error with access openweather API");
         }
+        // Reaching here means that the openweather API was accessed smoothly
+
+        console.log(res2.data);
+        let updatedLabels = [];
+        let updatedDataset = [];
 
         barChart.data.labels = updatedLabels;
         barChart.data.datasets = [
@@ -195,8 +210,8 @@ export default {
         ];
 
         chartRef.value.update(null);
-      } catch (error) {
-        console.log(error);
+      } catch (err) {
+        console.log(err);
       }
     };
 
