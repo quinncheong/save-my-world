@@ -1,7 +1,9 @@
 <template>
   <div>
     <Navbar />
-    <router-view />
+    <div class="app-content-wrapper">
+      <router-view />
+    </div>
   </div>
 </template>
 
@@ -63,5 +65,11 @@ img {
   color: $font-color-primary;
   background-color: $bg-color-primary;
   height: 100vh;
+}
+
+.app-content-wrapper {
+  background-color: $bg-color-primary;
+  height: 100%;
+  padding: 1rem;
 }
 </style>
