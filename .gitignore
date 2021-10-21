@@ -24,3 +24,4 @@ pnpm-debug.log*
 
 # Personal notes and API keys
 tokens
+.env
