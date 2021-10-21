@@ -1,8 +1,4 @@
 <template>
-<<<<<<< HEAD
-  <div>
-    Hello this is a chart element
-=======
   <div class="chart-wrapper">
     <h2 class="chart-title mb-3">Climate Visual Charts</h2>
     <p class="chart-details mb-3">
@@ -31,19 +27,10 @@
         frameborder="0"
       ></iframe>
     </div> -->
->>>>>>> development
   </div>
 </template>
 
 <script>
-<<<<<<< HEAD
-export default {
-  name: "Charts",
-};
-</script>
-
-<style lang="scss" scoped></style>
-=======
 import ChartsCard from "../components/Charts/ChartsCard.vue";
 import MainChart from "@/components/Charts/MainChart.vue";
 
@@ -117,4 +104,3 @@ export default {
   }
 }
 </style>
->>>>>>> development
