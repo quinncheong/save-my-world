@@ -14,9 +14,22 @@
         :key="chart.id"
         :name="chart.name"
         :src="chart.src"
+        @click="setSelectedChart(chart.id)"
       />
     </div>
-    <MainChart />
+    <div v-if="selectedChart === 0"></div>
+    <div v-else-if="selectedChart === 1">
+
+    </div>
+    <div v-else-if="selectedChart === 2">
+      <AirPollutionChart />
+    </div>
+    <div v-else>
+      <TempChart />
+
+    </div>
+
+    <!-- <MainChart /> -->
 
     <!-- <div class="main-chart">
       <iframe
@@ -32,12 +45,16 @@
 <script>
 import ChartsCard from "../components/Charts/ChartsCard.vue";
 import MainChart from "@/components/Charts/MainChart.vue";
+import TempChart from "@/components/Charts/TemperatureChart.vue";
+import AirPollutionChart from "@/components/Charts/AirPollutionChart.vue";
 
 export default {
   name: "Charts",
   components: {
     ChartsCard,
     MainChart,
+    TempChart,
+    AirPollutionChart,
   },
   data() {
     return {
@@ -58,9 +75,16 @@ export default {
           src: "",
         },
       ],
+      selectedChart: 0,
     };
   },
-};
+  methods: {
+    setSelectedChart(id) {
+      this.selectedChart = id;
+      console.log(this.selectedChart)
+    }
+  }
+ };
 </script>
 
 <style lang="scss" scoped>
