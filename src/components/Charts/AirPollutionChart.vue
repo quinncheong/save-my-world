@@ -15,7 +15,7 @@
       </label>
 
       <label>
-        Select a year (must be multiples of 20):
+        Select a year (must be 2020 only):
         <input v-model="year" type="number" required />
       </label>
       <button>Get Data</button>
@@ -106,11 +106,12 @@ export default {
         scales: {
           yAxes: {
             display: true,
-            stacked: false,
+            stacked: true,
             // fontColor: '#4848EE',
           },
           xAxes: {
             display: false,
+            stacked: true,
           },
           // xAxes: {
           //   display: true,
@@ -173,18 +174,24 @@ export default {
 
         let appid = process.env.VUE_APP_OPENWEATHER_API_KEY;
         let { lat, lon } = geolocation;
-        let startYear = moment(year.value).unix();
-        let endYear = moment(year.value + 10).unix();
+        let startYear = year.value;
+        let endYear = year.value + 1;
 
-        console.log(startYear)
-        console.log(endYear)
+        let startUnix = moment(year.value, "YYYY").unix();
+        let endUnix = moment(year.value + 2, "YYYY").unix();
+
+        console.log(startYear);
+        console.log(endYear);
+
+        console.log(startUnix);
+        console.log(endUnix);
 
         let res2 = await axios.get(baseUrl, {
           params: {
             lat,
             lon,
-            start: startYear,
-            end: endYear,
+            start: startUnix,
+            end: endUnix,
             appid,
           },
         });
@@ -195,16 +202,44 @@ export default {
         // Reaching here means that the openweather API was accessed smoothly
 
         console.log(res2.data);
-        let updatedLabels = [];
-        let updatedDataset = [];
+        // This will get past year's data. So we need to filter appropriately
 
-        barChart.data.labels = updatedLabels;
+        let coDataset = [];
+        let no2Dataset = [];
+        let so2Dataset = [];
+
+        let pollutionArray = res2.data.list;
+        // increase by 672 means to get each month's entry
+        for (let index = 0; index < pollutionArray.length; index += 672) {
+          let monthPollution = pollutionArray[index];
+          //  co, no, no2, o3, so2, pm2_5, pm10, nh3
+          let { co, no2, so2 } = monthPollution.components;
+          coDataset.push(co)
+          no2Dataset.push(no2)
+          so2Dataset.push(so2)
+        }
+
+        barChart.data.labels = ["Jan", 'Feb', 'Mar', 'Apr', 'May', 'June', 'July', 'Aug', 'Sep'];
         barChart.data.datasets = [
           {
-            label: "Temperature Over Time",
-            backgroundColor: ["#41B883"],
-            borderColor: "#41B883",
-            data: updatedDataset,
+            label: "Carbon Monoxide (CO)",
+            backgroundColor: ["rgba(255, 99, 132, 0.8)"],
+            borderColor: "rgb(255, 99, 132)",
+            data: coDataset,
+            fill: false,
+          },
+          {
+            label: "Nitrogen dioxide (NO2)",
+            backgroundColor: ["rgba(255, 159, 64, 0.8)"],
+            borderColor: "rgb(255, 159, 64)",
+            data: no2Dataset,
+            fill: false,
+          },
+          {
+            label: "Sulphur dioxide (SO2)",
+            backgroundColor: ["rgba(255, 205, 86, 0.8)"],
+            borderColor: 'rgb(255, 205, 86)',
+            data: so2Dataset,
             fill: false,
           },
         ];
