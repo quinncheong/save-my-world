@@ -1,5 +1,5 @@
 <template>
-  <div class="temp-chart-bg">
+  <div class="temp-chart-bg mb-5">
     <form @submit="handleClick">
       <label>
         Select a country:
@@ -15,18 +15,18 @@
       </label>
 
       <label>
-        Select a year (must be multiples of 20):
+        Select a year (must be 2020 only):
         <input v-model="year" type="number" required />
       </label>
       <button>Get Data</button>
     </form>
 
     <vue3-chart-js
-      :id="lineChart.id"
+      :id="barChart.id"
       ref="chartRef"
-      :type="lineChart.type"
-      :data="lineChart.data"
-      :options="lineChart.options"
+      :type="barChart.type"
+      :data="barChart.data"
+      :options="barChart.options"
     />
   </div>
 </template>
@@ -35,6 +35,7 @@
 import { ref } from "vue";
 import Vue3ChartJs from "@j-t-mcc/vue3-chartjs";
 import axios from "axios";
+import moment from "moment";
 import { countries } from "countries-list";
 import iso from "iso-3166-1"; // Library to key in country name and get iso no.
 
@@ -48,9 +49,9 @@ export default {
     const country = ref("");
     const year = ref(2020);
 
-    const lineChart = {
-      id: "line",
-      type: "line",
+    const barChart = {
+      id: "bar",
+      type: "bar",
       data: {
         labels: ["2020", 2040],
         datasets: [
@@ -105,11 +106,12 @@ export default {
         scales: {
           yAxes: {
             display: true,
-            stacked: false,
+            stacked: true,
             // fontColor: '#4848EE',
           },
           xAxes: {
             display: false,
+            stacked: true,
           },
           // xAxes: {
           //   display: true,
@@ -135,55 +137,126 @@ export default {
     // Function to load the new data
     const handleClick = async (e) => {
       e.preventDefault();
-      let baseUrl =
-        "http://climatedataapi.worldbank.org/climateweb/rest/v1/country/annualavg/tas";
+
+      //   First portion is to do forward geocoding to get the lat and long
+      let geolocationUrl = "http://api.positionstack.com/v1/forward";
+      let access_key = process.env.VUE_APP_POSITIONSTACK_API_KEY;
+      let query = country.value;
       let isoCountry = iso.whereCountry(country.value).alpha3;
-      let startYear = year.value;
-      let endYear = startYear + 19;
-      let fullUrl = `${baseUrl}/${startYear}/${endYear}/${isoCountry}`;
-      console.log(fullUrl);
 
       try {
-        let res = await axios.get(fullUrl);
+        let res = await axios.get(geolocationUrl, {
+          params: {
+            access_key,
+            query,
+          },
+        });
         if (!res) {
-          throw Error("Error in accessing API");
+          throw new Error("Error with access forward geolocation API");
+        }
+        let geolocation = {};
+        for (let country of res.data.data) {
+          console.log(country);
+          console.log(isoCountry);
+          if (country.country_code === isoCountry) {
+            geolocation.lat = country.latitude;
+            geolocation.lon = country.longitude;
+            break;
+          }
+        }
+        console.log("Completed the first API request: ");
+        console.log(geolocation);
+        // After getting the lat and long, we can make a call
+        // to get the air pollution history
+
+        let baseUrl =
+          "http://api.openweathermap.org/data/2.5/air_pollution/history";
+
+        let appid = process.env.VUE_APP_OPENWEATHER_API_KEY;
+        let { lat, lon } = geolocation;
+        let startYear = year.value;
+        let endYear = year.value + 1;
+
+        let startUnix = moment(year.value, "YYYY").unix();
+        let endUnix = moment(year.value + 2, "YYYY").unix();
+
+        console.log(startYear);
+        console.log(endYear);
+
+        console.log(startUnix);
+        console.log(endUnix);
+
+        let res2 = await axios.get(baseUrl, {
+          params: {
+            lat,
+            lon,
+            start: startUnix,
+            end: endUnix,
+            appid,
+          },
+        });
+
+        if (!res2) {
+          throw Error("Error with access openweather API");
+        }
+        // Reaching here means that the openweather API was accessed smoothly
+
+        console.log(res2.data);
+        // This will get past year's data. So we need to filter appropriately
+
+        let coDataset = [];
+        let no2Dataset = [];
+        let so2Dataset = [];
+
+        let pollutionArray = res2.data.list;
+        // increase by 672 means to get each month's entry
+        for (let index = 0; index < pollutionArray.length; index += 672) {
+          let monthPollution = pollutionArray[index];
+          //  co, no, no2, o3, so2, pm2_5, pm10, nh3
+          let { co, no2, so2 } = monthPollution.components;
+          coDataset.push(co)
+          no2Dataset.push(no2)
+          so2Dataset.push(so2)
         }
 
-        console.log(res.data);
-        // Manipulate the data
-        let updatedDataset = [];
-        let updatedLabels = [];
-        let count = 1;
-        for (let data of res.data) {
-          updatedDataset.push(data.annualData[0]);
-          updatedLabels.push(count);
-          count += 1;
-        }
-
-        lineChart.data.labels = updatedLabels;
-        lineChart.data.datasets = [
+        barChart.data.labels = ["Jan", 'Feb', 'Mar', 'Apr', 'May', 'June', 'July', 'Aug', 'Sep'];
+        barChart.data.datasets = [
           {
-            label: "Temperature Over Time",
-            backgroundColor: ["#41B883"],
-            borderColor: "#41B883",
-            data: updatedDataset,
+            label: "Carbon Monoxide (CO)",
+            backgroundColor: ["rgba(255, 99, 132, 0.8)"],
+            borderColor: "rgb(255, 99, 132)",
+            data: coDataset,
+            fill: false,
+          },
+          {
+            label: "Nitrogen dioxide (NO2)",
+            backgroundColor: ["rgba(255, 159, 64, 0.8)"],
+            borderColor: "rgb(255, 159, 64)",
+            data: no2Dataset,
+            fill: false,
+          },
+          {
+            label: "Sulphur dioxide (SO2)",
+            backgroundColor: ["rgba(255, 205, 86, 0.8)"],
+            borderColor: 'rgb(255, 205, 86)',
+            data: so2Dataset,
             fill: false,
           },
         ];
-        
+
         chartRef.value.update(null);
-      } catch (error) {
-        console.log(error);
+      } catch (err) {
+        console.log(err);
       }
     };
 
     const updateChart = () => {
-      lineChart.options.plugins.title = {
+      barChart.options.plugins.title = {
         text: "Updated no Chart",
         display: true,
       };
-      lineChart.data.labels = ["Cats", "Dogs", "Hamsters", "Dragons"];
-      lineChart.data.datasets = [
+      barChart.data.labels = ["Cats", "Dogs", "Hamsters", "Dragons"];
+      barChart.data.datasets = [
         {
           label: "Temperature Over Time",
           backgroundColor: ["#41B883"],
@@ -197,7 +270,7 @@ export default {
     };
 
     return {
-      lineChart,
+      barChart,
       chartRef,
       year,
       country,
