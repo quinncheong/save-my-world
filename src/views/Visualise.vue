@@ -3,13 +3,13 @@
     <!-- header -->
     <h1>Start saving the environment now</h1>
     <!-- Container to hold  the map -->
-      <button
+      <!-- <button
             type="button"
             :disabled="loading"
             :class="{ disabled: loading}"
             class="location-btn"
             @click="getLocation"
-          >test</button>
+          >test</button> -->
     <div id='map'></div>
 
 
@@ -30,9 +30,10 @@ export default {
     return {
       loading: false,
       location: "",
-      access_token: "pk.eyJ1IjoianB3b25nIiwiYSI6ImNrdXlzdXV3ajc1aWEybnFqYWN3dzdsbnAifQ.wwNeMGN_vVk_NIYxlZyr-g",
-      center: [0, 0],
+      access_token: process.env.VUE_APP_MAP_ACCESS_TOKEN,
+      center: [0,0],
       map: {},
+
     }
 },
 
@@ -92,6 +93,7 @@ export default {
 
   //   })
 
+  // Load the markers here when loading
   this.map.on("load", this.getLocation())
 
 
@@ -117,7 +119,7 @@ export default {
             marker: false,
           }); 
 
-          // forward geo coding
+          // forward geo coding (Not really relevant for now . . . . .. . this just searches for the location. )
         this.map.addControl(geocoder);
         geocoder.on("result", (e) => {
           const marker = new mapboxgl.Marker({
@@ -142,23 +144,95 @@ export default {
         
         this.loading = true;
         const response = await axios.get(url)
-        console.log(response);
+        .then(response =>{
+          // For loop to loop through the countries
 
-        for (url of response.data.data){
-          const response1 = await axios.get(url.href)
-          console.log(response1)
+          var countries = response.data.data;
+          // Score and desc needed for pop up 
+          var score = [];
+          var desc = []; 
+          var links = []; 
+
+          //  countries is an array 
+          for (let indivCountry of countries){
+
+            console.log(indivCountry);
+            
+            // Taking out the necessary components such as desc and score.
+            score.push(indivCountry.score);
+            desc.push(indivCountry.fields.title);
+            links.push(indivCountry.href);
 
 
-        }
-        this.loading = false;
-        this.location = response1.links.data;
-        console.log(url);
-      } catch (err) {
-        this.loading = false;
+           
+
+
+        
+            
+          }
+           return [score,desc,links]
+          // console.log(score);
+          // console.log(desc)
+          // console.log(links)
+
+
+        })
+        // If the response is true 
+        const responseTwo = await response; 
+
+          
+        // If it works 
+          if (responseTwo){
+          console.log(responseTwo);
+          var score = responseTwo[0];
+          var desc = responseTwo[1];
+          var links = responseTwo[2];
+
+          // do another axios call here so that we can get the lat and lon
+
+          for (let url of links){
+            //  Do an axios get 
+
+            axios.get(url)
+            .then(response=>{
+              console.log(response.data.data[0].fields.primary_country.location);
+
+              this.mapboxgl.Marker()
+              .setLngLat([-65.017, -16.457])
+              .addTo(this.map);
+              
+            })
+
+          }
+
+
+    
+
+          } else{
+            console.log('Fail to retrieve data');
+          }
+        // const responseTwo = await response; 
+      } catch(err){
         console.log(err);
+
       }
-    },
-  }
+
+  //       for (url of response.data.data){
+  //         const response1 = await axios.get(url.href)
+  //         console.log(response1)
+
+
+  //       }
+  //       this.loading = false;
+  //       this.location = response1.links.data;
+  //       console.log(url);
+  //     } catch (err) {
+  //       this.loading = false;
+  //       console.log(err);
+  //     }
+    
+    }
+    }
   
 }
 </script>
