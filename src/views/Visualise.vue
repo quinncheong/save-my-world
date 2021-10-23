@@ -118,8 +118,7 @@ export default {
 
     // Load the markers here when loading
     this.map.on("load", async () => {
-      let result = await this.getLocation(); // After getting location, print the lat and long
-      console.log("im here");
+      let result = await this.getLocation(); // After getting location then we add the markers
       this.addMarkers();
     });
   },
