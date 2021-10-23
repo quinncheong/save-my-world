@@ -197,6 +197,9 @@ export default {
             .then(response=>{
               console.log(response.data.data[0].fields.primary_country.location);
 
+
+              // this code doesn't work 
+
               this.mapboxgl.Marker()
               .setLngLat([-65.017, -16.457])
               .addTo(this.map);
