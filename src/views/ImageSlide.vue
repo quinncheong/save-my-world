@@ -85,5 +85,4 @@ hr {
   opacity: 0.7;
   border-radius: 50%;
 }
-
 </style>
