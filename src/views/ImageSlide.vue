@@ -1,9 +1,10 @@
 <template>
   <div class="community py-4">
     <div class="row">
-      <div class="col-12"> 
-       <imageCarousel />
+      <div class="col-12" height="200px"> 
+       <imageSlide />
       </div>
+      <imageCarol />
     </div>
   </div>
 </template>
@@ -11,14 +12,16 @@
 <script >
 import { Splide, SplideSlide } from '@splidejs/vue-splide';
 import '@splidejs/splide/dist/css/themes/splide-default.min.css';
-import imageCarousel from "../components/ImageSlider.vue";
+import imageSlide from "../components/ImageSlider.vue";
+import imageCarol from "../components/ImageCarousel.vue";
 
 export default {
-  name: "ImageSlider",
+  name: "Images",
   components: {
     Splide,
     SplideSlide,
-    imageCarousel
+    imageSlide,
+    imageCarol
   },
   data() {
     return {
@@ -37,10 +40,4 @@ export default {
     display: inline-flex;
     flex-direction: column;
   }
-
-  // img-comparison-slider {
-  //   --divider-width: 2px;
-  //   --divider-color: #c0c0c0;
-  //   --handle-opacity: 0.3;
-  // }
 </style>
