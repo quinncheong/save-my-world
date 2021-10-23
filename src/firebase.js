@@ -5,6 +5,7 @@ import {
   query,
   where,
   getDocs,
+  addDoc,
 } from "firebase/firestore";
 // import { ref, onUnmounted } from "vue";
 
@@ -37,6 +38,8 @@ export const getQuizzes = async () => {
 
   return quizzes;
 };
+
+
 
 // Collection to retrieve the countries lat and long without having to call the api
 
