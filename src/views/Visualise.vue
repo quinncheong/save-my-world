@@ -3,16 +3,14 @@
     <!-- header -->
     <h1>Start saving the environment now</h1>
     <!-- Container to hold  the map -->
-      <!-- <button
+    <!-- <button
             type="button"
             :disabled="loading"
             :class="{ disabled: loading}"
             class="location-btn"
             @click="getLocation"
           >test</button> -->
-    <div id='map'></div>
-
-
+    <div id="map"></div>
   </div>
 </template>
 
@@ -22,87 +20,111 @@ import mapboxgl from "mapbox-gl";
 import MapboxGeocoder from "@mapbox/mapbox-gl-geocoder";
 import "@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css";
 
-var url = 'https://api.reliefweb.int/v1/reports?appname=apidoc&query[value]=earthquake';
+var url =
+  "https://api.reliefweb.int/v1/reports?appname=apidoc&query[value]=earthquake";
 export default {
   name: "Visualise",
   components: {},
- data() {
+  data() {
     return {
       loading: false,
       location: "",
       access_token: process.env.VUE_APP_MAP_ACCESS_TOKEN,
-      center: [0,0],
+      center: [0, 0],
       map: {},
-
-    }
-},
-
-// methods:{
-
-
-//   async getLocation() {
-//       try {
-//         let url = 'https://api.reliefweb.int/v1/reports?appname=apidoc&query[value]=earthquake'
-
-//         this.loading = true;
-//         const response = await axios.get(url);
-//         console.log(response);
-//         this.loading = false;
-//         this.location = response.data.features[0].place_name;
-//       } catch (err) {
-//         this.loading = false;
-//         console.log(err);
-//       }
- 
-//   }
-// },
-
-  mounted() {
-
-
-    this.createMap();
-
-  //   // Create map  after mounted
-  //   // Need to access the token first
-  //   mapboxgl.accessToken = this.access_token;
-  //   // Creation of map when the page first load 
-
-  //   this.map = new mapboxgl.Map({
-  //     container: 'map',
-  //     style: "mapbox://styles/mapbox/streets-v11",
-  //     center: this.center,
-  //     zoom: 11,  
-  // })
-
-  //   let geocoder =  new MapboxGeocoder({
-  //           accessToken: this.access_token,
-  //           mapboxgl: mapboxgl,
-  //           marker: true,
-  //     });   
-
-  //   // Adding Search to the map
-
-  //   this.map.addControl(geocoder);
-
-  //   // loading map
-
-  //   this.map.on('load', async () => {
-  //   // Get the initial location of the International Space Station (ISS).
-  //   const geojson = await getLocation();
-  //   // Add the ISS location as a source.
-
-  //   })
-
-  // Load the markers here when loading
-  this.map.on("load", this.getLocation())
-
-
-
-
-
+      geoCodeList: [],
+      geoJson: {
+        type: "FeatureCollection",
+        features: [
+          {
+            type: "Feature",
+            geometry: {
+              type: "Point",
+              coordinates: [-77.032, 38.913],
+            },
+            properties: {
+              title: "Mapbox",
+              description: "Washington, D.C.",
+            },
+          },
+          {
+            type: "Feature",
+            geometry: {
+              type: "Point",
+              coordinates: [-122.414, 37.776],
+            },
+            properties: {
+              title: "Mapbox",
+              description: "San Francisco, California",
+            },
+          },
+        ],
+      },
+    };
   },
 
-  methods:{
+  // methods:{
+
+  //   async getLocation() {
+  //       try {
+  //         let url = 'https://api.reliefweb.int/v1/reports?appname=apidoc&query[value]=earthquake'
+
+  //         this.loading = true;
+  //         const response = await axios.get(url);
+  //         console.log(response);
+  //         this.loading = false;
+  //         this.location = response.data.features[0].place_name;
+  //       } catch (err) {
+  //         this.loading = false;
+  //         console.log(err);
+  //       }
+
+  //   }
+  // },
+
+  mounted() {
+    this.createMap();
+
+    //   // Create map  after mounted
+    //   // Need to access the token first
+    //   mapboxgl.accessToken = this.access_token;
+    //   // Creation of map when the page first load
+
+    //   this.map = new mapboxgl.Map({
+    //     container: 'map',
+    //     style: "mapbox://styles/mapbox/streets-v11",
+    //     center: this.center,
+    //     zoom: 11,
+    // })
+
+    //   let geocoder =  new MapboxGeocoder({
+    //           accessToken: this.access_token,
+    //           mapboxgl: mapboxgl,
+    //           marker: true,
+    //     });
+
+    //   // Adding Search to the map
+
+    //   this.map.addControl(geocoder);
+
+    //   // loading map
+
+    //   this.map.on('load', async () => {
+    //   // Get the initial location of the International Space Station (ISS).
+    //   const geojson = await getLocation();
+    //   // Add the ISS location as a source.
+
+    //   })
+
+    // Load the markers here when loading
+    this.map.on("load", async () => {
+      let result = await this.getLocation(); // After getting location, print the lat and long
+      console.log("im here");
+      this.addMarkers();
+    });
+  },
+
+  methods: {
     // create map on mount
     async createMap() {
       try {
@@ -113,13 +135,13 @@ export default {
           center: this.center,
           zoom: 11,
         });
-        let geocoder =  new MapboxGeocoder({
-            accessToken: this.access_token,
-            mapboxgl: mapboxgl,
-            marker: false,
-          }); 
+        let geocoder = new MapboxGeocoder({
+          accessToken: this.access_token,
+          mapboxgl: mapboxgl,
+          marker: false,
+        });
 
-          // forward geo coding (Not really relevant for now . . . . .. . this just searches for the location. )
+        // forward geo coding (Not really relevant for now . . . . .. . this just searches for the location. )
         this.map.addControl(geocoder);
         geocoder.on("result", (e) => {
           const marker = new mapboxgl.Marker({
@@ -140,115 +162,89 @@ export default {
 
     // trying to get location of prepopulated data.
     async getLocation() {
+      this.loading = true;
       try {
-        
-        this.loading = true;
-        const response = await axios.get(url)
-        .then(response =>{
-          // For loop to loop through the countries
+        const response = await axios.get(url);
+        if (!response) {
+          throw Error("Failed to get data");
+        }
+        // Score and desc needed for pop up
+        let score = [];
+        let desc = [];
+        let links = [];
 
-          var countries = response.data.data;
-          // Score and desc needed for pop up 
-          var score = [];
-          var desc = []; 
-          var links = []; 
+        let countries = response.data.data;
+        //  countries is an array
+        for (let indivCountry of countries) {
+          console.log(indivCountry);
 
-          //  countries is an array 
-          for (let indivCountry of countries){
+          // Taking out the necessary components such as desc and score.
+          score.push(indivCountry.score);
+          desc.push(indivCountry.fields.title);
+          links.push(indivCountry.href);
+        }
 
-            console.log(indivCountry);
-            
-            // Taking out the necessary components such as desc and score.
-            score.push(indivCountry.score);
-            desc.push(indivCountry.fields.title);
-            links.push(indivCountry.href);
+        let geoList = await this.pushGeo(links);
+        this.geoCodeList = geoList;
 
-
-           
-
-
-        
-            
-          }
-           return [score,desc,links]
-          // console.log(score);
-          // console.log(desc)
-          // console.log(links)
-
-
-        })
-        // If the response is true 
-        const responseTwo = await response; 
-
-          
-        // If it works 
-          if (responseTwo){
-          console.log(responseTwo);
-          var score = responseTwo[0];
-          var desc = responseTwo[1];
-          var links = responseTwo[2];
-
-          // do another axios call here so that we can get the lat and lon
-
-          for (let url of links){
-            //  Do an axios get 
-
-            axios.get(url)
-            .then(response=>{
-              console.log(response.data.data[0].fields.primary_country.location);
-
-
-              // this code doesn't work 
-
-              this.mapboxgl.Marker()
-              .setLngLat([-65.017, -16.457])
-              .addTo(this.map);
-              
-            })
-
-          }
-
-
-    
-
-          } else{
-            console.log('Fail to retrieve data');
-          }
-        // const responseTwo = await response; 
-      } catch(err){
+        return;
+      } catch (err) {
         console.log(err);
+        return;
+      }
+    },
 
+    // Function to return a list of lat and long
+    async pushGeo(links) {
+      let geoList = [];
+
+      // Un optimised version
+      for (let url of links) {
+        let res = await axios.get(url);
+        // console.log(res.data.data[0].fields.primary_country.location);
+        let geoCode = res.data.data[0].fields.primary_country.location;
+        geoList.push(geoCode);
       }
 
-  //       for (url of response.data.data){
-  //         const response1 = await axios.get(url.href)
-  //         console.log(response1)
+      return geoList;
 
+      // fast version using promises but its buggy so dont use this for now
+      // Buggy because the api gets cut off
+      // const responses = await Promise.allSettled(
+      //   links.map((link) => {
+      //     return axios.get(url);
+      //   })
+      // );
 
-  //       }
-  //       this.loading = false;
-  //       this.location = response1.links.data;
-  //       console.log(url);
-  //     } catch (err) {
-  //       this.loading = false;
-  //       console.log(err);
-  //     }
-    
-    }
-    }
-  
-}
+      // for (let res of responses) {
+      //   console.log(res);
+      //   let geoCode = res.data.data[0].fields.primary_country.location;
+      //   geoList.push(geoCode)
+      // }
+    },
+
+    async addMarkers() {
+      for (let coordinates of this.geoCodeList) {
+        console.log(coordinates);
+        // create a HTML element for each feature
+        const marker = new mapboxgl.Marker().setLngLat(coordinates).addTo(this.map);
+      }
+    },
+  },
+};
 </script>
 
 <style lang="scss" scoped>
-  #map {
-    height: 100vh;
-  }
+#map {
+  height: 100vh;
+}
 
-
+.marker {
+  background-image: url("../assets/img/globe.png");
+  background-size: cover;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  cursor: pointer;
+}
 </style>
-
-
-
-
-
