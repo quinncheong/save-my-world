@@ -6,6 +6,8 @@ import {
   where,
   getDocs,
   addDoc,
+  doc,
+  getDoc,
 } from "firebase/firestore";
 // import { ref, onUnmounted } from "vue";
 
@@ -25,21 +27,42 @@ const firebaseApp = initializeApp(firebaseConfig);
 const db = getFirestore(firebaseApp);
 
 export const getQuizzes = async () => {
-  const q = query(collection(db, 'quizzes'));
-  let quizzes = []
+  const q = query(collection(db, "quizzes"));
+  let quizzes = [];
   const querySnapshot = await getDocs(q);
-    querySnapshot.forEach((doc) => {
-        let quiz = {
-            ...doc.data()
-        }
-        quiz.id = doc.id
-        quizzes.push(quiz)
-    })
+  querySnapshot.forEach((doc) => {
+    let quiz = {
+      ...doc.data(),
+    };
+    quiz.id = doc.id;
+    quizzes.push(quiz);
+  });
 
   return quizzes;
 };
 
+function capitalise(string) {
+  let lower = string.toLowerCase();
+  return lower.slice(0, 1).toUpperCase() + lower.slice(1);
+}
 
+export const getCountryObj = async (alpha3) => {
+  // This portion is to clean the data in case of wrong input
+
+  const q = query(
+    collection(db, "countries"),
+    where("alpha3", "==", alpha3)
+  );
+
+  // This query is not efficient but we'll make do for now
+  const querySnapshot = await getDocs(q);
+  let final = []
+  querySnapshot.forEach((doc) => {
+    final.push(doc.data())
+  });
+
+  return final.length >= 1 ? final[0] : undefined
+};
 
 // Collection to retrieve the countries lat and long without having to call the api
 

@@ -4,7 +4,7 @@
 </template>
 
 <script>
-import { getQuizzes } from '@/firebase.js';
+import { getQuizzes, getCountryObj } from '@/firebase.js';
 
 
 export default {
@@ -18,6 +18,9 @@ export default {
     async created() {
         let quizzes = await getQuizzes();
         this.quizzes = quizzes
+
+        let country = await getCountryObj('LKA');
+        console.log(country)
     }
 
 
