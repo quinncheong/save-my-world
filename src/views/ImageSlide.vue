@@ -3,29 +3,12 @@
     <!-- header -->
       <div class="row">
       <div class="col-12"> 
-        <splide>
-          <splide-slide>
-            <img src="https://img-comparison-slider.sneas.io/demo/images/before.webp">
-          </splide-slide>
-          <splide-slide>
-            <img src="https://img-comparison-slider.sneas.io/demo/images/after.webp">
-          </splide-slide>
-        </splide>
-        <img-comparison-slider>
-          <!-- eslint-disable -->
-          <img
-            slot="first"
-            src="https://img-comparison-slider.sneas.io/demo/images/before.webp"
-          />
-          <img
-            slot="second"
-            src="https://img-comparison-slider.sneas.io/demo/images/after.webp"
-          />
-          <!-- eslint-enable -->
-        </img-comparison-slider>
+        <imageSlider/>
+        <imageCarol/>
       </div>
     </div>
     <!-- left section things -->
+    
   </div>
 </template>
 
@@ -33,12 +16,17 @@
 import { Splide, SplideSlide } from "@splidejs/vue-splide";
 import "@splidejs/splide/dist/css/themes/splide-default.min.css";
 import 'img-comparison-slider';
+import imageCarol from "../components/ImageCarousel.vue";
+import imageSlider from "../components/ImageSlider.vue";
 
 export default {
   name: "imageCarousel",
   components: {
     Splide,
     SplideSlide,
+    imageCarol,
+    imageSlider
+
   },
   data() {
     return {

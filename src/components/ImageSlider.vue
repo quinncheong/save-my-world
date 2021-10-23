@@ -6,11 +6,11 @@
           <!-- eslint-disable -->
           <img
             slot="first"
-            src="https://climate.nasa.gov/system/gallery_images/mobile/1_bucklandak654_oli_2021117_2048x1536_before.jpg"
+            src="https://img-comparison-slider.sneas.io/demo/images/before.webp"
           />
           <img
             slot="second"
-            src="https://climate.nasa.gov/system/gallery_images/mobile/2_bucklandak654_oli_2021133_2048x1536-after.jpg"
+            src="https://img-comparison-slider.sneas.io/demo/images/after.webp"
           />
           <!-- eslint-enable -->
         </img-comparison-slider>
@@ -18,17 +18,6 @@
     </div>
   </div>
 </template>
-
-<script>
-import { ImgComparisonSlider } from '@img-comparison-slider/vue';
-
-export default {
-  name: 'ImageSlider',
-  components: {
-    ImgComparisonSlider,
-  },
-};
-</script>
 
 <script>
 import 'img-comparison-slider';
@@ -49,12 +38,13 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.community {
-  display: inline-flex;
-  flex-direction: column;
-}
+  .community {
+    display: inline-flex;
+    flex-direction: column;
+  }
 
-img-comparison-slider {
+  .img-comparison-slider {
+    width: 100%;
     --divider-width: 2px;
     --divider-color: #c0c0c0;
     --default-handle-opacity: 0.3;
