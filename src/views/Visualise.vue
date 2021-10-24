@@ -2,14 +2,25 @@
   <div class="container-fluid visualisation">
     <!-- header -->
     <h1>Start saving the environment now</h1>
+    <!-- Drop down list that would be used for queries -->
+
+    <div class='row'>
+      <div class='col'></div>
+      <div class="col">
+        <select class="form-select text-center" v-model="selectedQuery" @change="help">
+          <option v-for="indivDisaster of disaster" :key="indivDisaster" :value="indivDisaster" selected>{{indivDisaster}}</option>
+        </select>
+      </div>
+      <div class='col'></div>
+
+      
+
+    </div>
+
+ 
+      
     <!-- Container to hold  the map -->
-    <!-- <button
-            type="button"
-            :disabled="loading"
-            :class="{ disabled: loading}"
-            class="location-btn"
-            @click="getLocation"
-          >test</button> -->
+
     <div id="map"></div>
   </div>
 </template>
@@ -20,8 +31,7 @@ import mapboxgl from "mapbox-gl";
 import MapboxGeocoder from "@mapbox/mapbox-gl-geocoder";
 import "@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css";
 
-var url =
-  "https://api.reliefweb.int/v1/reports?appname=apidoc&query[value]=earthquake";
+
 export default {
   name: "Visualise",
   components: {},
@@ -33,33 +43,11 @@ export default {
       center: [0, 0],
       map: {},
       geoCodeList: [],
-      geoJson: {
-        type: "FeatureCollection",
-        features: [
-          {
-            type: "Feature",
-            geometry: {
-              type: "Point",
-              coordinates: [-77.032, 38.913],
-            },
-            properties: {
-              title: "Mapbox",
-              description: "Washington, D.C.",
-            },
-          },
-          {
-            type: "Feature",
-            geometry: {
-              type: "Point",
-              coordinates: [-122.414, 37.776],
-            },
-            properties: {
-              title: "Mapbox",
-              description: "San Francisco, California",
-            },
-          },
-        ],
-      },
+      // Disaster list
+      disaster: ["Cold Wave","Complex Emergency","Drought", "Earthquake","Extratropical Cyclone", "Fire","Flash Flood","Flood", "Heat","Insect Infestation","Land Slide","Mud Slide", "Severe Local Storm","Snow Avalanche","Storm Surge","Tropical Cyclone","Tsunami","Volcano","Wild Fire"],
+      selectedQuery : 'Cold Wave'
+
+      
     };
   },
 
@@ -162,33 +150,34 @@ export default {
     // trying to get location of prepopulated data.
     async getLocation() {
       this.loading = true;
+      await this.getQuery
       try {
-        const response = await axios.get(url);
+        const response = await axios.get("https://api.reliefweb.int/v1/disasters?appname=apidoc&query[value]=" + this.selectedQuery + "&query[fields][]=type&fields[include][]=type.name&limit=30");
         if (!response) {
           throw Error("Failed to get data");
         }
         // Score and desc needed for pop up
-        let score = [];
-        let desc = [];
+        let name = [];
         let links = [];
+        
 
-        let countries = response.data.data;
+        let results = response.data.data;
         //  countries is an array
-        for (let indivCountry of countries) {
-          console.log(indivCountry);
-
+        for (let indivResult of results) {
           // Taking out the necessary components such as desc and score.
-          score.push(indivCountry.score);
-          desc.push(indivCountry.fields.title);
-          links.push(indivCountry.href);
+          name.push(indivResult.fields.name);
+          links.push(indivResult.href);
         }
+     
+
+
 
         let geoList = await this.pushGeo(links);
         this.geoCodeList = geoList;
 
         return;
       } catch (err) {
-        console.log(err);
+        // console.log(err);
         return;
       }
     },
@@ -204,7 +193,8 @@ export default {
         let geoCode = res.data.data[0].fields.primary_country.location;
         geoList.push(geoCode);
       }
-
+      
+      console.log(geoList);
       return geoList;
 
       // fast version using promises but its buggy so dont use this for now
@@ -223,13 +213,20 @@ export default {
     },
 
     async addMarkers() {
+      console.log('I am being rendered in add markers')
+      console.log(this.selectedQuery)
       for (let coordinates of this.geoCodeList) {
-        console.log(coordinates);
+        // console.log(coordinates);
         // create a HTML element for each feature
         const marker = new mapboxgl.Marker().setLngLat(coordinates).addTo(this.map);
       }
     },
   },
+
+
+  
+
+  
 };
 </script>
 
