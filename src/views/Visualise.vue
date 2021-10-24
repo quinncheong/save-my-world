@@ -142,7 +142,7 @@ export default {
 
         // forward geo coding (Not really relevant for now . . . . .. . this just searches for the location. )
         this.map.addControl(geocoder);
-        geocoder.on("result", (e) => {
+        geocoder.on("result", (e) => { //Events
           const marker = new mapboxgl.Marker({
             draggable: true,
             color: "#D80739",
