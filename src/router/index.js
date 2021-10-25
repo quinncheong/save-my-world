@@ -4,6 +4,7 @@ import Community from "../views/Community.vue";
 import Profile from "../views/Profile.vue";
 import Visualise from "@/views/Visualise.vue";
 import Charts from "@/views/Charts.vue";
+import ImageSlider from "@/views/ImageSlide.vue";
 
 const routes = [
   {
@@ -15,6 +16,11 @@ const routes = [
     path: "/community",
     name: "Community",
     component: Community,
+  },
+  {
+    path: "/image",
+    name: "ImageSlider",
+    component: ImageSlider,
   },
   {
     path: "/profile",

@@ -35,7 +35,7 @@ export default {
       fullView: true,
       dropdownClass: "dropdown-content",
       dropdownShown: false,
-      views: ["News", "Charts", "Community", "Profile"],
+      views: ["News", "Charts", "Image", "Community", "Profile"],
     };
   },
   methods: {
