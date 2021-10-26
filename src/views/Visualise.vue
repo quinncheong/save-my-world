@@ -7,9 +7,15 @@
     <div class='row'>
       <div class='col'></div>
       <div class="col">
-        <select class="form-select text-center" v-model="selectedQuery" @change="help">
+        <form @submit="handleClick()">
+           <select class="form-select text-center" v-model="selectedQuery" @change="help">
           <option v-for="indivDisaster of disaster" :key="indivDisaster" :value="indivDisaster" selected>{{indivDisaster}}</option>
         </select>
+
+        <button>Confirm</button>
+
+        </form>
+       
       </div>
       <div class='col'></div>
 
@@ -40,12 +46,15 @@ export default {
       loading: false,
       location: "",
       access_token: process.env.VUE_APP_MAP_ACCESS_TOKEN,
-      center: [0, 0],
+      center: [0, 20],
       map: {},
       geoCodeList: [],
       // Disaster list
       disaster: ["Cold Wave","Complex Emergency","Drought", "Earthquake","Extratropical Cyclone", "Fire","Flash Flood","Flood", "Heat","Insect Infestation","Land Slide","Mud Slide", "Severe Local Storm","Snow Avalanche","Storm Surge","Tropical Cyclone","Tsunami","Volcano","Wild Fire"],
-      selectedQuery : 'Cold Wave'
+      selectedQuery : 'Cold Wave',
+      desc: [],
+      markerList: []
+
 
       
     };
@@ -120,7 +129,9 @@ export default {
           container: "map",
           style: "mapbox://styles/mapbox/streets-v11",
           center: this.center,
-          zoom: 11,
+          zoom: 1,
+          continuousWorld: false
+
         });
         let geocoder = new MapboxGeocoder({
           accessToken: this.access_token,
@@ -128,20 +139,24 @@ export default {
           marker: false,
         });
 
-        // forward geo coding (Not really relevant for now . . . . .. . this just searches for the location. )
+        // forward geo coding (Not really relevant for now this just searches for the location. )
         this.map.addControl(geocoder);
-        geocoder.on("result", (e) => { //Events
-          const marker = new mapboxgl.Marker({
-            draggable: true,
-            color: "#D80739",
-          })
-            .setLngLat(e.result.center)
-            .addTo(this.map);
-          this.center = e.result.center;
-          marker.on("dragend", (e) => {
-            this.center = Object.values(e.target.getLngLat());
-          });
-        });
+        // geocoder.on("result", (e) => { //Events
+        //   console.log(e);
+        //   const marker = new mapboxgl.Marker({
+        //     draggable: true,
+        //     color: "#D80739",
+        //   })
+        //     .setLngLat(e.result.center)
+        //     .setPopup(new mapboxgl.Popup().setHTML("<h1>Hello World!</h1>"))
+        //     .addTo(this.map)
+        //   this.center = e.result.center;
+        //   marker.on("dragend", (e) => {
+        //     this.center = Object.values(e.target.getLngLat());
+        //     console.log(e);
+        //     console.log(e.target);
+        //   });
+        // });
       } catch (err) {
         console.log("map error", err);
       }
@@ -150,7 +165,6 @@ export default {
     // trying to get location of prepopulated data.
     async getLocation() {
       this.loading = true;
-      await this.getQuery
       try {
         const response = await axios.get("https://api.reliefweb.int/v1/disasters?appname=apidoc&query[value]=" + this.selectedQuery + "&query[fields][]=type&fields[include][]=type.name&limit=30");
         if (!response) {
@@ -168,6 +182,8 @@ export default {
           name.push(indivResult.fields.name);
           links.push(indivResult.href);
         }
+        // Set desc to name array
+        this.desc = name; 
      
 
 
@@ -192,6 +208,7 @@ export default {
         // console.log(res.data.data[0].fields.primary_country.location);
         let geoCode = res.data.data[0].fields.primary_country.location;
         geoList.push(geoCode);
+        
       }
       
       console.log(geoList);
@@ -215,19 +232,75 @@ export default {
     async addMarkers() {
       console.log('I am being rendered in add markers')
       console.log(this.selectedQuery)
-      for (let coordinates of this.geoCodeList) {
+     
+      for (let i=0; i< this.geoCodeList.length; i++) {
         // console.log(coordinates);
         // create a HTML element for each feature
-        const marker = new mapboxgl.Marker().setLngLat(coordinates).addTo(this.map);
+        const marker = new mapboxgl.Marker()
+        .setLngLat(this.geoCodeList[i])
+        .setPopup(new mapboxgl.Popup()
+        .setHTML(`<h6>${this.desc[i]}</h6>`))    // Added desc inside 
+        .addTo(this.map)
+
+        this.markerList.push(marker) 
+
+        console.log(this.markerList)
+
+        
+
+
+  
+
+    }
+
+    },
+
+// Added function to remove markers
+    async removeMarkers(){
+      for(let indivMarker of this.markerList){
+        indivMarker.remove()
       }
     },
+
+   
+
+// Event clicker then would toggle everytime a new value is selected
+    async handleClick(){
+      
+      // remove previous markets first
+      this.removeMarkers();
+
+      // After getting location then we add the markers
+      let result = await this.getLocation(); 
+      this.addMarkers();
+
+      //   console.log("hi")
+    //   this.createMap();
+
+    //    this.map.on("load", async () => {
+    //   this.map.zoomOut({offset: [80, 60]});
+    //   this.addMarkers();
+    // });
+    }
+
+  
+      
   },
 
 
   
 
   
+
+
+  
+
+  
 };
+
+
+
+ 
 </script>
 
 <style lang="scss" scoped>
@@ -243,4 +316,10 @@ export default {
   border-radius: 50%;
   cursor: pointer;
 }
+
+#map{
+  color: black;
+}
+
+
 </style>
