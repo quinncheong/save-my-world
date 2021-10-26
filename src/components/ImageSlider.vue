@@ -6,11 +6,11 @@
           <!-- eslint-disable -->
           <img
             slot="first"
-            src="https://img-comparison-slider.sneas.io/demo/images/before.webp"
+            src="https://climate.nasa.gov/system/gallery_images/mobile/1_rising_seas_in_charleston_2048x1536_before.jpg"
           />
           <img
             slot="second"
-            src="https://img-comparison-slider.sneas.io/demo/images/after.webp"
+            src="https://climate.nasa.gov/system/gallery_images/mobile/2_rising_seas_in_charleston_2048x1536_after.jpg"
           />
           <!-- eslint-enable -->
         </img-comparison-slider>

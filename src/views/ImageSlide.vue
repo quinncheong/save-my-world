@@ -4,7 +4,17 @@
       <div class="row">
       <div class="col-12"> 
         <imageSlider/>
-        <imageCarol/>
+        <br>
+        <div class="jumbotron jumbotron-fluid bg-secondary">
+          <div class="container">
+            <imageCarol/>
+            <h1 class="display-">Ice Jam Floods Region in Northwest Alaska</h1>
+              <p class="lead">BEFORE AND AFTER</p>
+              <p>
+                These false color images show a portion of northwest Alaska before and during widespread flooding in May 2021. Ice and snow appear light blue, liquid water is dark blue or black, and bare ground is yellowish brown. Chunks of ice jammed and blocked the flow of the Buckland River, which then overran its banks. Five feet of water inundated the local community, according to a statement released by Alaska Governor Dunleavy's office.
+              </p>
+          </div>
+        </div>
       </div>
     </div>
     <!-- left section things -->
@@ -51,5 +61,10 @@ export default {
     --divider-width: 2px;
     --divider-color: #c0c0c0;
     --default-handle-opacity: 0.3;
+  }
+
+  .jumbotron{
+    text-align: left;
+    padding-bottom: 10px;
   }
 </style>
