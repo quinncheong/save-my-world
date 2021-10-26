@@ -136,7 +136,7 @@ export default {
     const handleClick = async (e) => {
       e.preventDefault();
       let baseUrl =
-        "http://climatedataapi.worldbank.org/climateweb/rest/v1/country/annualavg/tas";
+        "https://climatedataapi.worldbank.org/climateweb/rest/v1/country/annualavg/tas";
       let isoCountry = iso.whereCountry(country.value).alpha3;
       let startYear = year.value;
       let endYear = startYear + 19;
