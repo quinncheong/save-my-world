@@ -1,61 +1,53 @@
 <template>
-  <div class="second" id="second">
-  <slot name="second"><slot name="before"></slot></slot>
-</div>
-<div class="first" id="first">
-  <div class="first-overlay">
-    <div class="first-overlay-container" id="firstImageContainer">
-      <slot name="first"><slot name="after"></slot></slot>
-    </div>
-  </div>
-  <div class="handle-container">
-    <div class="divider"></div>
-    <div class="handle">
-      <slot name="handle">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          class="default-handle"
-          viewBox="-8 -3 16 6"
-        >
-          <path
-            d="M -5 -2 L -7 0 L -5 2 M 5 -2 L 7 0 L 5 2"
-            fill="none"
-            vector-effect="non-scaling-stroke"
+ <div class="imageCarousel py-4">
+    <div class="row">
+      <div class="col-12">
+        <img-comparison-slider>
+          <!-- eslint-disable -->
+          <img
+            slot="first"
+            src="https://img-comparison-slider.sneas.io/demo/images/before.webp"
           />
-        </svg>
-      </slot>
+          <img
+            slot="second"
+            src="https://img-comparison-slider.sneas.io/demo/images/after.webp"
+          />
+          <!-- eslint-enable -->
+        </img-comparison-slider>
+      </div>
     </div>
   </div>
-</div>
 </template>
 
 <script>
-import { ImgComparisonSlider } from '@img-comparison-slider/vue';
+import 'img-comparison-slider';
 
 export default {
-  name: 'ImageSlider',
-  components: {
-    ImgComparisonSlider,
+  name: "imageSlide",
+  components: {},
+  data() {
+    return {
+      options: {
+        rewind: true,
+        width: 800,
+        gap: "1rem",
+      },
+    };
   },
 };
 </script>
 
-<style lang="sass">
-    img-comparison-slider {
-        visibility: hidden;
-    }
+<style lang="scss" scoped>
+  .community {
+    display: inline-flex;
+    flex-direction: column;
+  }
 
-    img-comparison-slider [slot='second'] {
-        display: none;
-    }
+  .img-comparison-slider {
+    width: 100%;
+    --divider-width: 2px;
+    --divider-color: #c0c0c0;
+    --default-handle-opacity: 0.3;
+  }
 
-    img-comparison-slider.rendered {
-        visibility: inherit;
-    }
-
-    img-comparison-slider.rendered [slot='second'] {
-        display: unset;
-    }
 </style>
-
-

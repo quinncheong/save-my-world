@@ -1,0 +1,182 @@
+{
+	"Quiz1": [
+		{
+			"Question": "No place on Earth is colder today than it was 100 years ago",
+			"Options": ["True", "False"],
+			"Answer": "False",
+			"Explanation": "Although most locations on the planet have recorded increased temperatures since 1900, changes in global ocean and atmospheric circulation patterns have created small-scale temperature decreases in a few local regions."
+		},
+		{
+			"Question": "Which of the following gases does not trap heat",
+			"Options": ["Carbon Dioxide", "Nitrogen", "Water Vapor", "Methane"],
+			"Answer": "Nitrogen",
+			"Explanation": "Heat-trapping greenhouse gases absorb and emit radiation within the thermal infrared range. Water vapor, carbon dioxide and methane are Earth's most abundant greenhouse gases. Nitrogen, which makes up 80 percent of Earth's atmosphere, is not a greenhouse gas. This is because its molecules, which contain two atoms of the same element (nitrogen), are unaffected by infrared light."
+		},
+		{
+			"Question": "As average global temperature rises, ",
+			"Options": ["Average precipitation increases", "Average precipitation decreases", "Average precipitation is unchanged"],
+			"Answer": "Average precipitation increases",
+			"Explanation": "Higher temperatures give rise to a more active water cycle, which means faster and greater evaporation and precipitation and more extreme weather events."
+		},
+		{
+			"Question": "Compared to other greenhouse gases, carbon dioxide is the most effective at trapping heat near the Earth's surface.",
+			"Options": ["True", "False"],
+			"Answer": "False",
+			"Explanation": "Water vapor actually has more heat-trapping power than carbon dioxide. It is also more abundant. But carbon dioxide and water vapor interact in crucial ways: More carbon dioxide means the atmosphere gets warmer, which then creates more water vapor, which traps heat and warms the atmosphere even more."
+		}, 
+		{
+			"Question": "Some kinds of pollution in the atmosphere can act to cool the planet by reducing the amount of solar radiation that reaches Earth's surface.",
+			"Options": ["True", "False"],
+			"Answer": "True",
+			"Explanation": "Air pollution can take the form of fine particles called \"aerosols\", which both absorb and scatter the sun's radiation. Both natural and man-made aerosols, such as dust, sea salt, soot and sulfates, affect the climate by reflecting radiation that is transmitted through the atmosphere."
+		}, 
+		{
+			"Question": "Earth has been warmer in the past than it is today.",
+			"Options": ["True", "False"],
+			"Answer": "True",
+			"Explanation": "Global temperatures during some of the past interglacial periods have exceeded the average temperatures we observe today, although you would have to go back more than three million years to find a period that was clearly warmer than today. Temperatures in the most recent decade have now exceeded the warmth of the previous Eemian interglacial."
+		}, 
+		{
+			"Question": "Fires release the carbon stored in plants, so measuring the extent and severity of forest fires around the globe is an important ingredient in understanding the carbon cycle.",
+			"Options": ["True", "False"],
+			"Answer": "True",
+			"Explanation": "Using NASA satellites such as Landsat, people can study the severity, size and location of forest fires from space, and we can estimate how much carbon is released into the atmosphere as the fires burn."
+		}, 
+		{
+			"Question": "Plants use carbon dioxide and water to make their own food through the process of photosynthesis. When they are doing a lot of photosynthesis, plants reflect light strongly in which of the following wavelengths?",
+			"Options": ["Visible", "Ultraviolet", "Near-infrared", "All of the above"],
+			"Answer": "Near-infrared",
+			"Explanation": "Plants such as trees, grasses and crops that are photosynthesizing reflect strongly in infrared light (light with wavelengths longer than those of visible light). We cannot see infrared light, but instruments on satellites like the Landsat satellite can. By precisely measuring the amount of infrared light reflected by plants, we can get a handle on the health of that vegetation."
+		}, 
+		{
+			"Question": "What role do the oceans play in the carbon cycle?",
+			"Options": ["They are a major source of carbon dioxide.", "They are a major absorber (sink) of carbon dioxide.", "Both a and b", "Neither a nor b"],
+			"Answer": "Both a and b",
+			"Explanation": "The surface of the oceans both releases carbon dioxide into the air and absorbs or stores it. One-third of all carbon dioxide emitted by humanity has been absorbed by the world’s oceans. This is making them more acidic than they have been for tens of millions of years. More acidic seawater has negative effects on coral reefs, slowing their growth and bleaching them. A more acidic ocean is affecting plankton (which provide half of the oxygen we breathe) and many marine organisms. Due to global warming, the capacity to provide oxygen and support the food chains of the ocean has fallen by 6 percent over the last 30 years. In addition, as the oceans get warmer (as the result of global warming), they are less able to store carbon; they therefore emit more carbon dioxide back into the atmosphere where it causes further warming."
+		},
+		{
+			"Question": "Carbon dioxide is a molecule comprised of one carbon atom and two oxygen atoms (CO2). Which atom, carbon or oxygen, has the greater atomic mass?",
+			"Options": ["Carbon", "Oxygen", "Their atomic weights are the same."],
+			"Answer": "Oxygen",
+			"Explanation": "Oxygen has an atomic mass of 16 while carbon has an atomic mass of 12. The atomic mass of an element is the average mass of the protons, neutrons and electrons in an atom of that element when it is at rest."
+		}
+	], 
+	"Quiz2": [
+		{
+			"Question": "Carbon dioxide is a molecule comprised of one carbon atom and two oxygen atoms (CO2). Which atom, carbon or oxygen, has the greater atomic mass?",
+			"Options": ["Carbon", "Oxygen", "Their atomic weights are the same."],
+			"Answer": "Oxygen",
+			"Explanation": "Oxygen has an atomic mass of 16 while carbon has an atomic mass of 12. The atomic mass of an element is the average mass of the protons, neutrons and electrons in an atom of that element when it is at rest."
+		},
+		{
+			"Question": "Carbon dioxide is not the only carbon-containing compound in the atmosphere researchers are studying. What else are scientists looking at?",
+			"Options": ["Carbon monoxide", "Methane", "Black carbon (soot)", "All of the above"],
+			"Answer": "All of the above",
+			"Explanation": "Carbon dioxide is not the only carbon-containing compound in the atmosphere that affects our climate. Methane (which comes from livestock, leakage from natural gas systems and wetlands) is a potent heat-trapping greenhouse gas. Carbon monoxide (which comes from unvented heaters and generators and other gasoline-powered equipment) affects methane, carbon dioxide and ozone levels in the atmosphere. Because carbon monoxide lingers in the air for about a month it can travel long distances, making it useful for studying how air pollution moves around the world. Black carbon (soot) is the byproduct of burning fuels like petroleum and coal. When black carbon settles on ice and snow in the Arctic and Antarctic or on mountain glaciers it darkens the surface of the snow, speeding up melt and reducing freshwater availability."
+		},
+		{
+			"Question": "Which one of these increases the level of carbon dioxide in our atmosphere?",
+			"Options": ["Driving a car", " Traveling by plane", "Cutting down trees", "All of the above"],
+			"Answer": "All of the above",
+			"Explanation": "Every time we drive a car, take a flight or cut down trees or clear land of vegetation, we add carbon dioxide into the atmosphere."
+		},
+		{
+			"Question": "Plants on land have taken in approximately half of the carbon dioxide that humans have put into the atmosphere over the last several decades.",
+			"Options": ["True", "False"],
+			"Answer": "False",
+			"Explanation": "Plants have taken up about a quarter, not half, of the carbon dioxide we've pumped into our air over the last several decades. When plants have enough water and nitrogen, they tend to grow more if there is a lot of carbon dioxide in the air. As we add more carbon dioxide to the air (through burning of fossil fuels, cutting down trees and so on), the possible additional growth by vegetation may help counter some of our impacts. However, we may not be able to count on plants to continue to take up extra carbon dioxide, because plants have limits to the amount they can grow. In addition, as the planet warms (a result of our carbon emissions), we will see more drought in many places, and this will affect the amount of water available for plants’ growth."
+		},
+		{
+			"Question": "Wasting less food is a way to reduce greenhouse gas emissions.",
+			"Options": ["True", "False"],
+			"Answer": "True",
+			"Explanation": "More than a third of food produced globally never makes it to the table. Some of this wasted food spoils in transit, while consumers throw some of this food out. Food loss and waste account for around 8.2 percent of the total human-made greenhouse gas emission"
+		},
+		{
+			"Question": "Which of the following is a greenhouse gas?",
+			"Options": ["CO2", "CH4", "Water Vapor", "All of the above"],
+			"Answer": "All of the above",
+			"Explanation": "Greenhouse gases may be a result of natural occurrence or human activity. These gases include carbon dioxide (CO2), methane (CH4), water vapor, nitrous oxide (N2O) and ozone (O3). Fluorinated gases are also considered to be greenhouse gases. Greenhouse gases act like a heat-trapping blanket, making the Earth habitable for humans. However, human activities have increased emissions of greenhouse gases into the atmosphere beyond what the Earth can support, resulting in climate change."
+		},
+		{
+			"Question": "What is the Greenhouse effect?",
+			"Options": ["The name of climate change legislation that was passed by Congress", "When you paint your house green to become an environmentalist", "When the gases in our atmosphere trap heat and block it from escaping our planet", "When you build a green house"],
+			"Answer": "When the gases in our atmosphere trap heat and block it from escaping our planet",
+			"Explanation": "Greenhouse gases may be a result of natural occurrence or human activity. These gases include carbon dioxide (CO2), methane (CH4), water vapor, nitrous oxide (N2O) and ozone (O3). Fluorinated gases are also considered to be greenhouse gases. Greenhouse gases act like a heat-trapping blanket, making the Earth habitable for humans. However, human activities have increased emissions of greenhouse gases into the atmosphere beyond what the Earth can support, resulting in climate change."
+		},
+		{
+			"Question": "Which of the following are consequences associated with climate change?",
+			"Options": ["The ice sheets are declining, glaciers are in retreat globally, and our oceans are more acidic than ever", "Surface temperatures are setting new heat records about each year", "More extreme weather like droughts, heat waves, and hurricanes", "All of the above"],
+			"Answer": "All of the above",
+			"Explanation": "All of these are problems associated with climate change. The majority of scientists agree that many of these effects are caused by human contribution to the greenhouse effect. Extreme weather events, droughts, heat waves and rising sea levels are already having devastating effects on the most vulnerable countries and communities."
+		},
+		{
+			"Question": "The overwhelming majority of scientists agree that climate change is real and caused by humans.",
+			"Options": ["True", "False"],
+			"Answer": "True",
+			"Explanation": "Studies show that 97 percent (or more) of climate scientists who are actively publishing agree that climate change is likely due to human activity. Most of the prominent scientific organizations across the globe have issued statements that publicly endorse this view"
+		}
+	],
+	"Quiz3":[
+		{
+			"Question": "Which of these countries emits the most carbon dioxide?",
+			"Options": ["China", "USA", "UK", "Russia"],
+			"Answer": "China",
+			"Explanation": "According to the International Energy Agency, China is currently the top emitter of carbon dioxide, accounting for 28% of global carbon emissions. The United States ranks as the second top emitter at 15%."
+		},
+		{
+			"Question": "What percentage of the global greenhouse gas emissions does the transportation sector emit?",
+			"Options": ["1%", "14%", "33%", "70%"],
+			"Answer": "14%",
+			"Explanation": "The transportation sector emits 14% of global greenhouse gas emissions. Most of this involves fossil fuels burned for road, rail, air and marine transportation. Petroleum-based fuels (i.e., gasoline and diesel) account for almost all of the world’s transportation energy."
+		},
+		{
+			"Question": "Globally, which of the following economic sectors emits the largest percentage of greenhouse gas emissions?",
+			"Options": ["Transportation", "Buildings", "Industry", "Electricity and heat production"],
+			"Answer": "14%",
+			"Explanation": "The electricity and heat production sector emits the largest percentage of global greenhouse gas emissions at 25%. The agriculture, forestry and other land use sector is a close second at 24%"
+		},
+		{
+			"Question": "What is the greenhouse effect?",
+			"Options": ["Certain gases in the atmosphere trap heat and warm the Earth", "Life on Earth 'exhales' gas that warms up the atmosphere", "The tilt of the Earth changes the amount of solar energy the Earth receives", "The Sun is putting out more radiant energy over time"],
+			"Answer": "Certain gases in the atmosphere trap heat and warm the Earth",
+			"Explanation": "The greenhouse effect is a natural phenomenon. Certain gases in the atmosphere have the ability to absorb radiation that would otherwise escape into space. The greenhouse effect is somewhat like a blanket that retains your body heat and keeps you warm."
+		},
+		{
+			"Question": "Which activities are the largest contributors of greenhouse gases?",
+			"Options": ["Electricity generation", "Industry", "Landfills", "Agriculture"],
+			"Answer": "Electricity generation",
+			"Explanation": "In the USA, greenhouse gas emissions from electricity are falling as coal burning is slowly declining. Thus, the proportion of emissions from transportation has grown, and it accounted for 29% of total USA emissions in 2019, according to EPA data."
+		},
+		{
+			"Question": "What percentage of scientists agree that climate change is likely generated by human activities?",
+			"Options": ["97%", "37%", "17%"],
+			"Answer": "97%",
+			"Explanation": "An overwhelming majority of scientists support the idea that humans have at least something to do with the process of climate change."
+		},
+		{
+			"Question": "Of all major components that contribute to radiative forcing of climate (Greenhouse gases, Ozone, albedo, aerosols, stratospheric water vapor, contrails, solar irradiance, land use), Greenhouse gases currently have the largest contribution to positive forcing (warming).",
+			"Options": ["True", "False"],
+			"Answer": "True",
+			"Explanation": "There are many factors in the climate system, and many people misunderstand how they work in conjunction with the Greenhouse Effect."
+		},
+		{
+			"Question": "As climate warms, we will no longer have snow storms and cold days.",
+			"Options": ["True", "False"],
+			"Answer": "False",
+			"Explanation": "People look at weather and climate from the lens of their experiences and understanding. As such, it is not surprising that people link “climate warming” with fewer snow storms. It is the very reason that you see unfortunate or climate illiterate posts like, “It is snowing or cold today, so there must not be any global warming.” Our climate system is fundamentally shifting, but the Earth still orbits the Sun and is tilted on its axis, which means there will always be a relative imbalance in the energy that hemispheres receive."
+		},
+		{
+			"Question": "The Earth had warmer periods than contemporary times and higher carbon dioxide levels so that proves that climate change is natural and that all of the fuss is exaggerated.",
+			"Options": ["True", "False"],
+			"Answer": "False",
+			"Explanation": "It is indeed true that carbon dioxide levels and temperatures have been higher in Earth’s history. There are several periods in Earth’s history in which Earth was warmer"
+		},
+		{
+			"Question": "We definitely know that tornadoes are increasing in frequency because of climate change.",
+			"Options": ["True", "False"],
+			"Answer": "False",
+			"Explanation": "Attribution studies are clearly starting to link current extreme weather events with climate change. However, the study pointed out that scientific studies have not conclusively tied tornado activity to climate change at this point. The key words are \"at this point\". Many forthcoming studies may render that conclusion obsolete soon. "
+		}
+	]
+}
