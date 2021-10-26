@@ -37,5 +37,4 @@
   /* @import '~@ditdot-dev/vue-flow-form/dist/vue-flow-form.theme-minimal.css'; */
   @import '~@ditdot-dev/vue-flow-form/dist/vue-flow-form.theme-green.css';
   /* @import '~@ditdot-dev/vue-flow-form/dist/vue-flow-form.theme-purple.css'; */
-
 </style>
