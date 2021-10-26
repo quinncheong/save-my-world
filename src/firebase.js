@@ -26,8 +26,11 @@ const firebaseApp = initializeApp(firebaseConfig);
 
 const db = getFirestore(firebaseApp);
 
-export const getQuizzes = async () => {
-  const q = query(collection(db, "quizzes"));
+export const getQuizzes = async (id = undefined) => {
+  const q = id === undefined 
+  ? query(collection(db, "quizzes"))
+  : query(collection(db, "quizzes"), where('id', "==", id))
+
   let quizzes = [];
   const querySnapshot = await getDocs(q);
   querySnapshot.forEach((doc) => {
@@ -38,6 +41,7 @@ export const getQuizzes = async () => {
     quizzes.push(quiz);
   });
 
+  console.log(quizzes)
   return quizzes;
 };
 
@@ -63,6 +67,7 @@ export const getCountryObj = async (alpha3) => {
 
   return final.length >= 1 ? final[0] : undefined
 };
+
 
 // Collection to retrieve the countries lat and long without having to call the api
 
