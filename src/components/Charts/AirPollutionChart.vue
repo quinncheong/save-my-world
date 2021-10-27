@@ -139,7 +139,7 @@ export default {
       e.preventDefault();
 
       //   First portion is to do forward geocoding to get the lat and long
-      let geolocationUrl = "https://api.positionstack.com/v1/forward";
+      let geolocationUrl = "http://api.positionstack.com/v1/forward";
       let access_key = process.env.VUE_APP_POSITIONSTACK_API_KEY;
       let query = country.value;
       let isoCountry = iso.whereCountry(country.value).alpha3;
@@ -170,7 +170,7 @@ export default {
         // to get the air pollution history
 
         let baseUrl =
-          "http://api.openweathermap.org/data/2.5/air_pollution/history";
+          "https://api.openweathermap.org/data/2.5/air_pollution/history";
 
         let appid = process.env.VUE_APP_OPENWEATHER_API_KEY;
         let { lat, lon } = geolocation;
