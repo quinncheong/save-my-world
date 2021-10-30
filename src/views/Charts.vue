@@ -8,7 +8,7 @@
 
     <p class="chart-select mb-3">Select a chart to explore more</p>
 
-    <div class="charts-card-wrapper mb-3">
+    <div class="charts-card-wrapper">
       <ChartsCard
         v-for="chart in charts"
         :key="chart.id"
@@ -91,7 +91,6 @@ export default {
 .chart-wrapper {
   height: 100%;
   width: 100%;
-  width: 70%;
   display: flex;
   flex-direction: column;
   margin: auto;
@@ -124,6 +123,12 @@ export default {
       width: 100%;
       height: 100%;
     }
+  }
+}
+// display 70% width on desktop
+@media (min-width: 768px) {
+  .chart-wrapper {
+    width: 70%;
   }
 }
 </style>

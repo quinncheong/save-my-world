@@ -170,7 +170,7 @@ export default {
         // to get the air pollution history
 
         let baseUrl =
-          "https://api.openweathermap.org/data/2.5/air_pollution/history";
+          "http://api.openweathermap.org/data/2.5/air_pollution/history";
 
         let appid = process.env.VUE_APP_OPENWEATHER_API_KEY;
         let { lat, lon } = geolocation;

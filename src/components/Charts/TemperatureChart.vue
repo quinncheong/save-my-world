@@ -1,7 +1,20 @@
 <template>
-  <div class="temp-chart-bg">
+  <div>
+
+    <div class="card border-primary mb-3">
+      <div class="card-body text-primary">
+        <vue3-chart-js
+          :id="lineChart.id"
+          ref="chartRef"
+          :type="lineChart.type"
+          :data="lineChart.data"
+          :options="lineChart.options"
+        />
+      </div>
+    </div>
+
     <form @submit="handleClick">
-      <label>
+      <label class="form-label">
         Select a country:
         <select v-model="country">
           <option
@@ -14,20 +27,17 @@
         </select>
       </label>
 
-      <label>
+      <label class="form-label">
         Select a year (must be multiples of 20):
-        <input v-model="year" type="number" required />
+        <input
+          v-model="year"
+          type="number"
+          class="form-control"
+          required
+        />
       </label>
-      <button>Get Data</button>
+      <button class="btn btn-success">Get Data</button>
     </form>
-
-    <vue3-chart-js
-      :id="lineChart.id"
-      ref="chartRef"
-      :type="lineChart.type"
-      :data="lineChart.data"
-      :options="lineChart.options"
-    />
   </div>
 </template>
 
@@ -136,7 +146,7 @@ export default {
     const handleClick = async (e) => {
       e.preventDefault();
       let baseUrl =
-        "https://climatedataapi.worldbank.org/climateweb/rest/v1/country/annualavg/tas";
+        "http://climatedataapi.worldbank.org/climateweb/rest/v1/country/annualavg/tas";
       let isoCountry = iso.whereCountry(country.value).alpha3;
       let startYear = year.value;
       let endYear = startYear + 19;
@@ -170,7 +180,7 @@ export default {
             fill: false,
           },
         ];
-        
+
         chartRef.value.update(null);
       } catch (error) {
         console.log(error);
