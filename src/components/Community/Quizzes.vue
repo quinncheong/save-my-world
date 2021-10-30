@@ -1,10 +1,15 @@
 <template>
-  <flow-form class="text-white" v-bind:questions="questions" />
+  <flow-form v-bind:questions="questions"/>
 </template>
 
 <script>
   // Import necessary components and classes
-  import { FlowForm, QuestionModel, QuestionType, ChoiceOption} from '@ditdot-dev/vue-flow-form'
+  import { FlowForm, QuestionModel, QuestionType, ChoiceOption} from '@ditdot-dev/vue-flow-form';
+  import {  getQuizzes  } from "@/firebase.js";
+
+  var quizzes = getQuizzes();
+  console.log(quizzes)
+//   var responses = quizzes.then(response => {return response})
 
   export default {
     name: 'Quizzes',
@@ -21,12 +26,33 @@
             options: [
               new ChoiceOption({
                 label: 'Answer'
+              }),
+              new ChoiceOption({
+                label: 'no'
               })
             ]
           })
         ]
       }
     }
+    //   computed: {
+    //       quiz(){
+    //           for(i=0; i<response.length; i++){
+    //               new QuestionModel({
+    //                 title: response.,
+    //                 type: QuestionType.MultipleChoice,
+    //                 options: [
+    //                 new ChoiceOption({
+    //                     label: 'Answer'
+    //                 }),
+    //                 new ChoiceOption({
+    //                     label: 'no'
+    //                 })
+    //                 ]
+    //             })
+    //           }
+    //       }
+    // }
   }
 </script>
 
