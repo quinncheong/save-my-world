@@ -14,6 +14,7 @@
     </div>
 
     <form @submit="handleClick">
+
       <label class="form-label">
         Select a country:
         <select v-model="country">
@@ -32,13 +33,14 @@
         <input
           v-model="year"
           type="number"
-          class="form-control"
           required
         />
       </label>
+
       <button class="btn btn-success">Get Data</button>
     </form>
   </div>
+
 </template>
 
 <script>
