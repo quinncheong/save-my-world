@@ -19,16 +19,14 @@
     </div>
     <div v-if="selectedChart === 0"></div>
     <div v-else-if="selectedChart === 1">
-
+      <iframe src="https://datahub.io/core/glacier-mass-balance/view/0" width="100%" height="475px" frameborder="0"></iframe>
     </div>
     <div v-else-if="selectedChart === 2">
       <AirPollutionChart />
     </div>
     <div v-else>
       <TempChart />
-
     </div>
-
     <!-- <MainChart /> -->
 
     <!-- <div class="main-chart">
@@ -115,13 +113,8 @@ export default {
     padding-top: 100%; /* 16:9 Aspect Ratio (divide 9 by 16 = 0.5625) */
 
     iframe {
-      position: absolute;
-      top: 0;
-      left: 0;
-      bottom: 0; 
-      right: 0;
-      width: 100%;
-      height: 100%;
+      margin-right: auto;
+      margin-left: auto;
     }
   }
 }
