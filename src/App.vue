@@ -3,8 +3,6 @@
     <Navbar />
     <div class="app-content-wrapper">
       <router-view />
-
-
     </div>
   </div>
 
@@ -75,19 +73,17 @@ img {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: $font-color-primary;
-  // background-color: $bg-color-primary; //background colour of the app 
   height: 100vh;
-  // background-color: radial-gradient(ellipse at bottom, #1b2735 10%, black 100%);
-  
-
+  @extend %background-overlay;
+  // background-color: $bg-color-primary; //background colour of the app 
 }
 
-.app-content-wrapper {
-  background-color: $bg-color-primary;
-  height: 100%;
-  padding: 1rem;
-  @include background(); 
-}
+// .app-content-wrapper {
+//   background-color: $bg-color-primary;
+//   height: 100%;
+//   padding: 1rem;
+//    
+// }
 
 // #stars1{
 //   width: 1px; 

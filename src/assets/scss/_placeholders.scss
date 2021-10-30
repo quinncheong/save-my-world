@@ -11,3 +11,10 @@
   background-clip: padding-box;
   margin-right: 4px;
 }
+
+%background-overlay{
+  height: 100%; 
+  overflow: hidden;
+  background: radial-gradient(ellipse at bottom, #1b2735 10%, black 100%);
+
+}
