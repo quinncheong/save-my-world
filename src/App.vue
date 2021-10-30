@@ -33,6 +33,7 @@ export default {
 html {
   box-sizing: border-box;
   font-size: $font-size-primary;
+  min-height: 100vh;
 }
 
 *,
@@ -73,17 +74,15 @@ img {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: $font-color-primary;
-  height: 100vh;
-  @extend %background-overlay;
+  
   // background-color: $bg-color-primary; //background colour of the app 
 }
 
-// .app-content-wrapper {
-//   background-color: $bg-color-primary;
-//   height: 100%;
-//   padding: 1rem;
-//    
-// }
+.app-content-wrapper {
+  min-height: 100vh;
+  padding: 1rem;
+  @extend %background-overlay;
+}
 
 // #stars1{
 //   width: 1px; 
