@@ -20,6 +20,14 @@
     <div v-if="selectedChart === 0"></div>
     <div v-else-if="selectedChart === 1">
       <iframe src="https://datahub.io/core/glacier-mass-balance/view/0" width="100%" height="475px" frameborder="0"></iframe>
+
+      <div class="card mt-4">
+      <div class="card-body text-dark">
+        This chart shows the visualisations of the annual mass balance of glaciers throughout the years and how is has been dwindling at an increasing rate
+      </div>
+    </div>
+    
+    
     </div>
     <div v-else-if="selectedChart === 2">
       <AirPollutionChart />
