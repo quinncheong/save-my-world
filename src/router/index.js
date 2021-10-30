@@ -23,11 +23,6 @@ const routes = [
     component: ImageSlider,
   },
   {
-    path: "/profile",
-    name: "Profile",
-    component: Profile,
-  },
-  {
     path: "/charts",
     name: "Charts",
     component: Charts,

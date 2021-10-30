@@ -1,7 +1,30 @@
 <template>
-  <div class="temp-chart-bg mb-5">
+  <div>
+    <div class="card border-primary mb-3">
+      <div class="card-header">Air Pollution</div>
+      <div class="card-body text-info">
+        <vue3-chart-js
+          :id="barChart.id"
+          ref="chartRef"
+          :type="barChart.type"
+          :data="barChart.data"
+          :options="barChart.options"
+        />
+
+        <p class="card-text">
+          <small class="text-muted">
+            <span class="text-primary">Temperature</span>
+            <span class="text-muted"> (°C)</span>
+          </small>
+          <br />
+          This chart shows the the progression of changing temperature over a
+          span of 19 years for the selected country.
+        </p>
+      </div>
+    </div>
+
     <form @submit="handleClick">
-      <label>
+      <label class="form-label">
         Select a country:
         <select v-model="country">
           <option
@@ -18,16 +41,9 @@
         Select a year (must be 2020 only):
         <input v-model="year" type="number" required />
       </label>
-      <button>Get Data</button>
+      <button class="btn btn-success">Get Data</button>
     </form>
 
-    <vue3-chart-js
-      :id="barChart.id"
-      ref="chartRef"
-      :type="barChart.type"
-      :data="barChart.data"
-      :options="barChart.options"
-    />
   </div>
 </template>
 
@@ -170,7 +186,7 @@ export default {
         // to get the air pollution history
 
         let baseUrl =
-          "https://api.openweathermap.org/data/2.5/air_pollution/history";
+          "http://api.openweathermap.org/data/2.5/air_pollution/history";
 
         let appid = process.env.VUE_APP_OPENWEATHER_API_KEY;
         let { lat, lon } = geolocation;
@@ -214,12 +230,22 @@ export default {
           let monthPollution = pollutionArray[index];
           //  co, no, no2, o3, so2, pm2_5, pm10, nh3
           let { co, no2, so2 } = monthPollution.components;
-          coDataset.push(co)
-          no2Dataset.push(no2)
-          so2Dataset.push(so2)
+          coDataset.push(co);
+          no2Dataset.push(no2);
+          so2Dataset.push(so2);
         }
 
-        barChart.data.labels = ["Jan", 'Feb', 'Mar', 'Apr', 'May', 'June', 'July', 'Aug', 'Sep'];
+        barChart.data.labels = [
+          "Jan",
+          "Feb",
+          "Mar",
+          "Apr",
+          "May",
+          "June",
+          "July",
+          "Aug",
+          "Sep",
+        ];
         barChart.data.datasets = [
           {
             label: "Carbon Monoxide (CO)",
@@ -238,7 +264,7 @@ export default {
           {
             label: "Sulphur dioxide (SO2)",
             backgroundColor: ["rgba(255, 205, 86, 0.8)"],
-            borderColor: 'rgb(255, 205, 86)',
+            borderColor: "rgb(255, 205, 86)",
             data: so2Dataset,
             fill: false,
           },

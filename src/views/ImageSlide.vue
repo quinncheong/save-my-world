@@ -67,4 +67,5 @@ export default {
     text-align: left;
     padding-bottom: 10px;
   }
+
 </style>

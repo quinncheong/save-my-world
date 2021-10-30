@@ -1,7 +1,29 @@
 <template>
-  <div class="temp-chart-bg">
+  <div>
+
+    <div class="card border-primary mb-3">
+      <div class="card-body text-primary">
+        <vue3-chart-js
+          :id="lineChart.id"
+          ref="chartRef"
+          :type="lineChart.type"
+          :data="lineChart.data"
+          :options="lineChart.options"
+        />
+        <p class="card-text">
+          <small class="text-muted">
+            <span class="text-primary">Temperature</span>
+            <span class="text-muted"> (°C)</span>
+          </small>
+          <br />
+          This chart shows the the progression of changing temperature over a span of 19 years for the selected country.
+        </p>
+      </div>
+    </div>
+
     <form @submit="handleClick">
-      <label>
+
+      <label class="form-label">
         Select a country:
         <select v-model="country">
           <option
@@ -14,21 +36,19 @@
         </select>
       </label>
 
-      <label>
+      <label class="form-label">
         Select a year (must be multiples of 20):
-        <input v-model="year" type="number" required />
+        <input
+          v-model="year"
+          type="number"
+          required
+        />
       </label>
-      <button>Get Data</button>
-    </form>
 
-    <vue3-chart-js
-      :id="lineChart.id"
-      ref="chartRef"
-      :type="lineChart.type"
-      :data="lineChart.data"
-      :options="lineChart.options"
-    />
+      <button class="btn btn-success">Get Data</button>
+    </form>
   </div>
+
 </template>
 
 <script>
@@ -136,7 +156,7 @@ export default {
     const handleClick = async (e) => {
       e.preventDefault();
       let baseUrl =
-        "https://climatedataapi.worldbank.org/climateweb/rest/v1/country/annualavg/tas";
+        "http://climatedataapi.worldbank.org/climateweb/rest/v1/country/annualavg/tas";
       let isoCountry = iso.whereCountry(country.value).alpha3;
       let startYear = year.value;
       let endYear = startYear + 19;
@@ -170,7 +190,7 @@ export default {
             fill: false,
           },
         ];
-        
+
         chartRef.value.update(null);
       } catch (error) {
         console.log(error);

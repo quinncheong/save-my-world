@@ -54,8 +54,6 @@ export default {
       selectedQuery : 'Cold Wave',
       desc: [],
       markerList: []
-
-
       
     };
   },
@@ -121,7 +119,7 @@ export default {
   },
 
   methods: {
-    // create map on mount
+
     async createMap() {
       try {
         mapboxgl.accessToken = this.access_token;
