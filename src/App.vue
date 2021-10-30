@@ -3,8 +3,20 @@
     <Navbar />
     <div class="app-content-wrapper">
       <router-view />
+
+
     </div>
   </div>
+
+  <!--Wei Ting's edit to add the background pixels-->
+
+  <!-- <section class='wrapper'>
+    <div id="stars1"></div>
+    <div id="stars2"></div>
+    <div id="stars3"></div>
+  </section> -->
+
+  
 </template>
 
 <script>
@@ -63,13 +75,53 @@ img {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: $font-color-primary;
-  background-color: $bg-color-primary;
+  // background-color: $bg-color-primary; //background colour of the app 
   height: 100vh;
+  // background-color: radial-gradient(ellipse at bottom, #1b2735 10%, black 100%);
+  
+
 }
 
 .app-content-wrapper {
   background-color: $bg-color-primary;
   height: 100%;
   padding: 1rem;
+  @include background(); 
 }
+
+// #stars1{
+//   width: 1px; 
+//   height: 1px;
+//   background: transparent;
+//   animation: animStar 50s linear infinite;
+//   box-shadow: $stars1Var; //the particles not working 
+//   } 
+
+// #stars1:after{
+//   content: ''; 
+//   position:absolute;
+//   top: 2000px;
+//   width: 1px;
+//   height: 1px;
+//   background: transparent;  
+//   box-shadow: $stars2Var; //the particles not working 
+//   } 
+
+// #stars2{
+//   width: 2px;
+//   height: 2px; 
+//   background: transparent;
+//   animation: animStar 100s linear infinite;
+//   box-shadow: $stars3Var;
+// }
+
+// #star2:after{
+//   content: ''; 
+//   position:absolute;
+//   top: 2000px;
+//   width: 1px;
+//   height: 1px;
+//   background: transparent;  
+//   box-shadow: $stars4Var; //the particles not working 
+// }
 </style>
