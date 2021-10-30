@@ -10,6 +10,14 @@
           :data="lineChart.data"
           :options="lineChart.options"
         />
+        <p class="card-text">
+          <small class="text-muted">
+            <span class="text-primary">Temperature</span>
+            <span class="text-muted"> (°C)</span>
+          </small>
+          <br />
+          This chart shows the the progression of changing temperature over a span of 19 years for the selected country.
+        </p>
       </div>
     </div>
 
