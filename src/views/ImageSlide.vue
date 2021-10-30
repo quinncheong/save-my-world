@@ -26,8 +26,8 @@
 import { Splide, SplideSlide } from "@splidejs/vue-splide";
 import "@splidejs/splide/dist/css/themes/splide-default.min.css";
 import 'img-comparison-slider';
-import imageCarol from "../components/ImageCarousel.vue";
-import imageSlider from "../components/ImageSlider.vue";
+import imageCarol from "../components/ImageOfChange/ImageCarousel.vue";
+import imageSlider from "../components/ImageOfChange/ImageSlider.vue";
 
 export default {
   name: "imageCarousel",

@@ -65,6 +65,9 @@
       "class-methods-use-this": "off",
       "vue/no-multiple-template-root": "off",
       "vue/no-unused-components": "off",
+      "vue/require-v-for-key": "warn",
+      "vue/no-unused-vars": "warn",
+      
       "vue/comment-directive": [
         "error",
         {
