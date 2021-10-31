@@ -1,32 +1,66 @@
 <template>
-    <div>This is Title of the testing quizzes</div>
-    <p :key="quiz.id" v-for="quiz of quizzes">{{quiz.title}}</p>
+  <flow-form v-bind:questions="questions"/>
 </template>
 
 <script>
-import { getQuizzes, getCountryObj } from '@/firebase.js';
+  // Import necessary components and classes
+  import { FlowForm, QuestionModel, QuestionType, ChoiceOption} from '@ditdot-dev/vue-flow-form';
+  import {  getQuizzes  } from "@/firebase.js";
 
+  var quizzes = getQuizzes();
+  console.log(quizzes)
+//   var responses = quizzes.then(response => {return response})
 
-export default {
+  export default {
     name: 'Quizzes',
-    components: {},
-    data() {
-        return {
-            quizzes: []
-        }
+    components: {
+      FlowForm
     },
-    async created() {
-        let quizzes = await getQuizzes();
-        this.quizzes = quizzes
-
-        let country = await getCountryObj('LKA');
-        console.log(country)
+    data() {
+      return {
+        questions: [
+          // QuestionModel array
+          new QuestionModel({
+            title: 'Question',
+            type: QuestionType.MultipleChoice,
+            options: [
+              new ChoiceOption({
+                label: 'Answer'
+              }),
+              new ChoiceOption({
+                label: 'no'
+              })
+            ]
+          })
+        ]
+      }
     }
-
-
-}
+    //   computed: {
+    //       quiz(){
+    //           for(i=0; i<response.length; i++){
+    //               new QuestionModel({
+    //                 title: response.,
+    //                 type: QuestionType.MultipleChoice,
+    //                 options: [
+    //                 new ChoiceOption({
+    //                     label: 'Answer'
+    //                 }),
+    //                 new ChoiceOption({
+    //                     label: 'no'
+    //                 })
+    //                 ]
+    //             })
+    //           }
+    //       }
+    // }
+  }
 </script>
 
-<style lang="scss" scoped>
-
+<style>
+  /* Import Vue Flow Form base CSS */
+  @import '~@ditdot-dev/vue-flow-form/dist/vue-flow-form.css';
+  /* Import one of the Vue Flow Form CSS themes (optional) */
+  /* @import '~@ditdot-dev/vue-flow-form/dist/vue-flow-form.theme-minimal.css'; */
+  @import '~@ditdot-dev/vue-flow-form/dist/vue-flow-form.theme-green.css';
+  /* @import '~@ditdot-dev/vue-flow-form/dist/vue-flow-form.theme-purple.css'; */
 </style>

@@ -8,6 +8,7 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
+    "@ditdot-dev/vue-flow-form": "^2.1.0",
     "@img-comparison-slider/vue": "^7.3.0",
     "@j-t-mcc/vue3-chartjs": "^1.2.0",
     "@mapbox/mapbox-gl-geocoder": "^4.7.4",
@@ -64,6 +65,9 @@
       "class-methods-use-this": "off",
       "vue/no-multiple-template-root": "off",
       "vue/no-unused-components": "off",
+      "vue/require-v-for-key": "warn",
+      "vue/no-unused-vars": "warn",
+      
       "vue/comment-directive": [
         "error",
         {
