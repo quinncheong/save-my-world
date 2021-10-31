@@ -10,7 +10,7 @@
       <figcaption>After</figcaption>
     </figure>
   </img-comparison-slider> -->
-  <img-comparison-slider>
+  <img-comparison-slider class="slider-example-split-line">
     <img slot="first" :src="imgA" />
     <img slot="second" :src="imgB" />
     <svg
@@ -56,6 +56,12 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+
+.slider-example-split-line {
+    // --divider-width: 2px;
+    // --default-handle-opacity: 0;
+}
+
 .custom-animated-handle {
   transition: transform 0.2s;
 }
