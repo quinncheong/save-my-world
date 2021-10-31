@@ -155,7 +155,7 @@ export default {
       e.preventDefault();
 
       //   First portion is to do forward geocoding to get the lat and long
-      let geolocationUrl = "http://api.positionstack.com/v1/forward";
+      let geolocationUrl = "https://api.positionstack.com/v1/forward";
       let access_key = process.env.VUE_APP_POSITIONSTACK_API_KEY;
       let query = country.value;
       let isoCountry = iso.whereCountry(country.value).alpha3;
