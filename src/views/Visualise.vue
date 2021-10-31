@@ -31,7 +31,9 @@
        <div id='console'>
         <h1>Filter</h1>
         <div class="text-center">
-          <input id='slider' class='row' type='range' min='0' max='23' step='1' value='12' />
+
+            <h5>{{yearVal}}</h5>
+          <input   id='slider' class='row ms-4' type='range' min='1960' max='2021' step='1' v-model='yearVal' @change='listenEvent($event)'/>
         </div>
       </div>
 
@@ -66,9 +68,8 @@ export default {
       selectedQuery : 'Cold Wave',
       desc: [],
       markerList: [],
-      features: []
-
-
+      features: [] ,
+      yearVal: 2020
       
     };
   },
@@ -81,7 +82,15 @@ export default {
     this.map.on("load", async () => {
       let result = await this.getLocation(); // After getting location then we add the markers
 
-      
+      // const image = this.map.loadImage("src/assets/img/markerpin.png")
+this.map.loadImage(
+'https://docs.mapbox.com/mapbox-gl-js/assets/custom_marker.png',
+(error, image) => {
+if (error) throw error;
+ 
+// Add the image to the map style.
+this.map.addImage('custom-marker', image);
+      // this.map.addImage('marker-red', image)
 
       console.log(this.features);
 
@@ -99,13 +108,22 @@ export default {
         this.map.addLayer(
     {
       'id': 'result',
-      'type': 'circle',
+      'type': 'symbol',
       'source': 'disasters',
-      'layouts' :{
-        'marker-color': '#3bb2d0',
-        'marker-size': 'large',
-        'marker-symbol': 'rocket'
-      }
+      'layout': {
+    'icon-image': 'custom-marker',
+    // get the title name from the source's "Name" property
+    'text-field': ['get', 'name'],
+    'text-font': [
+    'Open Sans Semibold',
+    'Arial Unicode MS Bold'
+    ],
+    'text-offset': [0, 1.25],
+    'text-anchor': 'top'
+      } ,
+
+      // Filter only year 2020, this works
+      "filter": ['==', ['number', ['get', 'year']], 2020 ]
       
     })
 
@@ -119,7 +137,7 @@ export default {
         console.log(coordinates);
         console.log(description);
 
-        // Ensure that if the map is zoomed out such that multiple
+       // Ensure that if the map is zoomed out such that multiple
         // copies of the feature are visible, the popup appears
         // over the copy being pointed to.
         while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
@@ -136,11 +154,16 @@ export default {
       
       // filter: ['==', ['number', ['get', 'Year']], 2000]
 
+      console.log(this.yearVal) 
+      this.map.setFilter('result', ['==', ['number', ['get', 'year']], parseInt(this.yearVal)]);
+
+
+
       });
 
       
      
-          
+})    
       
       // this.addMarkers();
     });
@@ -177,7 +200,7 @@ export default {
       this.features = [];
       this.loading = true;
       try {
-        const response = await axios.get("https://api.reliefweb.int/v1/disasters?appname=apidoc&query[value]=" + this.selectedQuery + "&query[fields][]=type&fields[include][]=type.name&limit=30");
+        const response = await axios.get("https://api.reliefweb.int/v1/disasters?appname=apidoc&query[value]=" + this.selectedQuery + "&query[fields][]=type&fields[include][]=type.name&limit=100");
         if (!response) {
           throw Error("Failed to get data");
         }
@@ -207,8 +230,8 @@ export default {
           obj.geometry.type = "Point";
           // Split year from name since that is the only way , just to get the year 
           let year = indivResult.fields.name.split(" ");
-          let yearString = year[year.length -1]; 
-          obj.properties.year = yearString;
+          let yearNum = parseInt(year[year.length -1]); 
+          obj.properties.year = yearNum;
           links.push(indivResult.href);
 
           // Push into this.features, this will be put into .addsource
@@ -353,6 +376,14 @@ export default {
     //   this.map.zoomOut({offset: [80, 60]});
     //   this.addMarkers();
     // });
+    },
+
+    listenEvent(event){
+
+      const year = parseInt(event.target.value);
+  // update the map
+      this.map.setFilter('result', ['==', ['number', ['get', 'year']], year]);
+
     }
 
   
