@@ -1,5 +1,5 @@
-<template> 
-    <!-- Problem with image slider with figcaption -->
+<template>
+  <!-- Problem with image slider with figcaption -->
   <!-- <img-comparison-slider>
     <figure slot="first" class="before">
       <img width="100%" :src="imgA" />
@@ -13,6 +13,21 @@
   <img-comparison-slider>
     <img slot="first" :src="imgA" />
     <img slot="second" :src="imgB" />
+    <svg
+      slot="handle"
+      class="custom-animated-handle"
+      xmlns="http://www.w3.org/2000/svg"
+      width="100"
+      viewBox="-8 -3 16 6"
+    >
+      <path
+        stroke="#fff"
+        d="M -5 -2 L -7 0 L -5 2 M -5 -2 L -5 2 M 5 -2 L 7 0 L 5 2 M 5 -2 L 5 2"
+        stroke-width="1"
+        fill="#fff"
+        vector-effect="non-scaling-stroke"
+      ></path>
+    </svg>
   </img-comparison-slider>
 </template>
 
@@ -41,6 +56,13 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.custom-animated-handle {
+  transition: transform 0.2s;
+}
+
+.slider-with-animated-handle:hover .custom-animated-handle {
+  transform: scale(1.2);
+}
 // .before,
 // .after {
 //   margin: 0;
