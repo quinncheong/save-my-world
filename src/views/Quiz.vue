@@ -5,9 +5,9 @@
 </template>
 
 <script>
-// import Searchbar from "@/components/Community/Searchbar.vue";
-// import Campaigns from "@/components/Community/Campaigns.vue";
-import Quizzes from "@/components/Community/Quizzes.vue";
+// import Searchbar from "@/components/Quiz/Searchbar.vue";
+// import Campaigns from "@/components/Quiz/Campaigns.vue";
+import Quizzes from "@/components/Quiz/Quizzes.vue";
 
 export default {
   name: "Community",
