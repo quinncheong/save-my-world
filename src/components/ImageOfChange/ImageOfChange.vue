@@ -4,54 +4,6 @@
     <image-splider :get-url="getUrl" :images="sources" />
 
     <!-- insert template for bootstrap carousel -->
-    <div
-      id="carouselExampleControls"
-      class="carousel slide mt-4"
-      data-bs-ride="carousel"
-    >
-      <div class="carousel-inner">
-        <!-- Main active one. Need this  -->
-        <div class="carousel-item active">
-          <img-slider
-            class="img-slider"
-            img-a="https://climate.nasa.gov/system/gallery_images/mobile/1_rising_seas_in_charleston_2048x1536_before.jpg"
-            img-b="https://climate.nasa.gov/system/gallery_images/mobile/1_rising_seas_in_charleston_2048x1536_before.jpg"
-          ></img-slider>
-        </div>
-        <!-- Other carousel items -->
-        <div
-          :key="index"
-          v-for="(srcset, index) of sources"
-          class="carousel-item"
-        >
-          <img-slider
-            class="img-slider"
-            :img-a="getUrl(srcset.img1)"
-            :img-b="getUrl(srcset.img2)"
-          ></img-slider>
-        </div>
-      </div>
-      <button
-        class="carousel-control-prev"
-        type="button"
-        data-bs-target="#carouselExampleControls"
-        data-bs-slide="prev"
-      >
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Previous</span>
-      </button>
-      <button
-        class="carousel-control-next"
-        type="button"
-        data-bs-target="#carouselExampleControls"
-        data-bs-slide="next"
-      >
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Next</span>
-      </button>
-    </div>
-
-    
 
   </div>
 </template>
