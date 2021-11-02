@@ -81,51 +81,47 @@ export default {
     // Load the markers here when loading
     this.map.on("load", async () => {
       let result = await this.getLocation(); // After getting location then we add the markers
-
-      // const image = this.map.loadImage("src/assets/img/markerpin.png")
-this.map.loadImage(
-'https://docs.mapbox.com/mapbox-gl-js/assets/custom_marker.png',
-(error, image) => {
-if (error) throw error;
+    // Loading marker image 
+        this.map.loadImage(
+        'https://docs.mapbox.com/mapbox-gl-js/assets/custom_marker.png',
+        (error, image) => {
+        if (error) throw error;
  
-// Add the image to the map style.
-this.map.addImage('custom-marker', image);
-      // this.map.addImage('marker-red', image)
+    // Add the image to the map style.
+    this.map.addImage('custom-marker', image);
+          // this.map.addImage('marker-red', image)
 
-      console.log(this.features);
+          console.log(this.features);
 
-  // Adding data source to map
-      this.map.addSource('disasters', {
-        'type': 'geojson',
-        'data': {'type': 'FeatureCollection',
-        'features': this.features
-
-
-
-        }
-        });
+    // Adding data source to map
+        this.map.addSource('disasters', {
+          'type': 'geojson',
+          'data': {'type': 'FeatureCollection',
+          'features': this.features
+          }
+          });
 
         this.map.addLayer(
-    {
-      'id': 'result',
-      'type': 'symbol',
-      'source': 'disasters',
-      'layout': {
-    'icon-image': 'custom-marker',
+      {
+        'id': 'result',
+        'type': 'symbol',
+        'source': 'disasters',
+        'layout': {
+      'icon-image': 'custom-marker',
     // get the title name from the source's "Name" property
-    'text-field': ['get', 'name'],
-    'text-font': [
-    'Open Sans Semibold',
-    'Arial Unicode MS Bold'
-    ],
-    'text-offset': [0, 1.25],
-    'text-anchor': 'top'
-      } ,
+      'text-field': ['get', 'name'],
+      'text-font': [
+      'Open Sans Semibold',
+      'Arial Unicode MS Bold'
+      ],
+      'text-offset': [0, 1.25],
+      'text-anchor': 'top'
+        } ,
 
-      // Filter only year 2020, this works
-      "filter": ['==', ['number', ['get', 'year']], 2020 ]
-      
-    })
+        // Filter only year 2020, this works
+        "filter": ['==', ['number', ['get', 'year']], 2020 ]
+        
+      })
 
     // Add interactive popup here 
       this.map.on('click', 'result', (e) => {
@@ -223,7 +219,7 @@ this.map.addImage('custom-marker', image);
           obj.geometry = {}
           console.log(obj);
           console.log(indivResult.id);
-          // Taking out the necessary components such as desc and score.
+          // Taking out the necessary components such as desc and score, and storing it in properties .
           obj.properties.name = indivResult.fields.name
           obj.properties.id = indivResult.id;
           obj.properties.link = indivResult.href
@@ -255,38 +251,32 @@ this.map.addImage('custom-marker', image);
       }
     },
 
-    // Function to return a list of lat and long
+    // Function to push lat and long into the large fking object that will be added to .addSource
     async pushGeo() {  
       let geoList = [];
       console.log(this.features);
-      // Un optimised version
+      
       // Changed to features
       for (let array of this.features) {
 
-        //  array of object
+        //  getting the link 
         let url = array.properties.link;
-        console.log(array.properties.description); 
-        console.log(url);
 
-        console.log(array);
+        // Getting the relavant lat and long from the link provided 
         let res = await axios.get(url);
-        // console.log(res.data.data[0].fields.primary_country.location);
-          console.log(res)
-          console.log(res.data.data[0].fields.description);
         let geoCode = res.data.data[0].fields.primary_country.location;
-// Check if id tallies up 
 
+        // Check if id tallies up
         if (res.data.data[0].id == array.properties.id){
 
-            // Get coordinate 
+            // Set new property to lon and lat , array form 
             array.geometry.coordinates = [geoCode.lon,geoCode.lat];
 
             // Get description and check if description is not undefined
-
             if (res.data.data[0].fields.description == undefined){
-              console.log("hey")
                array.properties.description = `<p>Sorry there is no description for this marker :(</p>`
                console.log(array.properties.description)
+
             } else {
               array.properties.description = `<p>${res.data.data[0].fields.description}</p>`
                           console.log(array); 
@@ -295,7 +285,6 @@ this.map.addImage('custom-marker', image);
            
 
             
-            console.log(array.geometry.coordinates)
          
           
           
@@ -322,23 +311,7 @@ this.map.addImage('custom-marker', image);
       // }
     },
 
-    async addMarkers() {
-      console.log('I am being rendered in add markers')
-      console.log(this.selectedQuery)
-
-
-      // 
-     
-      for (let i=0; i< this.geoCodeList.length; i++) {
-        // console.log(coordinates);
-        // create a HTML element for each feature
-        const marker = new mapboxgl.Marker()
-        .setLngLat(this.geoCodeList[i])
-        .setPopup(new mapboxgl.Popup()
-        .setHTML(`<h6>${this.desc[i]}</h6>`))    // Added desc inside 
-        .addTo(this.map)
-
-        this.markerList.push(marker) 
+    
 
 
         
@@ -346,28 +319,126 @@ this.map.addImage('custom-marker', image);
 
   
 
-    }
+    // }
 
-    },
+    // },
 
 // Added function to remove markers
-    async removeMarkers(){
-      for(let indivMarker of this.markerList){
-        indivMarker.remove()
-      }
-    },
+    // async removeMarkers(){
+    //   for(let indivMarker of this.markerList){
+    //     indivMarker.remove()
+    //   }
+    // },
 
    
 
 // Event clicker then would toggle everytime a new value is selected
     async handleClick(){
       
-      // remove previous markets first
-      this.removeMarkers();
+      // remove source first from  and then add again from map object
+
+
+      this.map.removeSource('disaster')
+
+
+      await this.getLocation(); 
+
+        this.map.loadImage(
+        'https://docs.mapbox.com/mapbox-gl-js/assets/custom_marker.png',
+        (error, image) => {
+        if (error) throw error;
+ 
+    // Add the image to the map style.
+    this.map.addImage('custom-marker', image);
+          // this.map.addImage('marker-red', image)
+
+          console.log(this.features);
+
+    // Adding data source to map
+        this.map.addSource('disasters', {
+          'type': 'geojson',
+          'data': {'type': 'FeatureCollection',
+          'features': this.features
+          }
+          });
+
+        this.map.addLayer(
+      {
+        'id': 'result',
+        'type': 'symbol',
+        'source': 'disasters',
+        'layout': {
+      'icon-image': 'custom-marker',
+    // get the title name from the source's "Name" property
+      'text-field': ['get', 'name'],
+      'text-font': [
+      'Open Sans Semibold',
+      'Arial Unicode MS Bold'
+      ],
+      'text-offset': [0, 1.25],
+      'text-anchor': 'top'
+        } ,
+
+        // Filter only year 2020, this works
+        "filter": ['==', ['number', ['get', 'year']], 2020 ]
+        
+      })
+
+    // Add interactive popup here 
+      this.map.on('click', 'result', (e) => {
+        // Copy coordinates array.
+        const coordinates = e.features[0].geometry.coordinates.slice();
+        const description = e.features[0].properties.description;
+
+      
+        console.log(coordinates);
+        console.log(description);
+
+       // Ensure that if the map is zoomed out such that multiple
+        // copies of the feature are visible, the popup appears
+        // over the copy being pointed to.
+        while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
+        coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
+        }
+
+      
+      new mapboxgl.Popup()
+      .setLngLat(coordinates)
+      .setHTML(description)
+      .addTo(this.map);
+
+      
+      
+      // filter: ['==', ['number', ['get', 'Year']], 2000]
+
+      console.log(this.yearVal) 
+      this.map.setFilter('result', ['==', ['number', ['get', 'year']], parseInt(this.yearVal)]);
+
+
+
+      });
+
+      
+     
+}) 
+      console.log("huhiihi")
+
+      
+
+      // Do the same process and await for the geoLocation again
+
+      
+
+
+
+     
+
+      
+
 
       // After getting location then we add the markers
-      let result = await this.getLocation(); 
-      this.addMarkers();
+      // let result = await this.getLocation(); 
+      // this.addMarkers();
 
       //   console.log("hi")
     //   this.createMap();
