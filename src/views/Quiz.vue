@@ -1,6 +1,7 @@
 <template>
   <div class="community">
-    <Header />
+    <!-- <Header /> -->
+    <News />
     <Video />
     <h4><strong>Quiz Time</strong></h4>
     <p style="font-size: 15px"><i>Test your understanding by clicking on the "Start Quiz" button :)</i></p>
@@ -20,6 +21,7 @@
 import Quizzes from "@/components/Quiz/Quizzes.vue";
 import Header from "@/components/Quiz/Header.vue";
 import Video from "@/components/Quiz/Videos.vue";
+import News from "@/components/Quiz/News.vue";
 
 export default {
   name: "Community",
@@ -29,6 +31,7 @@ export default {
     Quizzes,
     Header,
     Video,
+    News,
   },
 };
 </script>
