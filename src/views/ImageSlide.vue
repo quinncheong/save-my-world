@@ -1,18 +1,18 @@
 <template>
   <div class="community">
-    <div class="row" style="text-align: left">
+    <!-- <div class="row" style="text-align: left">
       <div class="col">
         <span class="border-end px-2"><strong>Global Climate Change</strong></span>
-        <span class="px-2"><i>Vital signs of the Planet</i></span>
+        <span class="px-2"><i>Vital signs of the Planet (Overview)</i></span>
       </div>
     </div>
     <br>
     <div class="card" style="width: 18rem; color: grey">
-      <img class="card-img-top" src="../assets/img/clothes.png" alt="Card image cap">
+      <img class="card-img-top" src="../assets/imagesChanges/img1A.jpeg" alt="Card image cap">
       <div class="card-body">
         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
       </div>
-    </div>
+    </div> -->
     <!-- header --> 
         
         <!-- <div class="jumbotron jumbotron-fluid bg-secondary">
@@ -25,7 +25,23 @@
               </p>
           </div>
         </div> -->
+        <div
+          class="container-fluid full p-5 text-center"
+        >
+        <div class="mask" style="background-color: rgba(0, 0, 0, 0.6);">
+          <div class="d-flex justify-content-center align-items-center h-100">
+            <div class="text-white">
+              <h1 class="mb-3">Heading</h1>
+              <h4 class="mb-3">Subheading</h4>
+              <a class="btn btn-outline-light btn-lg" href="#!" role="button"
+              >Call to action</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
       <imageSlider/>
+      <imageCard />
     <!-- left section things -->
     
   </div>
@@ -37,6 +53,7 @@ import "@splidejs/splide/dist/css/themes/splide-default.min.css";
 import 'img-comparison-slider';
 import imageCarol from "../components/ImageOfChange/ImageCarousel.vue";
 import imageSlider from "../components/ImageOfChange/ImageSlider.vue";
+import imageCard from "../components/ImageOfChange/imageCard.vue";
 
 export default {
   name: "imageCarousel",
@@ -44,7 +61,8 @@ export default {
     Splide,
     SplideSlide,
     imageCarol,
-    imageSlider
+    imageSlider,
+    imageCard
 
   },
   data() {
@@ -76,5 +94,14 @@ export default {
     text-align: left;
     padding-bottom: 10px;
   }
+
+  .full {
+    background: url('https://www.fasterthanexpected.com/wp-content/uploads/2018/08/Soil.jpg') no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+    height:100%;
+}
 
 </style>
