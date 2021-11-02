@@ -27,9 +27,10 @@ const firebaseApp = initializeApp(firebaseConfig);
 const db = getFirestore(firebaseApp);
 
 export const getQuizzes = async (id = undefined) => {
-  const q = id === undefined 
-  ? query(collection(db, "quizzes"))
-  : query(collection(db, "quizzes"), where('id', "==", id))
+  const q =
+    id === undefined
+      ? query(collection(db, "quizzes"))
+      : query(collection(db, "quizzes"), where("quizId", "==", id));
 
   let quizzes = [];
   const querySnapshot = await getDocs(q);
@@ -41,7 +42,7 @@ export const getQuizzes = async (id = undefined) => {
     quizzes.push(quiz);
   });
 
-  console.log(quizzes)
+  console.log(quizzes);
   return quizzes;
 };
 
@@ -53,19 +54,16 @@ function capitalise(string) {
 export const getCountryObj = async (alpha3) => {
   // This portion is to clean the data in case of wrong input
 
-  const q = query(
-    collection(db, "countries"),
-    where("alpha3", "==", alpha3)
-  );
+  const q = query(collection(db, "countries"), where("alpha3", "==", alpha3));
 
   // This query is not efficient but we'll make do for now
   const querySnapshot = await getDocs(q);
-  let final = []
+  let final = [];
   querySnapshot.forEach((doc) => {
-    final.push(doc.data())
+    final.push(doc.data());
   });
 
-  return final.length >= 1 ? final[0] : undefined
+  return final.length >= 1 ? final[0] : undefined;
 };
 
 
