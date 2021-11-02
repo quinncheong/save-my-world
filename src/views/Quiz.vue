@@ -1,5 +1,8 @@
 <template>
   <div class="community">
+    <Header />
+    <Video />
+    <br>
     <Quizzes />
   </div>
 </template>
@@ -8,6 +11,8 @@
 // import Searchbar from "@/components/Quiz/Searchbar.vue";
 // import Campaigns from "@/components/Quiz/Campaigns.vue";
 import Quizzes from "@/components/Quiz/Quizzes.vue";
+import Header from "@/components/Quiz/Header.vue";
+import Video from "@/components/Quiz/Videos.vue";
 
 export default {
   name: "Community",
@@ -15,6 +20,8 @@ export default {
     // Searchbar,
     // Campaigns,
     Quizzes,
+    Header,
+    Video,
   },
 };
 </script>
