@@ -25,6 +25,7 @@
     "sass": "^1.42.1",
     "vue": "^3.0.0",
     "vue-compare-image": "^0.2.0",
+    "vue-nav-ui": "^1.0.5",
     "vue-router": "^4.0.12",
     "vuex": "^4.0.2"
   },
@@ -65,6 +66,9 @@
       "class-methods-use-this": "off",
       "vue/no-multiple-template-root": "off",
       "vue/no-unused-components": "off",
+      "vue/require-v-for-key": "warn",
+      "vue/no-unused-vars": "warn",
+      "vue/no-v-for-template-key": "warn",
       "vue/comment-directive": [
         "error",
         {
