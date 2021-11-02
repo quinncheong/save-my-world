@@ -4,8 +4,8 @@
     <div class="row mt-3" id="login">
       <div class="col">
         <!-- <img src="@/assets/img/globe.png" alt="searchicon" /> -->
-        <div class="row-4">
-        </div>
+        <!-- <div class="row-4">
+        </div> -->
         <div class="row-4 position">  <!--to include breakpoint later on-->
             <div class="earth "></div>
             <div class="circle ">
@@ -40,52 +40,39 @@
 
 
         </div>
-        <div class="row-4"></div>
+
 
       </div>
       <!-- Login section -->
 
       <!-- Tile of login  -->
-      <div class="col text-star">
+      <div class="col"> <!--removed class text-star idk what's star-->
         <div class="row">
           <div class="col">
             <h1 class="mt-3 text-center">
               You have the power to <span id="savemyworld">#SaveOurWorld</span>
             </h1>
-          </div>
+            <br>
+            <hr>
+            <br>
 
-          <!-- Row 2 username -->
-          <div class="row my-4">
-            <div class="col">
-              <div class="centered">
-                <input
-                  type="password"
-                  class="centered form-control w-50"
-                  placeholder="Username"
-                />
-              </div>
+            <div class="col text-start">
+              <h4>Towards a Net-Zero Future: </h4>
+              <br>
+              <h6>
+                According to United Nations, to preserve a livable climate, greenhouse-gas emissions must be reduced to net zero by 2050. 
+                Bold, fast, and wide-ranging action needs to be taken by governments and businesses. 
+                But the transition to a low-carbon world also <span id="savemyworld" >requires</span> the <span id="savemyworld">participation of citizens</span> – especially in advanced economies.
+                
+                <br>
+                <br>
+                Hence, play your part in limiting the effects of global warming and take care of our planet. <span id="savemyworld">Make the right choices today.</span> You can be part of the solution and influence change. 
+              </h6>
+              <br>
             </div>
+            
           </div>
 
-          <!-- Row 3 password -->
-
-          <div class="row justify-content-center">
-            <div class="centered col">
-              <input
-                type="password"
-                class="form-control w-50"
-                placeholder="Password"
-              />
-            </div>
-          </div>
-
-          <!-- Row 4 button -->
-
-          <div class="row">
-            <div class="centered my-4">
-              <button class="btn btn-primary w-50">Login</button>
-            </div>
-          </div>
         </div>
       </div>
     </div>
@@ -97,46 +84,105 @@
     <!-- Individual steps for the guide -->
 
     <div class="row px-2 pb-5">
-      <div class="col mt-5 border-end border-secondary background-transparent">
-        <img class="imgsize" src="@/assets/img/planetearth.png" />
-        <h6>Lorem.</h6>
 
-        <h6>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod saepe
-          necessitatibus molestias libero optio fuga sapiente atque, fugiat,
-          velit deleniti similique quasi cumque laborum ipsum tempora eaque
-          consequatur? Laudantium provident soluta non quis cumque. Est quae
-          unde recusandae sapiente nostrum!
-        </h6>
+      <div class="guide-wrapper">
+        <h1 class="guide-header">How You Can Play Your Part</h1>
       </div>
 
-      <div class="col mt-5 border-end border-secondary background-transparent">
-        <img class="imgsize" src="@/assets/img/clothes.png" />
-        <h6>Lorem</h6>
+      <br>
+      <br>
+      <br>
+      <p>Climate change will affect all of us, whether directly or indirectly. Everyone—as individuals, as employees, as members of a family and as a wider community—has a stake in helping to reduce our emissions and in preparing for the effects of climate change.</p>
+    </div> 
 
-        <h6>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod saepe
-          necessitatibus molestias libero optio fuga sapiente atque, fugiat,
-          velit deleniti similique quasi cumque laborum ipsum tempora eaque
-          consequatur? Laudantium provident soluta non quis cumque. Est quae
-          unde recusandae sapiente nostrum!
-        </h6>
-      </div>
 
-      <div class="col mt-5 background-transparent">
-        <img class="imgsize" src="@/assets/img/recyclingbin.png" />
-        <h6>Lorem</h6>
+    <div class='row bg-light' style='color:black'> <!--Use mx-auto d-block for centering--> 
+      <!-- <section class="reduce bg-light"> -->
+      <!-- <div class="container text-center"> -->
 
-        <h6>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod saepe
-          necessitatibus molestias libero optio fuga sapiente atque, fugiat,
-          velit deleniti similique quasi cumque laborum ipsum tempora eaque
-          consequatur? Laudantium provident soluta non quis cumque. Est quae
-          unde recusandae sapiente nostrum!
-        </h6>
-      </div>
+        <!--for the image--> 
+        <div class='col-6'>
+            <img class="imgsize " src="@/assets/img/planetearth.png" />
+        </div>
+
+      <!--for the text-->
+      <div class='col-6 fullwidth'>
+        <div class="grid-2">
+          <div class="center">
+          </div>
+          <div>
+            <br>
+            <h3>REDUCE</h3>
+            <p>
+              The best way to manage waste is to not produce it. This can be done by shopping carefully and being aware of a few guidelines: 
+            </p>
+            <ul class="mt-4 wrap">
+              <li><i class="fa fa-rocket" aria-hidden="true">
+                
+                </i>Flyby spacecraft</li>
+              <li><i class="fa fa-rocket" aria-hidden="true"></i>Orbiter spacecraft</li>
+              <li><i class="fa fa-rocket" aria-hidden="true"></i>Atmospheric spacecraft</li>
+              <li><i class="fa fa-rocket" aria-hidden="true"></i>Lander spacecraft</li>
+              <li><i class="fa fa-rocket" aria-hidden="true"></i>Rover spacecraft</li>
+              <li><i class="fa fa-rocket" aria-hidden="true"></i>Penetrator spacecraft</li>
+              <li><i class="fa fa-rocket" aria-hidden="true"></i>Observatory spacecraft</li>
+              <li><i class="fa fa-rocket" aria-hidden="true"></i>Communications spacecraft</li>
+            </ul>
+          </div>
+        </div>
+        </div>
+
+        
+      <!-- </div> -->
+    <!-- </section> -->
     </div>
-  </div>
+
+
+    
+    <div class='row '>
+      <!-- <section class="reduce bg-light"> -->
+      <!-- <div class="container text-center"> -->
+        <img class="imgsize" src="@/assets/img/clothes.png" />
+        <div class="grid-2">
+          <div class="center">
+          </div>
+          <div>
+            <br>
+            <h3>REUSE</h3>
+            <p>
+              It makes economic and environmental sense to reuse products. Sometimes it takes creativity: 
+            </p>
+          </div>
+        </div>
+      <!-- </div> -->
+    <!-- </section> -->
+    </div>
+
+
+    <div class='row bg-light ' style='color:black'>
+      <!-- <section class="reduce bg-light"> -->
+      <!-- <div class="container text-center"> -->
+        <img class="imgsize" src="@/assets/img/recyclingbin.png" />
+        <div class="grid-2">
+          <!-- <div class="center"> 
+          </div> -->
+          <div>
+            <br>
+            <h3>RECYCLE</h3>
+            <br>
+            <p>
+              Recycling is a series of steps that takes a used material and processes, remanufactures, and sells it as a new product. Begin recycling at home and at work:
+            </p>
+          </div>
+        </div>
+      <!-- </div> -->
+    <!-- </section> -->
+    </div>
+
+
+
+    </div>
+  <!-- </div> -->
 </template>
 
 <script>
@@ -162,6 +208,10 @@ export default {
 </script>
 
 <style lang="scss">
+// .fullwidth {
+//   // width: 100vw !important;
+// }
+
 .gg {
   color: $testing-variable;
 }
@@ -263,6 +313,100 @@ export default {
   100%{
     transform: perspective(1000px) rotateY(0deg) rotateX(15deg) translateY(-30px);
   }
+}
+
+
+//for the guide section 
+.guide-wrapper {
+  position: relative;
+  width: 100%;
+
+  .guide-header{
+    text-align: center;
+    font-size: $variable-font;
+
+    @media screen and (min-width: 768px ) {
+      font-size: $variable-font-large;
+    }
+
+    &:before,
+    &:after {
+      background-color: white;
+      content: "";
+      display: inline-block;
+      height: 1px;
+      position: relative;
+      vertical-align: middle;
+      width: 20%;
+    }
+
+    &:before {
+      margin-right: 20px;
+      // right: 0.5em;
+      // margin-left: -50%;
+    }
+
+    &:after {
+      margin-left: 20px;
+      // left: 0.5em;
+      // margin-right: -50%;
+    }
+  }
+  
+}
+
+
+// #guideMe:before,
+// #guideMe:after {
+//   background-color: white;
+//   content: "";
+//   display: inline-block;
+//   height: 1px;
+//   position: relative;
+//   vertical-align: middle;
+//   width: 50%;
+// }
+
+// #guideMe:before {
+//   right: 0.5em;
+//   margin-left: -50%;
+// }
+
+// #guideMe:after {
+//   left: 0.5em;
+//   margin-right: -50%;
+// }
+
+
+//for the rows below 
+
+.container {
+  max-width: 960px;
+  margin: auto;
+  overflow: hidden;
+  padding: 4rem 1rem;
+}
+
+// .grid-3 {
+//   display: grid;
+//   grid-template-columns: 1fr 1fr 1fr; 
+//   grid-gap: 20px;
+// }
+
+// .grid-2 {
+//   display: grid;
+//   grid-gap: 20px;
+//   grid-template-columns: repeat(2, 1fr);
+// }
+
+.text-center {
+  text-align: center;
+  margin: auto;
+}
+
+.bg-light {
+  background: #fff;
+  color: #333;
 }
 
 </style>
