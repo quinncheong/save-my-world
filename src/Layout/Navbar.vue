@@ -62,6 +62,17 @@ export default {
       }
     });
   },
+  computed: {
+    // Current route I guess. Can use to dynamically render navbar active links
+    view() {
+      return this.$route.name;
+    },
+
+    // return all routes from router
+    routes() {
+      return this.$router.options.routes;
+    },
+  },
 };
 </script>
 
