@@ -50,7 +50,7 @@
         <div class="row">
           <div class="col">
             <h1 class="mt-3 text-center">
-              You have to power to <span id="savemyworld">#SaveOurWorld</span>
+              You have the power to <span id="savemyworld">#SaveOurWorld</span>
             </h1>
           </div>
 
@@ -177,7 +177,7 @@ export default {
 }
 
 .guide {
-  background-image: url("~@/assets/img/guidebackgroundimg.jpg");
+  // background-image: url("~@/assets/img/guidebackgroundimg.jpg");
   background-size: contain, cover;
 }
 
