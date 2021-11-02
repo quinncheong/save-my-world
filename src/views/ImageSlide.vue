@@ -8,7 +8,7 @@
     <p class="chart-select mb-3 fst-italic">Select an image and see how different the world has become</p>
     <image-of-change />
     <br />
-    <div class="jumbotron jumbotron-fluid bg-secondary">
+    <div class="bg-secondary">
       <div class="container">
         <h1 class="display-">Ice Jam Floods Region in Northwest Alaska</h1>
         <p class="lead">BEFORE AND AFTER</p>

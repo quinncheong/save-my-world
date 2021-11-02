@@ -10,7 +10,7 @@
         <!-- Main active one -->
         <div class="carousel-item active">
           <img-slider
-            style="width: 70%"
+            class="img-slider"
             img-a="https://climate.nasa.gov/system/gallery_images/mobile/1_rising_seas_in_charleston_2048x1536_before.jpg"
             img-b="https://climate.nasa.gov/system/gallery_images/mobile/1_rising_seas_in_charleston_2048x1536_before.jpg"
           ></img-slider>
@@ -22,7 +22,7 @@
           class="carousel-item"
         >
           <img-slider
-            style="width: 70%; height: 70%;"
+            class="img-slider"
             :img-a="getUrl(srcset.img1)"
             :img-b="getUrl(srcset.img2)"
           ></img-slider>
@@ -116,11 +116,17 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.community {
-  display: inline-flex;
-  flex-direction: column;
-}
+.img-slider {
+  width: 100%;
 
+  // 70% width on small screens
+  @media screen and (min-width: 575.98px) {
+    width: 70%;
+  }
+  // @media screen and (min-width: 768px) {
+  //   width: 70%;
+  // }
+}
 // .img-comparison-slider {
 //   width: 100%;
 //   --divider-width: 2px;
