@@ -2,7 +2,7 @@
   <Splide :options="options">
     <SplideSlide :key="index" v-for="(image, index) of images">
       <!-- <image-card :image="image.src" :title="image.title" /> -->
-        <img style="width: 200px" :src="getUrl(image.img1)" :alt="image.title" />
+        <img style="width: 230px" :src="getUrl(image.img1)" :alt="image.title" />
     </SplideSlide>
   </Splide>
 </template>
@@ -25,32 +25,33 @@ export default {
             options: {
                 rewind: true,
                 type: "loop",
-                perPage: 6,
+                perPage: 4,
                 perMove: 1,
                 gap: "0.5rem",
                 arrows: false,
                 focus: 'left',
                 pagination: false,
-                // breakpoints: {
-                //     // Mobile
-                //     320: {
-                //         perPage: 1,
-                //         gap: "0px",
-                //         height: "100%"
-                //     },
-                //     // Tablet
-                //     768: {
-                //         perPage: 1,
-                //         gap: "0px",
-                //         height: "100%"
-                //     },
-                //     // Desktop
-                //     1024: {
-                //         perPage: 1,
-                //         gap: "0px",
-                //         height: "100%"
-                //     }
-                // }
+                height: "100%",
+                breakpoints: {
+                    // Mobile
+                    320: {
+                        perPage: 3,
+                        gap: "10px",
+                        height: "100%"
+                    },
+                    // Tablet
+                    768: {
+                        perPage: 3,
+                        gap: "0.5rem",
+                        height: "100%"
+                    },
+                    // Desktop
+                    // 1024: {
+                    //     perPage: 3,
+                    //     gap: "0px",
+                    //     height: "100%"
+                    // }
+                }
             }
         }
     }
