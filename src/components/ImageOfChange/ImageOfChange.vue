@@ -22,7 +22,7 @@
           class="carousel-item"
         >
           <img-slider
-            style="width: 70%"
+            style="width: 70%; height: 70%;"
             :img-a="getUrl(srcset.img1)"
             :img-b="getUrl(srcset.img2)"
           ></img-slider>
