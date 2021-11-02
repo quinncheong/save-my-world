@@ -78,7 +78,8 @@ img {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: $font-color-primary;
-  background-color: $bg-color-primary; //background colour of the app 
+  
+  // background-color: $bg-color-primary; //background colour of the app 
 }
 
 .app-content-wrapper {
