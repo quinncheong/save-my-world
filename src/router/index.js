@@ -11,15 +11,15 @@ const routes = [
     name: "Home",
     component: Home,
     meta: {
-      visible: false
-    }
+      visible: false,
+    },
   },
   {
     path: "/quiz",
     name: "Climate Quiz",
     component: Quiz,
     meta: {
-      visible: true
+      visible: true,
     },
   },
   {
@@ -27,7 +27,7 @@ const routes = [
     name: "Images of Change",
     component: ImageSlider,
     meta: {
-      visible: true
+      visible: true,
     },
   },
   {
@@ -35,7 +35,7 @@ const routes = [
     name: "Graphical Visuals",
     component: Charts,
     meta: {
-      visible: true
+      visible: true,
     },
   },
   {
@@ -43,7 +43,7 @@ const routes = [
     name: "Disaster Map",
     component: Visualise,
     meta: {
-      visible: true
+      visible: true,
     },
   },
 ];
