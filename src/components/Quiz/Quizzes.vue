@@ -27,7 +27,7 @@
 
       <!-- We've overriden the default "completeButton" slot content -->
       <template v-slot:completeButton>
-        <div class="f-submit" v-if="!submitted">
+        <div class="f-submit mt-3" v-if="!submitted">
           <button
             class="o-btn-action"
             ref="button"
@@ -52,13 +52,13 @@
         </p>
         <p class="text-success" v-if="submitted && score < 4">
           "You scored {{ score }} out of {{ total }}. There's a lot of room for
-          improvement."
+          improvement..."
         </p>
         <p class="text-success" v-else-if="submitted && score < 7">
-          "You scored {{ score }} out of {{ total }}. Not bad at all!"
+          "You scored {{ score }} out of {{ total }}. Not bad at all! You know your Climate well!"
         </p>
         <p class="text-success" v-else-if="submitted && score <= total">
-          "You scored {{ score }} out of {{ total }}. Wow, you are a Climate Change Evangelist!"
+          "You scored {{ score }} out of {{ total }}. Wow, you are a Climate Change Evangelist! Excellent!"
         </p>
       </template>
       
@@ -245,7 +245,12 @@ export default {
 @import "~@ditdot-dev/vue-flow-form/dist/vue-flow-form.css";
 
 /* Import one of the Vue Flow Form CSS themes (optional) */
-/* @import '~@ditdot-dev/vue-flow-form/dist/vue-flow-form.theme-minimal.css'; */
-@import "~@ditdot-dev/vue-flow-form/dist/vue-flow-form.theme-minimal.css";
+@import '~@ditdot-dev/vue-flow-form/dist/vue-flow-form.theme-minimal.css';
+/* @import "~@ditdot-dev/vue-flow-form/dist/vue-flow-form.theme-green.css"; */
 /* @import '~@ditdot-dev/vue-flow-form/dist/vue-flow-form.theme-purple.css'; */
+
+p.text-success {
+  margin-bottom: 10px;
+}
+
 </style>
