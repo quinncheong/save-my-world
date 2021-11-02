@@ -30,6 +30,8 @@
         vector-effect="non-scaling-stroke"
       ></path>
     </svg>
+
+    
   </img-comparison-slider>
 </template>
 

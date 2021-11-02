@@ -74,12 +74,14 @@ img {
 // CSS of the app
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
+  // font-family: 'PT Sans Narrow', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: $font-color-primary;
   
   // background-color: $bg-color-primary; //background colour of the app 
+  background-color: $bg-color-primary; //background colour of the app 
 }
 
 .app-content-wrapper {
