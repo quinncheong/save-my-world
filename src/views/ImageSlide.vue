@@ -22,6 +22,7 @@ export default {
           img2: "img1B.jpeg",
           description: "This is a test description",
           title: 'this is a test title'
+          
         },
         {
           id: 1,
