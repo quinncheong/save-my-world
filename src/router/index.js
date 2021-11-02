@@ -10,26 +10,41 @@ const routes = [
     path: "/",
     name: "Home",
     component: Home,
+    meta: {
+      visible: false
+    }
   },
   {
     path: "/quiz",
-    name: "Test your knowledge",
+    name: "Climate Quiz",
     component: Quiz,
+    meta: {
+      visible: true
+    },
   },
   {
     path: "/image",
     name: "Images of Change",
     component: ImageSlider,
+    meta: {
+      visible: true
+    },
   },
   {
     path: "/charts",
     name: "Graphical Visuals",
     component: Charts,
+    meta: {
+      visible: true
+    },
   },
   {
     path: "/news",
     name: "Disaster Map",
     component: Visualise,
+    meta: {
+      visible: true
+    },
   },
 ];
 

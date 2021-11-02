@@ -4,9 +4,12 @@
     <router-link id="home" to="/">
       <img class="homeimg" src="@/assets/img/world.png" alt="Globe Icon" />
     </router-link>
-    <router-link :key="view" :to="view.toLowerCase()" v-for="view in views">
-      {{ view }}
-    </router-link>
+
+    <template :key="route.path" v-for="(route, index) in routes">
+      <router-link v-if="route.meta.visible" :to="route.path.toLowerCase()">
+        {{ route.name }}
+      </router-link>
+    </template>
   </nav>
 
   <nav class="nav small" v-else>
@@ -20,8 +23,12 @@
       </button>
     </div>
     <div :class="dropdownClass">
-      <router-link :key="view" :to="view.toLowerCase()" v-for="view in views">
-        {{ view }}
+      <router-link
+        :key="route.path"
+        :to="route.path.toLowerCase()"
+        v-for="(route, index) in routes"
+      >
+        {{ route.name }}
       </router-link>
     </div>
   </nav>
@@ -78,10 +85,11 @@ export default {
 
 <style lang="scss" scoped>
 .nav {
-  padding: 30px;
+  padding: 20px 40px;
   background-color: $bg-color-primary;
   display: flex;
   justify-content: flex-end;
+  font-size: calc($font-size-primary * 0.6) !important;
 
   #home {
     margin-right: auto;
@@ -95,7 +103,7 @@ export default {
   a {
     font-weight: bold;
     color: $font-color-primary;
-    margin: 0 1.5rem;
+    margin: 0 0.5rem;
     text-decoration: none;
 
     &.router-link-exact-active {
@@ -122,7 +130,6 @@ export default {
 
       // For dropdown
       .dropdown-button {
-        font-size: $font-size-primary;
         background-color: inherit;
         font-family: inherit; /* Important for vertical align on mobile phones */
         margin: 0; /* Important for vertical align on mobile phones */
