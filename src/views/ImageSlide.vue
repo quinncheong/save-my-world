@@ -42,7 +42,23 @@ export default {
         width: 800,
         gap: "1rem",
       },
-    };
+      images: {
+        image1: {
+          src: "https://images.unsplash.com/photo-1589717078552-b8f9f8f8d8f9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60",
+          alt: "Ice Jam Floods Region in Northwest Alaska",
+          title: "Ice Jam Floods Region in Northwest Alaska",
+          description:
+            "These false color images show a portion of northwest Alaska before and during widespread flooding in May 2021. Ice and snow appear light blue, liquid water is dark blue or black, and bare ground is yellowish brown. Chunks of ice jammed and blocked the flow of the Buckland River, which then overran its banks. Five feet of water inundated the local community, according to a statement released by Alaska Governor Dunleavy's office.",
+        },
+        image2: {
+          src: "https://images.unsplash.com/photo-1589717078552-b8f9f8f8d8f9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60",
+          alt: "Ice Jam Floods Region in Northwest Alaska",
+          title: "Ice Jam Floods Region in Northwest Alaska",
+          description:
+            "These false color images show a portion of northwest Alaska before and during widespread flooding in May 2021. Ice and snow appear light blue, liquid water is dark blue or black, and bare ground is yellowish brown. Chunks of ice jammed and blocked the flow of the Buckland River, which then overran its banks. Five feet of water inundated the local community, according to a statement released by Alaska Governor Dunleavy's office.",
+        },
+      }
+    }
   },
 };
 </script>

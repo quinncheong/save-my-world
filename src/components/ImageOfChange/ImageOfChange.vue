@@ -1,13 +1,16 @@
 <template>
   <div>
+    <!-- insert image splider component -->
+    <image-splider :get-url="getUrl" :images="sources" />
+
     <!-- insert template for bootstrap carousel -->
     <div
       id="carouselExampleControls"
-      class="carousel slide"
+      class="carousel slide mt-4"
       data-bs-ride="carousel"
     >
       <div class="carousel-inner">
-        <!-- Main active one -->
+        <!-- Main active one. Need this  -->
         <div class="carousel-item active">
           <img-slider
             class="img-slider"
@@ -15,7 +18,7 @@
             img-b="https://climate.nasa.gov/system/gallery_images/mobile/1_rising_seas_in_charleston_2048x1536_before.jpg"
           ></img-slider>
         </div>
-
+        <!-- Other carousel items -->
         <div
           :key="index"
           v-for="(srcset, index) of sources"
@@ -47,17 +50,22 @@
         <span class="visually-hidden">Next</span>
       </button>
     </div>
+
+    
+
   </div>
 </template>
 
 <script>
 import "img-comparison-slider";
 import ImgSlider from "./ImgSlider.vue";
+import ImageSplider from './ImageSplider.vue';
 
 export default {
   name: "imageSlide",
   components: {
     ImgSlider,
+    ImageSplider
   },
   data() {
     return {
@@ -127,10 +135,4 @@ export default {
   //   width: 70%;
   // }
 }
-// .img-comparison-slider {
-//   width: 100%;
-//   --divider-width: 2px;
-//   --divider-color: #c0c0c0;
-//   --default-handle-opacity: 0.3;
-// }
 </style>
