@@ -27,7 +27,21 @@
       
     <!-- Container to hold  the map -->
 
-    <div id="map"></div>
+    <div id="map">
+       <div id='console'>
+        <h1>Filter</h1>
+        <div class="text-center">
+
+            <h5>{{yearVal}}</h5>
+          <input   id='slider' class='row ms-4' type='range' min='1960' max='2021' step='1' v-model='yearVal' @change='listenEvent($event)'/>
+        </div>
+      </div>
+
+
+    </div>
+
+
+    
   </div>
 </template>
 
@@ -53,70 +67,105 @@ export default {
       disaster: ["Cold Wave","Complex Emergency","Drought", "Earthquake","Extratropical Cyclone", "Fire","Flash Flood","Flood", "Heat","Insect Infestation","Land Slide","Mud Slide", "Severe Local Storm","Snow Avalanche","Storm Surge","Tropical Cyclone","Tsunami","Volcano","Wild Fire"],
       selectedQuery : 'Cold Wave',
       desc: [],
-      markerList: []
-
-
+      markerList: [],
+      features: [] ,
+      yearVal: 2020
       
     };
   },
 
-  // methods:{
-
-  //   async getLocation() {
-  //       try {
-  //         let url = 'https://api.reliefweb.int/v1/reports?appname=apidoc&query[value]=earthquake'
-
-  //         this.loading = true;
-  //         const response = await axios.get(url);
-  //         console.log(response);
-  //         this.loading = false;
-  //         this.location = response.data.features[0].place_name;
-  //       } catch (err) {
-  //         this.loading = false;
-  //         console.log(err);
-  //       }
-
-  //   }
-  // },
 
   mounted() {
     this.createMap();
 
-    //   // Create map  after mounted
-    //   // Need to access the token first
-    //   mapboxgl.accessToken = this.access_token;
-    //   // Creation of map when the page first load
-
-    //   this.map = new mapboxgl.Map({
-    //     container: 'map',
-    //     style: "mapbox://styles/mapbox/streets-v11",
-    //     center: this.center,
-    //     zoom: 11,
-    // })
-
-    //   let geocoder =  new MapboxGeocoder({
-    //           accessToken: this.access_token,
-    //           mapboxgl: mapboxgl,
-    //           marker: true,
-    //     });
-
-    //   // Adding Search to the map
-
-    //   this.map.addControl(geocoder);
-
-    //   // loading map
-
-    //   this.map.on('load', async () => {
-    //   // Get the initial location of the International Space Station (ISS).
-    //   const geojson = await getLocation();
-    //   // Add the ISS location as a source.
-
-    //   })
-
     // Load the markers here when loading
     this.map.on("load", async () => {
       let result = await this.getLocation(); // After getting location then we add the markers
-      this.addMarkers();
+
+      // const image = this.map.loadImage("src/assets/img/markerpin.png")
+this.map.loadImage(
+'https://docs.mapbox.com/mapbox-gl-js/assets/custom_marker.png',
+(error, image) => {
+if (error) throw error;
+ 
+// Add the image to the map style.
+this.map.addImage('custom-marker', image);
+      // this.map.addImage('marker-red', image)
+
+      console.log(this.features);
+
+  // Adding data source to map
+      this.map.addSource('disasters', {
+        'type': 'geojson',
+        'data': {'type': 'FeatureCollection',
+        'features': this.features
+
+
+
+        }
+        });
+
+        this.map.addLayer(
+    {
+      'id': 'result',
+      'type': 'symbol',
+      'source': 'disasters',
+      'layout': {
+    'icon-image': 'custom-marker',
+    // get the title name from the source's "Name" property
+    'text-field': ['get', 'name'],
+    'text-font': [
+    'Open Sans Semibold',
+    'Arial Unicode MS Bold'
+    ],
+    'text-offset': [0, 1.25],
+    'text-anchor': 'top'
+      } ,
+
+      // Filter only year 2020, this works
+      "filter": ['==', ['number', ['get', 'year']], 2020 ]
+      
+    })
+
+    // Add interactive popup here 
+      this.map.on('click', 'result', (e) => {
+        // Copy coordinates array.
+        const coordinates = e.features[0].geometry.coordinates.slice();
+        const description = e.features[0].properties.description;
+
+      
+        console.log(coordinates);
+        console.log(description);
+
+       // Ensure that if the map is zoomed out such that multiple
+        // copies of the feature are visible, the popup appears
+        // over the copy being pointed to.
+        while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
+        coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
+        }
+
+      
+      new mapboxgl.Popup()
+      .setLngLat(coordinates)
+      .setHTML(description)
+      .addTo(this.map);
+
+      
+      
+      // filter: ['==', ['number', ['get', 'Year']], 2000]
+
+      console.log(this.yearVal) 
+      this.map.setFilter('result', ['==', ['number', ['get', 'year']], parseInt(this.yearVal)]);
+
+
+
+      });
+
+      
+     
+})    
+      
+      // this.addMarkers();
     });
   },
 
@@ -139,24 +188,7 @@ export default {
           marker: false,
         });
 
-        // forward geo coding (Not really relevant for now this just searches for the location. )
-        this.map.addControl(geocoder);
-        // geocoder.on("result", (e) => { //Events
-        //   console.log(e);
-        //   const marker = new mapboxgl.Marker({
-        //     draggable: true,
-        //     color: "#D80739",
-        //   })
-        //     .setLngLat(e.result.center)
-        //     .setPopup(new mapboxgl.Popup().setHTML("<h1>Hello World!</h1>"))
-        //     .addTo(this.map)
-        //   this.center = e.result.center;
-        //   marker.on("dragend", (e) => {
-        //     this.center = Object.values(e.target.getLngLat());
-        //     console.log(e);
-        //     console.log(e.target);
-        //   });
-        // });
+
       } catch (err) {
         console.log("map error", err);
       }
@@ -164,9 +196,11 @@ export default {
 
     // trying to get location of prepopulated data.
     async getLocation() {
+      // Reset 
+      this.features = [];
       this.loading = true;
       try {
-        const response = await axios.get("https://api.reliefweb.int/v1/disasters?appname=apidoc&query[value]=" + this.selectedQuery + "&query[fields][]=type&fields[include][]=type.name&limit=30");
+        const response = await axios.get("https://api.reliefweb.int/v1/disasters?appname=apidoc&query[value]=" + this.selectedQuery + "&query[fields][]=type&fields[include][]=type.name&limit=100");
         if (!response) {
           throw Error("Failed to get data");
         }
@@ -176,11 +210,34 @@ export default {
         
 
         let results = response.data.data;
+
+        console.log(results);
         //  countries is an array
         for (let indivResult of results) {
+
+          // Generating obj array to put in to .addSource 
+
+          let obj = {};
+          obj.type = "Feature"; 
+          obj.properties = {};
+          obj.geometry = {}
+          console.log(obj);
+          console.log(indivResult.id);
           // Taking out the necessary components such as desc and score.
-          name.push(indivResult.fields.name);
+          obj.properties.name = indivResult.fields.name
+          obj.properties.id = indivResult.id;
+          obj.properties.link = indivResult.href
+          obj.geometry.type = "Point";
+          // Split year from name since that is the only way , just to get the year 
+          let year = indivResult.fields.name.split(" ");
+          let yearNum = parseInt(year[year.length -1]); 
+          obj.properties.year = yearNum;
           links.push(indivResult.href);
+
+          // Push into this.features, this will be put into .addsource
+
+          this.features.push(obj);
+
         }
         // Set desc to name array
         this.desc = name; 
@@ -188,10 +245,10 @@ export default {
 
 
 
-        let geoList = await this.pushGeo(links);
+        let geoList = await this.pushGeo();
         this.geoCodeList = geoList;
 
-        return;
+        return this.geoCodeList
       } catch (err) {
         // console.log(err);
         return;
@@ -199,20 +256,56 @@ export default {
     },
 
     // Function to return a list of lat and long
-    async pushGeo(links) {
+    async pushGeo() {  
       let geoList = [];
-
+      console.log(this.features);
       // Un optimised version
-      for (let url of links) {
+      // Changed to features
+      for (let array of this.features) {
+
+        //  array of object
+        let url = array.properties.link;
+        console.log(array.properties.description); 
+        console.log(url);
+
+        console.log(array);
         let res = await axios.get(url);
         // console.log(res.data.data[0].fields.primary_country.location);
+          console.log(res)
+          console.log(res.data.data[0].fields.description);
         let geoCode = res.data.data[0].fields.primary_country.location;
-        geoList.push(geoCode);
+// Check if id tallies up 
+
+        if (res.data.data[0].id == array.properties.id){
+
+            // Get coordinate 
+            array.geometry.coordinates = [geoCode.lon,geoCode.lat];
+
+            // Get description and check if description is not undefined
+
+            if (res.data.data[0].fields.description == undefined){
+              console.log("hey")
+               array.properties.description = `<p>Sorry there is no description for this marker :(</p>`
+               console.log(array.properties.description)
+            } else {
+              array.properties.description = `<p>${res.data.data[0].fields.description}</p>`
+                          console.log(array); 
+
+            }
+           
+
+            
+            console.log(array.geometry.coordinates)
+         
+          
+          
+        }
+        
         
       }
       
-      console.log(geoList);
-      return geoList;
+
+      console.log(this.features[0].geometry.coordinates); 
 
       // fast version using promises but its buggy so dont use this for now
       // Buggy because the api gets cut off
@@ -232,6 +325,9 @@ export default {
     async addMarkers() {
       console.log('I am being rendered in add markers')
       console.log(this.selectedQuery)
+
+
+      // 
      
       for (let i=0; i< this.geoCodeList.length; i++) {
         // console.log(coordinates);
@@ -244,7 +340,6 @@ export default {
 
         this.markerList.push(marker) 
 
-        console.log(this.markerList)
 
         
 
@@ -281,6 +376,14 @@ export default {
     //   this.map.zoomOut({offset: [80, 60]});
     //   this.addMarkers();
     // });
+    },
+
+    listenEvent(event){
+
+      const year = parseInt(event.target.value);
+  // update the map
+      this.map.setFilter('result', ['==', ['number', ['get', 'year']], year]);
+
     }
 
   
@@ -319,6 +422,16 @@ export default {
 
 #map{
   color: black;
+}
+
+
+#console {
+  position: absolute;
+  width: 240px;
+  margin: 10px;
+  padding: 10px 20px;
+  background-color: white;
+  z-index: 1;
 }
 
 

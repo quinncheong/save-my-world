@@ -8,7 +8,7 @@
 
     <p class="chart-select mb-3">Select a chart to explore more</p>
 
-    <div class="charts-card-wrapper mb-3">
+    <div class="charts-card-wrapper">
       <ChartsCard
         v-for="chart in charts"
         :key="chart.id"
@@ -19,16 +19,22 @@
     </div>
     <div v-if="selectedChart === 0"></div>
     <div v-else-if="selectedChart === 1">
+      <iframe src="https://datahub.io/core/glacier-mass-balance/view/0" width="100%" height="475px" frameborder="0"></iframe>
 
+      <div class="card mt-4">
+      <div class="card-body text-dark">
+        This chart shows the visualisations of the annual mass balance of glaciers throughout the years and how is has been dwindling at an increasing rate
+      </div>
+    </div>
+    
+    
     </div>
     <div v-else-if="selectedChart === 2">
       <AirPollutionChart />
     </div>
     <div v-else>
       <TempChart />
-
     </div>
-
     <!-- <MainChart /> -->
 
     <!-- <div class="main-chart">
@@ -91,7 +97,6 @@ export default {
 .chart-wrapper {
   height: 100%;
   width: 100%;
-  width: 70%;
   display: flex;
   flex-direction: column;
   margin: auto;
@@ -116,14 +121,15 @@ export default {
     padding-top: 100%; /* 16:9 Aspect Ratio (divide 9 by 16 = 0.5625) */
 
     iframe {
-      position: absolute;
-      top: 0;
-      left: 0;
-      bottom: 0; 
-      right: 0;
-      width: 100%;
-      height: 100%;
+      margin-right: auto;
+      margin-left: auto;
     }
+  }
+}
+// display 70% width on desktop
+@media (min-width: 768px) {
+  .chart-wrapper {
+    width: 70%;
   }
 }
 </style>
