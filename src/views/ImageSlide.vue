@@ -1,17 +1,19 @@
 <template>
   <div class="community">
-    <!-- header -->
-      <div class="row">
-      <div class="col-4"> 
-        <div class="card text-white bg-secondary" style="width: 18rem;">
-          <br>
-          <imageSlider/>  
-          <div class="card-body">
-            <h5 v-bind:class="card-title">{{cards.title}}</h5>
-                      
-            <a href="#" class="btn btn-primary">Go somewhere</a>
-          </div>
-        </div>
+    <div class="row" style="text-align: left">
+      <div class="col">
+        <span class="border-end px-2"><strong>Global Climate Change</strong></span>
+        <span class="px-2"><i>Vital signs of the Planet</i></span>
+      </div>
+    </div>
+    <br>
+    <div class="card" style="width: 18rem; color: grey">
+      <img class="card-img-top" src="../assets/img/clothes.png" alt="Card image cap">
+      <div class="card-body">
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+      </div>
+    </div>
+    <!-- header --> 
         
         <!-- <div class="jumbotron jumbotron-fluid bg-secondary">
           <div class="container">
@@ -23,9 +25,7 @@
               </p>
           </div>
         </div> -->
-      </div>
       <imageSlider/>
-    </div>
     <!-- left section things -->
     
   </div>
@@ -54,44 +54,6 @@ export default {
         width: 800,
         gap: "1rem",
       },
-      cards: [
-        {
-          // text
-          id: 1,
-          title: "ergreeg",
-          text: "rgrgegr"
-        },
-        {
-          id: 2,
-          title: "ergreeg",
-          text: "rgrgegr"
-        },
-        // {
-        //   id: 3,
-        //   img1: "img4A.jpeg", // 4A is wrong and need to change it
-        //   img2: "img4B.jpeg",
-        // },
-        // {
-        //   id: 4,
-        //   img1: "img5A.jpeg",
-        //   img2: "img5B.jpeg",
-        // },
-        // {
-        //   id: 5,
-        //   img1: "img6A.jpeg",
-        //   img2: "img6B.jpeg",
-        // },
-        // {
-        //   id: 6,
-        //   img1: "img7A.jpeg",
-        //   img2: "img7B.jpeg",
-        // },
-        // {
-        //   id: 7,
-        //   img1: "img4A.jpeg",
-        //   img2: "img4B.jpeg",
-        // }
-      ],
     };
   },
 };
