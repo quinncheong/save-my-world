@@ -16,6 +16,8 @@ $font-color-secondary: #04643b;
 
 // For responsive font size
 $variable-font: calc(13px + 6 * ((100vw - 320px) / 680));
+$variable-font-medium: calc(25px + 6 * ((100vw - 320px) / 680));
+$variable-font-large: calc(35px + 6 * ((100vw - 320px) / 680));
 
 
 //remove the following particles if cant solve the background
