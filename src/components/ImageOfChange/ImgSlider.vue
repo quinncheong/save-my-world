@@ -11,6 +11,7 @@
     </figure>
   </img-comparison-slider> -->
   <img-comparison-slider class="slider-example-split-line">
+  <!-- eslint-disable -->
     <img slot="first" :src="imgA" />
     <img slot="second" :src="imgB" />
     <svg
@@ -20,6 +21,7 @@
       width="100"
       viewBox="-8 -3 16 6"
     >
+    <!-- eslint-enable -->
       <path
         stroke="#fff"
         d="M -5 -2 L -7 0 L -5 2 M -5 -2 L -5 2 M 5 -2 L 7 0 L 5 2 M 5 -2 L 5 2"

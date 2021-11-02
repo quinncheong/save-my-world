@@ -12,7 +12,7 @@
           <img-slider
             style="width: 70%"
             img-a="https://climate.nasa.gov/system/gallery_images/mobile/1_rising_seas_in_charleston_2048x1536_before.jpg"
-            img-b="https://climate.nasa.gov/system/gallery_images/mobile/1_rising_seas_in_charleston_2048x1536_before.jpg"
+            img-b="https://climate.nasa.gov/system/gallery_images/mobile/2_rising_seas_in_charleston_2048x1536_after.jpg"
           ></img-slider>
         </div>
 
