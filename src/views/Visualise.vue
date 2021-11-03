@@ -2,11 +2,11 @@
   <div class="container-fluid visualisation">
     <!-- header -->
     <h1>Start saving the environment now</h1>
-    <!-- Drop down list that would be used for queries -->
 
     <div class="row">
       <div class="col"></div>
       <div class="col">
+        <!-- Dropdownlist  -->
         <form @submit="handleClick()">
           <select
             class="form-select text-center"
@@ -22,7 +22,6 @@
               {{ indivDisaster }}
             </option>
           </select>
-
           <button>Confirm</button>
         </form>
       </div>
@@ -32,6 +31,7 @@
     <!-- Container to hold  the map -->
 
     <div id="map">
+      <!-- Slider Filter on the top left portion of the map -->
       <div id="console">
         <h1>Last 10 years</h1>
         <div class="text-center">
@@ -48,6 +48,15 @@
           />
         </div>
       </div>
+      <!-- Result modal to be placed here  -->
+
+      <div v-if="flying == false" id="desc">
+        <h3>{{title}}</h3>
+        <h6>{{status}}</h6>
+        <p>
+         {{descriptionModal}}
+        </p>
+      </div>
     </div>
   </div>
 </template>
@@ -57,7 +66,6 @@ import axios from "axios";
 import mapboxgl from "mapbox-gl";
 import MapboxGeocoder from "@mapbox/mapbox-gl-geocoder";
 import "@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css";
-
 export default {
   name: "Visualise",
   components: {},
@@ -97,9 +105,13 @@ export default {
       features: [],
       yearVal: 2020,
       year: "",
+      flying: true,
+      // For result modal
+      title: "Click on any of the pointers!",
+      descriptionModal: "",
+      status: "",
     };
   },
-
 
   mounted() {
     this.createMap();
@@ -107,7 +119,6 @@ export default {
     // Load the markers here when loading
     this.map.on("load", async () => {
       let result = await this.getLocation(); // After getting location then we add the markers
-
 
       // Loading marker image
       await this.map.loadImage(
@@ -122,64 +133,97 @@ export default {
             type: "geojson",
             data: { type: "FeatureCollection", features: this.features },
           });
-          
 
           // Adding layer to the map
-      this.map.addLayer({
-        id: "result",
-        type: "symbol",
-        source: "disasters",
-        layout: {
-          "icon-image": "custom-marker",
-          // get the title name from the source's "Name" property
-          "text-field": ["get", "name"],
-          "text-font": ["Open Sans Semibold", "Arial Unicode MS Bold"],
-          "text-offset": [0, 1.25],
-          "text-anchor": "top",
-        },
-        filter: ["==", ["number", ["get", "year"]], parseInt(this.yearVal)],
-      });
-
+          this.map.addLayer({
+            id: "result",
+            type: "symbol",
+            source: "disasters",
+            layout: {
+              "icon-image": "custom-marker",
+              // get the title name from the source's "Name" property
+              "text-field": ["get", "name"],
+              "text-font": ["Open Sans Semibold", "Arial Unicode MS Bold"],
+              "text-offset": [0, 1.25],
+              "text-anchor": "top",
+            },
+            filter: ["==", ["number", ["get", "year"]], parseInt(this.yearVal)],
+          });
         }
-
-
-        
       );
-
-      
-      
 
       // this.addMarkers();
     });
 
     // Add interactive popup here
-    this.map.on("click", "result", (e) => {
+
+    // We are interacting with the layers here.
+    this.map.on("click", "result", async (e) => {
+      // Can use e to access properties and key in the description
+
+      // To-dos : Push description into Modal.
+
+      console.log(e.features[0]);
       // Copy coordinates array.
       const coordinates = e.features[0].geometry.coordinates.slice();
       const description = e.features[0].properties.description;
+      const name = e.features[0].properties.name;
+
       // Ensure that if the map is zoomed out such that multiple
       // copies of the feature are visible, the popup appears
       // over the copy being pointed to.
+      console.log(e.lngLat.lng);
       while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
         coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
       }
 
-      new mapboxgl.Popup()
-        .setLngLat(coordinates)
-        .setHTML(description)
-        .addTo(this.map);
+      this.flyToLocation(coordinates);
+
+      console.log(coordinates);
+
+      // Adding the interactive elements for the markers
+
+      // Add popup after the screen arrives at the marker
+
+      this.map.on("flystart", () => {
+        this.flying = true;
+        console.log("start fly here")
+
+      });
+      this.map.on("flyend", () => {
+        this.flying = false;
+        //  Once ended, we add it into the modal.
+
+        this.title = name;
+        this.descriptionModal = description;
+
+        console.log(description);
+
+        console.log("end fly here")
+        
+
+      });
+
+      this.map.on("moveend", (e) => {
+        if (this.flying) {
+          console.log("hi")
+            
+          this.map.fire("flyend");
+          
+        }
+      });
+
+      // new mapboxgl.Popup()
+      //   .setLngLat(coordinates)
+      //   .setHTML(description)
+      //   .addTo(this.map);
 
       this.map.setFilter("result", [
         "==",
         ["number", ["get", "year"]],
         parseInt(this.yearVal),
       ]);
-
-      this.flyToLocation(coordinates);
-
     });
-
-
   },
 
   methods: {
@@ -212,10 +256,10 @@ export default {
       this.loading = true;
       // "https://api.reliefweb.int/v1/disasters?appname=apidoc&query[value]=" + this.selectedQuery + "&query[fields][]=type&fields[include][]=type.name&limit=100"
       //           "https://api.reliefweb.int/v1/disasters?type&fields[include][]=type.name&limit=20&sort[]=date:desc"
-
+      // Changed to 100 first for faster loading time. 
       try {
         const response = await axios.get(
-          "https://api.reliefweb.int/v1/disasters?type&fields[include][]=type.name&limit=100"
+          "https://api.reliefweb.int/v1/disasters?type&fields[include][]=type.name&limit=100&sort[]=date:desc"
         );
         if (!response) {
           throw Error("Failed to get data");
@@ -254,6 +298,8 @@ export default {
           // Push into this.features, this will be put into .addsource
 
           this.features.push(obj);
+          console.log(this.features);
+
           // console.log(this.features)
         }
         // Set desc to name array
@@ -293,11 +339,10 @@ export default {
             array.properties.description = `<p>Sorry there is no description for this marker :(</p>`;
             console.log(array.properties.description);
           } else {
-            array.properties.description = `<p>${res.data.data[0].fields.description}</p>`;
+            array.properties.description = res.data.data[0].fields.description;
           }
         }
       }
-
     },
 
     async handleClick() {},
@@ -319,15 +364,14 @@ export default {
 
     // Interactive popup functions
 
-    // Fly to popup when clicked 
+    // Fly to popup when clicked
     flyToLocation(currentFeature) {
       this.map.flyTo({
-      center: currentFeature,
-      zoom: 11,
-  });
-}
-
-    
+        center: currentFeature,
+        zoom: 11,
+      });
+      this.map.fire("flystart");
+    },
   },
 };
 </script>
@@ -348,6 +392,7 @@ export default {
 
 #map {
   color: black;
+  position: relative;
 }
 
 #console {
@@ -358,4 +403,18 @@ export default {
   background-color: white;
   z-index: 1;
 }
+
+#desc {
+  position: absolute;
+  width: 25%;
+  height: 200px;
+  margin-left: 10px;
+  bottom: 30px;
+  padding: 10px 20px;
+  background-color: white;
+  z-index: 1;
+  overflow-y: auto
+  
+}
+
 </style>
