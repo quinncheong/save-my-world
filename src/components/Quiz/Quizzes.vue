@@ -246,8 +246,8 @@ export default {
 
 /* Import one of the Vue Flow Form CSS themes (optional) */
 /* @import '~@ditdot-dev/vue-flow-form/dist/vue-flow-form.theme-minimal.css'; */
-@import "~@ditdot-dev/vue-flow-form/dist/vue-flow-form.theme-green.css";
-/* @import '~@ditdot-dev/vue-flow-form/dist/vue-flow-form.theme-purple.css'; */
+/* @import "~@ditdot-dev/vue-flow-form/dist/vue-flow-form.theme-green.css"; */
+@import '~@ditdot-dev/vue-flow-form/dist/vue-flow-form.theme-purple.css';
 
 p.text-success {
   margin-bottom: 10px;

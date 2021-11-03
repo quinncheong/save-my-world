@@ -5,8 +5,8 @@
     <Video />
     <h4><strong>Quiz Time</strong></h4>
     <p style="font-size: 15px"><i>Test your understanding by clicking on the "Start Quiz" button :)</i></p>
-    <div class="card my-2">
-      <div class="card-body text-white">
+    <div class="card bg-transparent my-2">
+      <div class="card-body">
         <!-- <h5 class="card-title">Special title treatment</h5> -->
         <!-- <p class="card-text">With supporting text below as a natural lead-in to additional content.</p> -->
         <Quizzes />
@@ -47,11 +47,11 @@ hr {
 }
 
 .card-body{
-  background-image: url("https://physicsworld.com/wp-content/uploads/2021/10/Earth-melting-153806906-shutterstock_Bruce-Rolff-.jpg");
+  // background-image: url("https://media.wired.com/photos/5955ab4d63d43b038e9bc501/master/pass/climate-change-coal-fossil-wind-544544275.jpg");
   // background-position: center;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-size: cover;
+  // background-repeat: no-repeat;
+  // background-attachment: fixed;
+  // background-size: cover;
 
 }
 </style>
