@@ -1,66 +1,38 @@
 <template>
-  <div>
+  <div class="image-change-wrapper">
+    <!-- header -->
+    <h2 class="chart-title mb-3">Images of the World</h2>
+    <p class="chart-details text-center w-75 mb-3">
+      The best way to see Climate change in effect, is if we can see how the
+      Earth is changing. Throughout the years, many places on earth have changed
+      drastically - and not for the better.
+    </p>
+    <p class="chart-select mb-3 fst-italic">
+      Select an image and see how different the world has become
+    </p>
     <!-- insert image splider component -->
-    <image-splider :get-url="getUrl" :images="sources" />
-
-    <!-- insert template for bootstrap carousel -->
-
+    <image-splider @on-active-splide="handleActiveSplide" :get-url="getUrl" :images="images" />
+    <!-- Body of the image slider component for the text -->
+    <image-slider-body :image="selectedImage" />
   </div>
 </template>
 
 <script>
-import "img-comparison-slider";
-import ImgSlider from "./ImgSlider.vue";
-import ImageSplider from './ImageSplider.vue';
+// import "img-comparison-slider";
+// import ImgSlider from "./ImgSlider.vue";
+import ImageSplider from "./ImageSplider.vue";
+import ImageSliderBody from './ImageSliderBody.vue';
 
 export default {
   name: "imageSlide",
   components: {
-    ImgSlider,
-    ImageSplider
+    ImageSplider,
+    ImageSliderBody,
   },
+  props: ["images"],
   data() {
     return {
-      img1: "https://climate.nasa.gov/system/gallery_images/mobile/1_rising_seas_in_charleston_2048x1536_before.jpg",
-      img2: "https://climate.nasa.gov/system/gallery_images/mobile/2_rising_seas_in_charleston_2048x1536_after.jpg",
-      sources: [
-        {
-          id: 1,
-          // relative import image
-          img1: "img2A.jpeg",
-          img2: "img2B.jpeg",
-        },
-        {
-          id: 2,
-          img1: "img3A.jpeg",
-          img2: "img3B.jpeg",
-        },
-        {
-          id: 3,
-          img1: "img4A.jpeg", // 4A is wrong and need to change it
-          img2: "img4B.jpeg",
-        },
-        {
-          id: 4,
-          img1: "img5A.jpeg",
-          img2: "img5B.jpeg",
-        },
-        {
-          id: 5,
-          img1: "img6A.jpeg",
-          img2: "img6B.jpeg",
-        },
-        {
-          id: 6,
-          img1: "img7A.jpeg",
-          img2: "img7B.jpeg",
-        },
-        // {
-        //   id: 7,
-        //   img1: "img4A.jpeg",
-        //   img2: "img4B.jpeg",
-        // }
-      ],
+      selectedImage: {}
     };
   },
   methods: {
@@ -71,20 +43,45 @@ export default {
     getUrl(pic) {
       return require(`../../assets/imagesChanges/${pic}`);
     },
+    handleActiveSplide(index) {
+      console.log('handling the onclick event')
+      console.log(index)
+      let selected = this.images[index];
+      console.log(selected)
+      this.selectedImage = selected
+    }
   },
 };
 </script>
 
 <style lang="scss" scoped>
-.img-slider {
+.image-change-wrapper {
+  height: 100%;
   width: 100%;
-
-  // 70% width on small screens
-  @media screen and (min-width: 575.98px) {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  justify-content: space-between;
+  font-size: $variable-font;
+}
+// display 70% width on desktop
+@media screen and (min-width: 768px) {
+  .image-change-wrapper {
     width: 70%;
   }
-  // @media screen and (min-width: 768px) {
-  //   width: 70%;
-  // }
+}
+
+// display 70% width on large screen sizes
+@media screen and (min-width: 992px) {
+  .image-change-wrapper {
+    width: 60%;
+  }
+}
+
+// // display 70% width on extra large screen sizes
+@media screen and (min-width: 1200px) {
+  .image-change-wrapper {
+    width: 60%;
+  }
 }
 </style>
