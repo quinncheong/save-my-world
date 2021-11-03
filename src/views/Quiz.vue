@@ -46,12 +46,4 @@ hr {
   border: solid 2px white;
 }
 
-.card-body{
-  // background-image: url("https://media.wired.com/photos/5955ab4d63d43b038e9bc501/master/pass/climate-change-coal-fossil-wind-544544275.jpg");
-  // background-position: center;
-  // background-repeat: no-repeat;
-  // background-attachment: fixed;
-  // background-size: cover;
-
-}
 </style>
