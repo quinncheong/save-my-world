@@ -18,7 +18,7 @@ $font-color-secondary: #04643b;
 $variable-font: calc(13px + 6 * ((100vw - 320px) / 680));
 $variable-font-medium: calc(25px + 6 * ((100vw - 320px) / 680));
 $variable-font-large: calc(35px + 6 * ((100vw - 320px) / 680));
-
+$variable-font-small: calc(10px + 6 * ((100vw - 320px) / 680));
 
 //remove the following particles if cant solve the background
 $stars1Var: 779px 1331px #fff, 324px 42px #fff, 303px 586px #fff,
