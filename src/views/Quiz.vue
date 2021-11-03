@@ -6,7 +6,7 @@
     <h4><strong>Quiz Time</strong></h4>
     <p style="font-size: 15px"><i>Test your understanding by clicking on the "Start Quiz" button :)</i></p>
     <div class="card my-2">
-      <div class="card-body bg-dark">
+      <div class="card-body text-white">
         <!-- <h5 class="card-title">Special title treatment</h5> -->
         <!-- <p class="card-text">With supporting text below as a natural lead-in to additional content.</p> -->
         <Quizzes />
@@ -44,5 +44,14 @@ export default {
 
 hr {
   border: solid 2px white;
+}
+
+.card-body{
+  background-image: url("https://physicsworld.com/wp-content/uploads/2021/10/Earth-melting-153806906-shutterstock_Bruce-Rolff-.jpg");
+  // background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+
 }
 </style>
