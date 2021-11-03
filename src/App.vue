@@ -1,6 +1,7 @@
 <template>
   <div>
     <Navbar />
+    <!-- <Navbar1 /> -->
     <div class="app-content-wrapper">
       <router-view />
     </div>
@@ -19,6 +20,7 @@
 
 <script>
 import Navbar from "@/Layout/Navbar.vue";
+// import Navbar1 from "@/Layout/Navbar1.vue";
 
 export default {
   name: "App",
@@ -34,6 +36,8 @@ html {
   box-sizing: border-box;
   font-size: $font-size-primary;
   min-height: 100vh;
+  min-width: 100vw;
+  @extend %background-overlay;
 }
 
 *,
@@ -70,12 +74,12 @@ img {
 // CSS of the app
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
+  // font-family: 'PT Sans Narrow', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: $font-color-primary;
-  
-  // background-color: $bg-color-primary; //background colour of the app 
+  background-color: $bg-color-primary; //background colour of the app 
 }
 
 .app-content-wrapper {
