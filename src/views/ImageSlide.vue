@@ -42,6 +42,8 @@
       <!-- left section things -->
       </div>
     </div>
+  <div>
+    <image-of-change :images="images" />
   </div>
 <!-- </div> -->
 </template>
@@ -67,75 +69,87 @@ export default {
   },
   data() {
     return {
-      options: {
-        rewind: true,
-        width: 800,
-        gap: "1rem",
-      },
-      images: {
-        image1: {
-          src: "https://images.unsplash.com/photo-1589717078552-b8f9f8f8d8f9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60",
-          alt: "Ice Jam Floods Region in Northwest Alaska",
-          title: "Ice Jam Floods Region in Northwest Alaska",
-          description:
-            "These false color images show a portion of northwest Alaska before and during widespread flooding in May 2021. Ice and snow appear light blue, liquid water is dark blue or black, and bare ground is yellowish brown. Chunks of ice jammed and blocked the flow of the Buckland River, which then overran its banks. Five feet of water inundated the local community, according to a statement released by Alaska Governor Dunleavy's office.",
+      images: [
+        {
+          id: 8,
+          // relative import image
+          img1: "img1A.jpeg",
+          img2: "img1B.jpeg",
+          description: "This is a test description",
+          title: 'this is a test title'
+          
         },
-        image2: {
-          src: "https://images.unsplash.com/photo-1589717078552-b8f9f8f8d8f9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60",
-          alt: "Ice Jam Floods Region in Northwest Alaska",
-          title: "Ice Jam Floods Region in Northwest Alaska",
-          description:
-            "These false color images show a portion of northwest Alaska before and during widespread flooding in May 2021. Ice and snow appear light blue, liquid water is dark blue or black, and bare ground is yellowish brown. Chunks of ice jammed and blocked the flow of the Buckland River, which then overran its banks. Five feet of water inundated the local community, according to a statement released by Alaska Governor Dunleavy's office.",
+        {
+          id: 1,
+          // relative import image
+          img1: "img2A.jpeg",
+          img2: "img2B.jpeg",
         },
-      }
-    }
+        {
+          id: 2,
+          img1: "img3A.jpeg",
+          img2: "img3B.jpeg",
+        },
+        {
+          id: 3,
+          img1: "img4A.jpeg", // 4A is wrong and need to change it
+          img2: "img4B.jpeg",
+        },
+        {
+          id: 4,
+          img1: "img5A.jpeg",
+          img2: "img5B.jpeg",
+        },
+        {
+          id: 5,
+          img1: "img6A.jpeg",
+          img2: "img6B.jpeg",
+        },
+        {
+          id: 6,
+          img1: "img7A.jpeg",
+          img2: "img7B.jpeg",
+        },
+        // {
+        //   id: 7,
+        //   img1: "img4A.jpeg",
+        //   img2: "img4B.jpeg",
+        // }
+      ],
+    };
   },
 };
 </script>
 
 <style lang="scss" scoped>
-.image-change-wrapper {
-  height: 100%;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  margin: auto;
-  justify-content: space-between;
-  font-size: $variable-font;
-}
-
-.jumbotron {
-  text-align: left;
-  padding-bottom: 10px;
-}
-
-// display 70% width on desktop
-@media (min-width: 768px) {
   .image-change-wrapper {
-    width: 90%;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    justify-content: space-between;
+    font-size: $variable-font;
   }
-}
-
-// display 70% width on large screen sizes
-@media (min-width: 992px) {
-  .image-change-wrapper {
-    width: 70%;
-  }
-}
-
-//   .full {
-//     background: url('https://www.fasterthanexpected.com/wp-content/uploads/2018/08/Soil.jpg') no-repeat center center fixed;
-//     -webkit-background-size: cover;
-//     -moz-background-size: cover;
-//     background-size: cover;
-//     -o-background-size: cover;
-//     height:100%;
-// }
-
-  // display 70% width on extra large screen sizes
-  @media (min-width: 1200px) {
+  // display 70% width on desktop
+  @media screen and (min-width: 768px) {
     .image-change-wrapper {
-      width: 80%;
+      width: 70%;
     }
   }
+
+  // display 70% width on large screen sizes
+  @media screen and (min-width: 992px) {
+    .image-change-wrapper {
+      width: 60%;
+    }
+  }
+
+  // display 70% width on extra large screen sizes
+  @media screen and (min-width: 1200px) {
+    .image-change-wrapper {
+      width: 60%;
+    }
+  }
+
 </style>
