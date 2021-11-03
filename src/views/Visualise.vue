@@ -1,47 +1,39 @@
 <template>
   <div class="container-fluid visualisation">
     <!-- header -->
-    <h1>Start saving the environment now</h1>
+    
     <!-- Drop down list that would be used for queries -->
 
     <div class='row'>
-      <div class='col'></div>
-      <div class="col">
-        <form @submit="handleClick()">
-           <select class="form-select text-center" v-model="selectedQuery" @change="help">
-          <option v-for="indivDisaster of disaster" :key="indivDisaster" :value="indivDisaster" selected>{{indivDisaster}}</option>
-        </select>
-
-        <button>Confirm</button>
-
-        </form>
-       
+      <div class='col-12'>
+        <h1>Start saving the environment now</h1>
+        <hr>
       </div>
-      <div class='col'></div>
-
-      
-
+      <div class="col-9">
+        <form @submit="handleClick()">
+          <select class="form-select" v-model="selectedQuery" @change="help">
+            <option v-for="indivDisaster of disaster" :key="indivDisaster" :value="indivDisaster" selected>{{indivDisaster}}</option>
+          </select>
+        </form>
+      </div>
+      <div class='col'>
+          <button class="btn btn-success">Confirm</button>
+      </div>
     </div>
 
- 
-      
     <!-- Container to hold  the map -->
-
-    <div id="map">
-       <div id='console'>
-        <h1>Filter</h1>
-        <div class="text-center">
-
-            <h5>{{yearVal}}</h5>
-          <input   id='slider' class='row ms-4' type='range' min='1960' max='2021' step='1' v-model='yearVal' @change='listenEvent($event)'/>
+  
+    <div class="row my-2">
+      <div id="map">
+        <div class="card" id='console'>
+          <h1>Filter</h1>
+          <div class="text-center">
+              <h5>{{yearVal}}</h5>
+            <input id='slider' class='row ms-4' type='range' min='1960' max='2021' step='1' v-model='yearVal' @change='listenEvent($event)'/>
+          </div>
         </div>
       </div>
-
-
     </div>
-
-
-    
   </div>
 </template>
 

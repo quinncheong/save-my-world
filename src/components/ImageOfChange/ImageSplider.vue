@@ -23,7 +23,7 @@
 <script>
 // import "img-comparison-slider";
 import { Splide, SplideSlide } from "@splidejs/vue-splide";
-import ImageCard from "./ImageCard.vue";
+// import ImageCard from "./ImageCard.vue";
 import "@splidejs/splide/dist/css/themes/splide-default.min.css";
 import { defineComponent, onMounted, ref } from "vue";
 import ImgSlider from "./ImgSlider.vue";
@@ -33,7 +33,7 @@ export default defineComponent({
   components: {
     Splide,
     SplideSlide,
-    ImageCard,
+    // ImageCard,
     ImgSlider
   },
   props: ["images", "getUrl"],
