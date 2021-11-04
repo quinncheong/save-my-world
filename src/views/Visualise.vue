@@ -118,10 +118,10 @@ export default {
 
     // Load the markers here when loading
     this.map.on("load", async () => {
-      let result = await this.getLocation(); // After getting location then we add the markers
+     await this.getLocation(); // After getting location then we add the markers
 
       // Loading marker image
-      await this.map.loadImage(
+      this.map.loadImage(
         "https://docs.mapbox.com/mapbox-gl-js/assets/custom_marker.png",
         async (error, image) => {
           if (error) throw error;
@@ -318,8 +318,6 @@ export default {
 
     // Function to push lat and long into the large fking object that will be added to .addSource
     async pushGeo() {
-      let geoList = [];
-
       // Changed to features
       for (let array of this.features) {
         //  getting the link
