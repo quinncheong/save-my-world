@@ -1,33 +1,5 @@
 <template>
   <div class="community">
-    <!-- <div class="image-change-wrapper"> -->
-      <!-- header -->
-      <!-- <h2 class="chart-title mb-3">Images of the World</h2>
-      <p class="chart-details text-center w-75 mb-3">
-        The best way to see Climate change in effect, is if we can see how the Earth is changing. Throughout the years, many places on earth have changed drastically - and not for the better.
-      </p>
-      <p class="chart-select mb-3 fst-italic">Select an image and see how different the world has become</p>
-      <image-of-change />
-      <br />
-      <div class="bg-secondary">
-        <div class="container">
-          <h1 class="display-">Ice Jam Floods Region in Northwest Alaska</h1>
-          <p class="lead">BEFORE AND AFTER</p>
-          <p>
-            These false color images show a portion of northwest Alaska before and
-            during widespread flooding in May 2021. Ice and snow appear light
-            blue, liquid water is dark blue or black, and bare ground is yellowish
-            brown. Chunks of ice jammed and blocked the flow of the Buckland
-            River, which then overran its banks. Five feet of water inundated the
-            local community, according to a statement released by Alaska Governor
-            Dunleavy's office.
-          </p>
-        </div>
-        <imageSlider/> -->
-        <!-- <imageCard /> -->
-      <!-- left section things -->
-      <!-- </div>
-    </div> -->
     <div>
       <image-of-change :images="images" />
     </div>
@@ -63,7 +35,6 @@ export default {
           img2: "img1B.jpeg",
           title: "Deforestation in Papua, Indonesia",
           description: "The 2019 image shows an area of Papua (also known as Western New Guinea) where the forest was cleared between 2011 and 2016, reportedly to make way for plantation agriculture"
-          
         },
         {
           id: 1,
@@ -241,5 +212,4 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
 </style>

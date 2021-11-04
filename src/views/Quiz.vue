@@ -1,14 +1,8 @@
 <template>
   <div class="quiz">
-    <!-- <div class="card bg-transparent my-2">
-      <div class="card-body">
-        <Quizzes />
-      </div>
-    </div> -->
     <Quizzes />
     <Video />
     <News />
-    
   </div>
 </template>
 
