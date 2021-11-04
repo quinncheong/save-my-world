@@ -15,8 +15,8 @@
             <span class="text-muted"> (°C)</span>
           </small>
           <br />
-          This chart shows the the progression of changing temperature over a
-          span of 19 years for the selected country.
+          This chart shows the the progression of changing temperature from the
+          past to the present. It also shows the future predicted temperature
         </p>
       </div>
     </div>
@@ -82,20 +82,7 @@ export default {
       type: "line",
       data: {
         labels: [],
-        datasets: [
-          // {
-          //   label: "Temperature Over Time",
-          //   backgroundColor: [
-          //     "#41B883",
-          //     // "#E46651",
-          //     // '#00D8FF',
-          //     // '#DD1B16'
-          //   ],
-          //   borderColor: "#41B883",
-          //   data: [65, 59, 80, 81, 56, 55, 40],
-          //   fill: false,
-          // },
-        ],
+        datasets: [],
       },
       options: {
         responsive: true,
@@ -158,6 +145,11 @@ export default {
           xAxes: {
             display: true,
             autoSkip: true,
+            ticks: {
+              maxRotation: 0,
+              // minRotation: 0,
+              maxTicksLimit: 10,
+            },
           },
           // xAxes: {
           //   display: true,
@@ -228,9 +220,14 @@ export default {
       let pastData = await Promise.all(pastPromiseArray);
       let futureData = await Promise.all(futurePromiseArray);
 
+      
+
       // get the data from the response
       let pastDataArray = pastData.map((data) => data.data);
       let futureDataArray = futureData.map((data) => data.data);
+
+      console.log(pastDataArray);
+      console.log(futureDataArray);
 
       try {
         // Manipulate the data
@@ -238,22 +235,28 @@ export default {
         let futureDataset = [];
 
         let updatedLabels = [];
-        let count = 1;
+        let count = 1920;
 
         for (let dataset of pastDataArray) {
           for (let data of dataset) {
             pastDataset.push(data.annualData[0]);
             futureDataset.push(NaN);
-            updatedLabels.push(count);
-            count += 1;
+            updatedLabels.push(Math.round(count, 0));
+            count += 1.5;
           }
         }
 
+        count = 2020
+
         // Push last point of past dataset to the future dataset
         futureDataset.push(pastDataset[pastDataset.length - 1]);
+        updatedLabels.push(count);
 
         for (let dataset of futureDataArray) {
           for (let data of dataset) {
+            if (data.scenario === 'b1') {
+              continue
+            }
             futureDataset.push(data.annualData[0]);
             updatedLabels.push(count);
             count += 1;
@@ -272,8 +275,8 @@ export default {
           },
           {
             label: "Future Predicted Temperatures [2020 - 2080]",
-            backgroundColor: ['#00D8FF'],
-            borderColor: '#00D8FF',
+            backgroundColor: ["#00D8FF"],
+            borderColor: "#00D8FF",
             // borderDash: [5, 5],
             data: futureDataset,
             fill: false,
