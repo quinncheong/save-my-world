@@ -1,5 +1,5 @@
 <template>
-    <div class="bg-transparent">
+    <div class="bg-transparent my-1">
       <div class="container">
         <div class="card-body">
           <h6 class="class-title">{{ image.title }}</h6>

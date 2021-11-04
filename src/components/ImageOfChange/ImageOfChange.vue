@@ -2,7 +2,7 @@
   <div class="image-change-wrapper">
     <!-- header -->
     <h2 class="chart-title mb-3">Images of the World</h2>
-    <p class="chart-details text-center w-75 mb-3">
+    <p class="chart-details text-center mb-3">
       The best way to see Climate change in effect, is if we can see how the
       Earth is changing. Throughout the years, many places on earth have changed
       drastically - and not for the better.
