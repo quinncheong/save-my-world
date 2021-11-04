@@ -220,8 +220,6 @@ export default {
       let pastData = await Promise.all(pastPromiseArray);
       let futureData = await Promise.all(futurePromiseArray);
 
-      
-
       // get the data from the response
       let pastDataArray = pastData.map((data) => data.data);
       let futureDataArray = futureData.map((data) => data.data);
