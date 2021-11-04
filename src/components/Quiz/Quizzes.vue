@@ -2,7 +2,7 @@
   <div>
     <div v-if="started">
       <flow-form
-        class="mt-2"
+        class="mt-2 text-white"
         ref="flowform"
         v-bind:questions="questions"
         v-bind:language="language"
@@ -67,7 +67,7 @@
 
     </div>
     <div v-else>
-      <button class="btn btn-light bottom-right" @click="startQuiz()">Start Quiz</button>
+      <button class="btn btn-light" @click="startQuiz()">Start Quiz</button>
     </div>
     <!-- Button for debugging -->
     <!-- <button class="btn btn-success" @click="logQuestions()">
@@ -246,8 +246,8 @@ export default {
 
 /* Import one of the Vue Flow Form CSS themes (optional) */
 /* @import '~@ditdot-dev/vue-flow-form/dist/vue-flow-form.theme-minimal.css'; */
-/* @import "~@ditdot-dev/vue-flow-form/dist/vue-flow-form.theme-green.css"; */
-@import '~@ditdot-dev/vue-flow-form/dist/vue-flow-form.theme-purple.css';
+@import "~@ditdot-dev/vue-flow-form/dist/vue-flow-form.theme-green.css";
+/* @import '~@ditdot-dev/vue-flow-form/dist/vue-flow-form.theme-purple.css'; */
 
 p.text-success {
   margin-bottom: 10px;
