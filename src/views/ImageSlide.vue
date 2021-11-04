@@ -63,7 +63,6 @@ export default {
           img2: "img1B.jpeg",
           title: "Deforestation in Papua, Indonesia",
           description: "The 2019 image shows an area of Papua (also known as Western New Guinea) where the forest was cleared between 2011 and 2016, reportedly to make way for plantation agriculture"
-          
         },
         {
           id: 1,
@@ -241,5 +240,4 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
 </style>
