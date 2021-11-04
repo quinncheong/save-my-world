@@ -57,6 +57,7 @@
          {{descriptionModal}}
         </p>
       </div>
+
     </div>
   </div>
 </template>
