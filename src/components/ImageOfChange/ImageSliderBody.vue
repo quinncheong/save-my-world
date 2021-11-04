@@ -1,11 +1,11 @@
 <template>
-    <div class="bg-secondary">
+    <div class="bg-transparent">
       <div class="container">
-        <h1 class="display-">{{ image.title }}</h1>
-        <p class="lead">BEFORE AND AFTER</p>
-        <p>
-          {{ image.description }}
-        </p>
+        <div class="card-body">
+          <h6 class="class-title">{{ image.title }}</h6>
+          <p class="card-subtitle mb-2 my-1"><i>BEFORE AND AFTER</i></p>
+          <p class="card-text">{{ image.description }}</p>
+        </div>
       </div>
     </div>
 </template>
@@ -22,3 +22,10 @@ export default {
     
 }
 </script>
+
+<style lang="scss" scoped>
+  .card-body{
+    text-align: left;
+    border-block: 1px solid white;
+  }
+</style>

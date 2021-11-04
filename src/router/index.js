@@ -16,7 +16,7 @@ const routes = [
   },
   {
     path: "/quiz",
-    name: "Climate Quiz",
+    name: "Learning",
     component: Quiz,
     meta: {
       visible: true,

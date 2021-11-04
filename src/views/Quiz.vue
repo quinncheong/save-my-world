@@ -5,8 +5,8 @@
     <Video />
     <h4><strong>Quiz Time</strong></h4>
     <p style="font-size: 15px"><i>Test your understanding by clicking on the "Start Quiz" button :)</i></p>
-    <div class="card my-2">
-      <div class="card-body bg-dark">
+    <div class="card bg-transparent my-2">
+      <div class="card-body">
         <!-- <h5 class="card-title">Special title treatment</h5> -->
         <!-- <p class="card-text">With supporting text below as a natural lead-in to additional content.</p> -->
         <Quizzes />
@@ -45,4 +45,5 @@ export default {
 hr {
   border: solid 2px white;
 }
+
 </style>
