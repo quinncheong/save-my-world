@@ -55,6 +55,16 @@ const routes = [
       visible: true,
     },
   },
+  // This is for the 404 page. To be changed
+  {
+    // path: "*",
+    path: "/:catchAll(.*)",
+    name: "NotFound",
+    component: New,
+    meta: {
+      requiresAuth: false
+    }
+  }
 ];
 
 // testing
