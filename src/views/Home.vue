@@ -106,13 +106,13 @@
 
     <ul class="main">
       <!--Reduce-->
-      <li>
+      <li class="header-top">
         <input type="radio" name="tab" id="label-1" checked />
         <label for="label-1">Reduce</label>
         <div class="content">
           <h1 class="heading">Reduce</h1>
           <br />
-          <div class="container listing">
+          <div class="container">
             <div class="row">
               <!--for the image-->
               <div class="col-3">
@@ -132,7 +132,7 @@
 
                 <br />
 
-                <ul>
+                <ul class="listing">
                   <li>
                     Buy products in bulk. Larger, economy-size products or ones
                     in concentrated form use less packaging and usually cost
@@ -157,7 +157,7 @@
 
       <!--Reuse-->
 
-      <li>
+      <li class="header-top">
         <input type="radio" name="tab" id="label-2" />
         <label for="label-2">Reuse</label>
         <div class="content">
@@ -178,9 +178,9 @@
                   Sometimes it takes creativity:
                 </p>
 
-                <br>
+                <br />
 
-                <ul class='list'>
+                <ul class="listing">
                   <li>
                     Avoid disposable goods, such as paper plates, cups, napkins,
                     razors, and lighters. Throwaways contribute to the problem,
@@ -201,7 +201,7 @@
       </li>
 
       <!--Recycle-->
-      <li>
+      <li class="header-top">
         <input type="radio" name="tab" id="label-3" />
         <label for="label-3">Recycle</label>
         <div class="content">
@@ -224,7 +224,7 @@
                 </p>
                 <br />
 
-                <ul>
+                <ul class="listing">
                   <li>
                     Buy products made from recycled material. Look for the
                     recycling symbol or ask store managers or salesmen
@@ -288,17 +288,17 @@
     <!-- Tabs content -->
 
     <!-- <div class="row bg-light" style="color: black"> -->
-      <!--Use mx-auto d-block for centering-->
-      <!-- <section class="reduce bg-light"> -->
-      <!-- <div class="container text-center"> -->
+    <!--Use mx-auto d-block for centering-->
+    <!-- <section class="reduce bg-light"> -->
+    <!-- <div class="container text-center"> -->
 
-      <!--for the image-->
-      <!-- <div class="col-6">
+    <!--for the image-->
+    <!-- <div class="col-6">
         <img class="imgsize" src="@/assets/img/planetearth.png" />
       </div> -->
 
-      <!--for the text-->
-      <!-- <div class="col-6 fullwidth">
+    <!--for the text-->
+    <!-- <div class="col-6 fullwidth">
         <div class="grid-2">
           <div class="center"></div>
           <div>
@@ -332,8 +332,8 @@
         </div>
       </div> -->
 
-      <!-- </div> -->
-      <!-- </section> -->
+    <!-- </div> -->
+    <!-- </section> -->
     <!-- </div> -->
 
     <div class="row">
@@ -378,19 +378,19 @@
     </div>
 
     <!-- <div class="row bg-light" style="color: black"> -->
-      <!-- <section class="reduce bg-light"> -->
-      <!-- <div class="container text-center"> -->
-      <!-- <div class="col-6">
+    <!-- <section class="reduce bg-light"> -->
+    <!-- <div class="container text-center"> -->
+    <!-- <div class="col-6">
         <img
           class="imgsize mx-auto d-block"
           src="@/assets/img/recyclingbin.png"
         />
       </div> -->
 
-      <!-- <div class="grid-2"> -->
-      <!-- <div class="center"> 
+    <!-- <div class="grid-2"> -->
+    <!-- <div class="center"> 
           </div> -->
-      <!-- <div class="col-6">
+    <!-- <div class="col-6">
         <br />
         <h3 class="heading">RECYCLE</h3>
         <br />
@@ -424,9 +424,9 @@
           </li>
         </ul>
       </div> -->
-      <!-- </div> -->
-      <!-- </div> -->
-      <!-- </section> -->
+    <!-- </div> -->
+    <!-- </div> -->
+    <!-- </section> -->
     <!-- </div> -->
     <br />
   </div>
@@ -479,17 +479,17 @@ export default {
   background-size: contain, cover;
 }
 
-.imgsize {
-  width: 200px;
-  height: 200px;
-  margin-top: 20px;
-}
+// .imgsize {
+//   width: 200px;
+//   height: 200px;
+//   margin: 20px;
+// }
 
-.background-transparent {
-  background: rgba(160, 154, 154, 0.445);
-  margin-left: 10px;
-  border-radius: 25px;
-}
+// .background-transparent {
+//   background: rgba(160, 154, 154, 0.445);
+//   margin-left: 10px;
+//   border-radius: 25px;
+// }
 
 //the following css is for the globe - quinn pls help transfer to scss
 .position {
@@ -647,15 +647,14 @@ export default {
 //   color: #333;
 // }
 
-.listing ul {
-  list-style-type: '✽';
+ul.listing {
+  list-style-type: "✽  ";
   text-align: left;
   font-size: $variable-font-small;
-
 }
 
-ul.list-style{
-  list-style-type: '✽';
+ul.list-style {
+  // list-style-type: "✽";
   color: green;
 }
 
@@ -665,7 +664,6 @@ ul.list-style{
 }
 
 .heading {
-
   font-weight: 900;
   color: green;
 
@@ -684,30 +682,35 @@ ul.list-style{
 
 .vl {
   border-left: 3px solid green;
-  height: 500px;
+  height: auto;
 }
 
 //for the nav tab
 .main {
-  // box-sizing: border-box;
+  box-sizing: border-box;
   width: auto;
   height: auto;
   position: relative;
-  display: block;
+  display: flex;
+
+
+  li.header-top {
+    width: 100%;
+    display: inline-block;
+    background-color: rgb(17, 16, 16);
+  }
 }
 
-.main li {
-  display: inline-block;
-  background-color: black;
-}
 
 .content {
-  background: black;
+  background: rgb(17, 16, 16);
   color: white;
   position: absolute;
   left: 0;
-  display: none;
+  display:none; 
   padding: 30px;
+  width: 100%;
+
 }
 
 .content > p {
@@ -716,7 +719,7 @@ ul.list-style{
   margin: 10px;
 }
 
-.main [id^="label"]:checked ~ .content {
+.main [id^="label"]:checked ~.content {
   display: block;
 }
 
