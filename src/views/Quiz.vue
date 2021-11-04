@@ -2,7 +2,6 @@
   <div class="quiz-wrapper">
     <div v-if="!started">
       <div class="mb-3">
-        <hr />
         <h4 class="mb-2"><strong>Quiz Time</strong></h4>
         <p class="mb-2" style="font-size: 15px">
           <i

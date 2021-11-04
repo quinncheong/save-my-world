@@ -70,13 +70,11 @@
           ></iframe>
         </div>
       </div>
-      <hr />
     </div>
   </div>
 </template>
 
 <script>
-// import Campaign from "./Campaign.vue";
 
 export default {
   name: "Video",
