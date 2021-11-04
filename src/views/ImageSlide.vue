@@ -1,6 +1,8 @@
 <template>
-  <div>
-    <image-of-change :images="images" />
+  <div class="community">
+    <div>
+      <image-of-change :images="images" />
+    </div>
   </div>
 </template>
 

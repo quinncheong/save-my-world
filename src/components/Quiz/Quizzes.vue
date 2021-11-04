@@ -1,5 +1,7 @@
 <template>
-  <div>
+  <div class="image-change-wrapper">
+    <h4><strong>Quiz Time</strong></h4>
+    <p style="font-size: 15px"><i>Challenge yourself with our quiz! Answer all the questions to the best of your capabilities. May the force be with you.</i></p>
     <div v-if="started">
       <flow-form
         class="mt-2 text-white"
@@ -67,13 +69,15 @@
 
     </div>
     <div v-else>
-      <button class="btn btn-light" @click="startQuiz()">Start Quiz</button>
+      <button class="btn btn-light my-2" @click="startQuiz()">Start Quiz</button>
     </div>
     <!-- Button for debugging -->
     <!-- <button class="btn btn-success" @click="logQuestions()">
       Log questions
     </button> -->
+    <hr>
   </div>
+
 </template>
 
 <script>
@@ -240,7 +244,7 @@ export default {
 };
 </script>
 
-<style>
+<style lang="scss" scoped>
 /* Import Vue Flow Form base CSS */
 @import "~@ditdot-dev/vue-flow-form/dist/vue-flow-form.css";
 
@@ -251,6 +255,36 @@ export default {
 
 p.text-success {
   margin-bottom: 10px;
+}
+
+.image-change-wrapper {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  justify-content: space-between;
+  font-size: $variable-font;
+}
+// display 70% width on desktop
+@media screen and (min-width: 768px) {
+  .image-change-wrapper {
+    width: 70%;
+  }
+}
+
+// display 70% width on large screen sizes
+@media screen and (min-width: 992px) {
+  .image-change-wrapper {
+    width: 60%;
+  }
+}
+
+// // display 70% width on extra large screen sizes
+@media screen and (min-width: 1200px) {
+  .image-change-wrapper {
+    width: 60%;
+  }
 }
 
 </style>
