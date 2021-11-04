@@ -50,7 +50,7 @@ const routes = [
   },
   {
     path: "/test",
-    name: "Disaster Map",
+    name: "Weird",
     component: New,
     meta: {
       visible: false,
