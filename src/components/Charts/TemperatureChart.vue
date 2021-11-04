@@ -153,8 +153,11 @@ export default {
     };
 
     // Function to load the new data
+    // This function should make an http request to an aws lambnda function
+    // It needs to send a payload with the isoCountry, startYear and endYear.
     const handleClick = async (e) => {
       e.preventDefault();
+      let lamdbaFn = 'https://u96rjz2jhi.execute-api.ap-southeast-1.amazonaws.com/getClimateData'
       let baseUrl =
         "https://climatedataapi.worldbank.org/climateweb/rest/v1/country/annualavg/tas";
       let isoCountry = iso.whereCountry(country.value).alpha3;
@@ -164,7 +167,14 @@ export default {
       console.log(fullUrl);
 
       try {
-        let res = await axios.get(fullUrl);
+        // Do a post request to the serverless lambda function
+        let res = await axios.post(lamdbaFn, {
+          isoCountry,
+          startYear,
+          endYear
+        });
+        console.log(res.data);
+
         if (!res) {
           throw Error("Error in accessing API");
         }
