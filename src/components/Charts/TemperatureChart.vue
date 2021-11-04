@@ -99,6 +99,16 @@ export default {
       },
       options: {
         responsive: true,
+        plugins: {
+          decimation: {
+            enabled: false,
+            algorithm: "LTTB",
+          },
+        },
+        interaction: {
+          mode: "index",
+          intersect: false,
+        },
         // plugins: {
         //   animation: false,
         //   parsing: false,
@@ -132,13 +142,22 @@ export default {
         //   maintainAspectRatio: false,
         // },
         scales: {
-          yAxes: {
+          y: {
+            type: "linear",
             display: true,
-            stacked: false,
-            // fontColor: '#4848EE',
+            position: "left",
+          },
+          y1: {
+            type: "linear",
+            display: false,
+            position: "right",
+            grid: {
+              drawOnChartArea: false, // only want the grid lines for one axis to show up
+            },
           },
           xAxes: {
-            display: false,
+            display: true,
+            autoSkip: true,
           },
           // xAxes: {
           //   display: true,
@@ -180,7 +199,7 @@ export default {
       // iterate over chartyears to make request and push to the different arrays
       for (let key in chartYears) {
         let type = chartYears[key];
-        if (type === "past") {
+        if (key === "past") {
           for (let year in type) {
             let startYear = year;
             let endYear = type[year];
@@ -224,10 +243,14 @@ export default {
         for (let dataset of pastDataArray) {
           for (let data of dataset) {
             pastDataset.push(data.annualData[0]);
+            futureDataset.push(NaN);
             updatedLabels.push(count);
             count += 1;
           }
         }
+
+        // Push last point of past dataset to the future dataset
+        futureDataset.push(pastDataset[pastDataset.length - 1]);
 
         for (let dataset of futureDataArray) {
           for (let data of dataset) {
@@ -236,29 +259,27 @@ export default {
             count += 1;
           }
         }
-
-        console.log(pastDataset);
-        console.log(futureDataset);
-
         lineChart.data.labels = updatedLabels;
         lineChart.data.datasets = [
           {
-            label: "Temperature Over Time",
+            label: "Past Temperatures [1920 - 2020]",
             backgroundColor: ["#41B883"],
             borderColor: "#41B883",
             data: pastDataset,
             fill: false,
-            tension: 0.4
+            tension: 0.4,
+            yAxisID: "y",
           },
-          // {
-          //   label: "Temperature Over Time",
-          //   backgroundColor: ["#41B883"],
-          //   borderColor: "#41B883",
-          //   borderDash: [5, 5],
-          //   data: futureDataset,
-          //   fill: false,
-          //   tension: 0.4
-          // },
+          {
+            label: "Future Predicted Temperatures [2020 - 2080]",
+            backgroundColor: ['#00D8FF'],
+            borderColor: '#00D8FF',
+            // borderDash: [5, 5],
+            data: futureDataset,
+            fill: false,
+            tension: 0.4,
+            // yAxisID: "y1",
+          },
         ];
 
         chartRef.value.update(null);
