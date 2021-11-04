@@ -1,27 +1,4 @@
 <template>
-  <div class="hamburger-menu">
-    <button class="burger" data-state="closed">
-      <span></span>
-      <span></span>
-      <span></span>
-    </button>
-  </div>
-  <nav data-state="closed">
-    <ul>
-      <li>
-        <a href="#">Home</a>
-      </li>
-      <li>
-        <a href="#">Services</a>
-      </li>
-      <li>
-        <a href="#">About</a>
-      </li>
-      <li>
-        <a href="#">Contact</a>
-      </li>
-    </ul>
-  </nav>
   <main>
     <div class="container">
       <div class="row">
@@ -695,12 +672,12 @@
         <div class="col-md-6 align-self-center">
           <h1>404</h1>
           <h2>UH OH! You're lost.</h2>
-          <p>
+          <p class="mt-3">
             The page you are looking for does not exist. How you got here is a
             mystery. But you can click the button below to go back to the
             homepage.
           </p>
-          <button class="btn btn-warning">HOME</button>
+          <button @click="handleClick" class="mt-3 btn btn-outline-warning">HOME</button>
         </div>
       </div>
     </div>
@@ -710,6 +687,11 @@
 <script>
 export default {
   name: "ErrorPage",
+  methods: {
+    handleClick() {
+      this.$router.push("/");
+    }
+  }
 };
 </script>
 
@@ -843,42 +825,12 @@ nav {
   }
 }
 .btn {
-  z-index: 1;
-  overflow: hidden;
-  background: transparent;
+  padding: 5px 50px;
   position: relative;
-  padding: 8px 50px;
   border-radius: 30px;
-  cursor: pointer;
-  font-size: 1em;
-  letter-spacing: 2px;
-  transition: 0.2s ease;
   font-weight: bold;
-  margin: 5px 0px;
-  &.green {
-    border: 4px solid var(--green);
-    color: var(--blue);
-    &:before {
-      content: "";
-      position: absolute;
-      left: 0;
-      top: 0;
-      width: 0%;
-      height: 100%;
-      background: var(--green);
-      z-index: -1;
-      transition: 0.2s ease;
-    }
-    &:hover {
-      color: var(--white);
-      background: var(--green);
-      transition: 0.2s ease;
-      &:before {
-        width: 100%;
-      }
-    }
-  }
 }
+
 @media screen and (max-width: 768px) {
   body {
     display: block;
