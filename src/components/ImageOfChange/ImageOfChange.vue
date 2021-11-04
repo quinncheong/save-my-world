@@ -2,7 +2,7 @@
   <div class="image-change-wrapper">
     <!-- header -->
     <h2 class="chart-title mb-3">Images of the World</h2>
-    <p class="chart-details text-center w-75 mb-3">
+    <p class="chart-details text-center mb-3">
       The best way to see Climate change in effect, is if we can see how the
       Earth is changing. Throughout the years, many places on earth have changed
       drastically - and not for the better.
@@ -64,24 +64,26 @@ export default {
   justify-content: space-between;
   font-size: $variable-font;
 }
-// display 70% width on desktop
-@media screen and (min-width: 768px) {
-  .image-change-wrapper {
-    width: 70%;
-  }
-}
 
-// display 70% width on large screen sizes
-@media screen and (min-width: 992px) {
-  .image-change-wrapper {
-    width: 60%;
+  // display 70% width on desktop
+  @media screen and (min-width: 768px) {
+    .image-change-wrapper {
+      width: 70%;
+    }
   }
-}
 
-// // display 70% width on extra large screen sizes
-@media screen and (min-width: 1200px) {
-  .image-change-wrapper {
-    width: 60%;
+  // display 70% width on large screen sizes
+  @media screen and (min-width: 992px) {
+    .image-change-wrapper {
+      width: 60%;
+    }
   }
-}
+
+  // // display 70% width on extra large screen sizes
+  @media screen and (min-width: 1200px) {
+    .image-change-wrapper {
+      width: 60%;
+    }
+  }
+
 </style>

@@ -5,6 +5,7 @@
     <div class="app-content-wrapper">
       <router-view />
     </div>
+    <Footer />
   </div>
 
   <!--Wei Ting's edit to add the background pixels-->
@@ -21,11 +22,13 @@
 <script>
 import Navbar from "@/Layout/Navbar.vue";
 // import Navbar1 from "@/Layout/Navbar1.vue";
+import Footer from "@/Layout/Footer.vue";
 
 export default {
   name: "App",
   components: {
     Navbar,
+    Footer
   },
 };
 </script>
