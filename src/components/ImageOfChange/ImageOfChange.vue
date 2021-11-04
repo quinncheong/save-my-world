@@ -64,24 +64,26 @@ export default {
   justify-content: space-between;
   font-size: $variable-font;
 }
-// display 70% width on desktop
-@media screen and (min-width: 768px) {
-  .image-change-wrapper {
-    width: 70%;
-  }
-}
 
-// display 70% width on large screen sizes
-@media screen and (min-width: 992px) {
-  .image-change-wrapper {
-    width: 60%;
+  // display 70% width on desktop
+  @media screen and (min-width: 768px) {
+    .image-change-wrapper {
+      width: 70%;
+    }
   }
-}
 
-// // display 70% width on extra large screen sizes
-@media screen and (min-width: 1200px) {
-  .image-change-wrapper {
-    width: 60%;
+  // display 70% width on large screen sizes
+  @media screen and (min-width: 992px) {
+    .image-change-wrapper {
+      width: 60%;
+    }
   }
-}
+
+  // // display 70% width on extra large screen sizes
+  @media screen and (min-width: 1200px) {
+    .image-change-wrapper {
+      width: 60%;
+    }
+  }
+
 </style>
