@@ -444,7 +444,7 @@ export default {
 
 @media screen and (min-width: 1268px) {
   .visualisation-wrapper {
-    width: 70%;
+    width: 60%;
   }
 }
 </style>
