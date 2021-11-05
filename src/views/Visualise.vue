@@ -72,7 +72,6 @@ export default {
       access_token: process.env.VUE_APP_MAP_ACCESS_TOKEN,
       center: [0, 20],
       map: {},
-      geoCodeList: [],
       // Disaster list
       disaster: [
         "Cold Wave",
@@ -108,10 +107,8 @@ export default {
       status: "",
     };
   },
-
-  mounted() {
+  async mounted() {
     this.createMap();
-
     // Load the markers here when loading
     this.map.on("load", async () => {
       await this.getLocation(); // After getting location then we add the markers
@@ -133,6 +130,10 @@ export default {
             },
           });
 
+          console.log(this.features);
+
+          console.log('added source')
+
           // Adding layer to the map
           this.map.addLayer({
             id: "result",
@@ -146,7 +147,7 @@ export default {
               "text-offset": [0, 1.25],
               "text-anchor": "top",
             },
-            filter: ["==", ["number", ["get", "year"]], parseInt(this.yearVal)],
+            // filter: ["==", ["number", ["get", "year"]], parseInt(this.yearVal)],
           });
         }
       );
@@ -233,6 +234,8 @@ export default {
           zoom: 1,
           continuousWorld: false,
         });
+
+        // This variable is unused?
         let geocoder = new MapboxGeocoder({
           accessToken: this.access_token,
           mapboxgl: mapboxgl,
@@ -242,11 +245,9 @@ export default {
         console.log("map error", err);
       }
     },
-
     // trying to get location of prepopulated data.
     async getLocation() {
       // Reset
-
       this.features = [];
       this.loading = true;
       // "https://api.reliefweb.int/v1/disasters?appname=apidoc&query[value]=" + this.selectedQuery + "&query[fields][]=type&fields[include][]=type.name&limit=100"
@@ -254,28 +255,20 @@ export default {
       // Changed to 100 first for faster loading time.
       try {
         const response = await axios.get(
-          "https://api.reliefweb.int/v1/disasters?type&fields[include][]=type.name&limit=10&sort[]=date:desc"
+          "https://api.reliefweb.int/v1/disasters?type&fields[include][]=type.name&limit=500&sort[]=date:desc"
         );
         if (!response) {
           throw Error("Failed to get data");
         }
         // Score and desc needed for pop up
-        this.desc = [];
+        this.desc = []; // Set the desc to an empty array?
         let results = response.data.data ?? [];
         await this.createFeaturesArray(results);
-
-        console.log(this.features);
-
-        let geoList = await this.pushGeo();
-        this.geoCodeList = geoList;
-
-        return this.geoCodeList;
+        await this.pushGeo();
 
         // Catching the erorr
       } catch (err) {
-        console.log("I am hitting an error inside getLocation");
-        console.log(err);
-        return;
+        console.log("I am hitting an error inside getLocation: ", err);
       }
     },
     // Function to create the features array from results
@@ -304,7 +297,6 @@ export default {
         this.features.push(obj);
       }
     },
-
     // Function to push lat and long into the large fking object that will be added to .addSource
     async pushGeo() {
       // Changed to features
@@ -335,7 +327,19 @@ export default {
         };
       }
 
-      console.log(geoIdDictionary);
+      await this.addCoordToFeatures(geoIdDictionary);
+    },
+
+    // Function to add the coordinates to the features array
+    async addCoordToFeatures(geoIdDictionary) {
+      console.log(geoIdDictionary)
+      // Loop through features and do the lookup in the geo dictionary
+      // and add it to the array
+      this.features.forEach((feature, index) => {
+        let { geoCode, desc } = geoIdDictionary[feature.properties.id];
+        feature.geometry.coordinates = [geoCode.lon, geoCode.lat];
+        feature.properties.description = desc;
+      });
     },
 
     async handleClick() {},
