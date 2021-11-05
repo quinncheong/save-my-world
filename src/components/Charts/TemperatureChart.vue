@@ -244,11 +244,19 @@ export default {
           }
         }
 
+<<<<<<< HEAD
         count = 2020
 
         // Push last point of past dataset to the future dataset
         futureDataset.push(pastDataset[pastDataset.length - 1]);
         updatedLabels.push(count);
+=======
+        // Push last point of past dataset to the future dataset
+        futureDataset.push(pastDataset[pastDataset.length - 1]);
+        updatedLabels.push(Math.floor(count));
+
+        count = 2020
+>>>>>>> origin
 
         for (let dataset of futureDataArray) {
           for (let data of dataset) {
