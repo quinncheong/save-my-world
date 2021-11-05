@@ -1,9 +1,14 @@
 <template>
   <div>
-    <Navbar />
-    <!-- <Navbar1 /> -->
-    <div class="app-content-wrapper">
+    <div v-if="currentRoute === '/'">
       <router-view />
+    </div>
+    <div v-else>
+      <Navbar />
+      <!-- <Navbar1 /> -->
+      <div class="app-content-wrapper">
+        <router-view />
+      </div>
     </div>
     <Footer />
   </div>
@@ -15,8 +20,6 @@
     <div id="stars2"></div>
     <div id="stars3"></div>
   </section> -->
-
-  
 </template>
 
 <script>
@@ -28,7 +31,12 @@ export default {
   name: "App",
   components: {
     Navbar,
-    Footer
+    Footer,
+  },
+  computed: {
+    currentRoute() {
+      return this.$route.path;
+    },
   },
 };
 </script>
@@ -77,15 +85,14 @@ img {
 
 // CSS of the app
 #app {
-
   font-family: "Montserrat";
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: $font-color-primary;
-  
-  // background-color: $bg-color-primary; //background colour of the app 
-  background-color: $bg-color-primary; //background colour of the app 
+
+  // background-color: $bg-color-primary; //background colour of the app
+  background-color: $bg-color-primary; //background colour of the app
 }
 
 .app-content-wrapper {
@@ -93,5 +100,4 @@ img {
   padding: 1rem;
   @extend %background-overlay;
 }
-
 </style>
