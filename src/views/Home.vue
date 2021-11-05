@@ -21,9 +21,8 @@
         <span></span>
       </a>
     </header>
-
+    <!-- About us -->
     <about id="main" />
-
     <!-- Block about what the site is -->
       <!-- <div class="top-header-wrapper">
         <h1 class="text-white">
@@ -41,8 +40,7 @@
 
     <!--How we can play our part-->
     <future />
-
-    <!-- <three-rs /> -->
+    <three-rs />
   </div>
 </template>
 
