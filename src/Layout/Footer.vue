@@ -1,11 +1,11 @@
 <template>
   <footer class="footer-wrapper">
     <div class="links">
-      <div :key="route.path" v-for="(route, index) in routes">
+      <template :key="route.path" v-for="(route, index) in routes">
         <router-link v-if="route.meta.visible" :to="route.path.toLowerCase()">
           {{ route.name }}
         </router-link>
-      </div>
+      </template>
     </div>
 
     <hr class="w-75 justify-self-center mx-auto" />
@@ -55,12 +55,14 @@ export default {
 .footer-wrapper {
   @extend %page-wrapper;
   font-family: "Montserrat";
-  padding: 2rem 2rem 0 2rem;
+  padding: 1rem 6rem 0 ;
   justify-content: center;
 
   .links {
-    padding: 2rem;
-    margin-bottom: 2rem;
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem 0 0 0;
+    font-weight: bold;
   }
 
   .footer-text {
