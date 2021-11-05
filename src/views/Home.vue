@@ -6,6 +6,7 @@
         <div class="row">
           <div class="col-lg-8 mx-auto text-center">
             <h1 class="display-4 text-white heading">
+
               You have the power to <span id="savemyworld">#SaveOurWorld</span>
             </h1>
             <p class="text-white my-3">
@@ -29,7 +30,6 @@
   </div>
 
   <!--How we can play our part-->
-
   <section id="services">
     <div class="container">
       <div class="row">
@@ -450,7 +450,6 @@ section {
   z-index: 2;
   overflow: hidden;
 }
-
 .service::after {
   content: "";
   width: 100%;
