@@ -4,7 +4,7 @@ import router from "./router";
 import store from "./store";
 
 // Globallay register FA
-import FontAwesomeIcon from "@/assets/js/fontawesome-icons";
+import FontAwesomeIcon from "@/assets/js/fontawesome-icons.js";
 
 createApp(App)
   .use(store)
