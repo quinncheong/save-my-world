@@ -96,7 +96,7 @@
 
     
 
-    <three-rs />
+    <!-- <three-rs /> -->
   </div>
 </template>
 

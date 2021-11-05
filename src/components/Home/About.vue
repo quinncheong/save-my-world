@@ -1,8 +1,8 @@
 <template>
-  <section class="container">
-    <div class="row mb-5">
+  <section class="container pt-5">
+    <div class="row mb-2">
       <div class="col-md-8 mx-auto text-center">
-        <h1>About Us</h1>
+        <h1 class="mb-2">About Us</h1>
         <p>
           With us, you'll get to learn more about how you can play your part in
           saving Gaia as well as getting more insights on how our beloved mother
@@ -10,90 +10,80 @@
         </p>
       </div>
     </div>
-    <div class="row g-4">
-      <!--one card-->
-      <!-- <a href='../src/views/Quiz.vue'> -->
-      <div class="col-lg-3 col-sm-6">
-        <a href="../src/views/Quiz.vue">
+
+    <div class="row g-2">
+      <!-- V-for for each card -->
+      <div :key="card.title" v-for="card of cards" class="col col-sm-6 col-md-3">
+        <router-link :to="card.link">
           <div class="service card-effect bounceInUp">
             <div class="iconbox">
               <i class="bx bxs-check-shield"></i>
             </div>
-            <h5 class="mt-4 mb-2">Learning</h5>
-            <img class="imgsize mx-auto d-block" src="@/assets/img/learn.png" />
+            <h5 class="mt-4 mb-2">{{ card.title }}</h5>
+            <img class="img-fluid mx-auto d-block" :src="getUrl(card.imageSrc)" />
             <p>
-              Learn more about cmilate change and its effects on mother earth
+              {{ card.description }}
             </p>
           </div>
-        </a>
+        </router-link>
       </div>
-      <!-- </a> -->
-
-      <div class="col-lg-3 col-sm-6">
-        <a href="../src/views/ImageSlide.vue">
-          <div class="service card-effect">
-            <div class="iconbox">
-              <i class="bx bxs-comment-detail"></i>
-            </div>
-            <h5 class="mt-4 mb-2">Images of Change</h5>
-            <img
-              class="imgsize mx-auto d-block"
-              src="@/assets/img/imagec.png"
-            />
-            <p>Explore how Gaia has evolved over time with image visuals</p>
-          </div>
-        </a>
-      </div>
-
-      <div class="col-lg-3 col-sm-6">
-        <a href="../src/views/ImageSlide.vue">
-          <div class="service card-effect">
-            <div class="iconbox">
-              <i class="bx bxs-cog"></i>
-            </div>
-            <h5 class="mt-4 mb-2">Graphical Visuals</h5>
-            <img
-              class="imgsize mx-auto d-block"
-              src="@/assets/img/charts.png"
-            />
-            <p>
-              See real-time statitics of how climate change has affected Sea
-              Ice, Carbon Dioxide, Global Temperature
-            </p>
-          </div>
-        </a>
-      </div>
-
-      <div class="col-lg-3 col-sm-6">
-        <a href="~@/views/Visualise.vue">
-          <div class="service card-effect">
-            <div class="iconbox">
-              <i class="bx bxs-heart"></i>
-            </div>
-            <h5 class="mt-4 mb-2">Disaster Map</h5>
-            <img
-              class="imgsize mx-auto d-block"
-              src="@/assets/img/mapbox.png"
-            />
-            <p>
-              With mapbox, we can navigate the world to explore the different
-              disasters that has occured
-            </p>
-          </div>
-        </a>
-      </div>
+      <!-- End of card v-for -->
     </div>
   </section>
-  <!-- SERVICES -->
 </template>
 
 <script>
 export default {
   name: "About",
+  data() {
+    return {
+      cards: [
+        {
+          title: "Learning",
+          description: "Learn more about climate change and its impacts",
+          image: "../assets/img/learn.png",
+          imageSrc: "learn.png",
+          link: "/quiz",
+        },
+        {
+          title: "Images of Change",
+          description:
+            "Explore how Gaia has evolved over time with image visuals",
+          image: "@/assets/img/imagec.png",
+          imageSrc: "imagec.png",
+          link: "/image",
+        },
+        {
+          title: "Graphical Visuals",
+          description:
+            "See real-time statitics of how climate change has affected Sea Ice, Carbon Dioxide, Global Temperature",
+          image: "@/assets/img/charts.png",
+          imageSrc: "charts.png",
+          link: "/charts",
+        },
+        {
+          title: "Disaster Map",
+          description:
+            "With mapbox, we can navigate the world to explore the different disasters that has occured",
+          image: "@/assets/img/mapbox.png",
+          imageSrc: "mapbox.png",
+          link: "/news",
+        },
+      ],
+    };
+  },
+  methods: {
+    getUrl(pic) {
+      return require(`@/assets/img/${pic}`);
+    },
+  },
 };
 </script>
 
 <style lang="scss" scoped>
+.container {
+  font-size: $variable-font;
+}
 .card-effect {
   // box-shadow: var(--box-shadow);
   background-color: var(--white);
