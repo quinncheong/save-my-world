@@ -2,25 +2,20 @@
   <div class="home-page-wrapper">
     <!--top header-->
     <header class="header">
-        <div class="links text-white">
-          <template :key="route.path" v-for="(route, index) in routes">
-            <router-link
-              v-if="route.meta.visible"
-              :to="route.path.toLowerCase()"
-            >
-              {{ route.name }}
-            </router-link>
-          </template>
-        </div>
+      <div class="links text-white">
+        <template :key="route.path" v-for="(route, index) in routes">
+          <router-link v-if="route.meta.visible" :to="route.path.toLowerCase()">
+            {{ route.name }}
+          </router-link>
+        </template>
+      </div>
 
-        <div class="header-middle-text d-flex">
-          <h4 class="text-white">Save My World,</h4>
-          <h4 class="text-white">Together</h4>
-        </div>
-
-        <animated-birds />
-
-      
+      <div class="header-middle-text d-flex">
+        <h4 class="text-white">Save My World,</h4>
+        <h4 class="text-white">Together</h4>
+      </div>
+      <!-- SVG birds animation -->
+      <animated-birds />
 
       <a href="#main" class="header-arrow">
         <span></span>
@@ -30,13 +25,11 @@
     <about id="main" />
 
     <!-- Block about what the site is -->
-    <section class="" id="home">
       <!-- <div class="top-header-wrapper">
         <h1 class="text-white">
           You have the power to <span id="savemyworld">#SaveOurWorld</span>
         </h1>
       </div> -->
-    </section>
     <!-- <div class="row">
       <div class="col-1"></div>
       <div class="col-lg-4 text-white alignment-left my-3">
@@ -48,7 +41,6 @@
 
     <!--How we can play our part-->
     <future />
-    
 
     <!-- <three-rs /> -->
   </div>
@@ -209,7 +201,6 @@ export default {
 //   // --box-shadow: 0 8px 22px rgba(0,0,0,0.1);
 // }
 
-
 a {
   color: var(--dark);
   text-decoration: none;
@@ -238,7 +229,6 @@ a {
   background-size: cover;
   min-height: 500px;
 }
-
 
 form input.form-control {
   height: 56px;
@@ -369,29 +359,6 @@ form .form-control {
   to {
     left: 100%;
   }
-}
-
-.nav-tabs .nav-link.active {
-  background-color: purple;
-  color: white;
-  border: 3px solid purple;
-}
-
-.nav-tabs .nav-link {
-  background-color: white;
-  color: purple;
-  border: 3px solid purple;
-  margin-right: 2rem;
-  padding-left: 3rem;
-  padding-right: 3rem;
-}
-
-.nav-tabs .nav-link:hover {
-  border: 3px solid purple;
-}
-
-.tab-content {
-  border-bottom: 1px solid purple;
 }
 
 

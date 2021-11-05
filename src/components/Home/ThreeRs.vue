@@ -189,6 +189,28 @@ export default {
 
 <style lang="scss" scoped>
 //for the css navigation tab
+.nav-tabs .nav-link.active {
+  background-color: purple;
+  color: white;
+  border: 3px solid purple;
+}
+
+.nav-tabs .nav-link {
+  background-color: white;
+  color: purple;
+  border: 3px solid purple;
+  margin-right: 2rem;
+  padding-left: 3rem;
+  padding-right: 3rem;
+}
+
+.nav-tabs .nav-link:hover {
+  border: 3px solid purple;
+}
+
+.tab-content {
+  border-bottom: 1px solid purple;
+}
 
 ul.listing {
   list-style-type: "✽  ";
