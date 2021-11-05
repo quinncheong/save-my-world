@@ -76,8 +76,8 @@ img {
 
 // CSS of the app
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  // font-family: 'PT Sans Narrow', sans-serif;
+  // font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: 'Poppins', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
