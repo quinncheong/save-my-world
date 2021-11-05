@@ -4,7 +4,8 @@ import Quiz from "../views/Quiz.vue";
 import Visualise from "@/views/Visualise.vue";
 import Charts from "@/views/Charts.vue";
 import ImageSlider from "@/views/ImageSlide.vue";
-import New from '@/views/NewLanding.vue';
+import New from "@/views/NewLanding.vue";
+import ErrorPage from "@/views/404.vue";
 
 const routes = [
   {
@@ -49,10 +50,20 @@ const routes = [
   },
   {
     path: "/test",
-    name: "Disaster Map",
+    name: "Weird",
     component: New,
     meta: {
-      visible: true,
+      visible: false,
+    },
+  },
+  // This is for the 404 page. To be changed
+  {
+    // path: "*",
+    path: "/:catchAll(.*)",
+    name: "NotFound",
+    component: ErrorPage,
+    meta: {
+      visible: false,
     },
   },
 ];
