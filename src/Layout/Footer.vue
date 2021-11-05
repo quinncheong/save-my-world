@@ -10,13 +10,20 @@
 
     <hr class="w-75 justify-self-center mx-auto" />
     <div class="footer-text">
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima
-      necessitatibus dolores delectus est qui labore! Magnam officia quasi sequi
-      blanditiis.
+      Save My World is a team of Software Developers passionate about the
+      environment. Situated in Singapore and developing software for 2 years,
+      Save My World provides a platform for people to save the environment and
+      use graphical techniques to observe how Earth is changing. Save My World
+      aims to spread awareness about the environment using beautiful visuals,
+      exceptional gamification, and factbased charts.
     </div>
-    <div class="footer-social">
-      <font-awesome-icon :icon="['fas', 'phone']" />
-
+    <div class="footer-social my-4">
+      <font-awesome-icon :icon="['fab', 'facebook-square']" />
+      <font-awesome-icon :icon="['fab', 'github']" />
+      <font-awesome-icon :icon="['fab', 'linkedin']" />
+      <font-awesome-icon :icon="['fab', 'twitter']" />
+      <font-awesome-icon :icon="['fab', 'instagram']" />
+      <font-awesome-icon :icon="['fas', 'envelope']" />
     </div>
     <div class="footer-copyright">
       <p class="m-0 text-center text-white">
@@ -27,10 +34,6 @@
 </template>
 
 <script>
-import { library } from '@fortawesome/fontawesome-svg-core'
-import { faUserSecret } from '@fortawesome/free-solid-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-
 export default {
   name: "Footer",
   data() {
@@ -62,18 +65,38 @@ export default {
 .footer-wrapper {
   @extend %page-wrapper;
   font-family: "Montserrat";
-  padding: 1rem 6rem 0 ;
-  justify-content: center;
+  padding: 1rem 6rem 0.5rem;
+  align-items: center;
+  text-align: center;
+  text-justify: inter-word;
 
   .links {
     display: flex;
+    width: 80%;
     justify-content: space-between;
     padding: 1rem 0 0 0;
     font-weight: bold;
   }
 
   .footer-text {
-    margin-bottom: 2rem;
+    margin-bottom: 0.5rem;
+    font-size: 15px;
+  }
+
+  .footer-social {
+    width: 40%;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    justify-content: space-around;
+  }
+}
+
+// Remove padding when screen is small
+@media (max-width: 768px) {
+  .footer-wrapper {
+    padding: 0.5rem;
+    // text-align: justify;
   }
 }
 </style>
