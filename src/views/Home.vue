@@ -45,9 +45,14 @@
     </div>
 
     <div class="start-learning">
-      <div class="start-learing-content">
-        <h1 class="text-white mb-4">Start Learning Now!</h1>
-        <button @click="pushToQuiz()" class="btn btn-dark rounded">Take me away</button>
+      <div class="typewriter">
+        <h1 class="typewriter-text">Start Learning Now!</h1>
+        <br />
+        <br />
+        <button @click="pushToQuiz()" class="btn btn-dark rounded">
+          Take me away
+          <font-awesome-icon :icon="['fas', 'hand-holding-heart']" />
+        </button>
       </div>
     </div>
   </div>
@@ -196,6 +201,12 @@ export default {
       #fbc7d4,
       #9796f0
     ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    display: flex;
+    flex-direction: column;
+
+    .start-learning-content {
+      width: 50px;
+    }
   }
 }
 
