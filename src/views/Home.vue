@@ -1,8 +1,23 @@
 <template>
   <div class="home-page-wrapper">
     <!--top header-->
-    <div class="hero d-flex align-items-center" id="home">
-      <div class="bg-image-holder"></div>
+    <header class="header">
+        <div class="links text-white">
+          <template :key="route.path" v-for="(route, index) in routes">
+            <router-link
+              v-if="route.meta.visible"
+              :to="route.path.toLowerCase()"
+            >
+              {{ route.name }}
+            </router-link>
+          </template>
+        </div>
+
+        <div class="header-middle-text d-flex">
+          <h4 class="text-white">Save My World,</h4>
+          <h4 class="text-white">Together</h4>
+        </div>
+
       <!--animated birds-->
       <div class="">
         <div class="bird-container bird-container--one">
@@ -22,34 +37,29 @@
         </div>
       </div>
 
-      <div class="top-header-wrapper">
+      <a href="#main" class="header-arrow">
+        <span></span>
+      </a>
+    </header>
+
+    <about id="main" />
+
+    <!-- Block about what the site is -->
+    <section class="" id="home">
+      <!-- <div class="top-header-wrapper">
         <h1 class="text-white">
           You have the power to <span id="savemyworld">#SaveOurWorld</span>
         </h1>
-      </div>
-
-      <!-- <div class="row">
-              <div class="col-1"></div>
-              <div class="col-2">
-                <a href="#" class="btn me-2 btn-primary"
-                  ><span class="edit-span"></span>About Us</a
-                >
-              </div>
-              <div class="col-2">
-                <a href="#" class="btn me-2 btn-primary"
-                  ><span class="edit-span"></span>How Can I Help</a
-                >
-              </div>
-            </div> -->
-    </div>
-    <div class="row">
+      </div> -->
+    </section>
+    <!-- <div class="row">
       <div class="col-1"></div>
       <div class="col-lg-4 text-white alignment-left my-3">
         Climate change will affect all of us, whether directly or indirectly. We
         all have a stake in helping to reduce our emissions and in preparing for
         the effects of climate change.
       </div>
-    </div>
+    </div> -->
 
     <!--How we can play our part-->
     <section id="services">
@@ -84,7 +94,7 @@
       </div>
     </section>
 
-    <about />
+    
 
     <three-rs />
   </div>
@@ -93,8 +103,8 @@
 <script>
 // @ is an alias to /src
 // Components
-import About from '@/components/Home/About.vue'
-import ThreeRs from '@/components/Home/ThreeRs.vue'
+import About from "@/components/Home/About.vue";
+import ThreeRs from "@/components/Home/ThreeRs.vue";
 
 import Globe from "@/assets/img/globe.png";
 import Guide from "@/assets/img/guidebackgroundimg.jpg";
@@ -107,7 +117,7 @@ export default {
   name: "Home",
   components: {
     About,
-    ThreeRs
+    ThreeRs,
   },
   data() {
     return {
@@ -117,20 +127,71 @@ export default {
       GlobeGuide,
       Clothes,
       LandingPage,
-      
     };
+  },
+  computed: {
+    routes() {
+      console.log(this.$router.options.routes);
+      return this.$router.options.routes;
+    },
   },
 };
 </script>
 
 <style lang="scss">
 .home-page-wrapper {
-  @extend %page-wrapper;
+  // min-height: 100vh;
+  min-width: 100vw;
+  font-size: $variable-font;
+
+  .header {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+    max-height: 100vh;
+    padding: 1rem;
+    background-image: url("~@/assets/img/LandingPage3.jpeg");
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Do not repeat the image */
+    background-size: cover; /* Resize the background image to cover the entire container */
+    position: relative;
+
+    .header-middle-text {
+      margin-top: 9rem;
+      width: 70%;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .links {
+      display: flex;
+      width: 90%;
+      justify-content: space-around;
+    }
+
+    .header-arrow {
+      margin-top: auto;
+      cursor: pointer;
+      animation: 2.5s infinite alternate bouncer;
+
+      span {
+        display: block;
+        width: 32px;
+        height: 32px;
+        border-right: 2px solid;
+        border-bottom: 2px solid;
+        border-color: #fefefe;
+        -webkit-transform: rotate(45deg);
+        transform: rotate(45deg);
+      }
+    }
+  }
 
   .hero {
     position: relative;
     z-index: 1;
-    height: 500px;
 
     .bg-image-holder {
       top: 0;
@@ -233,11 +294,6 @@ img {
   z-index: -1;
 }
 
-section {
-  padding-top: 120px;
-  padding-bottom: 120px;
-}
-
 .col-img {
   // background-image: url(../img/cover2.jpg);
   background-position: center;
@@ -245,76 +301,6 @@ section {
   min-height: 500px;
 }
 
-.project {
-  position: relative;
-  overflow: hidden;
-}
-
-.project .overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(21, 20, 51, 0.8);
-  padding: 30px;
-  display: flex;
-  align-items: flex-end;
-  transition: all 0.4s ease;
-  opacity: 0;
-}
-
-.project img {
-  transition: all 0.4s ease;
-}
-
-.project:hover .overlay {
-  opacity: 1;
-}
-
-.project:hover img {
-  transform: scale(1.1);
-}
-
-.pricing i {
-  font-size: 20px;
-  color: var(--primary);
-}
-
-.pricing ul li {
-  margin-top: 8px;
-}
-
-.team-member img {
-  width: 125px;
-  height: 125px;
-  border-radius: 100px;
-}
-
-.social-icons {
-  display: flex;
-  justify-content: center;
-}
-.social-icons a {
-  width: 34px;
-  height: 34px;
-  background-color: var(--primary);
-  border-radius: 2px solid var(--primary);
-  color: var(--white);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 100px;
-  margin-left: 5px;
-  transition: all 0.4s ease;
-  border: 2px solid var(--primary);
-}
-
-.social-icons a:hover {
-  color: var(--primary);
-  background-color: transparent;
-  border-color: var(--primarys);
-}
 
 form input.form-control {
   height: 56px;

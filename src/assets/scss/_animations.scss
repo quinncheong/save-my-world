@@ -1,0 +1,57 @@
+/* Standard syntax */
+@keyframes bounce {
+    0% {
+       opacity: 0;
+    }
+ 
+    25% {
+       opacity: 0.4;
+       left: 60px;
+       top: -5px;
+       font-size: 22px;
+    }
+ 
+    50% {
+       opacity: 0.6;
+       left: 40px;
+       top: 0;
+       font-size: 19px;
+    }
+ 
+    75% {
+       opacity: 0.8;
+       left: 20px;
+       top: 10px;
+       font-size: 15px;
+    }
+ 
+    100% {
+       opacity: 1;
+       visibility: visible;
+       left: 0;
+       top: 15px;
+       font-size: unset;
+    }
+}
+
+/* For safari */
+@keyframes bouncer {
+    50% {
+        transform: translateY(-16px);
+    }
+
+    100% {
+        transform: translateY(0px) ;
+    }
+}
+
+/* For safari */
+@-webkit-keyframes bounce {
+    50% {
+        -webkit-transform: translateY(-30px);
+    }
+
+    100% {
+        -webkit-transform: translateY(0px) ;
+    }
+}
