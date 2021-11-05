@@ -2,6 +2,28 @@
   <!--top header-->
   <div class="container-fluid">
     <div class="hero vh-100 d-flex align-items-center" id="home">
+      <div class='row'>
+      <!--animated birds-->
+      <div class="container">
+        <div class="bird-container bird-container--one">
+          <div class="bird bird--one"></div>
+        </div>
+
+        <div class="bird-container bird-container--two">
+          <div class="bird bird--two"></div>
+        </div>
+
+        <div class="bird-container bird-container--three">
+          <div class="bird bird--three"></div>
+        </div>
+
+        <div class="bird-container bird-container--four">
+          <div class="bird bird--four"></div>
+        </div>
+      </div>
+      </div>
+
+      <div class='row'>
       <div class="container">
         <div class="row">
           <div class="col-lg-8 mx-auto text-center">
@@ -9,10 +31,9 @@
 
               You have the power to <span id="savemyworld">#SaveOurWorld</span>
             </h1>
-            <p class="text-white my-3">
+            <p class="text-white alignment-left my-3">
               Climate change will affect all of us, whether directly or
-              indirectly. Everyone—as individuals, as employees, as members of a
-              family and as a wider community—has a stake in helping to reduce
+              indirectly. We all have a stake in helping to reduce
               our emissions and in preparing for the effects of climate change.
             </p>
             <a href="#" class="btn me-2 btn-primary"
@@ -25,6 +46,7 @@
 
           <div class="col-lg-6 mx-auto text-center"></div>
         </div>
+      </div>
       </div>
     </div>
   </div>
@@ -72,7 +94,6 @@
             <a class="nav-link" data-bs-toggle="tab" href="#reuse">Reuse</a>
           </li>
 
-<<<<<<< HEAD
     <ul class="main">
       <!--Reduce-->
       <li class="header-top">
@@ -118,7 +139,28 @@
                     long run and save landfill space.
                   </li>
                 </ul>
-=======
+          <li class="nav-item">
+            <a
+              class="nav-link"
+              data-bs-toggle="tab"
+              href="#recycle"
+              aria-current="page"
+              >Recycle
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="currentColor"
+                class="bi bi-recycle"
+                viewBox="0 0 16 16"
+              >
+                <path
+                  d="M9.302 1.256a1.5 1.5 0 0 0-2.604 0l-1.704 2.98a.5.5 0 0 0 .869.497l1.703-2.981a.5.5 0 0 1 .868 0l2.54 4.444-1.256-.337a.5.5 0 1 0-.26.966l2.415.647a.5.5 0 0 0 .613-.353l.647-2.415a.5.5 0 1 0-.966-.259l-.333 1.242-2.532-4.431zM2.973 7.773l-1.255.337a.5.5 0 1 1-.26-.966l2.416-.647a.5.5 0 0 1 .612.353l.647 2.415a.5.5 0 0 1-.966.259l-.333-1.242-2.545 4.454a.5.5 0 0 0 .434.748H5a.5.5 0 0 1 0 1H1.723A1.5 1.5 0 0 1 .421 12.24l2.552-4.467zm10.89 1.463a.5.5 0 1 0-.868.496l1.716 3.004a.5.5 0 0 1-.434.748h-5.57l.647-.646a.5.5 0 1 0-.708-.707l-1.5 1.5a.498.498 0 0 0 0 .707l1.5 1.5a.5.5 0 1 0 .708-.707l-.647-.647h5.57a1.5 1.5 0 0 0 1.302-2.244l-1.716-3.004z"
+                /></svg
+            ></a>
+          </li>
+        </ul>
+
           <li class="nav-item">
             <a
               class="nav-link"
@@ -185,13 +227,11 @@
                     </ul>
                   </div>
                 </div>
->>>>>>> origin
               </div>
               <!-- <div class="col"></div> -->
             </div>
           </div>
 
-<<<<<<< HEAD
       <li class="header-top">
         <input type="radio" name="tab" id="label-2" />
         <label for="label-2">Reuse</label>
@@ -229,7 +269,7 @@
                   <li>Use cloth napkins instead of paper napkins.</li>
                   <li>Use a dish cloth instead of paper towels.</li>
                 </ul>
-=======
+
           <div class="tab-pane active" id="reuse">
             <div class="row border g-0 rounded shadow">
               <div class="col p-4">
@@ -237,7 +277,7 @@
 
                 <div class="row">
                   <div class="col-3">
-                    <img class="imgsize" src="@/assets/img/planetearth.png" />
+                    <img class="imgsize" src="@/assets/img/clothes.png" />
                   </div>
 
                   <!--vertical line-->
@@ -270,12 +310,10 @@
                     </ul>
                   </div>
                 </div>
->>>>>>> origin
               </div>
               <!-- <div class="col"></div> -->
             </div>
           </div>
-<<<<<<< HEAD
         </div>
       </li>
 
@@ -328,7 +366,6 @@
                     newsletters.
                   </li>
                 </ul>
-=======
 
           <!--recycle-->
           <div class="tab-pane active" id="recycle">
@@ -378,7 +415,6 @@
                     </ul>
                   </div>
                 </div>
->>>>>>> origin
               </div>
               <!-- <div class="col"></div> -->
             </div>
@@ -400,8 +436,7 @@
           </p>
         </div>
       </div>
-<<<<<<< HEAD
-    </div> -->
+    </div> 
     <!-- Tabs content -->
 
     <!-- <div class="row bg-light" style="color: black"> -->
@@ -443,31 +478,6 @@
             </p>
           </div>
         </div>
-<<<<<<< HEAD
-      </div> -->
-
-    <!-- </div> -->
-    <!-- </section> -->
-    <!-- </div> -->
-
-    <div class="row">
-      <!-- <section class="reduce bg-light"> -->
-      <!-- <div class="container text-center"> -->
-      <!-- <div class="col-6">
-        <img class="imgsize" src="@/assets/img/clothes.png" />
-      </div> -->
-
-      <!-- <div class="col-6">
-        <div class="grid-2">
-          <div class="center"></div>
-          <div>
-            <br />
-            <h3 class="heading">REUSE</h3>
-            <br />
-            <p class="p-tag-left">
-              It makes economic and environmental sense to reuse products.
-              Sometimes it takes creativity:
-=======
         <div class="col-lg-3 col-sm-6">
           <div class="service card-effect">
             <div class="iconbox">
@@ -494,7 +504,6 @@
             <p>
               See real-time statitics of how climate change has affected Sea
               Ice, Carbon Dioxide, Global Temperature
->>>>>>> origin
             </p>
           </div>
         </div>
@@ -516,66 +525,84 @@
         </div>
       </div>
     </div>
-<<<<<<< HEAD
+  </section>-->
+      <div class="row g-4">
+        <!--one card-->
+        <!-- <a href='../src/views/Quiz.vue'> -->
+        <div class="col-lg-3 col-sm-6">
+          <a href="../src/views/Quiz.vue">
+            <div class="service card-effect bounceInUp">
+              <div class="iconbox">
+                <i class="bx bxs-check-shield"></i>
+              </div>
+              <h5 class="mt-4 mb-2">Learning</h5>
+              <img
+                class="imgsize mx-auto d-block"
+                src="@/assets/img/learn.png"
+              />
+              <p>
+                Learn more about cmilate change and its effects on mother earth
+              </p>
+            </div>
+          </a>
+        </div>
+        <!-- </a> -->
 
-    <!-- <div class="row bg-light" style="color: black"> -->
-    <!-- <section class="reduce bg-light"> -->
-    <!-- <div class="container text-center"> -->
-    <!-- <div class="col-6">
-        <img
-          class="imgsize mx-auto d-block"
-          src="@/assets/img/recyclingbin.png"
-        />
-      </div> -->
+        <div class="col-lg-3 col-sm-6">
+          <a href="../src/views/ImageSlide.vue">
+            <div class="service card-effect">
+              <div class="iconbox">
+                <i class="bx bxs-comment-detail"></i>
+              </div>
+              <h5 class="mt-4 mb-2">Images of Change</h5>
+              <img
+                class="imgsize mx-auto d-block"
+                src="@/assets/img/imagec.png"
+              />
+              <p>Explore how Gaia has evolved over time with image visuals</p>
+            </div>
+          </a>
+        </div>
 
-    <!-- <div class="grid-2"> -->
-    <!-- <div class="center"> 
-          </div> -->
-    <!-- <div class="col-6">
-        <br />
-        <h3 class="heading">RECYCLE</h3>
-        <br />
-        <p class="p-tag-left">
-          Recycling is a series of steps that takes a used material and
-          processes, remanufactures, and sells it as a new product. Begin
-          recycling at home and at work:
-        </p>
-        <br />
+        <div class="col-lg-3 col-sm-6">
+          <a href="../src/views/ImageSlide.vue">
+            <div class="service card-effect">
+              <div class="iconbox">
+                <i class="bx bxs-cog"></i>
+              </div>
+              <h5 class="mt-4 mb-2">Graphical Visuals</h5>
+              <img
+                class="imgsize mx-auto d-block"
+                src="@/assets/img/charts.png"
+              />
+              <p>
+                See real-time statitics of how climate change has affected Sea
+                Ice, Carbon Dioxide, Global Temperature
+              </p>
+            </div>
+          </a>
+        </div>
 
-        <ul class='list-style'>
-          <li>
-            Buy products made from recycled material. Look for the recycling
-            symbol or ask store managers or salesmen
-          </li>
-          <li>
-            Check collection centers and curbside pickup services to see what
-            they accept, and begin collecting those materials. These can include
-            metal cans, newspapers, paper products, glass, plastics and oil.
-          </li>
-          <li>
-            Consider purchasing recycled materials at work when purchasing
-            material for office supply, office equipment or manufacturing.
-          </li>
-          <li>
-            Buy products made from material that is collected for recycling in
-            your community.
-          </li>
-          <li>
-            Use recycled paper for letterhead, copier paper and newsletters.
-          </li>
-        </ul>
-      </div> -->
-    <!-- </div> -->
-    <!-- </div> -->
-    <!-- </section> -->
-    <!-- </div> -->
-    <br />
-  </div>
-  <!-- </div> -->
-=======
+        <div class="col-lg-3 col-sm-6">
+          <a href="~@/views/Visualise.vue">
+            <div class="service card-effect">
+              <div class="iconbox">
+                <i class="bx bxs-heart"></i>
+              </div>
+              <h5 class="mt-4 mb-2">Disaster Map</h5>
+              <img
+                class="imgsize mx-auto d-block"
+                src="@/assets/img/mapbox.png"
+              />
+              <p>
+                With mapbox, we can navigate the world to explore the different
+                disasters that has occured
+              </p>
+            </div>
+          </a>
+        </div>
+      </div>
   </section>
-  <!-- SERVICES -->
->>>>>>> origin
 </template>
 
 <script>
@@ -603,40 +630,32 @@ export default {
 </script>
 
 <style lang="scss">
-.alignment-left {
-  text-align: left;
-}
+  .alignment-left {
+    text-align: left;
+  }
 
-#savemyworld {
-  color: yellow;
-}
+  #savemyworld {
+    color: yellow;
+  }
 
-// :root {
-//   --primary: #0d6efd;
-//   --dark: #21252f;
-//   // --body: #888;
-//   --white: #ffffff;
-//   // --box-shadow: 0 8px 22px rgba(0,0,0,0.1);
-// }
 
-body {
-  font-family: "Sora", sans-serif;
-  line-height: 1.7;
-  color: var(--body);
-}
+  body {
+    font-family: "Sora", sans-serif;
+    line-height: 1.7;
+    color: var(--body);
+  }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-.display-4 {
-  color: var(--dark);
-  font-weight: 700;
-}
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  .display-4 {
+    color: var(--dark);
+    font-weight: 700;
+  }
 
-<<<<<<< HEAD
 // .imgsize {
 //   width: 200px;
 //   height: 200px;
@@ -648,59 +667,67 @@ h6,
 //   margin-left: 10px;
 //   border-radius: 25px;
 // }
-=======
-a {
-  color: var(--dark);
-  text-decoration: none;
-}
 
-img {
-  width: 100%;
-}
->>>>>>> origin
+  a {
+    color: var(--dark);
+    text-decoration: none;
+  }
 
-.hero {
-  background-image: url("~@/assets/img/LandingPage1.jpeg");
-  background-position: center;
-  background-size: cover;
-  background-attachment: fixed;
-  position: relative;
-  z-index: 2;
-}
+  img {
+    width: 100%;
+  }
+  
+  a {
+    color: var(--dark);
+    text-decoration: none;
+  }
 
-.btn {
-  padding: 14px 18px;
-  border-width: 2px;
-  border-radius: 0;
-}
+  img {
+    width: 100%;
+  }
 
-.hero::after {
-  content: "";
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-  // background-color: rgba(21, 20, 51, 0.8);
-  z-index: -1;
-}
+  .hero {
+    background-image: url("~@/assets/img/LandingPage3.jpeg");
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
+    position: relative;
+    z-index: 2;
+  }
 
-section {
-  padding-top: 120px;
-  padding-bottom: 120px;
-}
+  .btn {
+    padding: 14px 18px;
+    border-width: 2px;
+    border-radius: 0;
+  }
 
-.card-effect {
-  // box-shadow: var(--box-shadow);
-  background-color: var(--white);
-  padding: 25px;
-  transition: all 0.35s ease;
-}
+  .hero::after {
+    content: "";
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    // background-color: rgba(21, 20, 51, 0.8);
+    z-index: -1;
+  }
 
-.card-effect:hover {
-  box-shadow: none;
-  transform: translateY(5px);
-}
+  section {
+    padding-top: 120px;
+    padding-bottom: 120px;
+  }
+
+  .card-effect {
+    // box-shadow: var(--box-shadow);
+    background-color: var(--white);
+    padding: 25px;
+    transition: all 0.35s ease;
+  }
+
+  .card-effect:hover {
+    box-shadow: none;
+    transform: translateY(5px);
+  }
 
 // .iconbox {
 //   width: 54px;
@@ -715,239 +742,233 @@ section {
 //   flex: none;
 // }
 
-.service {
-  position: relative;
-  z-index: 2;
-  overflow: hidden;
-}
-.service::after {
-  content: "";
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  top: -100%;
-  left: 0;
-  background-color: var(--primary);
-  z-index: -1;
-  opacity: 0;
-  transition: all 0.4s ease;
-}
+  .service {
+    position: relative;
+    z-index: 2;
+    overflow: hidden;
+  }
 
-.service:hover .iconbox {
-  background-color: var(--white);
-  color: var(--primary);
-}
+  .service::after {
+    content: "";
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: -100%;
+    left: 0;
+    background-color: var(--primary);
+    z-index: -1;
+    opacity: 0;
+    transition: all 0.4s ease;
+  }
 
-.service:hover h5,
-.service:hover p {
-  color: var(--white);
-}
+  .service:hover .iconbox {
+    background-color: var(--white);
+    color: var(--primary);
+  }
 
-.service:hover::after {
-  opacity: 1;
-  top: 0;
-}
+  .service:hover h5,
+  .service:hover p {
+    color: var(--white);
+  }
 
-.col-img {
-  // background-image: url(../img/cover2.jpg);
-  background-position: center;
-  background-size: cover;
-  min-height: 500px;
-}
+  .service:hover::after {
+    opacity: 1;
+    top: 0;
+  }
 
-.project {
-  position: relative;
-  overflow: hidden;
-}
+  .col-img {
+    // background-image: url(../img/cover2.jpg);
+    background-position: center;
+    background-size: cover;
+    min-height: 500px;
+  }
 
-.project .overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(21, 20, 51, 0.8);
-  padding: 30px;
-  display: flex;
-  align-items: flex-end;
-  transition: all 0.4s ease;
-  opacity: 0;
-}
+  .project {
+    position: relative;
+    overflow: hidden;
+  }
 
-.project img {
-  transition: all 0.4s ease;
-}
+  .project .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(21, 20, 51, 0.8);
+    padding: 30px;
+    display: flex;
+    align-items: flex-end;
+    transition: all 0.4s ease;
+    opacity: 0;
+  }
 
-.project:hover .overlay {
-  opacity: 1;
-}
+  .project img {
+    transition: all 0.4s ease;
+  }
 
-.project:hover img {
-  transform: scale(1.1);
-}
+  .project:hover .overlay {
+    opacity: 1;
+  }
 
-.pricing i {
-  font-size: 20px;
-  color: var(--primary);
-}
+  .project:hover img {
+    transform: scale(1.1);
+  }
 
-.pricing ul li {
-  margin-top: 8px;
-}
+  .pricing i {
+    font-size: 20px;
+    color: var(--primary);
+  }
 
-.team-member img {
-  width: 125px;
-  height: 125px;
-  border-radius: 100px;
-}
+  .pricing ul li {
+    margin-top: 8px;
+  }
 
-.social-icons {
-  display: flex;
-  justify-content: center;
-}
-.social-icons a {
-  width: 34px;
-  height: 34px;
-  background-color: var(--primary);
-  border-radius: 2px solid var(--primary);
-  color: var(--white);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 100px;
-  margin-left: 5px;
-  transition: all 0.4s ease;
-  border: 2px solid var(--primary);
-}
+  .team-member img {
+    width: 125px;
+    height: 125px;
+    border-radius: 100px;
+  }
 
-.social-icons a:hover {
-  color: var(--primary);
-  background-color: transparent;
-  border-color: var(--primarys);
-}
+  .social-icons {
+    display: flex;
+    justify-content: center;
+  }
 
-form input.form-control {
-  height: 56px;
-}
+  .social-icons a {
+    width: 34px;
+    height: 34px;
+    background-color: var(--primary);
+    border-radius: 2px solid var(--primary);
+    color: var(--white);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 100px;
+    margin-left: 5px;
+    transition: all 0.4s ease;
+    border: 2px solid var(--primary);
+  }
 
-form .form-control {
-  border: transparent;
-  border-radius: 0;
-  background-color: rgba(0, 0, 0, 0.02);
-}
+  .social-icons a:hover {
+    color: var(--primary);
+    background-color: transparent;
+    border-color: var(--primarys);
+  }
 
-//for the css navigation tab
+  form input.form-control {
+    height: 56px;
+  }
 
-ul.listing {
-  list-style-type: "✽  ";
-  text-align: left;
-  font-size: $variable-font-small;
-}
+  form .form-control {
+    border: transparent;
+    border-radius: 0;
+    background-color: rgba(0, 0, 0, 0.02);
+  }
 
-ul.list-style {
-  // list-style-type: "✽";
-  color: green;
-}
+  //for the css navigation tab
 
-.p-tag-left {
-  text-align: left;
-  font-weight: bold;
-}
+  ul.listing {
+    list-style-type: "✽  ";
+    text-align: left;
+    font-size: $variable-font-small;
+  }
 
-.heading {
-  font-weight: 900;
-  color: green;
+  ul.list-style {
+    // list-style-type: "✽";
+    color: green;
+  }
 
-  --x-offset: -0.0625em;
-  --y-offset: 0.0625em;
-  --stroke: 0.025em;
-  --background-color: white;
-  --stroke-color: lightblue;
+  .p-tag-left {
+    text-align: left;
+    font-weight: bold;
+  }
 
-  text-shadow: var(--x-offset) var(--y-offset) 0px var(--background-color),
-    calc(var(--x-offset) - var(--stroke)) calc(var(--y-offset) + var(--stroke))
-      0px var(--stroke-color);
-}
+// .heading {
+//   font-weight: 900;
+//   color: green;
+
+//   --x-offset: -0.0625em;
+//   --y-offset: 0.0625em;
+//   --stroke: 0.025em;
+//   --background-color: white;
+//   --stroke-color: lightblue;
+
+//   text-shadow: var(--x-offset) var(--y-offset) 0px var(--background-color),
+//     calc(var(--x-offset) - var(--stroke)) calc(var(--y-offset) + var(--stroke))
+//       0px var(--stroke-color);
+// }
+
+
 
 //for the vertical line
 
-.vl {
-  border-left: 3px solid green;
-  height: auto;
-}
+  .vl {
+    border-left: 3px solid green;
+    height: auto;
+  }
 
 //for the nav tab
-.main {
-  box-sizing: border-box;
-  width: auto;
-  height: auto;
-  position: relative;
-  display: flex;
+  .main {
+    box-sizing: border-box;
+    width: auto;
+    height: auto;
+    position: relative;
+    display: flex;
+    li.header-top {
+      width: 100%;
+      display: inline-block;
+      background-color: rgb(17, 16, 16);
+    }
+  }
 
-<<<<<<< HEAD
-
-=======
->>>>>>> origin
-  li.header-top {
+  .content {
+    background: rgb(17, 16, 16);
+    color: white;
+    position: absolute;
+    left: 0;
+    display: none;
+    padding: 30px;
     width: 100%;
-    display: inline-block;
-    background-color: rgb(17, 16, 16);
   }
-}
 
-
-.content {
-  background: rgb(17, 16, 16);
-  color: white;
-  position: absolute;
-  left: 0;
-  display:none; 
-  padding: 30px;
-  width: 100%;
-<<<<<<< HEAD
-
-=======
->>>>>>> origin
-}
-
-.content > p {
-  font-size: 1em;
-  font-weight: 300;
-  margin: 10px;
-}
-
-.main [id^="label"]:checked ~.content {
-  display: block;
-}
-
-.main input[type="radio"] {
-  display: none;
-}
-
-.main label {
-  padding: 20px 30px;
-}
-
-.main[id^="label"]:checked + label {
-  background-color: black;
-  color: green;
-}
-
-.heading {
-  font-size: 3.5vw;
-  text-shadow: 4px 4px 0px #3f7fbf;
-  mix-blend-mode: screen;
-  animation: fadeIn 2.5s linear forwards;
-}
-
-@keyframes fadeIn {
-  0% {
-    opacity: 0;
+  .content > p {
+    font-size: 1em;
+    font-weight: 300;
+    margin: 10px;
   }
-  100% {
-    opacity: 1;
+
+  .main [id^="label"]:checked ~ .content {
+    display: block;
   }
-}
+
+  .main input[type="radio"] {
+    display: none;
+  }
+
+  .main label {
+    padding: 20px 30px;
+  }
+
+  .main[id^="label"]:checked + label {
+    background-color: black;
+    color: green;
+  }
+
+// .heading {
+//   font-size: 3.5vw;
+//   text-shadow: 4px 5px 5px #3f7fbf;
+//   // mix-blend-mode: screen;
+//   animation: fadeIn 2.5s linear forwards;
+// }
+
+// @keyframes fadeIn {
+//   0% {
+//     opacity: 0;
+//   }
+//   100% {
+//     opacity: 1;
+//   }
+// }
 
 // .animate{
 //   white-space: nowrap;
@@ -977,26 +998,257 @@ ul.list-style {
 //   }
 // }
 
-.nav-tabs .nav-link.active {
-  background-color: purple;
-  color: white;
-  border: 3px solid purple;
-}
 
-.nav-tabs .nav-link {
-  background-color: white;
-  color: purple;
-  border: 3px solid purple;
-  margin-right: 2rem;
-  padding-left: 3rem;
-  padding-right: 3rem;
-}
+  .heading::before, 
+  .heading::after{
+    content:'';
+    position: absolute;
+  }
 
-.nav-tabs .nav-link:hover {
-  border: 3px solid purple;
-}
+  .heading{
+    font-size: clamp(1rem, 3.3vw + 1rem, 4rem);
+  }
+  .heading::before{
+    background: teal;
+    animation: typewriter 1s ease;
+  }
 
-.tab-content {
-  border-bottom: 1px solid purple;
-}
+  @keyframes typewriter {
+    to{
+      left: 100%;
+    }
+    
+  }
+
+
+
+  .nav-tabs .nav-link.active {
+    background-color: purple;
+    color: white;
+    border: 3px solid purple;
+  }
+
+  .nav-tabs .nav-link {
+    background-color: white;
+    color: purple;
+    border: 3px solid purple;
+    margin-right: 2rem;
+    padding-left: 3rem;
+    padding-right: 3rem;
+  }
+
+  .nav-tabs .nav-link:hover {
+    border: 3px solid purple;
+  }
+
+  .tab-content {
+    border-bottom: 1px solid purple;
+  }
+
+
+//for the animated birds 
+
+	.bird{
+		background-image: url("bird-cells-new.svg");
+		background-size: auto 100%;
+		width: 88px;
+		height: 125px;
+		will-change: background-position;
+		-webkit-animation-name: fly-cycle;
+			animation-name: fly-cycle;
+		-webkit-animation-timing-function: steps(10);
+			animation-timing-function: steps(10);
+		-webkit-animation-iteration-count:infinite;
+			animation-iteration-count:infinite;
+	}
+
+	.bird--one{
+		-webkit-animation-duration: 1s;
+			animation-duration: 1s;
+		-webkit-animation-delay: -0.5s;
+			animation-delay: -0.5s;
+	}
+
+	.bird--two{
+		-webkit-animation-duration: 0.9s;
+			animation-duration: 0.9s;
+		-webkit-animation-delay: -0.75s;
+			animation-delay: -0.75s;
+	}
+
+	.bird--three{
+		-webkit-animation-duration: 1.25s;
+			animation-duration: 1.25s;
+		-webkit-animation-delay: -0.25s;
+			animation-delay: -0.25s;
+	}
+
+	.bird--four{
+		-webkit-animation-duration: 1.1s;
+			animation-duration: 1.1s;
+		-webkit-animation-delay: -0.5s;
+			animation-delay: -0.5s;
+	}
+
+	.bird-container{
+		position: absolute;
+		top: 20%;
+		left: -10%;
+		transform: scale(0) translateX(-10vw);
+		will-change: transform;
+		-webkit-animation-name: fly-right-one;
+			animation-name: fly-right-one;
+		-webkit-animation-timing-function: linear;
+			animation-timing-function: linear;
+		-webkit-animation-iteration-count: infinite;
+			animation-iteration-count: infinite;
+	}
+
+	.bird-container--one{
+		-webkit-animation-duration: 15s;
+			animation-duration: 15s;
+		-webkit-animation-delay: 0;
+			animation-delay: 0;
+	}
+
+	.bird-container--two{
+		-webkit-animation-duration: 16s;
+			animation-duration: 16s;
+		-webkit-animation-delay: 1s;
+			animation-delay: 1s;
+	}
+
+	.bird-container--three{
+		-webkit-animation-duration: 14.6s;
+			animation-duration: 14.6s;
+		-webkit-animation-delay: 9.5s;
+			animation-delay: 9.5s;
+	}
+
+	.bird-container--four{
+		-webkit-animation-duration: 16s;
+			animation-duration: 16s;
+		-webkit-animation-delay: 10.25s;
+			animation-delay: 10.25s;
+	}
+
+	@-webkit-keyframes fly-cycle{
+		100%{
+			background-position: -900px 0;
+		}
+	}
+
+	@keyframes fly-cycle{
+		100%{
+			background-position: -900px 0;
+		}
+	}
+
+	@-webkit-keyframes fly-right-one{
+		0%{
+			transform: scale(0.3) translateX(-10vw);
+		}
+		10%{
+			transform: translateY(2vh) translateX(10vw) scale(0.4);
+		}
+		20%{
+			transform: translateY(0vh) translateX(30vw) scale(0.5);
+		}
+		30%{
+			transform: translateY(4vh) translateX(50vw) scale(0.6);
+		}
+		40%{
+			transform: translateY(2vh) translateX(70vw) scale(0.6);
+		}
+		50%{
+			transform: translateY(0vh) translateX(90vw) scale(0.6);
+		}
+		60%{
+			transform: translateY(0vh) translateX(110vw) scale(0.6);
+		}
+		100%{
+			transform: translateY(0vh) translateX(110vw) scale(0.6);
+		}
+	}
+
+	@keyframes fly-right-one{
+		0%{
+			transform: scale(0.3) translateX(-10vw);
+		}
+		10%{
+			transform: translateY(2vh) translateX(10vw) scale(0.4);
+		}
+		20%{
+			transform: translateY(0vh) translateX(30vw) scale(0.5);
+		}
+		30%{
+			transform: translateY(4vh) translateX(50vw) scale(0.6);
+		}
+		40%{
+			transform: translateY(2vh) translateX(70vw) scale(0.6);
+		}
+		50%{
+			transform: translateY(0vh) translateX(90vw) scale(0.6);
+		}
+		60%{
+			transform: translateY(0vh) translateX(110vw) scale(0.6);
+		}
+		100%{
+			transform: translateY(0vh) translateX(110vw) scale(0.6);
+		}
+	}
+
+	@-webkit-keyframes fly-right-two{
+		0%{
+			transform: translateY(-2vh) translateX(-10vw) scale(0.5);
+		}
+		10%{
+			transform: translateY(0vh) translateX(10vw) scale(0.4);
+		}
+		20%{
+			transform: translateY(-4vh) translateX(30vw) scale(0.6);
+		}
+		30%{
+			transform: translateY(1vh) translateX(50vw) scale(0.45);
+		}
+		40%{
+			transform: translateY(-2.5vh) translateX(70vw) scale(0.5);
+		}
+		50%{
+			transform: translateY(0vh) translateX(90vw) scale(0.45);
+		}
+		51%{
+			transform: translateY(0vh) translateX(110vw) scale(0.45);
+		}
+		100%{
+			transform: translateY(0vh) translateX(110vw) scale(0.45);
+		}
+	}
+
+	@keyframes fly-right-two{
+		0%{
+			transform: translateY(-2vh) translateX(-10vw) scale(0.5);
+		}
+		10%{
+			transform: translateY(0vh) translateX(10vw) scale(0.4);
+		}
+		20%{
+			transform: translateY(-4vh) translateX(30vw) scale(0.6);
+		}
+		30%{
+			transform: translateY(1vh) translateX(50vw) scale(0.45);
+		}
+		40%{
+			transform: translateY(-2.5vh) translateX(70vw) scale(0.5);
+		}
+		50%{
+			transform: translateY(0vh) translateX(90vw) scale(0.45);
+		}
+		51%{
+			transform: translateY(0vh) translateX(110vw) scale(0.45);
+		}
+		100%{
+			transform: translateY(0vh) translateX(110vw) scale(0.45);
+		}
+	}
 </style>

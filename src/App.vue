@@ -34,6 +34,7 @@ export default {
 </script>
 
 <style lang="scss">
+@import url("https://fonts.googleapis.com/css?family=Montserrat");
 // CSS reset
 html {
   box-sizing: border-box;
@@ -76,8 +77,8 @@ img {
 
 // CSS of the app
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  // font-family: 'PT Sans Narrow', sans-serif;
+
+  font-family: "Montserrat";
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
@@ -93,39 +94,4 @@ img {
   @extend %background-overlay;
 }
 
-// #stars1{
-//   width: 1px; 
-//   height: 1px;
-//   background: transparent;
-//   animation: animStar 50s linear infinite;
-//   box-shadow: $stars1Var; //the particles not working 
-//   } 
-
-// #stars1:after{
-//   content: ''; 
-//   position:absolute;
-//   top: 2000px;
-//   width: 1px;
-//   height: 1px;
-//   background: transparent;  
-//   box-shadow: $stars2Var; //the particles not working 
-//   } 
-
-// #stars2{
-//   width: 2px;
-//   height: 2px; 
-//   background: transparent;
-//   animation: animStar 100s linear infinite;
-//   box-shadow: $stars3Var;
-// }
-
-// #star2:after{
-//   content: ''; 
-//   position:absolute;
-//   top: 2000px;
-//   width: 1px;
-//   height: 1px;
-//   background: transparent;  
-//   box-shadow: $stars4Var; //the particles not working 
-// }
 </style>

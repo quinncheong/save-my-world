@@ -1,10 +1,16 @@
 <template>
-  <div class="container-fluid visualisation-wrapper">
+  <div class="visualisation-wrapper">
     <!-- header -->
-    <h1>Start saving the environment now</h1>
-
+    <h2 class="chart-title mb-1">Disaster Frequency since 1981</h2>
+    <p class="chart-details mb-1">
+      The map below shows the frequency of disasters in the world since 1981.
+    </p>
+    <i style="font-size: 15px" class="chart-select mb-2"
+      >Select the filter to understand how disasters have been increasing
+      rapidly throughout the years</i
+    >
+    <!--
     <div class="d-flex justify-content-center">
-      <!-- Dropdownlist  -->
       <form @submit="handleClick()">
         <select
           class="form-select text-center"
@@ -22,30 +28,30 @@
         </select>
       </form>
       <button class="btn btn-outline-success">Confirm</button>
-    </div>
+    </div> 
+    -->
 
     <!-- Container to hold  the map -->
-
-    <div id="map">
-      <!-- Slider Filter on the top left portion of the map -->
-      <div id="console">
-        <h1>Last 10 years</h1>
-        <div class="text-center">
-          <h5>{{ yearVal }}</h5>
-          <input
-            id="slider"
-            class="row ms-4"
-            type="range"
-            min="1960"
-            max="2021"
-            step="1"
-            v-model="yearVal"
-            @change="listenEvent"
-          />
-        </div>
+    <div class="console justify-self-center" >
+      <h1>Last 10 years</h1>
+      <div class="text-center">
+        <h5>{{ yearVal }}</h5>
+        <input
+          id="slider"
+          class=""
+          type="range"
+          min="1981"
+          max="2021"
+          step="1"
+          v-model="yearVal"
+          @change="listenEvent"
+        />
       </div>
-      <!-- Result modal to be placed here  -->
+    </div>
 
+    <div class="map" id="map">
+      <!-- Slider Filter on the top left portion of the map -->
+      <!-- Result modal to be placed here  -->
       <div v-if="flying == false" id="desc">
         <h3>{{ title }}</h3>
         <h6>{{ status }}</h6>
@@ -72,7 +78,6 @@ export default {
       access_token: process.env.VUE_APP_MAP_ACCESS_TOKEN,
       center: [0, 20],
       map: {},
-      geoCodeList: [],
       // Disaster list
       disaster: [
         "Cold Wave",
@@ -108,10 +113,8 @@ export default {
       status: "",
     };
   },
-
-  mounted() {
+  async mounted() {
     this.createMap();
-
     // Load the markers here when loading
     this.map.on("load", async () => {
       await this.getLocation(); // After getting location then we add the markers
@@ -127,8 +130,15 @@ export default {
           // Adding data source to map
           this.map.addSource("disasters", {
             type: "geojson",
-            data: { type: "FeatureCollection", features: this.features },
+            data: {
+              type: "FeatureCollection",
+              features: this.features,
+            },
           });
+
+          console.log(this.features);
+
+          console.log("added source");
 
           // Adding layer to the map
           this.map.addLayer({
@@ -143,7 +153,7 @@ export default {
               "text-offset": [0, 1.25],
               "text-anchor": "top",
             },
-            filter: ["==", ["number", ["get", "year"]], parseInt(this.yearVal)],
+            // filter: ["==", ["number", ["get", "year"]], parseInt(this.yearVal)],
           });
         }
       );
@@ -230,6 +240,15 @@ export default {
           zoom: 1,
           continuousWorld: false,
         });
+
+        this.map.scrollZoom.disable();
+
+        const nav = new mapboxgl.NavigationControl({
+          visualizePitch: true,
+        });
+        this.map.addControl(nav, "bottom-right");
+
+        // This variable is unused?
         let geocoder = new MapboxGeocoder({
           accessToken: this.access_token,
           mapboxgl: mapboxgl,
@@ -239,11 +258,9 @@ export default {
         console.log("map error", err);
       }
     },
-
     // trying to get location of prepopulated data.
     async getLocation() {
       // Reset
-
       this.features = [];
       this.loading = true;
       // "https://api.reliefweb.int/v1/disasters?appname=apidoc&query[value]=" + this.selectedQuery + "&query[fields][]=type&fields[include][]=type.name&limit=100"
@@ -251,88 +268,91 @@ export default {
       // Changed to 100 first for faster loading time.
       try {
         const response = await axios.get(
-          "https://api.reliefweb.int/v1/disasters?type&fields[include][]=type.name&limit=100&sort[]=date:desc"
+          "https://api.reliefweb.int/v1/disasters?type&fields[include][]=type.name&limit=500&sort[]=date:desc"
         );
         if (!response) {
           throw Error("Failed to get data");
         }
         // Score and desc needed for pop up
-        let name = [];
-        let links = [];
+        this.desc = []; // Set the desc to an empty array?
+        let results = response.data.data ?? [];
+        await this.createFeaturesArray(results);
+        await this.pushGeo();
 
-        let results;
-
-        try {
-          results = response.data.data;
-        } catch (error) {
-          console.log("there is a damn error here");
-        }
-
-        //  countries is an array
-        for (let indivResult of results) {
-          // Generating obj array to put in to .addSource
-
-          let obj = {};
-          obj.type = "Feature";
-          obj.properties = {};
-          obj.geometry = {};
-          obj.properties.name = indivResult.fields.name;
-          obj.properties.id = indivResult.id;
-          obj.properties.link = indivResult.href;
-          obj.geometry.type = "Point";
-          obj.properties.disastertype = indivResult.fields.type[0].name;
-          // Split year from name since that is the only way , just to get the year
-          let year = indivResult.fields.name.split(" ");
-          let yearNum = parseInt(year[year.length - 1]);
-          obj.properties.year = yearNum;
-          links.push(indivResult.href);
-
-          // Push into this.features, this will be put into .addsource
-
-          this.features.push(obj);
-          console.log(this.features);
-
-          // console.log(this.features)
-        }
-        // Set desc to name array
-        this.desc = name;
-
-        let geoList = await this.pushGeo();
-        this.geoCodeList = geoList;
-
-        return this.geoCodeList;
+        // Catching the erorr
       } catch (err) {
-        console.log("I am hitting an error");
-        console.log(err);
-        return;
+        console.log("I am hitting an error inside getLocation: ", err);
       }
     },
+    // Function to create the features array from results
+    async createFeaturesArray(results) {
+      //  countries is an array
+      for (let indivResult of results) {
+        // Generating obj array to put in to .addSource
+        let obj = {
+          type: "Feature",
+          properties: {
+            id: indivResult.id,
+            link: indivResult.href,
+            name: indivResult.fields.name,
+            disastertype: indivResult.fields.type[0].name,
+          },
+          geometry: {
+            type: "Point",
+          },
+        };
+        // Split year from name since that is the only way , just to get the year
+        let year = indivResult.fields.name.split(" ");
+        let yearNum = parseInt(year[year.length - 1]);
+        obj.properties.year = yearNum;
 
+        // Push into this.features, this will be put into .addsource
+        this.features.push(obj);
+      }
+    },
     // Function to push lat and long into the large fking object that will be added to .addSource
     async pushGeo() {
       // Changed to features
+      let geoListPromises = [];
       for (let array of this.features) {
         //  getting the link
         let url = array.properties.link;
-
-        // Getting the relavant lat and long from the link provided
-        let res = await axios.get(url);
-        let geoCode = res.data.data[0].fields.primary_country.location;
-
-        // Check if id tallies up
-        if (res.data.data[0].id == array.properties.id) {
-          // Set new property to lon and lat , array form
-          array.geometry.coordinates = [geoCode.lon, geoCode.lat];
-
-          // Get description and check if description is not undefined
-          if (res.data.data[0].fields.description == undefined) {
-            array.properties.description = `<p>Sorry there is no description for this marker :(</p>`;
-            console.log(array.properties.description);
-          } else {
-            array.properties.description = res.data.data[0].fields.description;
-          }
-        }
+        geoListPromises.push(axios.get(url));
       }
+      let geoListFulfilled = await Promise.all(geoListPromises);
+      let dataArray = geoListFulfilled.map((res) => res.data.data[0]);
+
+      console.log(dataArray);
+
+      // have to initialise a dictionary to store id as key
+      let geoIdDictionary = {};
+      // Loop through data array and get data and add into geoIdDictionary
+      for (let disaster of dataArray) {
+        let id = disaster.id;
+        let geoCode = disaster.fields.primary_country.location;
+        let desc =
+          disaster.fields.description ??
+          "No description for the current disaster.";
+
+        geoIdDictionary[id] = {
+          geoCode: geoCode,
+          desc: desc,
+        };
+      }
+
+      await this.addCoordToFeatures(geoIdDictionary);
+    },
+
+    // Function to add the coordinates to the features array
+    async addCoordToFeatures(geoIdDictionary) {
+      console.log(geoIdDictionary);
+      // Loop through features and do the lookup in the geo dictionary
+      // and add it to the array
+      this.features.forEach((feature, index) => {
+        let { geoCode, desc } = geoIdDictionary[feature.properties.id];
+        feature.geometry.coordinates = [geoCode.lon, geoCode.lat];
+        feature.properties.description = desc;
+      });
     },
 
     async handleClick() {},
@@ -368,54 +388,52 @@ export default {
 
 <style lang="scss" scoped>
 .visualisation-wrapper {
-  width: 100%;
-  height: 100%;
-  position: relative;
+  @extend %page-wrapper;
+
+  .map {
+    height: 500px;
+    color: black;
+    position: relative;
+  }
+  
+  .console {
+    display: flex;
+    flex-direction: column;
+    margin: 0 1rem 1rem 1rem;
+    padding: 10px 20px;
+    background-color: white;
+    color: black;
+    z-index: 1;
+  }
+  
+  #desc {
+    position: absolute;
+    width: 25%;
+    height: 200px;
+    margin-left: 10px;
+    bottom: 30px;
+    padding: 10px 20px;
+    background-color: white;
+    z-index: 1;
+    overflow-y: auto;
 }
+
+// .marker {
+//   background-image: url("../assets/img/globe.png");
+//   background-size: cover;
+//   width: 50px;
+//   height: 50px;
+//   border-radius: 50%;
+//   cursor: pointer;
+// }
+
+}
+
 
 @media screen and (min-width: 768px) {
   .visualisation-wrapper {
     width: 90%;
   }
-}
-
-@media screen and (min-width: 968px) {
-  .visualisation-wrapper {
-    width: 80%;
-  }
-}
-
-@media screen and (min-width: 1268px) {
-  .visualisation-wrapper {
-    width: 70%;
-  }
-}
-
-#map {
-  height: 100vh;
-}
-
-.marker {
-  background-image: url("../assets/img/globe.png");
-  background-size: cover;
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  cursor: pointer;
-}
-
-#map {
-  color: black;
-  position: relative;
-}
-
-#console {
-  position: absolute;
-  width: 240px;
-  margin: 10px;
-  padding: 10px 20px;
-  background-color: white;
-  z-index: 1;
 }
 
 #desc {
@@ -428,5 +446,16 @@ export default {
   background-color: white;
   z-index: 1;
   overflow-y: auto;
+}
+@media screen and (min-width: 968px) {
+  .visualisation-wrapper {
+    width: 80%;
+  }
+}
+
+@media screen and (min-width: 1268px) {
+  .visualisation-wrapper {
+    width: 60%;
+  }
 }
 </style>
