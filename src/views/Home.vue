@@ -2,51 +2,68 @@
   <!--top header-->
   <div class="container-fluid">
     <div class="hero vh-100 d-flex align-items-center" id="home">
-      <div class='row'>
-      <!--animated birds-->
-      <div class="container">
-        <div class="bird-container bird-container--one">
-          <div class="bird bird--one"></div>
-        </div>
+      <div class="row">
+        <!--animated birds-->
+        <div class="container">
+          <div class="bird-container bird-container--one">
+            <div class="bird bird--one"></div>
+          </div>
 
-        <div class="bird-container bird-container--two">
-          <div class="bird bird--two"></div>
-        </div>
+          <div class="bird-container bird-container--two">
+            <div class="bird bird--two"></div>
+          </div>
 
-        <div class="bird-container bird-container--three">
-          <div class="bird bird--three"></div>
-        </div>
+          <div class="bird-container bird-container--three">
+            <div class="bird bird--three"></div>
+          </div>
 
-        <div class="bird-container bird-container--four">
-          <div class="bird bird--four"></div>
+          <div class="bird-container bird-container--four">
+            <div class="bird bird--four"></div>
+          </div>
         </div>
       </div>
-      </div>
 
-      <div class='row'>
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-8 mx-auto text-center">
-            <h1 class="display-4 text-white heading">
+      <div class="row">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-8 my-0 mx-auto ">
+              <h1 class="text-white heading align-text-top">
+                You have the power to
+                <span id="savemyworld">#SaveOurWorld</span>
+              </h1>
+            </div>
+          </div>
 
-              You have the power to <span id="savemyworld">#SaveOurWorld</span>
-            </h1>
-            <p class="text-white alignment-left my-3">
+          <div class="row bottom-left">
+            <div class='col-1'></div>
+            <div class="col-lg-4 text-white alignment-left my-3">
               Climate change will affect all of us, whether directly or
-              indirectly. We all have a stake in helping to reduce
-              our emissions and in preparing for the effects of climate change.
-            </p>
-            <a href="#" class="btn me-2 btn-primary"
+              indirectly. We all have a stake in helping to reduce our emissions
+              and in preparing for the effects of climate change.
+            </div>
+          </div>
+          <div class="row">
+            <div class='col-1'></div>
+            <div class="col-2">
+              <a href="#" class="btn me-2 btn-primary"
+                ><span class="edit-span"></span>About Us</a
+              >
+            </div>
+            <div class="col-2">
+              <a href="#" class="btn me-2 btn-primary"
+                ><span class="edit-span"></span>How Can I Help</a
+              >
+            </div>
+            <!-- <a href="#" class="btn me-2 btn-primary"
               ><span class="edit-span"></span>About Us</a
             >
             <a href="#" class="btn me-2 btn-primary"
               ><span class="edit-span"></span>How Can I Help</a
-            >
+            > -->
           </div>
 
           <div class="col-lg-6 mx-auto text-center"></div>
         </div>
-      </div>
       </div>
     </div>
   </div>
@@ -636,8 +653,6 @@ ul.list-style {
 //       0px var(--stroke-color);
 // }
 
-
-
 //for the vertical line
 
 .vl {
@@ -693,21 +708,23 @@ ul.list-style {
   color: green;
 }
 
-// .heading {
-//   font-size: 3.5vw;
-//   text-shadow: 4px 5px 5px #3f7fbf;
-//   // mix-blend-mode: screen;
-//   animation: fadeIn 2.5s linear forwards;
-// }
+.heading {
+  font-size: 3.5vw;
+  text-shadow: 4px 5px 5px #3f7fbf;
+  // position: absolute;
+  // text-align: center;
+  // mix-blend-mode: screen;
+  animation: fadeIn 2.5s linear forwards;
+}
 
-// @keyframes fadeIn {
-//   0% {
-//     opacity: 0;
-//   }
-//   100% {
-//     opacity: 1;
-//   }
-// }
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
 
 // .animate{
 //   white-space: nowrap;
@@ -737,29 +754,25 @@ ul.list-style {
 //   }
 // }
 
+// .heading::before,
+// .heading::after {
+//   content: "";
+//   position: absolute;
+// }
 
-.heading::before, 
-.heading::after{
-  content:'';
-  position: absolute;
-}
-
-.heading{
-  font-size: clamp(1rem, 3.3vw + 1rem, 4rem);
-}
-.heading::before{
-  background: teal;
-  animation: typewriter 1s ease;
-}
+// .heading {
+//   font-size: clamp(1rem, 3.3vw + 1rem, 4rem);
+// }
+// .heading::before {
+//   background: teal;
+//   animation: typewriter 1s ease;
+// }
 
 @keyframes typewriter {
-  to{
+  to {
     left: 100%;
   }
-  
 }
-
-
 
 .nav-tabs .nav-link.active {
   background-color: purple;
@@ -784,210 +797,215 @@ ul.list-style {
   border-bottom: 1px solid purple;
 }
 
+//for the animated birds
 
-//for the animated birds 
+.bird {
+  background-image: url("bird-cells-new.svg");
+  background-size: auto 100%;
+  width: 88px;
+  height: 125px;
+  will-change: background-position;
+  -webkit-animation-name: fly-cycle;
+  animation-name: fly-cycle;
+  -webkit-animation-timing-function: steps(10);
+  animation-timing-function: steps(10);
+  -webkit-animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
+}
 
-	.bird{
-		background-image: url("bird-cells-new.svg");
-		background-size: auto 100%;
-		width: 88px;
-		height: 125px;
-		will-change: background-position;
-		-webkit-animation-name: fly-cycle;
-			animation-name: fly-cycle;
-		-webkit-animation-timing-function: steps(10);
-			animation-timing-function: steps(10);
-		-webkit-animation-iteration-count:infinite;
-			animation-iteration-count:infinite;
-	}
+.bird--one {
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-delay: -0.5s;
+  animation-delay: -0.5s;
+}
 
-	.bird--one{
-		-webkit-animation-duration: 1s;
-			animation-duration: 1s;
-		-webkit-animation-delay: -0.5s;
-			animation-delay: -0.5s;
-	}
+.bird--two {
+  -webkit-animation-duration: 0.9s;
+  animation-duration: 0.9s;
+  -webkit-animation-delay: -0.75s;
+  animation-delay: -0.75s;
+}
 
-	.bird--two{
-		-webkit-animation-duration: 0.9s;
-			animation-duration: 0.9s;
-		-webkit-animation-delay: -0.75s;
-			animation-delay: -0.75s;
-	}
+.bird--three {
+  -webkit-animation-duration: 1.25s;
+  animation-duration: 1.25s;
+  -webkit-animation-delay: -0.25s;
+  animation-delay: -0.25s;
+}
 
-	.bird--three{
-		-webkit-animation-duration: 1.25s;
-			animation-duration: 1.25s;
-		-webkit-animation-delay: -0.25s;
-			animation-delay: -0.25s;
-	}
+.bird--four {
+  -webkit-animation-duration: 1.1s;
+  animation-duration: 1.1s;
+  -webkit-animation-delay: -0.5s;
+  animation-delay: -0.5s;
+}
 
-	.bird--four{
-		-webkit-animation-duration: 1.1s;
-			animation-duration: 1.1s;
-		-webkit-animation-delay: -0.5s;
-			animation-delay: -0.5s;
-	}
+.bird-container {
+  position: absolute;
+  top: 20%;
+  left: -10%;
+  transform: scale(0) translateX(-10vw);
+  will-change: transform;
+  -webkit-animation-name: fly-right-one;
+  animation-name: fly-right-one;
+  -webkit-animation-timing-function: linear;
+  animation-timing-function: linear;
+  -webkit-animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
+}
 
-	.bird-container{
-		position: absolute;
-		top: 20%;
-		left: -10%;
-		transform: scale(0) translateX(-10vw);
-		will-change: transform;
-		-webkit-animation-name: fly-right-one;
-			animation-name: fly-right-one;
-		-webkit-animation-timing-function: linear;
-			animation-timing-function: linear;
-		-webkit-animation-iteration-count: infinite;
-			animation-iteration-count: infinite;
-	}
+.bird-container--one {
+  -webkit-animation-duration: 15s;
+  animation-duration: 15s;
+  -webkit-animation-delay: 0;
+  animation-delay: 0;
+}
 
-	.bird-container--one{
-		-webkit-animation-duration: 15s;
-			animation-duration: 15s;
-		-webkit-animation-delay: 0;
-			animation-delay: 0;
-	}
+.bird-container--two {
+  -webkit-animation-duration: 16s;
+  animation-duration: 16s;
+  -webkit-animation-delay: 1s;
+  animation-delay: 1s;
+}
 
-	.bird-container--two{
-		-webkit-animation-duration: 16s;
-			animation-duration: 16s;
-		-webkit-animation-delay: 1s;
-			animation-delay: 1s;
-	}
+.bird-container--three {
+  -webkit-animation-duration: 14.6s;
+  animation-duration: 14.6s;
+  -webkit-animation-delay: 9.5s;
+  animation-delay: 9.5s;
+}
 
-	.bird-container--three{
-		-webkit-animation-duration: 14.6s;
-			animation-duration: 14.6s;
-		-webkit-animation-delay: 9.5s;
-			animation-delay: 9.5s;
-	}
+.bird-container--four {
+  -webkit-animation-duration: 16s;
+  animation-duration: 16s;
+  -webkit-animation-delay: 10.25s;
+  animation-delay: 10.25s;
+}
 
-	.bird-container--four{
-		-webkit-animation-duration: 16s;
-			animation-duration: 16s;
-		-webkit-animation-delay: 10.25s;
-			animation-delay: 10.25s;
-	}
+@-webkit-keyframes fly-cycle {
+  100% {
+    background-position: -900px 0;
+  }
+}
 
-	@-webkit-keyframes fly-cycle{
-		100%{
-			background-position: -900px 0;
-		}
-	}
+@keyframes fly-cycle {
+  100% {
+    background-position: -900px 0;
+  }
+}
 
-	@keyframes fly-cycle{
-		100%{
-			background-position: -900px 0;
-		}
-	}
+@-webkit-keyframes fly-right-one {
+  0% {
+    transform: scale(0.3) translateX(-10vw);
+  }
+  10% {
+    transform: translateY(2vh) translateX(10vw) scale(0.4);
+  }
+  20% {
+    transform: translateY(0vh) translateX(30vw) scale(0.5);
+  }
+  30% {
+    transform: translateY(4vh) translateX(50vw) scale(0.6);
+  }
+  40% {
+    transform: translateY(2vh) translateX(70vw) scale(0.6);
+  }
+  50% {
+    transform: translateY(0vh) translateX(90vw) scale(0.6);
+  }
+  60% {
+    transform: translateY(0vh) translateX(110vw) scale(0.6);
+  }
+  100% {
+    transform: translateY(0vh) translateX(110vw) scale(0.6);
+  }
+}
 
-	@-webkit-keyframes fly-right-one{
-		0%{
-			transform: scale(0.3) translateX(-10vw);
-		}
-		10%{
-			transform: translateY(2vh) translateX(10vw) scale(0.4);
-		}
-		20%{
-			transform: translateY(0vh) translateX(30vw) scale(0.5);
-		}
-		30%{
-			transform: translateY(4vh) translateX(50vw) scale(0.6);
-		}
-		40%{
-			transform: translateY(2vh) translateX(70vw) scale(0.6);
-		}
-		50%{
-			transform: translateY(0vh) translateX(90vw) scale(0.6);
-		}
-		60%{
-			transform: translateY(0vh) translateX(110vw) scale(0.6);
-		}
-		100%{
-			transform: translateY(0vh) translateX(110vw) scale(0.6);
-		}
-	}
+@keyframes fly-right-one {
+  0% {
+    transform: scale(0.3) translateX(-10vw);
+  }
+  10% {
+    transform: translateY(2vh) translateX(10vw) scale(0.4);
+  }
+  20% {
+    transform: translateY(0vh) translateX(30vw) scale(0.5);
+  }
+  30% {
+    transform: translateY(4vh) translateX(50vw) scale(0.6);
+  }
+  40% {
+    transform: translateY(2vh) translateX(70vw) scale(0.6);
+  }
+  50% {
+    transform: translateY(0vh) translateX(90vw) scale(0.6);
+  }
+  60% {
+    transform: translateY(0vh) translateX(110vw) scale(0.6);
+  }
+  100% {
+    transform: translateY(0vh) translateX(110vw) scale(0.6);
+  }
+}
 
-	@keyframes fly-right-one{
-		0%{
-			transform: scale(0.3) translateX(-10vw);
-		}
-		10%{
-			transform: translateY(2vh) translateX(10vw) scale(0.4);
-		}
-		20%{
-			transform: translateY(0vh) translateX(30vw) scale(0.5);
-		}
-		30%{
-			transform: translateY(4vh) translateX(50vw) scale(0.6);
-		}
-		40%{
-			transform: translateY(2vh) translateX(70vw) scale(0.6);
-		}
-		50%{
-			transform: translateY(0vh) translateX(90vw) scale(0.6);
-		}
-		60%{
-			transform: translateY(0vh) translateX(110vw) scale(0.6);
-		}
-		100%{
-			transform: translateY(0vh) translateX(110vw) scale(0.6);
-		}
-	}
+@-webkit-keyframes fly-right-two {
+  0% {
+    transform: translateY(-2vh) translateX(-10vw) scale(0.5);
+  }
+  10% {
+    transform: translateY(0vh) translateX(10vw) scale(0.4);
+  }
+  20% {
+    transform: translateY(-4vh) translateX(30vw) scale(0.6);
+  }
+  30% {
+    transform: translateY(1vh) translateX(50vw) scale(0.45);
+  }
+  40% {
+    transform: translateY(-2.5vh) translateX(70vw) scale(0.5);
+  }
+  50% {
+    transform: translateY(0vh) translateX(90vw) scale(0.45);
+  }
+  51% {
+    transform: translateY(0vh) translateX(110vw) scale(0.45);
+  }
+  100% {
+    transform: translateY(0vh) translateX(110vw) scale(0.45);
+  }
+}
 
-	@-webkit-keyframes fly-right-two{
-		0%{
-			transform: translateY(-2vh) translateX(-10vw) scale(0.5);
-		}
-		10%{
-			transform: translateY(0vh) translateX(10vw) scale(0.4);
-		}
-		20%{
-			transform: translateY(-4vh) translateX(30vw) scale(0.6);
-		}
-		30%{
-			transform: translateY(1vh) translateX(50vw) scale(0.45);
-		}
-		40%{
-			transform: translateY(-2.5vh) translateX(70vw) scale(0.5);
-		}
-		50%{
-			transform: translateY(0vh) translateX(90vw) scale(0.45);
-		}
-		51%{
-			transform: translateY(0vh) translateX(110vw) scale(0.45);
-		}
-		100%{
-			transform: translateY(0vh) translateX(110vw) scale(0.45);
-		}
-	}
+@keyframes fly-right-two {
+  0% {
+    transform: translateY(-2vh) translateX(-10vw) scale(0.5);
+  }
+  10% {
+    transform: translateY(0vh) translateX(10vw) scale(0.4);
+  }
+  20% {
+    transform: translateY(-4vh) translateX(30vw) scale(0.6);
+  }
+  30% {
+    transform: translateY(1vh) translateX(50vw) scale(0.45);
+  }
+  40% {
+    transform: translateY(-2.5vh) translateX(70vw) scale(0.5);
+  }
+  50% {
+    transform: translateY(0vh) translateX(90vw) scale(0.45);
+  }
+  51% {
+    transform: translateY(0vh) translateX(110vw) scale(0.45);
+  }
+  100% {
+    transform: translateY(0vh) translateX(110vw) scale(0.45);
+  }
+}
 
-	@keyframes fly-right-two{
-		0%{
-			transform: translateY(-2vh) translateX(-10vw) scale(0.5);
-		}
-		10%{
-			transform: translateY(0vh) translateX(10vw) scale(0.4);
-		}
-		20%{
-			transform: translateY(-4vh) translateX(30vw) scale(0.6);
-		}
-		30%{
-			transform: translateY(1vh) translateX(50vw) scale(0.45);
-		}
-		40%{
-			transform: translateY(-2.5vh) translateX(70vw) scale(0.5);
-		}
-		50%{
-			transform: translateY(0vh) translateX(90vw) scale(0.45);
-		}
-		51%{
-			transform: translateY(0vh) translateX(110vw) scale(0.45);
-		}
-		100%{
-			transform: translateY(0vh) translateX(110vw) scale(0.45);
-		}
-	}
+.bottom-left{
+  position: absolute;
+  bottom: 8px;
+  left: 16px;
+}
 </style>
