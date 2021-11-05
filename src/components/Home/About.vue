@@ -1,5 +1,5 @@
 <template>
-  <section class="container pt-5">
+  <section class="about-wrapper container pt-5">
     <div class="row mb-2">
       <div class="col-md-8 mx-auto text-center">
         <h1 class="mb-2">About Us</h1>
@@ -13,14 +13,21 @@
 
     <div class="row g-2">
       <!-- V-for for each card -->
-      <div :key="card.title" v-for="card of cards" class="col col-sm-6 col-md-3">
+      <div
+        :key="card.title"
+        v-for="card of cards"
+        class="col col-sm-6 col-lg-3"
+      >
         <router-link :to="card.link">
-          <div class="service card-effect bounceInUp">
+          <div class="service card-effect">
             <div class="iconbox">
               <i class="bx bxs-check-shield"></i>
             </div>
             <h5 class="mt-4 mb-2">{{ card.title }}</h5>
-            <img class="img-fluid mx-auto d-block" :src="getUrl(card.imageSrc)" />
+            <img
+              class="img-fluid mx-auto d-block"
+              :src="getUrl(card.imageSrc)"
+            />
             <p>
               {{ card.description }}
             </p>
@@ -40,7 +47,7 @@ export default {
       cards: [
         {
           title: "Learning",
-          description: "Learn more about climate change and its impacts",
+          description: "Learn more about climate change and its impacts through our unique gamification system",
           image: "../assets/img/learn.png",
           imageSrc: "learn.png",
           link: "/quiz",
@@ -48,7 +55,7 @@ export default {
         {
           title: "Images of Change",
           description:
-            "Explore how Gaia has evolved over time with image visuals",
+            "Explore how Gaia has evolved over time using state of the art imagery",
           image: "@/assets/img/imagec.png",
           imageSrc: "imagec.png",
           link: "/image",
@@ -56,7 +63,7 @@ export default {
         {
           title: "Graphical Visuals",
           description:
-            "See real-time statitics of how climate change has affected Sea Ice, Carbon Dioxide, Global Temperature",
+            "See beautiful visuals of how climate change has affected the world",
           image: "@/assets/img/charts.png",
           imageSrc: "charts.png",
           link: "/charts",
@@ -82,20 +89,56 @@ export default {
 
 <style lang="scss" scoped>
 .container {
-  font-size: $variable-font;
-}
-.card-effect {
-  // box-shadow: var(--box-shadow);
-  background-color: var(--white);
-  padding: 25px;
-  transition: all 0.35s ease;
+//   font-size: $variable-font;
+  font-size: $font-size-secondary;
+
+  .card-effect {
+    // box-shadow: var(--box-shadow);
+    background-color: var(--white);
+    padding: 25px;
+    transition: all 0.35s ease;
+
+    &:hover {
+      box-shadow: none;
+      transform: translateY(5px);
+    }
+  }
 }
 
-.card-effect:hover {
-  box-shadow: none;
-  transform: translateY(5px);
-}
+.service {
+  position: relative;
+  z-index: 2;
+  overflow: hidden;
 
+  p {
+    font-size: $font-size-secondary;
+  }
+
+  &::after {
+    content: "";
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: -100%;
+    left: 0;
+    background-color: var(--primary);
+    z-index: -1;
+    opacity: 0;
+    transition: all 0.4s ease;
+    opacity: 1;
+    top: 0;
+  }
+
+  &:hover .iconbox {
+    background-color: var(--white);
+    color: var(--primary);
+  }
+
+  &:hover h5,
+  &:hover p {
+    color: var(--white);
+  }
+}
 // .iconbox {
 //   width: 54px;
 //   height: 54px;
@@ -109,36 +152,22 @@ export default {
 //   flex: none;
 // }
 
-.service {
-  position: relative;
-  z-index: 2;
-  overflow: hidden;
-}
-.service::after {
-  content: "";
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  top: -100%;
-  left: 0;
-  background-color: var(--primary);
-  z-index: -1;
-  opacity: 0;
-  transition: all 0.4s ease;
+// Accounting for the different breakpoints
+@media screen and (min-width: 768px) {
+  .about-wrapper {
+    width: 80%;
+  }
 }
 
-.service:hover .iconbox {
-  background-color: var(--white);
-  color: var(--primary);
+@media screen and (min-width: 992px) {
+  .about-wrapper {
+    width: 70%;
+  }
 }
 
-.service:hover h5,
-.service:hover p {
-  color: var(--white);
-}
-
-.service:hover::after {
-  opacity: 1;
-  top: 0;
+@media screen and (min-width: 1400px) {
+  .about-wrapper {
+    width: 60%;
+  }
 }
 </style>
