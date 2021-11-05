@@ -1,35 +1,34 @@
 <template>
   <div class="home-page-wrapper">
     <!--top header-->
-    <div class="">
-      <div class="hero vh-100 d-flex align-items-center" id="home">
-        <!--animated birds-->
-        <div class="container">
-          <div class="bird-container bird-container--one">
-            <div class="bird bird--one"></div>
-          </div>
-
-          <div class="bird-container bird-container--two">
-            <div class="bird bird--two"></div>
-          </div>
-
-          <div class="bird-container bird-container--three">
-            <div class="bird bird--three"></div>
-          </div>
-
-          <div class="bird-container bird-container--four">
-            <div class="bird bird--four"></div>
-          </div>
+    <div class="hero d-flex align-items-center" id="home">
+      <div class="bg-image-holder"></div>
+      <!--animated birds-->
+      <div class="">
+        <div class="bird-container bird-container--one">
+          <div class="bird bird--one"></div>
         </div>
 
-        <div class="container">
-          <div class="top-header-wrapper">
-            <h1 class="text-white">
-              You have the power to <span id="savemyworld">#SaveOurWorld</span>
-            </h1>
-          </div>
+        <div class="bird-container bird-container--two">
+          <div class="bird bird--two"></div>
+        </div>
 
-          <!-- <div class="row">
+        <div class="bird-container bird-container--three">
+          <div class="bird bird--three"></div>
+        </div>
+
+        <div class="bird-container bird-container--four">
+          <div class="bird bird--four"></div>
+        </div>
+      </div>
+
+      <div class="top-header-wrapper">
+        <h1 class="text-white">
+          You have the power to <span id="savemyworld">#SaveOurWorld</span>
+        </h1>
+      </div>
+
+      <!-- <div class="row">
               <div class="col-1"></div>
               <div class="col-2">
                 <a href="#" class="btn me-2 btn-primary"
@@ -42,16 +41,13 @@
                 >
               </div>
             </div> -->
-        </div>
-
-        <div class="row bottom-left">
-          <div class="col-1"></div>
-          <div class="col-lg-4 text-white alignment-left my-3">
-            Climate change will affect all of us, whether directly or
-            indirectly. We all have a stake in helping to reduce our emissions
-            and in preparing for the effects of climate change.
-          </div>
-        </div>
+    </div>
+    <div class="row">
+      <div class="col-1"></div>
+      <div class="col-lg-4 text-white alignment-left my-3">
+        Climate change will affect all of us, whether directly or indirectly. We
+        all have a stake in helping to reduce our emissions and in preparing for
+        the effects of climate change.
       </div>
     </div>
 
@@ -117,6 +113,33 @@ export default {
 <style lang="scss">
 .home-page-wrapper {
   @extend %page-wrapper;
+
+  .hero {
+    position: relative;
+    z-index: 1;
+    height: 500px;
+
+    .bg-image-holder {
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: url("~@/assets/img/LandingPage3.jpeg") center center;
+      opacity: 0.7;
+      width: 100%;
+      height: 100%;
+      background-attachment: fixed;
+    }
+
+    .top-header-wrapper {
+      position: absolute;
+      width: 80%;
+      top: 50%;
+      left: 50%;
+      z-index: 1;
+      transform: translate(-50%, -50%);
+    }
+  }
 }
 
 // Accounting for the different breakpoints
@@ -178,24 +201,6 @@ a {
 
 img {
   width: 100%;
-}
-
-.hero {
-  background-image: url("~@/assets/img/LandingPage3.jpeg");
-  background-position: center;
-  background-size: cover;
-  background-attachment: fixed;
-  position: relative;
-  z-index: 2;
-
-  .top-header-wrapper {
-    position: absolute;
-    width: 80%;
-    top: 50%;
-    left: 50%;
-    z-index: 1;
-    transform: translate(-50%, -50%);
-  }
 }
 
 .btn {
@@ -663,5 +668,4 @@ form .form-control {
   bottom: 8px;
   left: 16px;
 }
-
 </style>
