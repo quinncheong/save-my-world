@@ -243,16 +243,7 @@ export default {
             count += 1.5;
           }
         }
-        count = 2020
 
-        // Push last point of past dataset to the future dataset
-        futureDataset.push(pastDataset[pastDataset.length - 1]);
-        updatedLabels.push(count);
-        // Push last point of past dataset to the future dataset
-        futureDataset.push(pastDataset[pastDataset.length - 1]);
-        updatedLabels.push(Math.floor(count));
-
-        count = 2020
         // Push last point of past dataset to the future dataset
         futureDataset.push(pastDataset[pastDataset.length - 1]);
         updatedLabels.push(Math.floor(count));
