@@ -1,7 +1,14 @@
 <template>
-  <div class="container-fluid visualisation-wrapper">
+  <div class="visualisation-wrapper">
     <!-- header -->
-    <h1>Start saving the environment now</h1>
+    <h2 class="chart-title mb-3">Disaster Frequency since 1981</h2>
+    <p class="chart-details mb-3">
+      The map below shows the frequency of disasters in the world since 1981.
+    </p>
+    <i class="chart-select mb-2"
+      >Select the filter to understand how disasters have been increasing
+      rapidly throughout the years</i
+    >
 
     <div class="d-flex justify-content-center">
       <!-- Dropdownlist  -->
@@ -36,7 +43,7 @@
             id="slider"
             class="row ms-4"
             type="range"
-            min="1960"
+            min="1981"
             max="2021"
             step="1"
             v-model="yearVal"
@@ -132,7 +139,7 @@ export default {
 
           console.log(this.features);
 
-          console.log('added source')
+          console.log("added source");
 
           // Adding layer to the map
           this.map.addLayer({
@@ -235,6 +242,13 @@ export default {
           continuousWorld: false,
         });
 
+        this.map.scrollZoom.disable();
+
+        const nav = new mapboxgl.NavigationControl({
+          visualizePitch: true
+        });
+        this.map.addControl(nav, "bottom-right");
+
         // This variable is unused?
         let geocoder = new MapboxGeocoder({
           accessToken: this.access_token,
@@ -332,7 +346,7 @@ export default {
 
     // Function to add the coordinates to the features array
     async addCoordToFeatures(geoIdDictionary) {
-      console.log(geoIdDictionary)
+      console.log(geoIdDictionary);
       // Loop through features and do the lookup in the geo dictionary
       // and add it to the array
       this.features.forEach((feature, index) => {
@@ -375,9 +389,7 @@ export default {
 
 <style lang="scss" scoped>
 .visualisation-wrapper {
-  width: 100%;
-  height: 100%;
-  position: relative;
+  @extend %page-wrapper;
 }
 
 @media screen and (min-width: 768px) {
