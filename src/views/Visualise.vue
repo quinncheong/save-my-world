@@ -1,17 +1,16 @@
 <template>
   <div class="visualisation-wrapper">
     <!-- header -->
-    <h2 class="chart-title mb-3">Disaster Frequency since 1981</h2>
-    <p class="chart-details mb-3">
+    <h2 class="chart-title mb-1">Disaster Frequency since 1981</h2>
+    <p class="chart-details mb-1">
       The map below shows the frequency of disasters in the world since 1981.
     </p>
-    <i class="chart-select mb-2"
+    <i style="font-size: 15px" class="chart-select mb-2"
       >Select the filter to understand how disasters have been increasing
       rapidly throughout the years</i
     >
-
+    <!--
     <div class="d-flex justify-content-center">
-      <!-- Dropdownlist  -->
       <form @submit="handleClick()">
         <select
           class="form-select text-center"
@@ -29,30 +28,30 @@
         </select>
       </form>
       <button class="btn btn-outline-success">Confirm</button>
-    </div>
+    </div> 
+    -->
 
     <!-- Container to hold  the map -->
-
-    <div id="map">
-      <!-- Slider Filter on the top left portion of the map -->
-      <div id="console">
-        <h1>Last 10 years</h1>
-        <div class="text-center">
-          <h5>{{ yearVal }}</h5>
-          <input
-            id="slider"
-            class="row ms-4"
-            type="range"
-            min="1981"
-            max="2021"
-            step="1"
-            v-model="yearVal"
-            @change="listenEvent"
-          />
-        </div>
+    <div class="console justify-self-center" >
+      <h1>Last 10 years</h1>
+      <div class="text-center">
+        <h5>{{ yearVal }}</h5>
+        <input
+          id="slider"
+          class=""
+          type="range"
+          min="1981"
+          max="2021"
+          step="1"
+          v-model="yearVal"
+          @change="listenEvent"
+        />
       </div>
-      <!-- Result modal to be placed here  -->
+    </div>
 
+    <div class="map" id="map">
+      <!-- Slider Filter on the top left portion of the map -->
+      <!-- Result modal to be placed here  -->
       <div v-if="flying == false" id="desc">
         <h3>{{ title }}</h3>
         <h6>{{ status }}</h6>
@@ -245,7 +244,7 @@ export default {
         this.map.scrollZoom.disable();
 
         const nav = new mapboxgl.NavigationControl({
-          visualizePitch: true
+          visualizePitch: true,
         });
         this.map.addControl(nav, "bottom-right");
 
@@ -390,7 +389,46 @@ export default {
 <style lang="scss" scoped>
 .visualisation-wrapper {
   @extend %page-wrapper;
+
+  .map {
+    height: 500px;
+    color: black;
+    position: relative;
+  }
+  
+  .console {
+    display: flex;
+    flex-direction: column;
+    margin: 0 1rem 1rem 1rem;
+    padding: 10px 20px;
+    background-color: white;
+    color: black;
+    z-index: 1;
+  }
+  
+  #desc {
+    position: absolute;
+    width: 25%;
+    height: 200px;
+    margin-left: 10px;
+    bottom: 30px;
+    padding: 10px 20px;
+    background-color: white;
+    z-index: 1;
+    overflow-y: auto;
 }
+
+// .marker {
+//   background-image: url("../assets/img/globe.png");
+//   background-size: cover;
+//   width: 50px;
+//   height: 50px;
+//   border-radius: 50%;
+//   cursor: pointer;
+// }
+
+}
+
 
 @media screen and (min-width: 768px) {
   .visualisation-wrapper {
@@ -408,44 +446,5 @@ export default {
   .visualisation-wrapper {
     width: 70%;
   }
-}
-
-#map {
-  height: 100vh;
-}
-
-.marker {
-  background-image: url("../assets/img/globe.png");
-  background-size: cover;
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  cursor: pointer;
-}
-
-#map {
-  color: black;
-  position: relative;
-}
-
-#console {
-  position: absolute;
-  width: 240px;
-  margin: 10px;
-  padding: 10px 20px;
-  background-color: white;
-  z-index: 1;
-}
-
-#desc {
-  position: absolute;
-  width: 25%;
-  height: 200px;
-  margin-left: 10px;
-  bottom: 30px;
-  padding: 10px 20px;
-  background-color: white;
-  z-index: 1;
-  overflow-y: auto;
 }
 </style>
