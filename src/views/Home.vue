@@ -18,24 +18,9 @@
           <h4 class="text-white">Together</h4>
         </div>
 
-      <!--animated birds-->
-      <div class="">
-        <div class="bird-container bird-container--one">
-          <div class="bird bird--one"></div>
-        </div>
+        <animated-birds />
 
-        <div class="bird-container bird-container--two">
-          <div class="bird bird--two"></div>
-        </div>
-
-        <div class="bird-container bird-container--three">
-          <div class="bird bird--three"></div>
-        </div>
-
-        <div class="bird-container bird-container--four">
-          <div class="bird bird--four"></div>
-        </div>
-      </div>
+      
 
       <a href="#main" class="header-arrow">
         <span></span>
@@ -62,38 +47,7 @@
     </div> -->
 
     <!--How we can play our part-->
-    <section id="services">
-      <div class="container">
-        <div class="row">
-          <h1 class="text-center animate">Towards a Net-Zero Future</h1>
-        </div>
-
-        <div class="row mb-5">
-          <div class="col-md">
-            <!-- <h2 class="alignment-left">Towards a Net-Zero Future:</h2> -->
-            <br />
-            <h6 class="alignment-left">
-              According to United Nations, to preserve a livable climate,
-              greenhouse-gas emissions must be reduced to net zero by 2050.
-              Bold, fast, and wide-ranging action needs to be taken by
-              governments and businesses. But the transition to a low-carbon
-              world also
-              <span id="savemyworld">requires</span> the
-              <span id="savemyworld">participation of citizens</span> –
-              especially in advanced economies.
-
-              <br />
-              <br />
-              Hence, play your part in limiting the effects of global warming
-              and take care of our planet.
-              <span id="savemyworld">Make the right choices today.</span> You
-              can be part of the solution and influence change.
-            </h6>
-          </div>
-        </div>
-      </div>
-    </section>
-
+    <future />
     
 
     <!-- <three-rs /> -->
@@ -105,6 +59,8 @@
 // Components
 import About from "@/components/Home/About.vue";
 import ThreeRs from "@/components/Home/ThreeRs.vue";
+import Future from "@/components/Home/Future.vue";
+import AnimatedBirds from "@/components/Home/AnimatedBirds.vue";
 
 import Globe from "@/assets/img/globe.png";
 import Guide from "@/assets/img/guidebackgroundimg.jpg";
@@ -118,6 +74,8 @@ export default {
   components: {
     About,
     ThreeRs,
+    Future,
+    AnimatedBirds,
   },
   data() {
     return {
@@ -251,30 +209,10 @@ export default {
 //   // --box-shadow: 0 8px 22px rgba(0,0,0,0.1);
 // }
 
-body {
-  font-family: "Sora", sans-serif;
-  line-height: 1.7;
-  color: var(--body);
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-.display-4 {
-  color: var(--dark);
-  font-weight: 700;
-}
 
 a {
   color: var(--dark);
   text-decoration: none;
-}
-
-img {
-  width: 100%;
 }
 
 .btn {
@@ -456,211 +394,6 @@ form .form-control {
   border-bottom: 1px solid purple;
 }
 
-//for the animated birds
-
-.bird {
-  background-image: url("bird-cells-new.svg");
-  background-size: auto 100%;
-  width: 88px;
-  height: 125px;
-  will-change: background-position;
-  -webkit-animation-name: fly-cycle;
-  animation-name: fly-cycle;
-  -webkit-animation-timing-function: steps(10);
-  animation-timing-function: steps(10);
-  -webkit-animation-iteration-count: infinite;
-  animation-iteration-count: infinite;
-}
-
-.bird--one {
-  -webkit-animation-duration: 1s;
-  animation-duration: 1s;
-  -webkit-animation-delay: -0.5s;
-  animation-delay: -0.5s;
-}
-
-.bird--two {
-  -webkit-animation-duration: 0.9s;
-  animation-duration: 0.9s;
-  -webkit-animation-delay: -0.75s;
-  animation-delay: -0.75s;
-}
-
-.bird--three {
-  -webkit-animation-duration: 1.25s;
-  animation-duration: 1.25s;
-  -webkit-animation-delay: -0.25s;
-  animation-delay: -0.25s;
-}
-
-.bird--four {
-  -webkit-animation-duration: 1.1s;
-  animation-duration: 1.1s;
-  -webkit-animation-delay: -0.5s;
-  animation-delay: -0.5s;
-}
-
-.bird-container {
-  position: absolute;
-  top: 20%;
-  left: -10%;
-  transform: scale(0) translateX(-10vw);
-  will-change: transform;
-  -webkit-animation-name: fly-right-one;
-  animation-name: fly-right-one;
-  -webkit-animation-timing-function: linear;
-  animation-timing-function: linear;
-  -webkit-animation-iteration-count: infinite;
-  animation-iteration-count: infinite;
-}
-
-.bird-container--one {
-  -webkit-animation-duration: 15s;
-  animation-duration: 15s;
-  -webkit-animation-delay: 0;
-  animation-delay: 0;
-}
-
-.bird-container--two {
-  -webkit-animation-duration: 16s;
-  animation-duration: 16s;
-  -webkit-animation-delay: 1s;
-  animation-delay: 1s;
-}
-
-.bird-container--three {
-  -webkit-animation-duration: 14.6s;
-  animation-duration: 14.6s;
-  -webkit-animation-delay: 9.5s;
-  animation-delay: 9.5s;
-}
-
-.bird-container--four {
-  -webkit-animation-duration: 16s;
-  animation-duration: 16s;
-  -webkit-animation-delay: 10.25s;
-  animation-delay: 10.25s;
-}
-
-@-webkit-keyframes fly-cycle {
-  100% {
-    background-position: -900px 0;
-  }
-}
-
-@keyframes fly-cycle {
-  100% {
-    background-position: -900px 0;
-  }
-}
-
-@-webkit-keyframes fly-right-one {
-  0% {
-    transform: scale(0.3) translateX(-10vw);
-  }
-  10% {
-    transform: translateY(2vh) translateX(10vw) scale(0.4);
-  }
-  20% {
-    transform: translateY(0vh) translateX(30vw) scale(0.5);
-  }
-  30% {
-    transform: translateY(4vh) translateX(50vw) scale(0.6);
-  }
-  40% {
-    transform: translateY(2vh) translateX(70vw) scale(0.6);
-  }
-  50% {
-    transform: translateY(0vh) translateX(90vw) scale(0.6);
-  }
-  60% {
-    transform: translateY(0vh) translateX(110vw) scale(0.6);
-  }
-  100% {
-    transform: translateY(0vh) translateX(110vw) scale(0.6);
-  }
-}
-
-@keyframes fly-right-one {
-  0% {
-    transform: scale(0.3) translateX(-10vw);
-  }
-  10% {
-    transform: translateY(2vh) translateX(10vw) scale(0.4);
-  }
-  20% {
-    transform: translateY(0vh) translateX(30vw) scale(0.5);
-  }
-  30% {
-    transform: translateY(4vh) translateX(50vw) scale(0.6);
-  }
-  40% {
-    transform: translateY(2vh) translateX(70vw) scale(0.6);
-  }
-  50% {
-    transform: translateY(0vh) translateX(90vw) scale(0.6);
-  }
-  60% {
-    transform: translateY(0vh) translateX(110vw) scale(0.6);
-  }
-  100% {
-    transform: translateY(0vh) translateX(110vw) scale(0.6);
-  }
-}
-
-@-webkit-keyframes fly-right-two {
-  0% {
-    transform: translateY(-2vh) translateX(-10vw) scale(0.5);
-  }
-  10% {
-    transform: translateY(0vh) translateX(10vw) scale(0.4);
-  }
-  20% {
-    transform: translateY(-4vh) translateX(30vw) scale(0.6);
-  }
-  30% {
-    transform: translateY(1vh) translateX(50vw) scale(0.45);
-  }
-  40% {
-    transform: translateY(-2.5vh) translateX(70vw) scale(0.5);
-  }
-  50% {
-    transform: translateY(0vh) translateX(90vw) scale(0.45);
-  }
-  51% {
-    transform: translateY(0vh) translateX(110vw) scale(0.45);
-  }
-  100% {
-    transform: translateY(0vh) translateX(110vw) scale(0.45);
-  }
-}
-
-@keyframes fly-right-two {
-  0% {
-    transform: translateY(-2vh) translateX(-10vw) scale(0.5);
-  }
-  10% {
-    transform: translateY(0vh) translateX(10vw) scale(0.4);
-  }
-  20% {
-    transform: translateY(-4vh) translateX(30vw) scale(0.6);
-  }
-  30% {
-    transform: translateY(1vh) translateX(50vw) scale(0.45);
-  }
-  40% {
-    transform: translateY(-2.5vh) translateX(70vw) scale(0.5);
-  }
-  50% {
-    transform: translateY(0vh) translateX(90vw) scale(0.45);
-  }
-  51% {
-    transform: translateY(0vh) translateX(110vw) scale(0.45);
-  }
-  100% {
-    transform: translateY(0vh) translateX(110vw) scale(0.45);
-  }
-}
 
 .bottom-left {
   position: absolute;
