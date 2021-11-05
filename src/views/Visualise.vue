@@ -1,9 +1,14 @@
 <template>
   <div class="visualisation-wrapper">
     <!-- header -->
-    <h2 class="chart-title mb-1">Disaster Frequency since 1981</h2>
+    <div id="tile-2">
+      <h2 class="chart-title mb-1">Disaster Frequency</h2>
+    </div>
+
+    <div id="tile-1">
+
     <p class="chart-details mb-1">
-      The map below shows the frequency of disasters in the world since 1981.
+      The map below shows the frequency of disasters in the world.
     </p>
     <i style="font-size: 15px" class="chart-select mb-2"
       >Select the filter to understand how disasters have been increasing
@@ -34,11 +39,15 @@
     <!-- Container to hold  the map -->
     <div class="console justify-self-center" >
       <h1>Last 10 years</h1>
-      <div class="text-center">
-        <h5>{{ yearVal }}</h5>
+        <h5 class="sliderValue">{{ yearVal }}</h5>
+        <div class="row">
+          <div class="col-1">
+            <div class='value-left'>1981</div>
+          </div>
+          <div class="col-10">
         <input
           id="slider"
-          class=""
+          class="w-100"
           type="range"
           min="1981"
           max="2021"
@@ -46,18 +55,29 @@
           v-model="yearVal"
           @change="listenEvent"
         />
-      </div>
+          </div>
+        <div class="col-1">
+         <div class='value-right'>2021</div>
+        </div>
+
+        </div>
+
+    </div>
+
     </div>
 
     <div class="map" id="map">
       <!-- Slider Filter on the top left portion of the map -->
       <!-- Result modal to be placed here  -->
-      <div v-if="flying == false" id="desc">
-        <h3>{{ title }}</h3>
-        <h6>{{ status }}</h6>
-        <p>
-          {{ descriptionModal }}
-        </p>
+      <div class="container">
+         <div v-if="flying == false" id="desc" class=' my-2'>
+        <h5 class='text-center'>{{ title }}</h5>
+        <div >
+          <p class='p-3'>{{ descriptionModal }}</p>
+        </div>
+
+      </div>
+     
       </div>
     </div>
   </div>
@@ -389,6 +409,41 @@ export default {
 <style lang="scss" scoped>
 .visualisation-wrapper {
   @extend %page-wrapper;
+  scrollbar-width: thin;
+
+
+   ::-webkit-scrollbar{
+     width: 1em;
+      
+    }
+
+    ::-webkit-scrollbar-track {
+      background: hsl(100 75% 40% / 1);
+      border-radius: 100vw;
+      margin-block: .5em;
+
+    }
+
+    ::-webkit-scrollbar-thumb{
+      background: hsl(120 100% 20% / 1);
+      border: .25em solid black;
+      border-radius: 100vw;
+    }
+
+    ::-webkit-scrollbar-thumb:hover{
+      background:hsl(120 100% 5% /1);
+    }
+
+    .scrollable-element {
+      scrollbar-width: thin;
+    }
+
+  #tile-1{
+    .chart-details{
+      animation: appear 2s ease-in; 
+
+    }
+  }
 
   .map {
     height: 500px;
@@ -399,23 +454,57 @@ export default {
   .console {
     display: flex;
     flex-direction: column;
-    margin: 0 1rem 1rem 1rem;
+      margin: 0 1rem 1rem 1rem;
     padding: 10px 20px;
-    background-color: white;
-    color: black;
+    background-color: rgba(0, 0, 0, 0.412);
+    color: white;
+    animation: appear 6s ease-in; 
+
     z-index: 1;
+
+      #slider{
+        -webkit-appearance: none;
+        width: 100%;
+        height: 7px;
+        outline: none;
+        border-radius: 3px;
+      }
+
+      #slider::-webkit-slider-thumb{
+        -webkit-appearance: none;
+        height: 20px;
+        width: 20px;
+        background: greenyellow;
+        border-radius: 50%;;
+        cursor: pointer;
+
+      }
   }
   
   #desc {
     position: absolute;
-    width: 25%;
+    width: 40%;
     height: 200px;
     margin-left: 10px;
-    bottom: 30px;
     padding: 10px 20px;
+    bottom: 30px;
     background-color: white;
     z-index: 1;
     overflow-y: auto;
+    animation: appear 0.5s; 
+    border-radius: 25px;
+    text-align: left;
+
+
+}
+
+@keyframes appear {
+
+  // 0%{}
+  // 100%{transform: translateY(-30px)}
+  from {opacity: 0;}
+  to {opacity: 1;}
+  
 }
 
 // .marker {
