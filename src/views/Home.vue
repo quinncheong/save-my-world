@@ -83,11 +83,19 @@
         </div>
       </div>
     </section>
+
+    <about />
+
+    <three-rs />
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
+// Components
+import About from '@/components/Home/About.vue'
+import ThreeRs from '@/components/Home/ThreeRs.vue'
+
 import Globe from "@/assets/img/globe.png";
 import Guide from "@/assets/img/guidebackgroundimg.jpg";
 import Recycle from "@/assets/img/recyclingbin.png";
@@ -97,6 +105,10 @@ import LandingPage from "@/assets/img/LandingPage.jpeg";
 
 export default {
   name: "Home",
+  components: {
+    About,
+    ThreeRs
+  },
   data() {
     return {
       Globe,
@@ -105,6 +117,7 @@ export default {
       GlobeGuide,
       Clothes,
       LandingPage,
+      
     };
   },
 };
