@@ -126,10 +126,33 @@ export default {
     }
   }
 }
+
 // display 70% width on desktop
-@media (min-width: 768px) {
+@media screen and (min-width: 768px) {
   .chart-wrapper {
     width: 70%;
+  }
+}
+
+// display 70% width on large screen sizes
+@media screen and (min-width: 992px) {
+  .chart-wrapper {
+    width: 60%;
+  }
+}
+
+// // display 70% width on extra large screen sizes
+@media screen and (min-width: 1200px) {
+  .chart-wrapper {
+    width: 50%;
+  }
+}
+
+// // display 70% width on extra large screen sizes
+@media screen and (min-width: 1350px) {
+  .chart-wrapper {
+    width: 40%;
+    font-size: 15px;
   }
 }
 </style>

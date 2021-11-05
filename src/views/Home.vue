@@ -1,436 +1,325 @@
 <template>
+  <!--top header-->
   <div class="container-fluid">
-    <!-- This would be where the globe would be  -->
-    <div class="row mt-3" id="login">
-      <div class="col">
-        <!-- <img src="@/assets/img/globe.png" alt="searchicon" /> -->
-        <!-- <div class="row-4">
-        </div> -->
-        <div class="row-4 position">
-          <!--to include breakpoint later on-->
-          <div class="earth"></div>
-          <div class="circle">
-            <!--This is for a rotating text-->
-            <span style="--i: 1">#</span>
-            <span style="--i: 2">S</span>
-            <span style="--i: 3">A</span>
-            <span style="--i: 4">V</span>
-            <span style="--i: 5">E</span>
-            <span style="--i: 6">O</span>
-            <span style="--i: 7">U</span>
-            <span style="--i: 8">R</span>
-            <span style="--i: 9">W</span>
-            <span style="--i: 10">O</span>
-            <span style="--i: 11">R</span>
-            <span style="--i: 12">L</span>
-            <span style="--i: 13">D</span>
-            <span style="--i: 14">#</span>
-            <span style="--i: 15">S</span>
-            <span style="--i: 16">A</span>
-            <span style="--i: 17">V</span>
-            <span style="--i: 18">E</span>
-            <span style="--i: 19">O</span>
-            <span style="--i: 20">U</span>
-            <span style="--i: 21">R</span>
-            <span style="--i: 22">W</span>
-            <span style="--i: 23">O</span>
-            <span style="--i: 24">R</span>
-            <span style="--i: 25">L</span>
-            <span style="--i: 26">D</span>
-          </div>
-        </div>
-      </div>
-      <!-- Login section -->
-
-      <!-- Tile of login  -->
-      <div class="col">
-        <!--removed class text-star idk what's star-->
+    <div class="hero vh-100 d-flex align-items-center" id="home">
+      <div class="container">
         <div class="row">
-          <div class="col">
-            <h1 class="mt-3 text-center">
+          <div class="col-lg-8 mx-auto text-center">
+            <h1 class="display-4 text-white heading">
+
               You have the power to <span id="savemyworld">#SaveOurWorld</span>
             </h1>
-            <br />
-            <hr />
-            <br />
-
-            <div class="col text-start">
-              <h4>Towards a Net-Zero Future:</h4>
-              <br />
-              <h6>
-                According to United Nations, to preserve a livable climate,
-                greenhouse-gas emissions must be reduced to net zero by 2050.
-                Bold, fast, and wide-ranging action needs to be taken by
-                governments and businesses. But the transition to a low-carbon
-                world also <span id="savemyworld">requires</span> the
-                <span id="savemyworld">participation of citizens</span> –
-                especially in advanced economies.
-
-                <br />
-                <br />
-                Hence, play your part in limiting the effects of global warming
-                and take care of our planet.
-                <span id="savemyworld">Make the right choices today.</span> You
-                can be part of the solution and influence change.
-              </h6>
-              <br />
-            </div>
+            <p class="text-white my-3">
+              Climate change will affect all of us, whether directly or
+              indirectly. Everyone—as individuals, as employees, as members of a
+              family and as a wider community—has a stake in helping to reduce
+              our emissions and in preparing for the effects of climate change.
+            </p>
+            <a href="#" class="btn me-2 btn-primary"
+              ><span class="edit-span"></span>About Us</a
+            >
+            <a href="#" class="btn me-2 btn-primary"
+              ><span class="edit-span"></span>How Can I Help</a
+            >
           </div>
+
+          <div class="col-lg-6 mx-auto text-center"></div>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- Guide section -->
-
-  <div class="container-fluid mt-5 guide">
-    <!-- Individual steps for the guide -->
-
-    <div class="row px-2 pb-5">
-      <div class="guide-wrapper">
-        <h1 class="guide-header">How You Can Play Your Part</h1>
+  <!--How we can play our part-->
+  <section id="services">
+    <div class="container">
+      <div class="row">
+        <h1 class="text-center animate">Towards a Net-Zero Future</h1>
       </div>
 
-      <br />
-      <br />
-      <br />
-      <p>
-        Climate change will affect all of us, whether directly or indirectly.
-        Everyone—as individuals, as employees, as members of a family and as a
-        wider community—has a stake in helping to reduce our emissions and in
-        preparing for the effects of climate change.
-      </p>
-    </div>
-
-    <!-- Tabs navs -->
-
-    <ul class="main">
-      <!--Reduce-->
-      <li>
-        <input type="radio" name="tab" id="label-1" checked />
-        <label for="label-1">Reduce</label>
-        <div class="content">
-          <h1 class="heading">Reduce</h1>
+      <div class="row mb-5">
+        <div class="col-md">
+          <!-- <h2 class="alignment-left">Towards a Net-Zero Future:</h2> -->
           <br />
-          <div class="container listing">
-            <div class="row">
-              <!--for the image-->
-              <div class="col-3">
-                <img class="imgsize" src="@/assets/img/planetearth.png" />
-              </div>
+          <h6 class="alignment-left">
+            According to United Nations, to preserve a livable climate,
+            greenhouse-gas emissions must be reduced to net zero by 2050. Bold,
+            fast, and wide-ranging action needs to be taken by governments and
+            businesses. But the transition to a low-carbon world also
+            <span id="savemyworld">requires</span> the
+            <span id="savemyworld">participation of citizens</span> – especially
+            in advanced economies.
 
-              <!--vertical line-->
-              <div class="col-1 vl"></div>
-
-              <!--for the text-->
-              <div class="col-8">
-                <p class="p-tag-left">
-                  The best way to manage waste is to not produce it. This can be
-                  done by shopping carefully and being aware of a few
-                  guidelines:
-                </p>
-
-                <br />
-
-                <ul>
-                  <li>
-                    Buy products in bulk. Larger, economy-size products or ones
-                    in concentrated form use less packaging and usually cost
-                    less per ounce.
-                  </li>
-                  <li>
-                    Avoid disposable goods, such as paper plates, cups, napkins,
-                    razors, and lighters. Throwaways contribute to the problem,
-                    and cost more because they must be replaced again and again.
-                  </li>
-                  <li>
-                    Buy durable goods – ones that are well-built or that carry
-                    good warranties. They will last longer, save money in the
-                    long run and save landfill space.
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
+            <br />
+            <br />
+            Hence, play your part in limiting the effects of global warming and
+            take care of our planet.
+            <span id="savemyworld">Make the right choices today.</span> You can
+            be part of the solution and influence change.
+          </h6>
         </div>
-      </li>
-
-      <!--Reuse-->
-
-      <li>
-        <input type="radio" name="tab" id="label-2" />
-        <label for="label-2">Reuse</label>
-        <div class="content">
-          <h1 class="heading">Reuse</h1>
-          <br />
-          <div class="container listing">
-            <div class="row">
-              <!--for the picture-->
-              <div class="col-3">
-                <img class="imgsize" src="@/assets/img/clothes.png" />
-              </div>
-              <!--for the vertical line-->
-              <div class="col-1 vl"></div>
-              <!--for the text-->
-              <div class="col-8">
-                <p class="p-tag-left">
-                  It makes economic and environmental sense to reuse products.
-                  Sometimes it takes creativity:
-                </p>
-
-                <br>
-
-                <ul class='list'>
-                  <li>
-                    Avoid disposable goods, such as paper plates, cups, napkins,
-                    razors, and lighters. Throwaways contribute to the problem,
-                    and cost more because they must be replaced again and again.
-                  </li>
-                  <li>
-                    Buy durable goods – ones that are well-built or that carry
-                    good warranties. They will last longer, save money in the
-                    long run and save landfill space.
-                  </li>
-                  <li>Use cloth napkins instead of paper napkins.</li>
-                  <li>Use a dish cloth instead of paper towels.</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-      </li>
-
-      <!--Recycle-->
-      <li>
-        <input type="radio" name="tab" id="label-3" />
-        <label for="label-3">Recycle</label>
-        <div class="content">
-          <h1 class="heading">Recycle</h1>
-          <br />
-          <div class="container listing">
-            <div class="row">
-              <div class="col-3">
-                <img
-                  class="imgsize mx-auto d-block"
-                  src="@/assets/img/recyclingbin.png"
-                />
-              </div>
-              <div class="col-1 vl"></div>
-              <div class="col-8">
-                <p class="p-tag-left">
-                  Recycling is a series of steps that takes a used material and
-                  processes, remanufactures, and sells it as a new product.
-                  Begin recycling at home and at work:
-                </p>
-                <br />
-
-                <ul>
-                  <li>
-                    Buy products made from recycled material. Look for the
-                    recycling symbol or ask store managers or salesmen
-                  </li>
-                  <li>
-                    Check collection centers and curbside pickup services to see
-                    what they accept, and begin collecting those materials.
-                    These can include metal cans, newspapers, paper products,
-                    glass, plastics and oil.
-                  </li>
-                  <li>
-                    Consider purchasing recycled materials at work when
-                    purchasing material for office supply, office equipment or
-                    manufacturing.
-                  </li>
-                  <li>
-                    Buy products made from material that is collected for
-                    recycling in your community.
-                  </li>
-                  <li>
-                    Use recycled paper for letterhead, copier paper and
-                    newsletters.
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-      </li>
-    </ul>
-
-    <!-- Tabs navs -->
-
-    <!-- Tabs content -->
-    <!-- <div class="tab-content" id="ex2-content">
-      <div
-        class="tab-pane fade show active"
-        id="ex3-tabs-1"
-        role="tabpanel"
-        aria-labelledby="ex3-tab-1"
-      >
-        Tab 1 content
       </div>
-      <div
-        class="tab-pane fade"
-        id="ex3-tabs-2"
-        role="tabpanel"
-        aria-labelledby="ex3-tab-2"
-      >
-        Tab 2 content
-      </div>
-      <div
-        class="tab-pane fade"
-        id="ex3-tabs-3"
-        role="tabpanel"
-        aria-labelledby="ex3-tab-3"
-      >
-        Tab 3 content
-      </div>
-    </div> -->
-    <!-- Tabs content -->
 
-    <!-- <div class="row bg-light" style="color: black"> -->
-      <!--Use mx-auto d-block for centering-->
-      <!-- <section class="reduce bg-light"> -->
-      <!-- <div class="container text-center"> -->
-
-      <!--for the image-->
-      <!-- <div class="col-6">
-        <img class="imgsize" src="@/assets/img/planetearth.png" />
-      </div> -->
-
-      <!--for the text-->
-      <!-- <div class="col-6 fullwidth">
-        <div class="grid-2">
-          <div class="center"></div>
-          <div>
-            <br />
-            <h3 class="heading">REDUCE</h3>
-            <br />
-            <p class="p-tag-left">
-              The best way to manage waste is to not produce it. This can be
-              done by shopping carefully and being aware of a few guidelines:
-            </p>
-            <br />
-
-            <ul>
-              <li>
-                Buy products in bulk. Larger, economy-size products or ones in
-                concentrated form use less packaging and usually cost less per
-                ounce.
-              </li>
-              <li>
-                Avoid disposable goods, such as paper plates, cups, napkins,
-                razors, and lighters. Throwaways contribute to the problem, and
-                cost more because they must be replaced again and again.
-              </li>
-              <li>
-                Buy durable goods – ones that are well-built or that carry good
-                warranties. They will last longer, save money in the long run
-                and save landfill space.
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div> -->
-
-      <!-- </div> -->
-      <!-- </section> -->
-    <!-- </div> -->
-
-    <div class="row">
-      <!-- <section class="reduce bg-light"> -->
-      <!-- <div class="container text-center"> -->
-      <!-- <div class="col-6">
-        <img class="imgsize" src="@/assets/img/clothes.png" />
-      </div> -->
-
-      <!-- <div class="col-6">
-        <div class="grid-2">
-          <div class="center"></div>
-          <div>
-            <br />
-            <h3 class="heading">REUSE</h3>
-            <br />
-            <p class="p-tag-left">
-              It makes economic and environmental sense to reuse products.
-              Sometimes it takes creativity:
-            </p>
-            <br />
-
-            <ul>
-              <li>
-                Avoid disposable goods, such as paper plates, cups, napkins,
-                razors, and lighters. Throwaways contribute to the problem, and
-                cost more because they must be replaced again and again.
-              </li>
-              <li>
-                Buy durable goods – ones that are well-built or that carry good
-                warranties. They will last longer, save money in the long run
-                and save landfill space.
-              </li>
-              <li>Use cloth napkins instead of paper napkins.</li>
-              <li>Use a dish cloth instead of paper towels.</li>
-            </ul>
-          </div>
-        </div>
-      </div> -->
-      <!-- </div> -->
-      <!-- </section> -->
-    </div>
-
-    <!-- <div class="row bg-light" style="color: black"> -->
-      <!-- <section class="reduce bg-light"> -->
-      <!-- <div class="container text-center"> -->
-      <!-- <div class="col-6">
-        <img
-          class="imgsize mx-auto d-block"
-          src="@/assets/img/recyclingbin.png"
-        />
-      </div> -->
-
-      <!-- <div class="grid-2"> -->
-      <!-- <div class="center"> 
-          </div> -->
-      <!-- <div class="col-6">
-        <br />
-        <h3 class="heading">RECYCLE</h3>
-        <br />
-        <p class="p-tag-left">
-          Recycling is a series of steps that takes a used material and
-          processes, remanufactures, and sells it as a new product. Begin
-          recycling at home and at work:
-        </p>
-        <br />
-
-        <ul class='list-style'>
-          <li>
-            Buy products made from recycled material. Look for the recycling
-            symbol or ask store managers or salesmen
+      <!--bootstrap tabs bars-->
+      <div class="row mt-2">
+        <ul class="nav nav-tabs justify-content-center">
+          <li class="nav-item">
+            <a class="nav-link active" data-bs-toggle="tab" href="#reduce"
+              >Reduce</a
+            >
           </li>
-          <li>
-            Check collection centers and curbside pickup services to see what
-            they accept, and begin collecting those materials. These can include
-            metal cans, newspapers, paper products, glass, plastics and oil.
+
+          <li class="nav-item">
+            <a class="nav-link" data-bs-toggle="tab" href="#reuse">Reuse</a>
           </li>
-          <li>
-            Consider purchasing recycled materials at work when purchasing
-            material for office supply, office equipment or manufacturing.
-          </li>
-          <li>
-            Buy products made from material that is collected for recycling in
-            your community.
-          </li>
-          <li>
-            Use recycled paper for letterhead, copier paper and newsletters.
+
+          <li class="nav-item">
+            <a
+              class="nav-link"
+              data-bs-toggle="tab"
+              href="#recycle"
+              aria-current="page"
+              >Recycle
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="currentColor"
+                class="bi bi-recycle"
+                viewBox="0 0 16 16"
+              >
+                <path
+                  d="M9.302 1.256a1.5 1.5 0 0 0-2.604 0l-1.704 2.98a.5.5 0 0 0 .869.497l1.703-2.981a.5.5 0 0 1 .868 0l2.54 4.444-1.256-.337a.5.5 0 1 0-.26.966l2.415.647a.5.5 0 0 0 .613-.353l.647-2.415a.5.5 0 1 0-.966-.259l-.333 1.242-2.532-4.431zM2.973 7.773l-1.255.337a.5.5 0 1 1-.26-.966l2.416-.647a.5.5 0 0 1 .612.353l.647 2.415a.5.5 0 0 1-.966.259l-.333-1.242-2.545 4.454a.5.5 0 0 0 .434.748H5a.5.5 0 0 1 0 1H1.723A1.5 1.5 0 0 1 .421 12.24l2.552-4.467zm10.89 1.463a.5.5 0 1 0-.868.496l1.716 3.004a.5.5 0 0 1-.434.748h-5.57l.647-.646a.5.5 0 1 0-.708-.707l-1.5 1.5a.498.498 0 0 0 0 .707l1.5 1.5a.5.5 0 1 0 .708-.707l-.647-.647h5.57a1.5 1.5 0 0 0 1.302-2.244l-1.716-3.004z"
+                /></svg
+            ></a>
           </li>
         </ul>
-      </div> -->
-      <!-- </div> -->
-      <!-- </div> -->
-      <!-- </section> -->
-    <!-- </div> -->
-    <br />
-  </div>
-  <!-- </div> -->
+
+        <div class="tab-content">
+          <div class="tab-pane active" id="reduce">
+            <div class="row border g-0 rounded shadow">
+              <div class="col p-4">
+                <h3>Reduce</h3>
+
+                <div class="row">
+                  <div class="col-3">
+                    <img class="imgsize" src="@/assets/img/planetearth.png" />
+                  </div>
+
+                  <!--vertical line-->
+                  <div class="col-1 vl"></div>
+
+                  <!--for the text-->
+                  <div class="col-8">
+                    <p class="p-tag-left">
+                      The best way to manage waste is to not produce it. This
+                      can be done by shopping carefully and being aware of a few
+                      guidelines:
+                    </p>
+
+                    <br />
+
+                    <ul class="listing">
+                      <li>
+                        Buy products in bulk. Larger, economy-size products or
+                        ones in concentrated form use less packaging and usually
+                        cost less per ounce.
+                      </li>
+                      <li>
+                        Avoid disposable goods, such as paper plates, cups,
+                        napkins, razors, and lighters. Throwaways contribute to
+                        the problem, and cost more because they must be replaced
+                        again and again.
+                      </li>
+                      <li>
+                        Buy durable goods – ones that are well-built or that
+                        carry good warranties. They will last longer, save money
+                        in the long run and save landfill space.
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <!-- <div class="col"></div> -->
+            </div>
+          </div>
+
+          <div class="tab-pane active" id="reuse">
+            <div class="row border g-0 rounded shadow">
+              <div class="col p-4">
+                <h3>Reuse</h3>
+
+                <div class="row">
+                  <div class="col-3">
+                    <img class="imgsize" src="@/assets/img/planetearth.png" />
+                  </div>
+
+                  <!--vertical line-->
+                  <div class="col-1 vl"></div>
+
+                  <!--for the text-->
+                  <div class="col-8">
+                    <p class="p-tag-left">
+                      The best way to manage waste is to not produce it. This
+                      can be done by shopping carefully and being aware of a few
+                      guidelines:
+                    </p>
+
+                    <br />
+
+                    <ul class="listing">
+                      <li>
+                        Avoid disposable goods, such as paper plates, cups,
+                        napkins, razors, and lighters. Throwaways contribute to
+                        the problem, and cost more because they must be replaced
+                        again and again.
+                      </li>
+                      <li>
+                        Buy durable goods – ones that are well-built or that
+                        carry good warranties. They will last longer, save money
+                        in the long run and save landfill space.
+                      </li>
+                      <li>Use cloth napkins instead of paper napkins.</li>
+                      <li>Use a dish cloth instead of paper towels.</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <!-- <div class="col"></div> -->
+            </div>
+          </div>
+
+          <!--recycle-->
+          <div class="tab-pane active" id="recycle">
+            <div class="row border g-0 rounded shadow">
+              <div class="col p-4">
+                <h3>Recycle</h3>
+                <div class="row">
+                  <div class="col-3">
+                    <img
+                      class="imgsize mx-auto d-block"
+                      src="@/assets/img/recyclingbin.png"
+                    />
+                  </div>
+                  <div class="col-1 vl"></div>
+                  <div class="col-8">
+                    <p class="p-tag-left">
+                      Recycling is a series of steps that takes a used material
+                      and processes, remanufactures, and sells it as a new
+                      product. Begin recycling at home and at work:
+                    </p>
+                    <br />
+
+                    <ul class="listing">
+                      <li>
+                        Buy products made from recycled material. Look for the
+                        recycling symbol or ask store managers or salesmen
+                      </li>
+                      <li>
+                        Check collection centers and curbside pickup services to
+                        see what they accept, and begin collecting those
+                        materials. These can include metal cans, newspapers,
+                        paper products, glass, plastics and oil.
+                      </li>
+                      <li>
+                        Consider purchasing recycled materials at work when
+                        purchasing material for office supply, office equipment
+                        or manufacturing.
+                      </li>
+                      <li>
+                        Buy products made from material that is collected for
+                        recycling in your community.
+                      </li>
+                      <li>
+                        Use recycled paper for letterhead, copier paper and
+                        newsletters.
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <!-- <div class="col"></div> -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="services">
+    <div class="container">
+      <div class="row mb-5">
+        <div class="col-md-8 mx-auto text-center">
+          <h1>About Us</h1>
+          <p>
+            With us, you'll get to learn more about how you can play your part
+            in saving Gaia as well as getting more insights on how our beloved
+            mother earth is affected by climate change and it's impacts
+          </p>
+        </div>
+      </div>
+      <div class="row g-4">
+        <div class="col-lg-3 col-sm-6">
+          <div class="service card-effect bounceInUp">
+            <div class="iconbox">
+              <i class="bx bxs-check-shield"></i>
+            </div>
+            <h5 class="mt-4 mb-2">Learning</h5>
+            <img class="imgsize mx-auto d-block" src="@/assets/img/learn.png" />
+
+            <p>
+              Learn more about cmilate change and its effects on mother earth
+            </p>
+          </div>
+        </div>
+        <div class="col-lg-3 col-sm-6">
+          <div class="service card-effect">
+            <div class="iconbox">
+              <i class="bx bxs-comment-detail"></i>
+            </div>
+            <h5 class="mt-4 mb-2">Images of Change</h5>
+            <img
+              class="imgsize mx-auto d-block"
+              src="@/assets/img/imagec.png"
+            />
+            <p>Explore how Gaia has evolved over time with image visuals</p>
+          </div>
+        </div>
+        <div class="col-lg-3 col-sm-6">
+          <div class="service card-effect">
+            <div class="iconbox">
+              <i class="bx bxs-cog"></i>
+            </div>
+            <h5 class="mt-4 mb-2">Graphical Visuals</h5>
+            <img
+              class="imgsize mx-auto d-block"
+              src="@/assets/img/charts.png"
+            />
+            <p>
+              See real-time statitics of how climate change has affected Sea
+              Ice, Carbon Dioxide, Global Temperature
+            </p>
+          </div>
+        </div>
+        <div class="col-lg-3 col-sm-6">
+          <div class="service card-effect">
+            <div class="iconbox">
+              <i class="bx bxs-heart"></i>
+            </div>
+            <h5 class="mt-4 mb-2">Disaster Map</h5>
+            <img
+              class="imgsize mx-auto d-block"
+              src="@/assets/img/mapbox.png"
+            />
+            <p>
+              With mapbox, we can navigate the world to explore the different
+              disasters that has occured
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- SERVICES -->
 </template>
 
 <script>
@@ -440,6 +329,7 @@ import Guide from "@/assets/img/guidebackgroundimg.jpg";
 import Recycle from "@/assets/img/recyclingbin.png";
 import GlobeGuide from "@/assets/img/planetearth.png";
 import Clothes from "@/assets/img/clothes.png";
+import LandingPage from "@/assets/img/LandingPage.jpeg";
 
 export default {
   name: "Home",
@@ -450,212 +340,242 @@ export default {
       Recycle,
       GlobeGuide,
       Clothes,
+      LandingPage,
     };
   },
 };
 </script>
 
 <style lang="scss">
-// .fullwidth {
-//   // width: 100vw !important;
-// }
-
-.gg {
-  color: $testing-variable;
+.alignment-left {
+  text-align: left;
 }
 
 #savemyworld {
   color: yellow;
 }
 
-.centered {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+// :root {
+//   --primary: #0d6efd;
+//   --dark: #21252f;
+//   // --body: #888;
+//   --white: #ffffff;
+//   // --box-shadow: 0 8px 22px rgba(0,0,0,0.1);
+// }
+
+body {
+  font-family: "Sora", sans-serif;
+  line-height: 1.7;
+  color: var(--body);
 }
 
-.guide {
-  // background-image: url("~@/assets/img/guidebackgroundimg.jpg");
-  background-size: contain, cover;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.display-4 {
+  color: var(--dark);
+  font-weight: 700;
 }
 
-.imgsize {
-  width: 200px;
-  height: 200px;
-  margin-top: 20px;
+a {
+  color: var(--dark);
+  text-decoration: none;
 }
 
-.background-transparent {
-  background: rgba(160, 154, 154, 0.445);
-  margin-left: 10px;
-  border-radius: 25px;
+img {
+  width: 100%;
 }
 
-//the following css is for the globe - quinn pls help transfer to scss
-.position {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 75vh; /*can change this height of height relative to the page later on */
-  transform-style: preserve-3d;
-}
-
-.earth {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%); /*to adjust the position of the globe */
-  width: 300px; /*adjust the size of the globe here but in acordance to the the width and height of the image*/
-  height: 300px;
-  background: url("~@/assets/img/flatglobe.jpg");
+.hero {
+  background-image: url("~@/assets/img/LandingPage1.jpeg");
+  background-position: center;
   background-size: cover;
-  background-repeat: repeat-x;
-  border-radius: 50%;
-  box-shadow: inset 0 0 20px rgba(0, 0, 0, 1), 0 0 50px; //edit the shodow colour of the globe here
-  animation: animateEarth 30s linear infinite; //rotation timing
+  background-attachment: fixed;
+  position: relative;
+  z-index: 2;
 }
 
-@keyframes animateEarth {
-  0% {
-    background-position: 0 0;
-  }
-  100% {
-    background-position: -750px 0; /*follow picture dimensions */
-  }
+.btn {
+  padding: 14px 18px;
+  border-width: 2px;
+  border-radius: 0;
 }
 
-.circle {
-  transform-style: preserve-3d;
-  animation: animateText 30s linear infinite;
-}
-
-.circle span {
+.hero::after {
+  content: "";
+  width: 100%;
+  height: 100%;
   position: absolute;
   top: 0;
   left: 0;
-  background: rgba(255, 255, 255, 0.5);
-  // background: #fff;
-  color: black;
-  font-size: 30px;
-  transform-origin: center;
-  transform-style: preserve-3d;
-  padding: 5px 11px;
-  transform: rotateY(calc(var(--i) * calc(360deg / 27))) translateZ(200px);
-  border: 0px;
-  // border-top: 2px solid grey;
-  // border-bottom: 2px solid grey;
+  // background-color: rgba(21, 20, 51, 0.8);
+  z-index: -1;
 }
 
-.transparent {
-  opacity: 0.5;
+section {
+  padding-top: 120px;
+  padding-bottom: 120px;
 }
 
-@keyframes animateText {
-  0% {
-    transform: perspective(1000px) rotateY(360deg) rotateX(15deg)
-      translateY(-30px);
-  }
-  100% {
-    transform: perspective(1000px) rotateY(0deg) rotateX(15deg)
-      translateY(-30px);
-  }
+.card-effect {
+  // box-shadow: var(--box-shadow);
+  background-color: var(--white);
+  padding: 25px;
+  transition: all 0.35s ease;
 }
 
-//for the guide section
-.guide-wrapper {
+.card-effect:hover {
+  box-shadow: none;
+  transform: translateY(5px);
+}
+
+// .iconbox {
+//   width: 54px;
+//   height: 54px;
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+//   background-color: var(--primary);
+//   color: black;
+//   font-size: 32px;
+//   border-radius: 100px;
+//   flex: none;
+// }
+
+.service {
   position: relative;
+  z-index: 2;
+  overflow: hidden;
+}
+.service::after {
+  content: "";
   width: 100%;
-
-  .guide-header {
-    text-align: center;
-    font-size: $variable-font;
-    @media screen and (min-width: 768px) {
-      font-size: $variable-font-large;
-    }
-    &:before,
-    &:after {
-      background-color: white;
-      content: "";
-      display: inline-block;
-      height: 1px;
-      position: relative;
-      vertical-align: middle;
-      width: 20%;
-    }
-    &:before {
-      margin-right: 20px;
-      // right: 0.5em;
-      // margin-left: -50%;
-    }
-    &:after {
-      margin-left: 20px;
-      // left: 0.5em;
-      // margin-right: -50%;
-    }
-  }
+  height: 100%;
+  position: absolute;
+  top: -100%;
+  left: 0;
+  background-color: var(--primary);
+  z-index: -1;
+  opacity: 0;
+  transition: all 0.4s ease;
 }
 
-// #guideMe:before,
-// #guideMe:after {
-//   background-color: white;
-//   content: "";
-//   display: inline-block;
-//   height: 1px;
-//   position: relative;
-//   vertical-align: middle;
-//   width: 50%;
-// }
+.service:hover .iconbox {
+  background-color: var(--white);
+  color: var(--primary);
+}
 
-// #guideMe:before {
-//   right: 0.5em;
-//   margin-left: -50%;
-// }
+.service:hover h5,
+.service:hover p {
+  color: var(--white);
+}
 
-// #guideMe:after {
-//   left: 0.5em;
-//   margin-right: -50%;
-// }
+.service:hover::after {
+  opacity: 1;
+  top: 0;
+}
 
-//for the rows below
+.col-img {
+  // background-image: url(../img/cover2.jpg);
+  background-position: center;
+  background-size: cover;
+  min-height: 500px;
+}
 
-// .container {
-//   max-width: 960px;
-//   margin: auto;
-//   overflow: hidden;
-//   padding: 4rem 1rem;
-// }
+.project {
+  position: relative;
+  overflow: hidden;
+}
 
-// .grid-3 {
-//   display: grid;
-//   grid-template-columns: 1fr 1fr 1fr;
-//   grid-gap: 20px;
-// }
+.project .overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(21, 20, 51, 0.8);
+  padding: 30px;
+  display: flex;
+  align-items: flex-end;
+  transition: all 0.4s ease;
+  opacity: 0;
+}
 
-// .grid-2 {
-//   display: grid;
-//   grid-gap: 20px;
-//   grid-template-columns: repeat(2, 1fr);
-// }
+.project img {
+  transition: all 0.4s ease;
+}
 
-// .text-center {
-//   text-align: center;
-//   margin: auto;
-// }
+.project:hover .overlay {
+  opacity: 1;
+}
 
-// .bg-light {
-//   background: #fff;
-//   color: #333;
-// }
+.project:hover img {
+  transform: scale(1.1);
+}
 
-.listing ul {
-  list-style-type: '✽';
+.pricing i {
+  font-size: 20px;
+  color: var(--primary);
+}
+
+.pricing ul li {
+  margin-top: 8px;
+}
+
+.team-member img {
+  width: 125px;
+  height: 125px;
+  border-radius: 100px;
+}
+
+.social-icons {
+  display: flex;
+  justify-content: center;
+}
+.social-icons a {
+  width: 34px;
+  height: 34px;
+  background-color: var(--primary);
+  border-radius: 2px solid var(--primary);
+  color: var(--white);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 100px;
+  margin-left: 5px;
+  transition: all 0.4s ease;
+  border: 2px solid var(--primary);
+}
+
+.social-icons a:hover {
+  color: var(--primary);
+  background-color: transparent;
+  border-color: var(--primarys);
+}
+
+form input.form-control {
+  height: 56px;
+}
+
+form .form-control {
+  border: transparent;
+  border-radius: 0;
+  background-color: rgba(0, 0, 0, 0.02);
+}
+
+//for the css navigation tab
+
+ul.listing {
+  list-style-type: "✽  ";
   text-align: left;
   font-size: $variable-font-small;
-
 }
 
-ul.list-style{
-  list-style-type: '✽';
+ul.list-style {
+  // list-style-type: "✽";
   color: green;
 }
 
@@ -665,7 +585,6 @@ ul.list-style{
 }
 
 .heading {
-
   font-weight: 900;
   color: green;
 
@@ -684,30 +603,32 @@ ul.list-style{
 
 .vl {
   border-left: 3px solid green;
-  height: 500px;
+  height: auto;
 }
 
 //for the nav tab
 .main {
-  // box-sizing: border-box;
+  box-sizing: border-box;
   width: auto;
   height: auto;
   position: relative;
-  display: block;
-}
+  display: flex;
 
-.main li {
-  display: inline-block;
-  background-color: black;
+  li.header-top {
+    width: 100%;
+    display: inline-block;
+    background-color: rgb(17, 16, 16);
+  }
 }
 
 .content {
-  background: black;
+  background: rgb(17, 16, 16);
   color: white;
   position: absolute;
   left: 0;
   display: none;
   padding: 30px;
+  width: 100%;
 }
 
 .content > p {
@@ -731,5 +652,72 @@ ul.list-style{
 .main[id^="label"]:checked + label {
   background-color: black;
   color: green;
+}
+
+.heading {
+  font-size: 3.5vw;
+  text-shadow: 4px 4px 0px #3f7fbf;
+  mix-blend-mode: screen;
+  animation: fadeIn 2.5s linear forwards;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+// .animate{
+//   white-space: nowrap;
+//   overflow: hidden;
+//   border-right: solid 3px rdba(0, 255, 0 , 0.75);
+//   font-size: 28px;
+//   color: rgba(255, 255, 255, 0.7);
+//   animation: animated-text 4s steps(29,end) 1s 1 normal animated-cursor 600ms steps(29,end) infinite;
+// }
+
+// @keyframes animated-text {
+//   0%{
+//     width: 0;
+//   }
+//   to{
+//     width: 472px;
+//   }
+
+// }
+
+// @keyframes animated-cursor {
+//   from{
+//     border-right-color: rgba(0, 255, 0, 0.75);
+//   }
+//   to{
+//     border-right-color: transparent ;
+//   }
+// }
+
+.nav-tabs .nav-link.active {
+  background-color: purple;
+  color: white;
+  border: 3px solid purple;
+}
+
+.nav-tabs .nav-link {
+  background-color: white;
+  color: purple;
+  border: 3px solid purple;
+  margin-right: 2rem;
+  padding-left: 3rem;
+  padding-right: 3rem;
+}
+
+.nav-tabs .nav-link:hover {
+  border: 3px solid purple;
+}
+
+.tab-content {
+  border-bottom: 1px solid purple;
 }
 </style>
