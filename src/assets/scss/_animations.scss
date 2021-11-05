@@ -1,0 +1,115 @@
+/* Standard syntax */
+@keyframes bounce {
+  0% {
+    opacity: 0;
+  }
+
+  25% {
+    opacity: 0.4;
+    left: 60px;
+    top: -5px;
+    font-size: 22px;
+  }
+
+  50% {
+    opacity: 0.6;
+    left: 40px;
+    top: 0;
+    font-size: 19px;
+  }
+
+  75% {
+    opacity: 0.8;
+    left: 20px;
+    top: 10px;
+    font-size: 15px;
+  }
+
+  100% {
+    opacity: 1;
+    visibility: visible;
+    left: 0;
+    top: 15px;
+    font-size: unset;
+  }
+}
+
+/* For safari */
+@keyframes bouncer {
+  50% {
+    transform: translateY(-16px);
+  }
+
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+/* For safari */
+@-webkit-keyframes bounce {
+  50% {
+    -webkit-transform: translateY(-30px);
+  }
+
+  100% {
+    -webkit-transform: translateY(0px);
+  }
+}
+
+// repeat animation
+
+.anim-typewriter {
+  animation: typewriter 4s steps(44) 1s 1 normal both,
+    blinkTextCursor 500ms steps(44) infinite normal;
+}
+@keyframes typewriter {
+  from {
+    width: 4em;
+  }
+  to {
+    width: 24em;
+  }
+}
+@keyframes blinkTextCursor {
+  from {
+    border-right-color: rgba(255, 255, 255, 0.75);
+  }
+  to {
+    border-right-color: transparent;
+  }
+}
+
+.typewriter-text {
+  display: inline-block;
+  overflow: hidden;
+  letter-spacing: 2px;
+  animation: typing 5s steps(30, end), blink 0.75s step-end infinite;
+  white-space: nowrap;
+  border-right: 4px solid orange;
+  box-sizing: border-box;
+}
+
+@media screen and (max-width: 568px) {
+  .typewriter-text {
+    white-space: normal;
+  }
+}
+    
+@keyframes typing {
+  from {
+    width: 0%;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+@keyframes blink {
+  from,
+  to {
+    border-color: transparent;
+  }
+  50% {
+    border-color: orange;
+  }
+}

@@ -1,6 +1,8 @@
 module.exports = {
     devServer: {
-        port: 8080
+      port: 8080,
+      liveReload: false,
+      // hot: false,
     },
     css: {
       loaderOptions: {
@@ -10,6 +12,7 @@ module.exports = {
             @import "@/assets/scss/_variables.scss";
             @import "@/assets/scss/_mixins.scss";
             @import "@/assets/scss/_placeholders.scss";
+            @import "@/assets/scss/_animations.scss";
           `
         }
       }
