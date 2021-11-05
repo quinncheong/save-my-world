@@ -2,48 +2,34 @@
   <!--top header-->
   <div class="container-fluid">
     <div class="hero vh-100 d-flex align-items-center" id="home">
-      <div class="row">
-        <!--animated birds-->
-        <div class="container">
-          <div class="bird-container bird-container--one">
-            <div class="bird bird--one"></div>
-          </div>
+      <!--animated birds-->
+      <div class="container">
+        <div class="bird-container bird-container--one">
+          <div class="bird bird--one"></div>
+        </div>
 
-          <div class="bird-container bird-container--two">
-            <div class="bird bird--two"></div>
-          </div>
+        <div class="bird-container bird-container--two">
+          <div class="bird bird--two"></div>
+        </div>
 
-          <div class="bird-container bird-container--three">
-            <div class="bird bird--three"></div>
-          </div>
+        <div class="bird-container bird-container--three">
+          <div class="bird bird--three"></div>
+        </div>
 
-          <div class="bird-container bird-container--four">
-            <div class="bird bird--four"></div>
-          </div>
+        <div class="bird-container bird-container--four">
+          <div class="bird bird--four"></div>
         </div>
       </div>
 
-      <div class="row">
-        <div class="container">
-          <div class="row">
-            <div class="col-lg-8 my-0 mx-auto ">
-              <h1 class="text-white heading align-text-top">
-                You have the power to
-                <span id="savemyworld">#SaveOurWorld</span>
-              </h1>
-            </div>
-          </div>
+      <div class="container">
+        <div class="top-header-wrapper">
+          <h1 class="text-white">
+            You have the power to <span id="savemyworld">#SaveOurWorld</span>
+          </h1>
+        </div>
 
-          <div class="row bottom-left">
-            <div class='col-1'></div>
-            <div class="col-lg-4 text-white alignment-left my-3">
-              Climate change will affect all of us, whether directly or
-              indirectly. We all have a stake in helping to reduce our emissions
-              and in preparing for the effects of climate change.
-            </div>
-          </div>
-          <div class="row">
-            <div class='col-1'></div>
+        <!-- <div class="row">
+            <div class="col-1"></div>
             <div class="col-2">
               <a href="#" class="btn me-2 btn-primary"
                 ><span class="edit-span"></span>About Us</a
@@ -54,16 +40,7 @@
                 ><span class="edit-span"></span>How Can I Help</a
               >
             </div>
-            <!-- <a href="#" class="btn me-2 btn-primary"
-              ><span class="edit-span"></span>About Us</a
-            >
-            <a href="#" class="btn me-2 btn-primary"
-              ><span class="edit-span"></span>How Can I Help</a
-            > -->
-          </div>
-
-          <div class="col-lg-6 mx-auto text-center"></div>
-        </div>
+          </div> -->
       </div>
     </div>
   </div>
@@ -450,6 +427,16 @@ img {
   background-attachment: fixed;
   position: relative;
   z-index: 2;
+
+  .top-header-wrapper {
+    position: absolute;
+    width: 80%;
+    top: 50%;
+    left: 50%;
+    z-index: 1;
+    transform: translate(-50%, -50%);
+  }
+
 }
 
 .btn {
@@ -1003,7 +990,7 @@ ul.list-style {
   }
 }
 
-.bottom-left{
+.bottom-left {
   position: absolute;
   bottom: 8px;
   left: 16px;
