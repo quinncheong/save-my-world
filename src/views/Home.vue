@@ -24,11 +24,6 @@
     <!-- About us -->
     <about id="main" />
     <!-- Block about what the site is -->
-      <!-- <div class="top-header-wrapper">
-        <h1 class="text-white">
-          You have the power to <span id="savemyworld">#SaveOurWorld</span>
-        </h1>
-      </div> -->
     <!-- <div class="row">
       <div class="col-1"></div>
       <div class="col-lg-4 text-white alignment-left my-3">
@@ -42,6 +37,12 @@
     <future />
     <!-- remove chart component first because its buggy -->
     <!-- <three-rs /> -->
+
+     <div class="call-to-action header">
+        <h1 class="text-white">
+          You have the power to <span id="savemyworld">#SaveOurWorld</span>
+        </h1>
+      </div>
   </div>
 </template>
 
@@ -162,6 +163,13 @@ export default {
       z-index: 1;
       transform: translate(-50%, -50%);
     }
+  }
+
+  .call-to-action {
+    padding: 3rem;
+    background-image: url("~@/assets/img/LandingPage.jpeg");
+    height:6550px;
+
   }
 }
 
