@@ -40,7 +40,8 @@
 
     <!--How we can play our part-->
     <future />
-    <three-rs />
+    <!-- remove chart component first because its buggy -->
+    <!-- <three-rs /> -->
   </div>
 </template>
 

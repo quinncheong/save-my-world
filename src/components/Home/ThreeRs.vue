@@ -3,17 +3,29 @@
   <div class="three-wrapper">
     <ul class="nav flex-column">
       <li class="nav-item">
-        <a class="nav-link active" data-bs-toggle="tab" href="#reduce"
+        <a
+          class="nav-link"
+          data-bs-target="#reduce"
+          data-bs-toggle="tab"
+          href="#reduce"
           >Reduce</a
         >
       </li>
-      <li class="nav-item"></li>
       <li class="nav-item">
         <a
           class="nav-link"
+          data-bs-target="#reuse"
+          data-bs-toggle="tab"
+          href="#reuce"
+          >Reuse</a
+        >
+      </li>
+      <li class="nav-item">
+        <a
+          class="nav-link"
+          data-bs-target="#recycle"
           data-bs-toggle="tab"
           href="#recycle"
-          aria-current="page"
           >Recycle
           <!-- svg recycle image -->
           <svg
@@ -32,10 +44,14 @@
     </ul>
 
     <div class="tab-content">
-      <div :key="index" v-for="(r, key, index) in tabs" class="col p-4">
-        <h3>{{ r.title }}</h3>
+      <div
+        :id="r.title"
+        :class="classObj"
+        :key="index"
+        v-for="(r, key, index) in tabs"
+      >
+        <h3>{{ r.content }}</h3>
         <img class="imgsize" :src="getUrl(r.src)" />
-        <!--for the text-->
         <p class="p-tag-left">
           {{ r.desc }}
         </p>
@@ -52,7 +68,7 @@ export default {
       activeTab: "reduce",
       tabs: {
         reduce: {
-          title: "Reduce",
+          title: "reduce",
           icon: "fa-minus-circle",
           content: "Reduce",
           src: "planetearth.png",
@@ -64,7 +80,7 @@ export default {
           ],
         },
         reuse: {
-          title: "Reuse",
+          title: "reuse",
           icon: "fa-recycle",
           content: "Reuse",
           desc: "Sometimes it takes creativity:",
@@ -77,7 +93,7 @@ export default {
           ],
         },
         recycle: {
-          title: "Recycle",
+          title: "recycle",
           icon: "fa-recycle",
           content: "Recycle",
           src: "recyclingbin.png",
@@ -98,6 +114,17 @@ export default {
       return require(`@/assets/img/${pic}`);
     },
   },
+  computed: {
+    classObj() {
+      return {
+        active: this.activeTab === this.tabs[this.activeTab].title,
+        show: this.activeTab === this.tabs[this.activeTab].title,
+        "tab-pane": true,
+        "tab-div-content": true,
+        fade: true,
+      };
+    },
+  }
 };
 </script>
 
@@ -107,6 +134,31 @@ export default {
   display: flex;
   margin: auto;
   align-items: center;
+
+  .tab-div-content {
+    display: flex;
+    border-bottom: 1px solid purple;
+
+    img {
+      width: 50px;
+    }
+  }
+
+  ul.listing {
+    list-style-type: "✽  ";
+    text-align: left;
+    font-size: $variable-font-small;
+  }
+
+  ul.list-style {
+    // list-style-type: "✽";
+    color: green;
+  }
+
+  .p-tag-left {
+    text-align: left;
+    font-weight: bold;
+  }
 }
 //for the css navigation tab
 .nav-tabs .nav-link.active {
@@ -126,26 +178,6 @@ export default {
 
 .nav-tabs .nav-link:hover {
   border: 3px solid purple;
-}
-
-.tab-content {
-  border-bottom: 1px solid purple;
-}
-
-ul.listing {
-  list-style-type: "✽  ";
-  text-align: left;
-  font-size: $variable-font-small;
-}
-
-ul.list-style {
-  // list-style-type: "✽";
-  color: green;
-}
-
-.p-tag-left {
-  text-align: left;
-  font-weight: bold;
 }
 
 // Accounting for the different breakpoints
