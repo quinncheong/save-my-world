@@ -38,11 +38,18 @@
     <!-- remove chart component first because its buggy -->
     <!-- <three-rs /> -->
 
-     <div class="call-to-action header">
-        <h1 class="text-white">
-          You have the power to <span id="savemyworld">#SaveOurWorld</span>
-        </h1>
+    <div class="call-to-action header">
+      <h1 class="text-white">
+        You have the power to <span id="savemyworld">#SaveOurWorld</span>
+      </h1>
+    </div>
+
+    <div class="start-learning">
+      <div class="start-learing-content">
+        <h1 class="text-white mb-4">Start Learning Now!</h1>
+        <button @click="pushToQuiz()" class="btn btn-dark rounded">Take me away</button>
       </div>
+    </div>
   </div>
 </template>
 
@@ -78,6 +85,11 @@ export default {
       Clothes,
       LandingPage,
     };
+  },
+  methods: {
+    pushToQuiz() {
+      this.$router.push("/quiz");
+    },
   },
   computed: {
     routes() {
@@ -168,8 +180,22 @@ export default {
   .call-to-action {
     padding: 3rem;
     background-image: url("~@/assets/img/LandingPage.jpeg");
-    height:6550px;
+    height: 6550px;
+  }
 
+  .start-learning {
+    padding: 3rem;
+    background: #9796f0; /* fallback for old browsers */
+    background: -webkit-linear-gradient(
+      to right,
+      #fbc7d4,
+      #9796f0
+    ); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(
+      to right,
+      #fbc7d4,
+      #9796f0
+    ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   }
 }
 
@@ -367,7 +393,6 @@ form .form-control {
     left: 100%;
   }
 }
-
 
 .bottom-left {
   position: absolute;
