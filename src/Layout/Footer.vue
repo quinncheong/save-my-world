@@ -10,7 +10,7 @@
       </div>
 
       <hr class="w-75 justify-self-center mx-auto" />
-      <div class="footer-text">
+      <div class="footer-text mt-2">
         Save My World is a team of Software Developers passionate about the
         environment. Situated in Singapore and developing software for 2 years,
         Save My World provides a platform for people to save the environment and
@@ -69,18 +69,19 @@ export default {
   height: 100%;
   width: 100%;
   margin: auto;
+  font-size: $variable-font;
 
   .footer-content-wrapper {
     @extend %page-wrapper;
     font-family: "Montserrat";
-    // padding: 1rem 6rem 0.5rem;
+    padding: 1rem;
     align-items: center;
     text-align: center;
     text-justify: inter-word;
 
     .links {
       display: flex;
-      width: 80%;
+      width: 100%;
       justify-content: space-between;
       padding: 1rem 0 0 0;
       font-weight: bold;
