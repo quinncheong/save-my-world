@@ -6,7 +6,9 @@
         <p class="mb-2" style="font-size: 15px">
           <i
             >Challenge yourself with our quiz! Answer all the questions to the
-            best of your capabilities. May the force be with you.</i
+            best of your capabilities! May the force be with you. <br>
+            If you need some preparation, feel free to <b>SCROLL</b> down to look through the articles and videos provided by our team
+            </i
           >
         </p>
         <button class="btn btn-light my-2" @click="startQuiz()">
@@ -62,7 +64,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+
 .quiz-wrapper {
+  line-height: 1.7;
+  font-family: "Sora", sans-serif;
   height: 100%;
   width: 100%;
   display: flex;
