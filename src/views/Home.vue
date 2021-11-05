@@ -94,73 +94,6 @@
             <a class="nav-link" data-bs-toggle="tab" href="#reuse">Reuse</a>
           </li>
 
-    <ul class="main">
-      <!--Reduce-->
-      <li class="header-top">
-        <input type="radio" name="tab" id="label-1" checked />
-        <label for="label-1">Reduce</label>
-        <div class="content">
-          <h1 class="heading">Reduce</h1>
-          <br />
-          <div class="container">
-            <div class="row">
-              <!--for the image-->
-              <div class="col-3">
-                <img class="imgsize" src="@/assets/img/planetearth.png" />
-              </div>
-
-              <!--vertical line-->
-              <div class="col-1 vl"></div>
-
-              <!--for the text-->
-              <div class="col-8">
-                <p class="p-tag-left">
-                  The best way to manage waste is to not produce it. This can be
-                  done by shopping carefully and being aware of a few
-                  guidelines:
-                </p>
-
-                <br />
-
-                <ul class="listing">
-                  <li>
-                    Buy products in bulk. Larger, economy-size products or ones
-                    in concentrated form use less packaging and usually cost
-                    less per ounce.
-                  </li>
-                  <li>
-                    Avoid disposable goods, such as paper plates, cups, napkins,
-                    razors, and lighters. Throwaways contribute to the problem,
-                    and cost more because they must be replaced again and again.
-                  </li>
-                  <li>
-                    Buy durable goods – ones that are well-built or that carry
-                    good warranties. They will last longer, save money in the
-                    long run and save landfill space.
-                  </li>
-                </ul>
-          <li class="nav-item">
-            <a
-              class="nav-link"
-              data-bs-toggle="tab"
-              href="#recycle"
-              aria-current="page"
-              >Recycle
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="16"
-                height="16"
-                fill="currentColor"
-                class="bi bi-recycle"
-                viewBox="0 0 16 16"
-              >
-                <path
-                  d="M9.302 1.256a1.5 1.5 0 0 0-2.604 0l-1.704 2.98a.5.5 0 0 0 .869.497l1.703-2.981a.5.5 0 0 1 .868 0l2.54 4.444-1.256-.337a.5.5 0 1 0-.26.966l2.415.647a.5.5 0 0 0 .613-.353l.647-2.415a.5.5 0 1 0-.966-.259l-.333 1.242-2.532-4.431zM2.973 7.773l-1.255.337a.5.5 0 1 1-.26-.966l2.416-.647a.5.5 0 0 1 .612.353l.647 2.415a.5.5 0 0 1-.966.259l-.333-1.242-2.545 4.454a.5.5 0 0 0 .434.748H5a.5.5 0 0 1 0 1H1.723A1.5 1.5 0 0 1 .421 12.24l2.552-4.467zm10.89 1.463a.5.5 0 1 0-.868.496l1.716 3.004a.5.5 0 0 1-.434.748h-5.57l.647-.646a.5.5 0 1 0-.708-.707l-1.5 1.5a.498.498 0 0 0 0 .707l1.5 1.5a.5.5 0 1 0 .708-.707l-.647-.647h5.57a1.5 1.5 0 0 0 1.302-2.244l-1.716-3.004z"
-                /></svg
-            ></a>
-          </li>
-        </ul>
-
           <li class="nav-item">
             <a
               class="nav-link"
@@ -232,44 +165,6 @@
             </div>
           </div>
 
-      <li class="header-top">
-        <input type="radio" name="tab" id="label-2" />
-        <label for="label-2">Reuse</label>
-        <div class="content">
-          <h1 class="heading">Reuse</h1>
-          <br />
-          <div class="container listing">
-            <div class="row">
-              <!--for the picture-->
-              <div class="col-3">
-                <img class="imgsize" src="@/assets/img/clothes.png" />
-              </div>
-              <!--for the vertical line-->
-              <div class="col-1 vl"></div>
-              <!--for the text-->
-              <div class="col-8">
-                <p class="p-tag-left">
-                  It makes economic and environmental sense to reuse products.
-                  Sometimes it takes creativity:
-                </p>
-
-                <br />
-
-                <ul class="listing">
-                  <li>
-                    Avoid disposable goods, such as paper plates, cups, napkins,
-                    razors, and lighters. Throwaways contribute to the problem,
-                    and cost more because they must be replaced again and again.
-                  </li>
-                  <li>
-                    Buy durable goods – ones that are well-built or that carry
-                    good warranties. They will last longer, save money in the
-                    long run and save landfill space.
-                  </li>
-                  <li>Use cloth napkins instead of paper napkins.</li>
-                  <li>Use a dish cloth instead of paper towels.</li>
-                </ul>
-
           <div class="tab-pane active" id="reuse">
             <div class="row border g-0 rounded shadow">
               <div class="col p-4">
@@ -286,9 +181,8 @@
                   <!--for the text-->
                   <div class="col-8">
                     <p class="p-tag-left">
-                      The best way to manage waste is to not produce it. This
-                      can be done by shopping carefully and being aware of a few
-                      guidelines:
+                      It makes economic and environmental sense to reuse
+                      products. Sometimes it takes creativity:
                     </p>
 
                     <br />
@@ -314,58 +208,6 @@
               <!-- <div class="col"></div> -->
             </div>
           </div>
-        </div>
-      </li>
-
-      <!--Recycle-->
-      <li class="header-top">
-        <input type="radio" name="tab" id="label-3" />
-        <label for="label-3">Recycle</label>
-        <div class="content">
-          <h1 class="heading">Recycle</h1>
-          <br />
-          <div class="container listing">
-            <div class="row">
-              <div class="col-3">
-                <img
-                  class="imgsize mx-auto d-block"
-                  src="@/assets/img/recyclingbin.png"
-                />
-              </div>
-              <div class="col-1 vl"></div>
-              <div class="col-8">
-                <p class="p-tag-left">
-                  Recycling is a series of steps that takes a used material and
-                  processes, remanufactures, and sells it as a new product.
-                  Begin recycling at home and at work:
-                </p>
-                <br />
-
-                <ul class="listing">
-                  <li>
-                    Buy products made from recycled material. Look for the
-                    recycling symbol or ask store managers or salesmen
-                  </li>
-                  <li>
-                    Check collection centers and curbside pickup services to see
-                    what they accept, and begin collecting those materials.
-                    These can include metal cans, newspapers, paper products,
-                    glass, plastics and oil.
-                  </li>
-                  <li>
-                    Consider purchasing recycled materials at work when
-                    purchasing material for office supply, office equipment or
-                    manufacturing.
-                  </li>
-                  <li>
-                    Buy products made from material that is collected for
-                    recycling in your community.
-                  </li>
-                  <li>
-                    Use recycled paper for letterhead, copier paper and
-                    newsletters.
-                  </li>
-                </ul>
 
           <!--recycle-->
           <div class="tab-pane active" id="recycle">
@@ -436,96 +278,6 @@
           </p>
         </div>
       </div>
-    </div> 
-    <!-- Tabs content -->
-
-    <!-- <div class="row bg-light" style="color: black"> -->
-    <!--Use mx-auto d-block for centering-->
-    <!-- <section class="reduce bg-light"> -->
-    <!-- <div class="container text-center"> -->
-
-    <!--for the image-->
-    <!-- <div class="col-6">
-        <img class="imgsize" src="@/assets/img/planetearth.png" />
-      </div> -->
-
-    <!--for the text-->
-    <!-- <div class="col-6 fullwidth">
-        <div class="grid-2">
-          <div class="center"></div>
-          <div>
-            <br />
-            <h3 class="heading">REDUCE</h3>
-            <br />
-            <p class="p-tag-left">
-              The best way to manage waste is to not produce it. This can be
-              done by shopping carefully and being aware of a few guidelines:
-            </p>
-            <br />
-=======
-      <div class="row g-4">
-        <div class="col-lg-3 col-sm-6">
-          <div class="service card-effect bounceInUp">
-            <div class="iconbox">
-              <i class="bx bxs-check-shield"></i>
-            </div>
-            <h5 class="mt-4 mb-2">Learning</h5>
-            <img class="imgsize mx-auto d-block" src="@/assets/img/learn.png" />
->>>>>>> origin
-
-            <p>
-              Learn more about cmilate change and its effects on mother earth
-            </p>
-          </div>
-        </div>
-        <div class="col-lg-3 col-sm-6">
-          <div class="service card-effect">
-            <div class="iconbox">
-              <i class="bx bxs-comment-detail"></i>
-            </div>
-            <h5 class="mt-4 mb-2">Images of Change</h5>
-            <img
-              class="imgsize mx-auto d-block"
-              src="@/assets/img/imagec.png"
-            />
-            <p>Explore how Gaia has evolved over time with image visuals</p>
-          </div>
-        </div>
-        <div class="col-lg-3 col-sm-6">
-          <div class="service card-effect">
-            <div class="iconbox">
-              <i class="bx bxs-cog"></i>
-            </div>
-            <h5 class="mt-4 mb-2">Graphical Visuals</h5>
-            <img
-              class="imgsize mx-auto d-block"
-              src="@/assets/img/charts.png"
-            />
-            <p>
-              See real-time statitics of how climate change has affected Sea
-              Ice, Carbon Dioxide, Global Temperature
-            </p>
-          </div>
-        </div>
-        <div class="col-lg-3 col-sm-6">
-          <div class="service card-effect">
-            <div class="iconbox">
-              <i class="bx bxs-heart"></i>
-            </div>
-            <h5 class="mt-4 mb-2">Disaster Map</h5>
-            <img
-              class="imgsize mx-auto d-block"
-              src="@/assets/img/mapbox.png"
-            />
-            <p>
-              With mapbox, we can navigate the world to explore the different
-              disasters that has occured
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>-->
       <div class="row g-4">
         <!--one card-->
         <!-- <a href='../src/views/Quiz.vue'> -->
@@ -602,7 +354,9 @@
           </a>
         </div>
       </div>
+    </div>
   </section>
+  <!-- SERVICES -->
 </template>
 
 <script>
@@ -630,104 +384,90 @@ export default {
 </script>
 
 <style lang="scss">
-  .alignment-left {
-    text-align: left;
-  }
+.alignment-left {
+  text-align: left;
+}
 
-  #savemyworld {
-    color: yellow;
-  }
+#savemyworld {
+  color: yellow;
+}
 
-
-  body {
-    font-family: "Sora", sans-serif;
-    line-height: 1.7;
-    color: var(--body);
-  }
-
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6,
-  .display-4 {
-    color: var(--dark);
-    font-weight: 700;
-  }
-
-// .imgsize {
-//   width: 200px;
-//   height: 200px;
-//   margin: 20px;
+// :root {
+//   --primary: #0d6efd;
+//   --dark: #21252f;
+//   // --body: #888;
+//   --white: #ffffff;
+//   // --box-shadow: 0 8px 22px rgba(0,0,0,0.1);
 // }
 
-// .background-transparent {
-//   background: rgba(160, 154, 154, 0.445);
-//   margin-left: 10px;
-//   border-radius: 25px;
-// }
+body {
+  font-family: "Sora", sans-serif;
+  line-height: 1.7;
+  color: var(--body);
+}
 
-  a {
-    color: var(--dark);
-    text-decoration: none;
-  }
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.display-4 {
+  color: var(--dark);
+  font-weight: 700;
+}
 
-  img {
-    width: 100%;
-  }
-  
-  a {
-    color: var(--dark);
-    text-decoration: none;
-  }
+a {
+  color: var(--dark);
+  text-decoration: none;
+}
 
-  img {
-    width: 100%;
-  }
+img {
+  width: 100%;
+}
 
-  .hero {
-    background-image: url("~@/assets/img/LandingPage3.jpeg");
-    background-position: center;
-    background-size: cover;
-    background-attachment: fixed;
-    position: relative;
-    z-index: 2;
-  }
+.hero {
+  background-image: url("~@/assets/img/LandingPage3.jpeg");
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
+  position: relative;
+  z-index: 2;
+}
 
-  .btn {
-    padding: 14px 18px;
-    border-width: 2px;
-    border-radius: 0;
-  }
+.btn {
+  padding: 14px 18px;
+  border-width: 2px;
+  border-radius: 0;
+}
 
-  .hero::after {
-    content: "";
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    // background-color: rgba(21, 20, 51, 0.8);
-    z-index: -1;
-  }
+.hero::after {
+  content: "";
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  // background-color: rgba(21, 20, 51, 0.8);
+  z-index: -1;
+}
 
-  section {
-    padding-top: 120px;
-    padding-bottom: 120px;
-  }
+section {
+  padding-top: 120px;
+  padding-bottom: 120px;
+}
 
-  .card-effect {
-    // box-shadow: var(--box-shadow);
-    background-color: var(--white);
-    padding: 25px;
-    transition: all 0.35s ease;
-  }
+.card-effect {
+  // box-shadow: var(--box-shadow);
+  background-color: var(--white);
+  padding: 25px;
+  transition: all 0.35s ease;
+}
 
-  .card-effect:hover {
-    box-shadow: none;
-    transform: translateY(5px);
-  }
+.card-effect:hover {
+  box-shadow: none;
+  transform: translateY(5px);
+}
 
 // .iconbox {
 //   width: 54px;
@@ -742,146 +482,144 @@ export default {
 //   flex: none;
 // }
 
-  .service {
-    position: relative;
-    z-index: 2;
-    overflow: hidden;
-  }
+.service {
+  position: relative;
+  z-index: 2;
+  overflow: hidden;
+}
+.service::after {
+  content: "";
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: -100%;
+  left: 0;
+  background-color: var(--primary);
+  z-index: -1;
+  opacity: 0;
+  transition: all 0.4s ease;
+}
 
-  .service::after {
-    content: "";
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    top: -100%;
-    left: 0;
-    background-color: var(--primary);
-    z-index: -1;
-    opacity: 0;
-    transition: all 0.4s ease;
-  }
+.service:hover .iconbox {
+  background-color: var(--white);
+  color: var(--primary);
+}
 
-  .service:hover .iconbox {
-    background-color: var(--white);
-    color: var(--primary);
-  }
+.service:hover h5,
+.service:hover p {
+  color: var(--white);
+}
 
-  .service:hover h5,
-  .service:hover p {
-    color: var(--white);
-  }
+.service:hover::after {
+  opacity: 1;
+  top: 0;
+}
 
-  .service:hover::after {
-    opacity: 1;
-    top: 0;
-  }
+.col-img {
+  // background-image: url(../img/cover2.jpg);
+  background-position: center;
+  background-size: cover;
+  min-height: 500px;
+}
 
-  .col-img {
-    // background-image: url(../img/cover2.jpg);
-    background-position: center;
-    background-size: cover;
-    min-height: 500px;
-  }
+.project {
+  position: relative;
+  overflow: hidden;
+}
 
-  .project {
-    position: relative;
-    overflow: hidden;
-  }
+.project .overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(21, 20, 51, 0.8);
+  padding: 30px;
+  display: flex;
+  align-items: flex-end;
+  transition: all 0.4s ease;
+  opacity: 0;
+}
 
-  .project .overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(21, 20, 51, 0.8);
-    padding: 30px;
-    display: flex;
-    align-items: flex-end;
-    transition: all 0.4s ease;
-    opacity: 0;
-  }
+.project img {
+  transition: all 0.4s ease;
+}
 
-  .project img {
-    transition: all 0.4s ease;
-  }
+.project:hover .overlay {
+  opacity: 1;
+}
 
-  .project:hover .overlay {
-    opacity: 1;
-  }
+.project:hover img {
+  transform: scale(1.1);
+}
 
-  .project:hover img {
-    transform: scale(1.1);
-  }
+.pricing i {
+  font-size: 20px;
+  color: var(--primary);
+}
 
-  .pricing i {
-    font-size: 20px;
-    color: var(--primary);
-  }
+.pricing ul li {
+  margin-top: 8px;
+}
 
-  .pricing ul li {
-    margin-top: 8px;
-  }
+.team-member img {
+  width: 125px;
+  height: 125px;
+  border-radius: 100px;
+}
 
-  .team-member img {
-    width: 125px;
-    height: 125px;
-    border-radius: 100px;
-  }
+.social-icons {
+  display: flex;
+  justify-content: center;
+}
+.social-icons a {
+  width: 34px;
+  height: 34px;
+  background-color: var(--primary);
+  border-radius: 2px solid var(--primary);
+  color: var(--white);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 100px;
+  margin-left: 5px;
+  transition: all 0.4s ease;
+  border: 2px solid var(--primary);
+}
 
-  .social-icons {
-    display: flex;
-    justify-content: center;
-  }
+.social-icons a:hover {
+  color: var(--primary);
+  background-color: transparent;
+  border-color: var(--primarys);
+}
 
-  .social-icons a {
-    width: 34px;
-    height: 34px;
-    background-color: var(--primary);
-    border-radius: 2px solid var(--primary);
-    color: var(--white);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 100px;
-    margin-left: 5px;
-    transition: all 0.4s ease;
-    border: 2px solid var(--primary);
-  }
+form input.form-control {
+  height: 56px;
+}
 
-  .social-icons a:hover {
-    color: var(--primary);
-    background-color: transparent;
-    border-color: var(--primarys);
-  }
+form .form-control {
+  border: transparent;
+  border-radius: 0;
+  background-color: rgba(0, 0, 0, 0.02);
+}
 
-  form input.form-control {
-    height: 56px;
-  }
+//for the css navigation tab
 
-  form .form-control {
-    border: transparent;
-    border-radius: 0;
-    background-color: rgba(0, 0, 0, 0.02);
-  }
+ul.listing {
+  list-style-type: "✽  ";
+  text-align: left;
+  font-size: $variable-font-small;
+}
 
-  //for the css navigation tab
+ul.list-style {
+  // list-style-type: "✽";
+  color: green;
+}
 
-  ul.listing {
-    list-style-type: "✽  ";
-    text-align: left;
-    font-size: $variable-font-small;
-  }
-
-  ul.list-style {
-    // list-style-type: "✽";
-    color: green;
-  }
-
-  .p-tag-left {
-    text-align: left;
-    font-weight: bold;
-  }
+.p-tag-left {
+  text-align: left;
+  font-weight: bold;
+}
 
 // .heading {
 //   font-weight: 900;
@@ -902,57 +640,58 @@ export default {
 
 //for the vertical line
 
-  .vl {
-    border-left: 3px solid green;
-    height: auto;
-  }
+.vl {
+  border-left: 3px solid green;
+  height: auto;
+}
 
 //for the nav tab
-  .main {
-    box-sizing: border-box;
-    width: auto;
-    height: auto;
-    position: relative;
-    display: flex;
-    li.header-top {
-      width: 100%;
-      display: inline-block;
-      background-color: rgb(17, 16, 16);
-    }
-  }
+.main {
+  box-sizing: border-box;
+  width: auto;
+  height: auto;
+  position: relative;
+  display: flex;
 
-  .content {
-    background: rgb(17, 16, 16);
-    color: white;
-    position: absolute;
-    left: 0;
-    display: none;
-    padding: 30px;
+  li.header-top {
     width: 100%;
+    display: inline-block;
+    background-color: rgb(17, 16, 16);
   }
+}
 
-  .content > p {
-    font-size: 1em;
-    font-weight: 300;
-    margin: 10px;
-  }
+.content {
+  background: rgb(17, 16, 16);
+  color: white;
+  position: absolute;
+  left: 0;
+  display: none;
+  padding: 30px;
+  width: 100%;
+}
 
-  .main [id^="label"]:checked ~ .content {
-    display: block;
-  }
+.content > p {
+  font-size: 1em;
+  font-weight: 300;
+  margin: 10px;
+}
 
-  .main input[type="radio"] {
-    display: none;
-  }
+.main [id^="label"]:checked ~ .content {
+  display: block;
+}
 
-  .main label {
-    padding: 20px 30px;
-  }
+.main input[type="radio"] {
+  display: none;
+}
 
-  .main[id^="label"]:checked + label {
-    background-color: black;
-    color: green;
-  }
+.main label {
+  padding: 20px 30px;
+}
+
+.main[id^="label"]:checked + label {
+  background-color: black;
+  color: green;
+}
 
 // .heading {
 //   font-size: 3.5vw;
@@ -999,51 +738,51 @@ export default {
 // }
 
 
-  .heading::before, 
-  .heading::after{
-    content:'';
-    position: absolute;
-  }
+.heading::before, 
+.heading::after{
+  content:'';
+  position: absolute;
+}
 
-  .heading{
-    font-size: clamp(1rem, 3.3vw + 1rem, 4rem);
-  }
-  .heading::before{
-    background: teal;
-    animation: typewriter 1s ease;
-  }
+.heading{
+  font-size: clamp(1rem, 3.3vw + 1rem, 4rem);
+}
+.heading::before{
+  background: teal;
+  animation: typewriter 1s ease;
+}
 
-  @keyframes typewriter {
-    to{
-      left: 100%;
-    }
-    
+@keyframes typewriter {
+  to{
+    left: 100%;
   }
+  
+}
 
 
 
-  .nav-tabs .nav-link.active {
-    background-color: purple;
-    color: white;
-    border: 3px solid purple;
-  }
+.nav-tabs .nav-link.active {
+  background-color: purple;
+  color: white;
+  border: 3px solid purple;
+}
 
-  .nav-tabs .nav-link {
-    background-color: white;
-    color: purple;
-    border: 3px solid purple;
-    margin-right: 2rem;
-    padding-left: 3rem;
-    padding-right: 3rem;
-  }
+.nav-tabs .nav-link {
+  background-color: white;
+  color: purple;
+  border: 3px solid purple;
+  margin-right: 2rem;
+  padding-left: 3rem;
+  padding-right: 3rem;
+}
 
-  .nav-tabs .nav-link:hover {
-    border: 3px solid purple;
-  }
+.nav-tabs .nav-link:hover {
+  border: 3px solid purple;
+}
 
-  .tab-content {
-    border-bottom: 1px solid purple;
-  }
+.tab-content {
+  border-bottom: 1px solid purple;
+}
 
 
 //for the animated birds 

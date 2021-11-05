@@ -1,6 +1,5 @@
 <template>
-
-  <!-- <footer class="footer-bg-wrapper">
+  <footer class="footer-bg-wrapper">
     <div class="footer-content-wrapper">
       <div class="links">
         <template :key="route.path" v-for="(route, index) in routes">
@@ -8,39 +7,8 @@
             {{ route.name }}
           </router-link>
         </template>
-      </div> -->
-
-  <!-- Footer -->
-  <footer class="page-footer">
-    <!-- Footer Text -->
-    <div class="container-fluid text-center">
-      <!-- Grid row -->
-      <div class="row">
-        <!-- Grid column -->
-        <div class="col-md-6 mt-md-0">
-          <!-- Content -->
-          <!-- <h6 class="my-1"></h6> -->
-          <!-- <p style="font-size: 20px">We hope that our users will be able to have fun with our website and understand why Climate Change is important, becoming Evangelists in the future</p> -->
-        </div>
-        <!-- Grid column -->
       </div>
-      <!-- Grid row -->
-    </div>
-    <!-- Footer Text -->
 
-    <!-- Copyright -->
-    <div class="footer-copyright py-3">
-      <p style="font-size: 10px;">© 2021 Copyright: WAD 2 Gods 🤩 🥺</p>
-    </div>
-    <!-- Copyright -->
-  <!-- Footer -->
-  <!-- </div> -->
-    <div class="footer-copyright py-5">
-      <p class="m-0 text-center text-white">© 2021 Copyright: WAD 2 Gods 🤩 🥺</p>
-    </div>
-    <!-- Copyright -->
-  <!-- </footer> -->
-  <!-- Footer -->
       <hr class="w-75 justify-self-center mx-auto" />
       <div class="footer-text mt-2">
         Save My World is a team of Software Developers passionate about the
@@ -63,6 +31,7 @@
           © {{ date }} Copyright: WAD 2 Gods 🤩 🥺
         </p>
       </div>
+    </div>
   </footer>
 </template>
 
