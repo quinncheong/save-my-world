@@ -127,7 +127,10 @@ export default {
           // Adding data source to map
           this.map.addSource("disasters", {
             type: "geojson",
-            data: { type: "FeatureCollection", features: this.features },
+            data: {
+              type: "FeatureCollection",
+              features: this.features,
+            },
           });
 
           // Adding layer to the map
@@ -251,88 +254,88 @@ export default {
       // Changed to 100 first for faster loading time.
       try {
         const response = await axios.get(
-          "https://api.reliefweb.int/v1/disasters?type&fields[include][]=type.name&limit=100&sort[]=date:desc"
+          "https://api.reliefweb.int/v1/disasters?type&fields[include][]=type.name&limit=10&sort[]=date:desc"
         );
         if (!response) {
           throw Error("Failed to get data");
         }
         // Score and desc needed for pop up
-        let name = [];
-        let links = [];
+        this.desc = [];
+        let results = response.data.data ?? [];
+        await this.createFeaturesArray(results);
 
-        let results;
-
-        try {
-          results = response.data.data;
-        } catch (error) {
-          console.log("there is a damn error here");
-        }
-
-        //  countries is an array
-        for (let indivResult of results) {
-          // Generating obj array to put in to .addSource
-
-          let obj = {};
-          obj.type = "Feature";
-          obj.properties = {};
-          obj.geometry = {};
-          obj.properties.name = indivResult.fields.name;
-          obj.properties.id = indivResult.id;
-          obj.properties.link = indivResult.href;
-          obj.geometry.type = "Point";
-          obj.properties.disastertype = indivResult.fields.type[0].name;
-          // Split year from name since that is the only way , just to get the year
-          let year = indivResult.fields.name.split(" ");
-          let yearNum = parseInt(year[year.length - 1]);
-          obj.properties.year = yearNum;
-          links.push(indivResult.href);
-
-          // Push into this.features, this will be put into .addsource
-
-          this.features.push(obj);
-          console.log(this.features);
-
-          // console.log(this.features)
-        }
-        // Set desc to name array
-        this.desc = name;
+        console.log(this.features);
 
         let geoList = await this.pushGeo();
         this.geoCodeList = geoList;
 
         return this.geoCodeList;
+
+        // Catching the erorr
       } catch (err) {
-        console.log("I am hitting an error");
+        console.log("I am hitting an error inside getLocation");
         console.log(err);
         return;
+      }
+    },
+    // Function to create the features array from results
+    async createFeaturesArray(results) {
+      //  countries is an array
+      for (let indivResult of results) {
+        // Generating obj array to put in to .addSource
+        let obj = {
+          type: "Feature",
+          properties: {
+            id: indivResult.id,
+            link: indivResult.href,
+            name: indivResult.fields.name,
+            disastertype: indivResult.fields.type[0].name,
+          },
+          geometry: {
+            type: "Point",
+          },
+        };
+        // Split year from name since that is the only way , just to get the year
+        let year = indivResult.fields.name.split(" ");
+        let yearNum = parseInt(year[year.length - 1]);
+        obj.properties.year = yearNum;
+
+        // Push into this.features, this will be put into .addsource
+        this.features.push(obj);
       }
     },
 
     // Function to push lat and long into the large fking object that will be added to .addSource
     async pushGeo() {
       // Changed to features
+      let geoListPromises = [];
       for (let array of this.features) {
         //  getting the link
         let url = array.properties.link;
-
-        // Getting the relavant lat and long from the link provided
-        let res = await axios.get(url);
-        let geoCode = res.data.data[0].fields.primary_country.location;
-
-        // Check if id tallies up
-        if (res.data.data[0].id == array.properties.id) {
-          // Set new property to lon and lat , array form
-          array.geometry.coordinates = [geoCode.lon, geoCode.lat];
-
-          // Get description and check if description is not undefined
-          if (res.data.data[0].fields.description == undefined) {
-            array.properties.description = `<p>Sorry there is no description for this marker :(</p>`;
-            console.log(array.properties.description);
-          } else {
-            array.properties.description = res.data.data[0].fields.description;
-          }
-        }
+        geoListPromises.push(axios.get(url));
       }
+      let geoListFulfilled = await Promise.all(geoListPromises);
+      let dataArray = geoListFulfilled.map((res) => res.data.data[0]);
+
+      console.log(dataArray);
+
+      // have to initialise a dictionary to store id as key
+      let geoIdDictionary = {};
+      // Loop through data array and get data and add into geoIdDictionary
+      for (let disaster of dataArray) {
+        let id = disaster.id;
+        let geoCode = disaster.fields.primary_country.location;
+        let desc =
+          disaster.fields.description ??
+          "No description for the current disaster.";
+
+        geoIdDictionary[id] = {
+          geoCode: geoCode,
+          desc: desc,
+        };
+      }
+
+      console.log(geoIdDictionary);
     },
 
     async handleClick() {},
