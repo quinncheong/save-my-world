@@ -2,6 +2,28 @@
   <!--top header-->
   <div class="container-fluid">
     <div class="hero vh-100 d-flex align-items-center" id="home">
+      <div class='row'>
+      <!--animated birds-->
+      <div class="container">
+        <div class="bird-container bird-container--one">
+          <div class="bird bird--one"></div>
+        </div>
+
+        <div class="bird-container bird-container--two">
+          <div class="bird bird--two"></div>
+        </div>
+
+        <div class="bird-container bird-container--three">
+          <div class="bird bird--three"></div>
+        </div>
+
+        <div class="bird-container bird-container--four">
+          <div class="bird bird--four"></div>
+        </div>
+      </div>
+      </div>
+
+      <div class='row'>
       <div class="container">
         <div class="row">
           <div class="col-lg-8 mx-auto text-center">
@@ -9,10 +31,9 @@
 
               You have the power to <span id="savemyworld">#SaveOurWorld</span>
             </h1>
-            <p class="text-white my-3">
+            <p class="text-white alignment-left my-3">
               Climate change will affect all of us, whether directly or
-              indirectly. Everyone—as individuals, as employees, as members of a
-              family and as a wider community—has a stake in helping to reduce
+              indirectly. We all have a stake in helping to reduce
               our emissions and in preparing for the effects of climate change.
             </p>
             <a href="#" class="btn me-2 btn-primary"
@@ -25,6 +46,7 @@
 
           <div class="col-lg-6 mx-auto text-center"></div>
         </div>
+      </div>
       </div>
     </div>
   </div>
@@ -150,7 +172,7 @@
 
                 <div class="row">
                   <div class="col-3">
-                    <img class="imgsize" src="@/assets/img/planetearth.png" />
+                    <img class="imgsize" src="@/assets/img/clothes.png" />
                   </div>
 
                   <!--vertical line-->
@@ -159,9 +181,8 @@
                   <!--for the text-->
                   <div class="col-8">
                     <p class="p-tag-left">
-                      The best way to manage waste is to not produce it. This
-                      can be done by shopping carefully and being aware of a few
-                      guidelines:
+                      It makes economic and environmental sense to reuse
+                      products. Sometimes it takes creativity:
                     </p>
 
                     <br />
@@ -258,63 +279,79 @@
         </div>
       </div>
       <div class="row g-4">
+        <!--one card-->
+        <!-- <a href='../src/views/Quiz.vue'> -->
         <div class="col-lg-3 col-sm-6">
-          <div class="service card-effect bounceInUp">
-            <div class="iconbox">
-              <i class="bx bxs-check-shield"></i>
+          <a href="../src/views/Quiz.vue">
+            <div class="service card-effect bounceInUp">
+              <div class="iconbox">
+                <i class="bx bxs-check-shield"></i>
+              </div>
+              <h5 class="mt-4 mb-2">Learning</h5>
+              <img
+                class="imgsize mx-auto d-block"
+                src="@/assets/img/learn.png"
+              />
+              <p>
+                Learn more about cmilate change and its effects on mother earth
+              </p>
             </div>
-            <h5 class="mt-4 mb-2">Learning</h5>
-            <img class="imgsize mx-auto d-block" src="@/assets/img/learn.png" />
+          </a>
+        </div>
+        <!-- </a> -->
 
-            <p>
-              Learn more about cmilate change and its effects on mother earth
-            </p>
-          </div>
-        </div>
         <div class="col-lg-3 col-sm-6">
-          <div class="service card-effect">
-            <div class="iconbox">
-              <i class="bx bxs-comment-detail"></i>
+          <a href="../src/views/ImageSlide.vue">
+            <div class="service card-effect">
+              <div class="iconbox">
+                <i class="bx bxs-comment-detail"></i>
+              </div>
+              <h5 class="mt-4 mb-2">Images of Change</h5>
+              <img
+                class="imgsize mx-auto d-block"
+                src="@/assets/img/imagec.png"
+              />
+              <p>Explore how Gaia has evolved over time with image visuals</p>
             </div>
-            <h5 class="mt-4 mb-2">Images of Change</h5>
-            <img
-              class="imgsize mx-auto d-block"
-              src="@/assets/img/imagec.png"
-            />
-            <p>Explore how Gaia has evolved over time with image visuals</p>
-          </div>
+          </a>
         </div>
+
         <div class="col-lg-3 col-sm-6">
-          <div class="service card-effect">
-            <div class="iconbox">
-              <i class="bx bxs-cog"></i>
+          <a href="../src/views/ImageSlide.vue">
+            <div class="service card-effect">
+              <div class="iconbox">
+                <i class="bx bxs-cog"></i>
+              </div>
+              <h5 class="mt-4 mb-2">Graphical Visuals</h5>
+              <img
+                class="imgsize mx-auto d-block"
+                src="@/assets/img/charts.png"
+              />
+              <p>
+                See real-time statitics of how climate change has affected Sea
+                Ice, Carbon Dioxide, Global Temperature
+              </p>
             </div>
-            <h5 class="mt-4 mb-2">Graphical Visuals</h5>
-            <img
-              class="imgsize mx-auto d-block"
-              src="@/assets/img/charts.png"
-            />
-            <p>
-              See real-time statitics of how climate change has affected Sea
-              Ice, Carbon Dioxide, Global Temperature
-            </p>
-          </div>
+          </a>
         </div>
+
         <div class="col-lg-3 col-sm-6">
-          <div class="service card-effect">
-            <div class="iconbox">
-              <i class="bx bxs-heart"></i>
+          <a href="~@/views/Visualise.vue">
+            <div class="service card-effect">
+              <div class="iconbox">
+                <i class="bx bxs-heart"></i>
+              </div>
+              <h5 class="mt-4 mb-2">Disaster Map</h5>
+              <img
+                class="imgsize mx-auto d-block"
+                src="@/assets/img/mapbox.png"
+              />
+              <p>
+                With mapbox, we can navigate the world to explore the different
+                disasters that has occured
+              </p>
             </div>
-            <h5 class="mt-4 mb-2">Disaster Map</h5>
-            <img
-              class="imgsize mx-auto d-block"
-              src="@/assets/img/mapbox.png"
-            />
-            <p>
-              With mapbox, we can navigate the world to explore the different
-              disasters that has occured
-            </p>
-          </div>
+          </a>
         </div>
       </div>
     </div>
@@ -390,7 +427,7 @@ img {
 }
 
 .hero {
-  background-image: url("~@/assets/img/LandingPage1.jpeg");
+  background-image: url("~@/assets/img/LandingPage3.jpeg");
   background-position: center;
   background-size: cover;
   background-attachment: fixed;
@@ -584,20 +621,22 @@ ul.list-style {
   font-weight: bold;
 }
 
-.heading {
-  font-weight: 900;
-  color: green;
+// .heading {
+//   font-weight: 900;
+//   color: green;
 
-  --x-offset: -0.0625em;
-  --y-offset: 0.0625em;
-  --stroke: 0.025em;
-  --background-color: white;
-  --stroke-color: lightblue;
+//   --x-offset: -0.0625em;
+//   --y-offset: 0.0625em;
+//   --stroke: 0.025em;
+//   --background-color: white;
+//   --stroke-color: lightblue;
 
-  text-shadow: var(--x-offset) var(--y-offset) 0px var(--background-color),
-    calc(var(--x-offset) - var(--stroke)) calc(var(--y-offset) + var(--stroke))
-      0px var(--stroke-color);
-}
+//   text-shadow: var(--x-offset) var(--y-offset) 0px var(--background-color),
+//     calc(var(--x-offset) - var(--stroke)) calc(var(--y-offset) + var(--stroke))
+//       0px var(--stroke-color);
+// }
+
+
 
 //for the vertical line
 
@@ -654,21 +693,21 @@ ul.list-style {
   color: green;
 }
 
-.heading {
-  font-size: 3.5vw;
-  text-shadow: 4px 4px 0px #3f7fbf;
-  mix-blend-mode: screen;
-  animation: fadeIn 2.5s linear forwards;
-}
+// .heading {
+//   font-size: 3.5vw;
+//   text-shadow: 4px 5px 5px #3f7fbf;
+//   // mix-blend-mode: screen;
+//   animation: fadeIn 2.5s linear forwards;
+// }
 
-@keyframes fadeIn {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
+// @keyframes fadeIn {
+//   0% {
+//     opacity: 0;
+//   }
+//   100% {
+//     opacity: 1;
+//   }
+// }
 
 // .animate{
 //   white-space: nowrap;
@@ -698,6 +737,30 @@ ul.list-style {
 //   }
 // }
 
+
+.heading::before, 
+.heading::after{
+  content:'';
+  position: absolute;
+}
+
+.heading{
+  font-size: clamp(1rem, 3.3vw + 1rem, 4rem);
+}
+.heading::before{
+  background: teal;
+  animation: typewriter 1s ease;
+}
+
+@keyframes typewriter {
+  to{
+    left: 100%;
+  }
+  
+}
+
+
+
 .nav-tabs .nav-link.active {
   background-color: purple;
   color: white;
@@ -720,4 +783,211 @@ ul.list-style {
 .tab-content {
   border-bottom: 1px solid purple;
 }
+
+
+//for the animated birds 
+
+	.bird{
+		background-image: url("bird-cells-new.svg");
+		background-size: auto 100%;
+		width: 88px;
+		height: 125px;
+		will-change: background-position;
+		-webkit-animation-name: fly-cycle;
+			animation-name: fly-cycle;
+		-webkit-animation-timing-function: steps(10);
+			animation-timing-function: steps(10);
+		-webkit-animation-iteration-count:infinite;
+			animation-iteration-count:infinite;
+	}
+
+	.bird--one{
+		-webkit-animation-duration: 1s;
+			animation-duration: 1s;
+		-webkit-animation-delay: -0.5s;
+			animation-delay: -0.5s;
+	}
+
+	.bird--two{
+		-webkit-animation-duration: 0.9s;
+			animation-duration: 0.9s;
+		-webkit-animation-delay: -0.75s;
+			animation-delay: -0.75s;
+	}
+
+	.bird--three{
+		-webkit-animation-duration: 1.25s;
+			animation-duration: 1.25s;
+		-webkit-animation-delay: -0.25s;
+			animation-delay: -0.25s;
+	}
+
+	.bird--four{
+		-webkit-animation-duration: 1.1s;
+			animation-duration: 1.1s;
+		-webkit-animation-delay: -0.5s;
+			animation-delay: -0.5s;
+	}
+
+	.bird-container{
+		position: absolute;
+		top: 20%;
+		left: -10%;
+		transform: scale(0) translateX(-10vw);
+		will-change: transform;
+		-webkit-animation-name: fly-right-one;
+			animation-name: fly-right-one;
+		-webkit-animation-timing-function: linear;
+			animation-timing-function: linear;
+		-webkit-animation-iteration-count: infinite;
+			animation-iteration-count: infinite;
+	}
+
+	.bird-container--one{
+		-webkit-animation-duration: 15s;
+			animation-duration: 15s;
+		-webkit-animation-delay: 0;
+			animation-delay: 0;
+	}
+
+	.bird-container--two{
+		-webkit-animation-duration: 16s;
+			animation-duration: 16s;
+		-webkit-animation-delay: 1s;
+			animation-delay: 1s;
+	}
+
+	.bird-container--three{
+		-webkit-animation-duration: 14.6s;
+			animation-duration: 14.6s;
+		-webkit-animation-delay: 9.5s;
+			animation-delay: 9.5s;
+	}
+
+	.bird-container--four{
+		-webkit-animation-duration: 16s;
+			animation-duration: 16s;
+		-webkit-animation-delay: 10.25s;
+			animation-delay: 10.25s;
+	}
+
+	@-webkit-keyframes fly-cycle{
+		100%{
+			background-position: -900px 0;
+		}
+	}
+
+	@keyframes fly-cycle{
+		100%{
+			background-position: -900px 0;
+		}
+	}
+
+	@-webkit-keyframes fly-right-one{
+		0%{
+			transform: scale(0.3) translateX(-10vw);
+		}
+		10%{
+			transform: translateY(2vh) translateX(10vw) scale(0.4);
+		}
+		20%{
+			transform: translateY(0vh) translateX(30vw) scale(0.5);
+		}
+		30%{
+			transform: translateY(4vh) translateX(50vw) scale(0.6);
+		}
+		40%{
+			transform: translateY(2vh) translateX(70vw) scale(0.6);
+		}
+		50%{
+			transform: translateY(0vh) translateX(90vw) scale(0.6);
+		}
+		60%{
+			transform: translateY(0vh) translateX(110vw) scale(0.6);
+		}
+		100%{
+			transform: translateY(0vh) translateX(110vw) scale(0.6);
+		}
+	}
+
+	@keyframes fly-right-one{
+		0%{
+			transform: scale(0.3) translateX(-10vw);
+		}
+		10%{
+			transform: translateY(2vh) translateX(10vw) scale(0.4);
+		}
+		20%{
+			transform: translateY(0vh) translateX(30vw) scale(0.5);
+		}
+		30%{
+			transform: translateY(4vh) translateX(50vw) scale(0.6);
+		}
+		40%{
+			transform: translateY(2vh) translateX(70vw) scale(0.6);
+		}
+		50%{
+			transform: translateY(0vh) translateX(90vw) scale(0.6);
+		}
+		60%{
+			transform: translateY(0vh) translateX(110vw) scale(0.6);
+		}
+		100%{
+			transform: translateY(0vh) translateX(110vw) scale(0.6);
+		}
+	}
+
+	@-webkit-keyframes fly-right-two{
+		0%{
+			transform: translateY(-2vh) translateX(-10vw) scale(0.5);
+		}
+		10%{
+			transform: translateY(0vh) translateX(10vw) scale(0.4);
+		}
+		20%{
+			transform: translateY(-4vh) translateX(30vw) scale(0.6);
+		}
+		30%{
+			transform: translateY(1vh) translateX(50vw) scale(0.45);
+		}
+		40%{
+			transform: translateY(-2.5vh) translateX(70vw) scale(0.5);
+		}
+		50%{
+			transform: translateY(0vh) translateX(90vw) scale(0.45);
+		}
+		51%{
+			transform: translateY(0vh) translateX(110vw) scale(0.45);
+		}
+		100%{
+			transform: translateY(0vh) translateX(110vw) scale(0.45);
+		}
+	}
+
+	@keyframes fly-right-two{
+		0%{
+			transform: translateY(-2vh) translateX(-10vw) scale(0.5);
+		}
+		10%{
+			transform: translateY(0vh) translateX(10vw) scale(0.4);
+		}
+		20%{
+			transform: translateY(-4vh) translateX(30vw) scale(0.6);
+		}
+		30%{
+			transform: translateY(1vh) translateX(50vw) scale(0.45);
+		}
+		40%{
+			transform: translateY(-2.5vh) translateX(70vw) scale(0.5);
+		}
+		50%{
+			transform: translateY(0vh) translateX(90vw) scale(0.45);
+		}
+		51%{
+			transform: translateY(0vh) translateX(110vw) scale(0.45);
+		}
+		100%{
+			transform: translateY(0vh) translateX(110vw) scale(0.45);
+		}
+	}
 </style>
