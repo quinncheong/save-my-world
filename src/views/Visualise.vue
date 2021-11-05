@@ -1,31 +1,27 @@
 <template>
-  <div class="container-fluid visualisation">
+  <div class="container-fluid visualisation-wrapper">
     <!-- header -->
     <h1>Start saving the environment now</h1>
 
-    <div class="row">
-      <div class="col"></div>
-      <div class="col">
-        <!-- Dropdownlist  -->
-        <form @submit="handleClick()">
-          <select
-            class="form-select text-center"
-            v-model="selectedQuery"
-            @change="help"
+    <div class="d-flex justify-content-center">
+      <!-- Dropdownlist  -->
+      <form @submit="handleClick()">
+        <select
+          class="form-select text-center"
+          v-model="selectedQuery"
+          @change="help"
+        >
+          <option
+            v-for="indivDisaster of disaster"
+            :key="indivDisaster"
+            :value="indivDisaster"
+            selected
           >
-            <option
-              v-for="indivDisaster of disaster"
-              :key="indivDisaster"
-              :value="indivDisaster"
-              selected
-            >
-              {{ indivDisaster }}
-            </option>
-          </select>
-          <button>Confirm</button>
-        </form>
-      </div>
-      <div class="col"></div>
+            {{ indivDisaster }}
+          </option>
+        </select>
+      </form>
+      <button class="btn btn-outline-success">Confirm</button>
     </div>
 
     <!-- Container to hold  the map -->
@@ -51,13 +47,12 @@
       <!-- Result modal to be placed here  -->
 
       <div v-if="flying == false" id="desc">
-        <h3>{{title}}</h3>
-        <h6>{{status}}</h6>
+        <h3>{{ title }}</h3>
+        <h6>{{ status }}</h6>
         <p>
-         {{descriptionModal}}
+          {{ descriptionModal }}
         </p>
       </div>
-
     </div>
   </div>
 </template>
@@ -119,7 +114,7 @@ export default {
 
     // Load the markers here when loading
     this.map.on("load", async () => {
-     await this.getLocation(); // After getting location then we add the markers
+      await this.getLocation(); // After getting location then we add the markers
 
       // Loading marker image
       this.map.loadImage(
@@ -188,8 +183,7 @@ export default {
 
       this.map.on("flystart", () => {
         this.flying = true;
-        console.log("start fly here")
-
+        console.log("start fly here");
       });
       this.map.on("flyend", () => {
         this.flying = false;
@@ -200,17 +194,14 @@ export default {
 
         console.log(description);
 
-        console.log("end fly here")
-        
-
+        console.log("end fly here");
       });
 
       this.map.on("moveend", (e) => {
         if (this.flying) {
-          console.log("hi")
-            
+          console.log("hi");
+
           this.map.fire("flyend");
-          
         }
       });
 
@@ -257,7 +248,7 @@ export default {
       this.loading = true;
       // "https://api.reliefweb.int/v1/disasters?appname=apidoc&query[value]=" + this.selectedQuery + "&query[fields][]=type&fields[include][]=type.name&limit=100"
       //           "https://api.reliefweb.int/v1/disasters?type&fields[include][]=type.name&limit=20&sort[]=date:desc"
-      // Changed to 100 first for faster loading time. 
+      // Changed to 100 first for faster loading time.
       try {
         const response = await axios.get(
           "https://api.reliefweb.int/v1/disasters?type&fields[include][]=type.name&limit=100&sort[]=date:desc"
@@ -376,6 +367,30 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.visualisation-wrapper {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+@media screen and (min-width: 768px) {
+  .visualisation-wrapper {
+    width: 90%;
+  }
+}
+
+@media screen and (min-width: 968px) {
+  .visualisation-wrapper {
+    width: 80%;
+  }
+}
+
+@media screen and (min-width: 1268px) {
+  .visualisation-wrapper {
+    width: 70%;
+  }
+}
+
 #map {
   height: 100vh;
 }
@@ -412,8 +427,6 @@ export default {
   padding: 10px 20px;
   background-color: white;
   z-index: 1;
-  overflow-y: auto
-  
+  overflow-y: auto;
 }
-
 </style>

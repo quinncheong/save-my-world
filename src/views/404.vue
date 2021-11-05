@@ -677,7 +677,7 @@
             mystery. But you can click the button below to go back to the
             homepage.
           </p>
-          <button @click="handleClick" class="mt-3 btn btn-outline-warning">HOME</button>
+          <button @click="handleClick" class="mt-3 btn btn-outline-warning btn-new">HOME</button>
         </div>
       </div>
     </div>
@@ -824,7 +824,7 @@ nav {
     }
   }
 }
-.btn {
+.btn-new {
   padding: 5px 50px;
   position: relative;
   border-radius: 30px;
