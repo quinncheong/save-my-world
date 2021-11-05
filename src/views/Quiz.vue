@@ -6,7 +6,7 @@
         <p class="mb-2" style="font-size: 15px">
           <i
             >Challenge yourself with our quiz! Answer all the questions to the
-            best of your capabilities! May the force be with you. <br>
+            best of your capabilities! May the force be with you.
             If you need some preparation, feel free to <b>SCROLL</b> down to look through the articles and videos provided by our team
             </i
           >
