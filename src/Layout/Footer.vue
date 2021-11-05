@@ -14,7 +14,10 @@
       necessitatibus dolores delectus est qui labore! Magnam officia quasi sequi
       blanditiis.
     </div>
-    <div class="footer-social"></div>
+    <div class="footer-social">
+      <font-awesome-icon :icon="['fas', 'phone']" />
+
+    </div>
     <div class="footer-copyright">
       <p class="m-0 text-center text-white">
         © {{ date }} Copyright: WAD 2 Gods 🤩 🥺
@@ -24,6 +27,10 @@
 </template>
 
 <script>
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { faUserSecret } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+
 export default {
   name: "Footer",
   data() {
