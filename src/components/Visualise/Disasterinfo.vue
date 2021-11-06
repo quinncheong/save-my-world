@@ -1,0 +1,69 @@
+<template>
+  <section class="disaster-wrapper container-fluid">
+    <div class="p-5 mt-5 bg-light text-dark rounded-3 w-100">
+      <div class="container-fluid text-start py-5">
+        <h1 class="display-5 text-start fw-bold">Disasters</h1>
+
+        <div class="row">
+        <p class="col-md-8 mt-3 text-start fs-5">
+          Climate change affects global temperature and precipitation patterns.
+          These effects, in turn, influence the intensity and, in some cases,
+          the frequency of extreme environmental events, such as forest fires,
+          hurricanes, heat waves, floods, droughts, and storms.
+        </p>
+
+        <p class='col-md-4 mt-3'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis, libero.</p>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="disaster-content p-5 container-fluid bg-success w-100">
+      <h1 class="mb-3">Reduce impact of disasters</h1>
+      <h6 class="mb-4">
+        Here are ways where <span id="savemyworld">YOU</span> can reduce the effects of natural disasters
+         
+      </h6>
+
+      <h6 class="mb-2">
+        Hence, play your part in limiting the effects of global warming and take
+        care of our planet.
+        <span id="savemyworld">Make the right choices today.</span> You can be
+        part of the solution and influence change.
+      </h6>
+    </div>
+  </section>
+</template>
+
+<script>
+export default {
+  name: "Disasterinfo",
+};
+</script>
+
+<style lang="scss" scoped>
+
+
+.disaster-wrapper{
+  min-width: 100%;
+  min-width: 100vw;
+}
+/* Accounting for the different breakpoints */
+@media screen and (min-width: 768px) {
+  .disaster-wrapper {
+    width: 80%;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .disaster-wrapper {
+    width: 70%;
+  }
+}
+
+@media screen and (min-width: 1400px) {
+  .disaster-wrapper {
+    width: 60%;
+  }
+}
+</style>
