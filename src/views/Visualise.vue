@@ -69,26 +69,29 @@
       <div class="col-3 bg-white result-col">
         <div class="row">
           <div class="col">
-            <p>Search results</p>
+            <p class='text-dark text-start mt-2'>Search results</p>
             <hr>
           </div>
         </div> 
-        <ol class='text-dark'>
-          <li>asdas</li>
-          <li>asdas</li>
-          <li>asdas</li>
-          <li>asdas</li>
-          <li>asdas</li>
-          <li>asdas</li>
-          <li>asdas</li>
-          <li>asdas</li>
-          <li>asdas</li>
-          <li>asdas</li>
-          <li>asdas</li>
-          <li>asdas</li>
-          <li>asdas</li>
-        </ol>
-      </div>
+
+          <div v-if="resultArray != []">
+           <ul class="result-list">
+            <li v-for="result in resultArray" :key="result" class="list-group-item text-start">
+              <div class="card">
+                  <div class="card-body">
+                    <h5 class="card-title">Special title treatment</h5>
+                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                  </div>
+              </div>
+            </li>
+          </ul>
+          </div>
+
+          <div v-else class="loader"></div>
+         
+
+        </div>
 
       <div class="col-9">
         <div class="map" id="map">
@@ -139,6 +142,7 @@ export default {
       title: "Click on any of the pointers!",
       descriptionModal: "",
       status: "",
+      resultArray :[]
     };
   },
   async mounted() {
@@ -146,6 +150,7 @@ export default {
     // Load the markers here when loading
     this.map.on("load", async () => {
       await this.getLocation(); // After getting location then we add the markers
+
 
       // Loading marker image
       this.map.loadImage(
@@ -173,6 +178,7 @@ export default {
             id: "result",
             type: "symbol",
             source: "disasters",
+            sourceLayer: "disasters",
             layout: {
               "icon-image": "custom-marker",
               // get the title name from the source's "Name" property
@@ -183,6 +189,9 @@ export default {
             },
             // filter: ["==", ["number", ["get", "year"]], parseInt(this.yearVal)],
           });
+
+          
+
         }
       );
 
@@ -255,6 +264,9 @@ export default {
         parseInt(this.yearVal),
       ]);
 
+      console.log("hi")
+
+
       }
      
     });
@@ -320,6 +332,10 @@ export default {
     async createFeaturesArray(results) {
       //  countries is an array
       for (let indivResult of results) {
+
+        // Push into result array, to be popoulated into the result modal
+        this.resultArray.push(indivResult.fields.name);
+
         // Generating obj array to put in to .addSource
         let obj = {
           type: "Feature",
@@ -402,7 +418,22 @@ export default {
         parseInt(this.yearVal),
       ]);
       console.log("End filter event");
+
+      // const test = this.map.querySourceFeatures('disaster', {'sourceLayer': 'result'})
+      // console.log(test);
+
+      // Get queried layer data here 
+      const test = this.map.querySourceFeatures('disasters', {
+              sourceLayer: 'disasters',
+              filter: ["==", ["number", ["get", "year"]],parseInt(this.yearVal)],
+          });
+          console.log(test);
+     
+
+
+  
     },
+
 
     // Interactive popup functions
 
@@ -424,7 +455,7 @@ export default {
 
 
     ::-webkit-scrollbar{
-      width: 1em;
+      width: 0px;
         
       }
 
@@ -492,7 +523,7 @@ export default {
   .console {
     display: flex;
     flex-direction: column;
-      margin: 0 1rem 1rem 1rem;
+    margin: 0 1rem 1rem 1rem;
     padding: 10px 20px;
     background-color: rgba(0, 0, 0, 0.412);
     color: white;
@@ -546,8 +577,29 @@ export default {
 
 .result-col{
   border-radius: 25px;
+  height: 500px;
+  overflow-x: hidden;
+  overflow-y: scroll; 
 
 
+}
+
+.result-list{
+  margin-top: -50px;
+}
+
+.loader {
+  border: 16px solid #f3f3f3; /* Light grey */
+  border-top: 16px solid #3498db; /* Blue */
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
 @keyframes appear {
 
