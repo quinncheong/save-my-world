@@ -429,24 +429,12 @@ export default {
 
 }
 
-
 @media screen and (min-width: 768px) {
   .visualisation-wrapper {
     width: 90%;
   }
 }
 
-#desc {
-  position: absolute;
-  width: 25%;
-  height: 200px;
-  margin-left: 10px;
-  bottom: 30px;
-  padding: 10px 20px;
-  background-color: white;
-  z-index: 1;
-  overflow-y: auto;
-}
 @media screen and (min-width: 968px) {
   .visualisation-wrapper {
     width: 80%;
