@@ -10,9 +10,9 @@
     <p class="chart-details mb-1">
       The map below shows the frequency of disasters in the world.
     </p>
-    <i style="font-size: 15px" class="chart-select mb-2"
+    <h6 style="font-size: 15px" class="chart-select mb-2"
       >Select the filter to understand how disasters have been increasing
-      rapidly throughout the years</i
+      rapidly throughout the years</h6
     >
     <!--
     <div class="d-flex justify-content-center">
@@ -38,7 +38,6 @@
 
     <!-- Container to hold  the map -->
     <div class="console justify-self-center" >
-      <h1>Last 10 years</h1>
         <h5 class="sliderValue">{{ yearVal }}</h5>
         <div class="row">
           <div class="col-1">
@@ -437,11 +436,37 @@ export default {
     .scrollable-element {
       scrollbar-width: thin;
     }
+  
+  #tile-2{
+    .chart-title{
+      animation: appear 1s ease; 
+
+    }
+
+  }
 
   #tile-1{
     .chart-details{
-      animation: appear 2s ease-in; 
+      animation: appear 4s ease; 
 
+
+    }
+    h6{
+      position: relative;
+      animation: type 10s steps(95);
+      overflow:hidden;
+      white-space:nowrap;
+      width: 95ch;
+
+    }
+
+    @keyframes type {
+      0% {
+        width: 0ch;
+      }
+      100%  {
+        width: 95ch;
+      }
     }
   }
 
@@ -458,7 +483,7 @@ export default {
     padding: 10px 20px;
     background-color: rgba(0, 0, 0, 0.412);
     color: white;
-    animation: appear 6s ease-in; 
+    animation: appear 8s ease; 
 
     z-index: 1;
 
@@ -467,7 +492,9 @@ export default {
         width: 100%;
         height: 7px;
         outline: none;
-        border-radius: 3px;
+        -slider-filled-track-color: red ;
+            -slider-track-color: -slider-filled-track-color ;
+                border-radius: 3px;
       }
 
       #slider::-webkit-slider-thumb{
@@ -477,8 +504,14 @@ export default {
         background: greenyellow;
         border-radius: 50%;;
         cursor: pointer;
+        z-index: 3;
+        position: relative;
 
       }
+
+     
+
+    
   }
   
   #desc {
