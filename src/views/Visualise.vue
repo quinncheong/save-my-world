@@ -79,7 +79,7 @@
             <li v-for="result in resultArray" :key="result" class="list-group-item text-start">
               <div class="card">
                   <div class="card-body">
-                    <h5 class="card-title">Special title treatment</h5>
+                    <h5 class="card-title">{{result}}</h5>
                     <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
                     <a href="#" class="btn btn-primary">Go somewhere</a>
                   </div>
@@ -428,6 +428,17 @@ export default {
               filter: ["==", ["number", ["get", "year"]],parseInt(this.yearVal)],
           });
           console.log(test);
+
+    // Change result list everytime 
+    this.resultArray = [];
+
+    for (let indivResult of test){
+      console.log(indivResult.properties.name)
+
+      this.resultArray.push(indivResult.properties.name)
+    }
+
+
      
 
 
