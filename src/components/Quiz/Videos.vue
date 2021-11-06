@@ -86,4 +86,27 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+
+  iframe {
+    // box-shadow: var(--box-shadow);
+    // background-color: var(--white);
+    // padding: 25px;
+    transition: all 0.35s ease;
+
+    &:hover {
+      box-shadow: none;
+      transform: translateY(10px);
+    }
+  }
+  @keyframes appear {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+  .video-wrapper{
+     animation: appear 5s ease-in;
+  }
 </style>

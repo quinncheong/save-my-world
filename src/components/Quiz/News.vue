@@ -89,6 +89,31 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+  @keyframes appear {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  a {
+    // box-shadow: var(--box-shadow);
+    // background-color: var(--white);
+    // padding: 25px;
+    transition: all 0.35s ease;
+
+    &:hover {
+      box-shadow: none;
+      transform: translateY(5px);
+    }
+  }
+
+  .image-change-wrapper{
+    animation: appear 3s ease-in;
+  }
+
   p {
     text-align: left;
     font-size: 15px;

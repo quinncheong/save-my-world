@@ -61,7 +61,17 @@ export default {
 
 <style lang="scss" scoped>
 
+button {
+  transition: all 0.35s ease;
+
+  &:hover {
+    box-shadow: none;
+    transform: translateY(10px);
+  }
+}
+
 .quiz-wrapper {
+  animation: appear 1s ease-in;
   line-height: 1.7;
   font-family: "Sora", sans-serif;
   height: 100%;
@@ -72,6 +82,16 @@ export default {
   justify-content: space-between;
   font-size: $variable-font;
 }
+
+@keyframes appear {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
 // display 70% width on desktop
 @media screen and (min-width: 768px) {
   .quiz-wrapper {
