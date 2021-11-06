@@ -65,17 +65,47 @@
 
     </div>
 
-    <div class="map" id="map">
-      <!-- Slider Filter on the top left portion of the map -->
-      <!-- Result modal to be placed here  -->
-      <div class="container">
-         <div v-if="flying == false" id="desc" class=' my-2'>
-        <h5 class='text-center'>{{ title }}</h5>
-        <div >
-          <p class='p-3'>{{ descriptionModal }}</p>
+    <div class='row'>
+      <div class="col-3 bg-white result-col">
+        <div class="row">
+          <div class="col">
+            <p>Search results</p>
+            <hr>
+          </div>
+        </div> 
+        <ol class='text-dark'>
+          <li>asdas</li>
+          <li>asdas</li>
+          <li>asdas</li>
+          <li>asdas</li>
+          <li>asdas</li>
+          <li>asdas</li>
+          <li>asdas</li>
+          <li>asdas</li>
+          <li>asdas</li>
+          <li>asdas</li>
+          <li>asdas</li>
+          <li>asdas</li>
+          <li>asdas</li>
+        </ol>
+      </div>
+
+      <div class="col-9">
+        <div class="map" id="map">
+          <!-- Slider Filter on the top left portion of the map -->
+          <!-- Result modal to be placed here  -->
+          <div class="container">
+            <div v-if="flying == false" id="desc" class=' my-2'>
+            <h5 class='text-center'>{{ title }}</h5>
+            <div >
+              <p class='p-3'>{{ descriptionModal }}</p>
+          </div>
+
         </div>
 
       </div>
+    </div>
+
      
       </div>
     </div>
@@ -98,32 +128,11 @@ export default {
       center: [0, 20],
       map: {},
       // Disaster list
-      disaster: [
-        "Cold Wave",
-        "Complex Emergency",
-        "Drought",
-        "Earthquake",
-        "Extratropical Cyclone",
-        "Fire",
-        "Flash Flood",
-        "Flood",
-        "Heat",
-        "Insect Infestation",
-        "Land Slide",
-        "Mud Slide",
-        "Severe Local Storm",
-        "Snow Avalanche",
-        "Storm Surge",
-        "Tropical Cyclone",
-        "Tsunami",
-        "Volcano",
-        "Wild Fire",
-      ],
       selectedQuery: "Cold Wave",
       desc: [],
       markerList: [],
       features: [],
-      yearVal: 2020,
+      yearVal: null,
       year: "",
       flying: true,
       // For result modal
@@ -238,12 +247,16 @@ export default {
       //   .setLngLat(coordinates)
       //   .setHTML(description)
       //   .addTo(this.map);
-
-      this.map.setFilter("result", [
+      
+      if (this.yearVal != null){
+         this.map.setFilter("result", [
         "==",
         ["number", ["get", "year"]],
         parseInt(this.yearVal),
       ]);
+
+      }
+     
     });
   },
 
@@ -408,13 +421,12 @@ export default {
 <style lang="scss" scoped>
 .visualisation-wrapper {
   @extend %page-wrapper;
-  scrollbar-width: thin;
 
 
-   ::-webkit-scrollbar{
-     width: 1em;
-      
-    }
+    ::-webkit-scrollbar{
+      width: 1em;
+        
+      }
 
     ::-webkit-scrollbar-track {
       background: hsl(100 75% 40% / 1);
@@ -474,6 +486,7 @@ export default {
     height: 500px;
     color: black;
     position: relative;
+    border-radius: 25px;
   }
   
   .console {
@@ -531,6 +544,11 @@ export default {
 
 }
 
+.result-col{
+  border-radius: 25px;
+
+
+}
 @keyframes appear {
 
   // 0%{}
