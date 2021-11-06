@@ -18,8 +18,6 @@ export default {
     data() {
         return {
             //
-            title: "aaa",
-            description: "bb"
         }
     },
     
@@ -29,7 +27,10 @@ export default {
 <style lang="scss" scoped>
   .card-body{
     text-align: left;
-    line-height: 1.7;
-    font-family: "Sora", sans-serif;
+
+    .card-title{
+      line-height: 1.7;
+      font-family: "Sora", sans-serif;
+    }
   }
 </style>
