@@ -286,4 +286,9 @@ p.text-success {
     height: 50vh;
   }
 }
+
+body{
+  line-height: 1.7;
+  font-family: "Sora", sans-serif;
+}
 </style>

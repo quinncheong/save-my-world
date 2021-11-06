@@ -20,15 +20,15 @@
     <div class="row">
       <div class="col-md-4">
         <div class="card my-2 bg-transparent border-light">
-          <p class="border-bottom">Climate Change</p>
+          <p class="border-bottom text-center" style="color: yellow">Climate Change</p>
           <div class="card-body">
-            <p class="card-text">
+            <p class="card-text text-center">
               Contemporary climate change includes both global warming caused by
-              humans and its impacts on Earth's weather patterns.
+              <b>humans and its impacts on Earth's weather patterns</b>.
             </p>
             <p class="mb-1 text-center">
               <a
-                class="text-white"
+                class="text-success  badge border py-1"
                 href="https://www.nature.com/articles/d41586-021-02990-w"
                 >Click for more info</a
               >
@@ -38,16 +38,16 @@
       </div>
       <div class="col-md-4">
         <div class="card my-2 bg-transparent border-light">
-          <p class="border-bottom">Greenhouse Gases</p>
+          <p class="border-bottom text-center" style="color: yellow">Greenhouse Gases</p>
           <div class="card-body">
-            <p class="card-text">
+            <p class="card-text text-center">
               The main gases responsible for the greenhouse effect include
-              carbon dioxide, methane, nitrous oxide, water vapor and
-              fluorinated gases
+              <b>carbon dioxide, methane, nitrous oxide, water vapor and
+              fluorinated gases</b>
             </p>
             <p class="mb-1 text-center">
               <a
-                class="text-white"
+                class="text-success badge border py-1"
                 href="https://www.nationalgeographic.com/environment/article/greenhouse-gases"
                 >Click for more info</a
               >
@@ -57,15 +57,15 @@
       </div>
       <div class="col-md-4">
         <div class="card my-2 bg-transparent border-light">
-          <p class="border-bottom">Ways to contribute</p>
+          <p class="border-bottom text-center" style="color: yellow">Ways to contribute</p>
           <div class="card-body">
-            <p class="card-text">
+            <p class="card-text text-center">
               Foster innovation and resilient infrastructure, creating
               communities and cities able to produce and consume sustainably.
             </p>
             <p class="mb-1 text-center">
               <a
-                class="text-white"
+                class="text-success badge border py-1"
                 href="https://www.nature.com/articles/d41586-021-02990-w"
                 >Click for more info</a
               >
@@ -78,7 +78,6 @@
 </template>
 
 <script>
-// import Campaign from "./Campaign.vue";
 
 export default {
   name: "News",
@@ -90,9 +89,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-p {
-  text-align: left;
-  font-size: 15px;
-  padding: 10px;
-}
+  p {
+    text-align: left;
+    font-size: 15px;
+    padding: 10px;
+  }
 </style>

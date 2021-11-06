@@ -6,9 +6,9 @@
       <i>Watch these videos to better understand about Climate Change</i>
     </p>
     <div class="row">
-      <div class="col-lg-6 my-2">
+      <div class="col-md-6 my-2">
         <div class="embed-responsive embed-responsive-16by9 z-depth-1-half">
-          <iframe
+          <iframe width="300" height="150"
             class="embed-responsive-item"
             src="https://www.youtube.com/embed/dcBXmj1nMTQ"
             allowfullscreen
@@ -17,9 +17,9 @@
       </div>
 
       <!-- Grid column -->
-      <div class="col-lg-6 my-2">
+      <div class="col-md-6 my-2">
         <div class="embed-responsive embed-responsive-16by9 z-depth-1-half">
-          <iframe
+          <iframe width="300" height="150"
             class="embed-responsive-item"
             src="https://www.youtube.com/embed/0Puv0Pss33M"
             allowfullscreen
@@ -28,9 +28,9 @@
       </div>
 
       <!-- Grid column -->
-      <div class="col-lg-6 my-2">
+      <div class="col-md-6 my-2">
         <div class="embed-responsive embed-responsive-16by9 z-depth-1-half">
-          <iframe
+          <iframe width="300" height="150"
             class="embed-responsive-item"
             src="https://www.youtube.com/embed/aNX__544IO0"
             allowfullscreen
@@ -39,9 +39,9 @@
       </div>
 
       <!-- Grid column -->
-      <div class="col-lg-6 my-2">
+      <div class="col-md-6 my-2">
         <div class="embed-responsive embed-responsive-16by9 z-depth-1-half">
-          <iframe
+          <iframe width="300" height="150"
             class="embed-responsive-item"
             src="https://www.youtube.com/embed/SN5-DnOHQmE"
             allowfullscreen
@@ -50,9 +50,9 @@
       </div>
 
       <!-- Grid column -->
-      <div class="col-lg-6 my-2">
+      <div class="col-md-6 my-2">
         <div class="embed-responsive embed-responsive-16by9 z-depth-1-half">
-          <iframe
+          <iframe width="300" height="150"
             class="embed-responsive-item"
             src="https://www.youtube.com/embed/G4H1N_yXBiA"
             allowfullscreen
@@ -61,9 +61,9 @@
       </div>
 
       <!-- Grid column -->
-      <div class="col-lg-6 my-2">
+      <div class="col-md-6 my-2">
         <div class="embed-responsive embed-responsive-16by9 z-depth-1-half">
-          <iframe
+          <iframe width="300" height="150"
             class="embed-responsive-item"
             src="https://www.youtube.com/embed/fu5lwMissg0"
             allowfullscreen

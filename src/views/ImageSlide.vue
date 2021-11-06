@@ -12,7 +12,6 @@ import "@splidejs/splide/dist/css/themes/splide-default.min.css";
 import 'img-comparison-slider';
 import imageCarol from "../components/ImageOfChange/ImageCarousel.vue";
 import imageSlider from "../components/ImageOfChange/ImageSlider.vue";
-// import ImageCard from "../components/ImageOfChange/ImageCard.vue";
 import ImageOfChange from "../components/ImageOfChange/ImageOfChange.vue";
 
 export default {
@@ -22,7 +21,6 @@ export default {
     SplideSlide,
     imageCarol,
     imageSlider,
-    // ImageCard,
     ImageOfChange,
   },
   data() {
@@ -212,4 +210,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+
 </style>
