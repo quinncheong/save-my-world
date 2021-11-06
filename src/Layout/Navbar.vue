@@ -29,7 +29,7 @@
   <nav class="nav" v-if="fullView">
     <!-- <router-link id="home" to="/">Home img</router-link> -->
     <router-link id="home" to="/">
-      <img class="homeimg" src="@/assets/img/logo4.png" alt="Globe Icon" />
+      <img class="homeimg" src="@/assets/img/logo5.png" alt="Globe Icon" />
     </router-link>
 
     <template :key="route.path" v-for="(route, index) in routes">
@@ -43,7 +43,7 @@
     <!-- <router-link id="home" to="/">Home img</router-link> -->
     <div class="top">
       <router-link id="home" to="/">
-        <img class="homeimg" src="@/assets/img/logo4.png" alt="Globe Icon" />
+        <img class="homeimg" src="@/assets/img/logo5.png" alt="Globe Icon" />
       </router-link>
       <button @click="showButton()" class="nav-dropdown-button btn btn-success">
         Dropdown
