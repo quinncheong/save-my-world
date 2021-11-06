@@ -1,7 +1,6 @@
 <template>
-  <section class="disaster-wrapper container-fluid">
-    <div class="p-5 mt-5 bg-light text-dark rounded-3 w-100">
-      <div class="container-fluid text-start py-5">
+  <section class="disaster-wrapper">
+    <div class="disaster-info-top bg-light text-dark">
         <h1 class="display-5 text-start fw-bold">Disasters</h1>
 
         <div class="row">
@@ -15,7 +14,6 @@
         <p class='col-md-4 mt-3'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis, libero.</p>
 
         </div>
-      </div>
     </div>
 
     <div class="disaster-content p-5 container-fluid bg-success w-100">
@@ -42,28 +40,16 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
-
 .disaster-wrapper{
-  min-width: 100%;
-  min-width: 100vw;
-}
-/* Accounting for the different breakpoints */
-@media screen and (min-width: 768px) {
-  .disaster-wrapper {
-    width: 80%;
-  }
-}
+  font-size: $variable-font-small;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin-top: 1rem;
 
-@media screen and (min-width: 992px) {
-  .disaster-wrapper {
-    width: 70%;
-  }
-}
-
-@media screen and (min-width: 1400px) {
-  .disaster-wrapper {
-    width: 60%;
+  .disaster-info-top{
+    padding: 1rem;
+    border-radius: 10px;
   }
 }
 </style>

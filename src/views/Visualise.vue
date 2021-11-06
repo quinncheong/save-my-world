@@ -9,7 +9,7 @@
       <p class="chart-details mb-1">
         The map below shows the frequency of disasters in the world.
       </p>
-      <i style="font-size: 15px" class="chart-select mb-2">
+      <i class="chart-select mb-2">
         Select the filter to understand how disasters have been increasing
         rapidly throughout the years
       </i>
@@ -444,9 +444,7 @@ export default {
 <style lang="scss" scoped>
 .visualisation-wrapper {
   @extend %page-wrapper;
-      font-size: 1vw;
-
-  
+    font-size: $variable-font;
   
 
   ::-webkit-scrollbar {
@@ -483,11 +481,11 @@ export default {
     .chart-details {
       animation: appear 4s ease;
     }
+
     i {
+      font-size: 13px;
       animation: appear 6s ease;
       overflow: hidden;
-      white-space: nowrap;
-      width: 95ch;
     }
 
   
@@ -611,7 +609,7 @@ export default {
 
 @media screen and (min-width: 1268px) {
   .visualisation-wrapper {
-    width: 60%;
+    width: 70%;
   }
 }
 </style>
