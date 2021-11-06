@@ -78,7 +78,6 @@
 </template>
 
 <script>
-// import Campaign from "./Campaign.vue";
 
 export default {
   name: "News",
@@ -90,9 +89,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-p {
-  text-align: left;
-  font-size: 15px;
-  padding: 10px;
-}
+  p {
+    text-align: left;
+    font-size: 15px;
+    padding: 10px;
+  }
 </style>

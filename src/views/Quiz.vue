@@ -26,8 +26,6 @@
 </template>
 
 <script>
-// import Searchbar from "@/components/Quiz/Searchbar.vue";
-// import Campaigns from "@/components/Quiz/Campaigns.vue";
 import Quizzes from "@/components/Quiz/Quizzes.vue";
 import Header from "@/components/Quiz/Header.vue";
 import Video from "@/components/Quiz/Videos.vue";
@@ -38,8 +36,6 @@ import { getQuizzes } from "@/firebase.js";
 export default {
   name: "Community",
   components: {
-    // Searchbar,
-    // Campaigns,
     Quizzes,
     Header,
     Video,
