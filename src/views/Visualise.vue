@@ -6,15 +6,14 @@
     </div>
 
     <div id="tile-1">
-
-    <p class="chart-details mb-1">
-      The map below shows the frequency of disasters in the world.
-    </p>
-    <h6 style="font-size: 15px" class="chart-select mb-2"
-      >Select the filter to understand how disasters have been increasing
-      rapidly throughout the years</h6
-    >
-    <!--
+      <p class="chart-details mb-1">
+        The map below shows the frequency of disasters in the world.
+      </p>
+      <i style="font-size: 15px" class="chart-select mb-2">
+        Select the filter to understand how disasters have been increasing
+        rapidly throughout the years
+      </i>
+      <!--
     <div class="d-flex justify-content-center">
       <form @submit="handleClick()">
         <select
@@ -36,82 +35,77 @@
     </div> 
     -->
 
-    <!-- Container to hold  the map -->
-    <div class="console justify-self-center" >
+      <!-- Container to hold  the slider -->
+      <div class="console justify-self-center">
         <h5 class="sliderValue">{{ yearVal }}</h5>
         <div class="row">
           <div class="col-1">
-            <div class='value-left'>1981</div>
+            <div class="value-left">1981</div>
           </div>
           <div class="col-10">
-        <input
-          id="slider"
-          class="w-100"
-          type="range"
-          min="1981"
-          max="2021"
-          step="1"
-          v-model="yearVal"
-          @change="listenEvent"
-        />
+            <input
+              id="slider"
+              class="w-100"
+              type="range"
+              min="1981"
+              max="2021"
+              step="1"
+              v-model="yearVal"
+              @change="listenEvent"
+            />
           </div>
-        <div class="col-1">
-         <div class='value-right'>2021</div>
+          <div class="col-1">
+            <div class="value-right">2021</div>
+          </div>
         </div>
-
-        </div>
-
+      </div>
     </div>
 
-    </div>
-
-    <div class='row'>
+    <!-- Result outer modal to hold all results (WIP) , same row as map-->
+    <div class="row">
       <div class="col-3 bg-white result-col">
         <div class="row">
           <div class="col">
-            <p class='text-dark text-start mt-2'>Search results</p>
-            <hr>
+            <p class="text-dark text-start mt-2 fs-6">Search results: <span v-if="resultArray.length>0" ><b>{{resultArray.length}}</b></span></p>
+            <hr/>
           </div>
-        </div> 
-
-          <div v-if="resultArray != []">
-           <ul class="result-list">
-            <li v-for="result in resultArray" :key="result" class="list-group-item text-start">
-              <div class="card">
-                  <div class="card-body">
-                    <h5 class="card-title">{{result}}</h5>
-                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
-                  </div>
-              </div>
-            </li>
-          </ul>
-          </div>
-
-          <div v-else class="loader"></div>
+        </div>
+        <div v-if="resultArray != []">
          
+        <div v-for="result in resultArray" :key="result" class="row">
+          <div class="col">
+            <p class="text-dark text-start ">{{result}}</p>
+          </div>
 
+          <hr class='lead'>
+        </div>
+          
         </div>
 
+        <div v-else class="loader"></div>
+      </div>
+      <!-- Col to hold the map -->
       <div class="col-9">
         <div class="map" id="map">
           <!-- Slider Filter on the top left portion of the map -->
-          <!-- Result modal to be placed here  -->
+          <!-- Result individual modal to be placed here  -->
           <div class="container">
-            <div v-if="flying == false" id="desc" class=' my-2'>
-            <h5 class='text-center'>{{ title }}</h5>
-            <div >
-              <p class='p-3'>{{ descriptionModal }}</p>
+            <div v-if="flying == false" id="desc" class="my-2">
+              <h5 class="text-center">{{ title }}</h5>
+              <div>
+                <p class="p-3">{{ descriptionModal }}</p>
+              </div>
+            </div>
           </div>
-
         </div>
-
       </div>
     </div>
 
-     
-      </div>
-    </div>
+
+    <!-- Disaster infographic -->
+    <Disasterinfo/>
+
+   
   </div>
 </template>
 
@@ -120,9 +114,11 @@ import axios from "axios";
 import mapboxgl from "mapbox-gl";
 import MapboxGeocoder from "@mapbox/mapbox-gl-geocoder";
 import "@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css";
+import Disasterinfo from "@/components/Visualise/Disasterinfo.vue";
+
 export default {
   name: "Visualise",
-  components: {},
+  components: {Disasterinfo},
   data() {
     return {
       loading: false,
@@ -142,7 +138,7 @@ export default {
       title: "Click on any of the pointers!",
       descriptionModal: "",
       status: "",
-      resultArray :[]
+      resultArray: [],
     };
   },
   async mounted() {
@@ -150,7 +146,6 @@ export default {
     // Load the markers here when loading
     this.map.on("load", async () => {
       await this.getLocation(); // After getting location then we add the markers
-
 
       // Loading marker image
       this.map.loadImage(
@@ -189,9 +184,6 @@ export default {
             },
             // filter: ["==", ["number", ["get", "year"]], parseInt(this.yearVal)],
           });
-
-          
-
         }
       );
 
@@ -256,19 +248,16 @@ export default {
       //   .setLngLat(coordinates)
       //   .setHTML(description)
       //   .addTo(this.map);
-      
-      if (this.yearVal != null){
-         this.map.setFilter("result", [
-        "==",
-        ["number", ["get", "year"]],
-        parseInt(this.yearVal),
-      ]);
 
-      console.log("hi")
+      if (this.yearVal != null) {
+        this.map.setFilter("result", [
+          "==",
+          ["number", ["get", "year"]],
+          parseInt(this.yearVal),
+        ]);
 
-
+        console.log("hi");
       }
-     
     });
   },
 
@@ -332,7 +321,6 @@ export default {
     async createFeaturesArray(results) {
       //  countries is an array
       for (let indivResult of results) {
-
         // Push into result array, to be popoulated into the result modal
         this.resultArray.push(indivResult.fields.name);
 
@@ -422,29 +410,22 @@ export default {
       // const test = this.map.querySourceFeatures('disaster', {'sourceLayer': 'result'})
       // console.log(test);
 
-      // Get queried layer data here 
-      const test = this.map.querySourceFeatures('disasters', {
-              sourceLayer: 'disasters',
-              filter: ["==", ["number", ["get", "year"]],parseInt(this.yearVal)],
-          });
-          console.log(test);
+      // Get queried layer data here
+      const test = this.map.querySourceFeatures("disasters", {
+        sourceLayer: "disasters",
+        filter: ["==", ["number", ["get", "year"]], parseInt(this.yearVal)],
+      });
+      console.log(test);
 
-    // Change result list everytime 
-    this.resultArray = [];
+      // Change result list everytime
+      this.resultArray = [];
 
-    for (let indivResult of test){
-      console.log(indivResult.properties.name)
+      for (let indivResult of test) {
+        console.log(indivResult.properties.name);
 
-      this.resultArray.push(indivResult.properties.name)
-    }
-
-
-     
-
-
-  
+        this.resultArray.push(indivResult.properties.name);
+      }
     },
-
 
     // Interactive popup functions
 
@@ -463,65 +444,53 @@ export default {
 <style lang="scss" scoped>
 .visualisation-wrapper {
   @extend %page-wrapper;
+      font-size: 1vw;
 
-
-    ::-webkit-scrollbar{
-      width: 0px;
-        
-      }
-
-    ::-webkit-scrollbar-track {
-      background: hsl(100 75% 40% / 1);
-      border-radius: 100vw;
-      margin-block: .5em;
-
-    }
-
-    ::-webkit-scrollbar-thumb{
-      background: hsl(120 100% 20% / 1);
-      border: .25em solid black;
-      border-radius: 100vw;
-    }
-
-    ::-webkit-scrollbar-thumb:hover{
-      background:hsl(120 100% 5% /1);
-    }
-
-    .scrollable-element {
-      scrollbar-width: thin;
-    }
   
-  #tile-2{
-    .chart-title{
-      animation: appear 1s ease; 
+  
 
-    }
-
+  ::-webkit-scrollbar {
+    width: 0px;
   }
 
-  #tile-1{
-    .chart-details{
-      animation: appear 4s ease; 
+  ::-webkit-scrollbar-track {
+    background: hsl(100 75% 40% / 1);
+    border-radius: 100vw;
+    margin-block: 0.5em;
+  }
 
+  ::-webkit-scrollbar-thumb {
+    background: hsl(120 100% 20% / 1);
+    border: 0.25em solid black;
+    border-radius: 100vw;
+  }
 
+  ::-webkit-scrollbar-thumb:hover {
+    background: hsl(120 100% 5% /1);
+  }
+
+  .scrollable-element {
+    scrollbar-width: thin;
+  }
+
+  #tile-2 {
+    .chart-title {
+      animation: appear 1s ease;
     }
-    h6{
-      position: relative;
-      animation: type 10s steps(95);
-      overflow:hidden;
-      white-space:nowrap;
+  }
+
+  #tile-1 {
+    .chart-details {
+      animation: appear 4s ease;
+    }
+    i {
+      animation: appear 6s ease;
+      overflow: hidden;
+      white-space: nowrap;
       width: 95ch;
-
     }
 
-    @keyframes type {
-      0% {
-        width: 0ch;
-      }
-      100%  {
-        width: 95ch;
-      }
-    }
+  
   }
 
   .map {
@@ -530,7 +499,7 @@ export default {
     position: relative;
     border-radius: 25px;
   }
-  
+
   .console {
     display: flex;
     flex-direction: column;
@@ -538,37 +507,32 @@ export default {
     padding: 10px 20px;
     background-color: rgba(0, 0, 0, 0.412);
     color: white;
-    animation: appear 8s ease; 
+    animation: appear 8s ease;
 
     z-index: 1;
 
-      #slider{
-        -webkit-appearance: none;
-        width: 100%;
-        height: 7px;
-        outline: none;
-        -slider-filled-track-color: red ;
-            -slider-track-color: -slider-filled-track-color ;
-                border-radius: 3px;
-      }
+    #slider {
+      -webkit-appearance: none;
+      width: 100%;
+      height: 7px;
+      outline: none;
+      -slider-filled-track-color: red;
+      -slider-track-color: -slider-filled-track-color;
+      border-radius: 3px;
+    }
 
-      #slider::-webkit-slider-thumb{
-        -webkit-appearance: none;
-        height: 20px;
-        width: 20px;
-        background: greenyellow;
-        border-radius: 50%;;
-        cursor: pointer;
-        z-index: 3;
-        position: relative;
-
-      }
-
-     
-
-    
+    #slider::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      height: 20px;
+      width: 20px;
+      background: greenyellow;
+      border-radius: 50%;
+      cursor: pointer;
+      z-index: 3;
+      position: relative;
+    }
   }
-  
+
   #desc {
     position: absolute;
     width: 40%;
@@ -579,57 +543,58 @@ export default {
     background-color: white;
     z-index: 1;
     overflow-y: auto;
-    animation: appear 0.5s; 
+    animation: appear 0.5s;
     border-radius: 25px;
     text-align: left;
+  }
 
+  .result-col {
+    border-radius: 25px;
+    height: 500px;
+    overflow-x: hidden;
+    overflow-y: scroll;
+  }
 
-}
+  .result-list {
+    margin-top: -50px;
+  }
 
-.result-col{
-  border-radius: 25px;
-  height: 500px;
-  overflow-x: hidden;
-  overflow-y: scroll; 
+  .loader {
+    border: 16px solid #f3f3f3; /* Light grey */
+    border-top: 16px solid #3498db; /* Blue */
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    animation: spin 2s linear infinite;
+  }
 
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  @keyframes appear {
+    // 0%{}
+    // 100%{transform: translateY(-30px)}
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
 
-}
-
-.result-list{
-  margin-top: -50px;
-}
-
-.loader {
-  border: 16px solid #f3f3f3; /* Light grey */
-  border-top: 16px solid #3498db; /* Blue */
-  border-radius: 50%;
-  width: 120px;
-  height: 120px;
-  animation: spin 2s linear infinite;
-}
-
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
-@keyframes appear {
-
-  // 0%{}
-  // 100%{transform: translateY(-30px)}
-  from {opacity: 0;}
-  to {opacity: 1;}
-  
-}
-
-// .marker {
-//   background-image: url("../assets/img/globe.png");
-//   background-size: cover;
-//   width: 50px;
-//   height: 50px;
-//   border-radius: 50%;
-//   cursor: pointer;
-// }
-
+  // .marker {
+  //   background-image: url("../assets/img/globe.png");
+  //   background-size: cover;
+  //   width: 50px;
+  //   height: 50px;
+  //   border-radius: 50%;
+  //   cursor: pointer;
+  // }
 }
 
 @media screen and (min-width: 768px) {
@@ -649,5 +614,4 @@ export default {
     width: 60%;
   }
 }
-
 </style>
