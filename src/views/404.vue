@@ -34,7 +34,7 @@
       </div>
     </div>
   </div>
-  <button @click="handleClick" class="mt-3 btn btn-outline-light">Go Back Home</button>
+  <button @click="handleClick" class="mt-3 btn btn-outline-light btn-new">Go Back Home</button>
   <!-- <main>
     <div class="container">
       <div class="row">
@@ -860,12 +860,13 @@ export default {
 //     }
 //   }
 // }
-// .btn-new {
-//   padding: 5px 50px;
-//   position: relative;
-//   border-radius: 30px;
-//   font-weight: bold;
-// }
+.btn-new {
+  font-family: "Fredoka One";
+  padding: 5px 50px;
+  position: relative;
+  border-radius: 30px;
+  font-weight: bold;
+}
 
 // @media screen and (max-width: 768px) {
 //   body {
