@@ -8,28 +8,32 @@
           </header>
 
           <div class="row">
-            <div class="col-lg-6 text-start mt-3" >
+            <div class="col-lg-6 text-start mt-3">
               <h6 class="textformat">
                 Climate change affects global temperature and precipitation
                 patterns. These are some of the listed effects:
               </h6>
 
               <!-- icon box -->
-              <div class="icon-box p-2 d-flex justify-content-start" v-for="icon,disaster in disasterShow" :key="disaster">
-
+              <div
+                class="icon-box p-2 d-flex justify-content-start"
+                v-for="(icon, disaster) in disasterShow"
+                :key="disaster"
+              >
                 <div class="icon p-2border border-dark p-2 rounded-circle me-2">
                   <!-- <font-awesome-icon icon="circle" ></font-awesome-icon> -->
-                  <font-awesome-icon :icon=icon size="lg" ></font-awesome-icon>
+                  <font-awesome-icon :icon="icon" size="lg"></font-awesome-icon>
                 </div>
 
-                <p class="mt-2 ms-2 fw-bolder textformat" >{{disaster}}</p>
-
+                <p class="mt-2 ms-2 fw-bolder textformat">{{ disaster }}</p>
               </div>
             </div>
 
             <div class="col">
-              <img src="@/assets/img/NaturalDisaster.webp" class="img-fluid mt-5">
-
+              <img
+                src="@/assets/img/NaturalDisaster.webp"
+                class="img-fluid mt-5"
+              />
             </div>
           </div>
         </div>
@@ -48,20 +52,24 @@
 
     <!-- Top disasters occurence -->
 
-    <section class="top-disaster">
+    <section class="timeline  bg-success">
       <div class="disaster-content p-5 container-fluid bg-success w-100">
-        <h1 class="mb-3">Reduce impact of disasters</h1>
+        <h1 class="mb-3">Top 10 disasters of all time</h1>
         <h6 class="mb-4">
-          Here are ways where <span id="savemyworld">YOU</span> can reduce the
-          effects of natural disasters
+          Natural disasters have persisted for a long time. It is only up to
+          <span id="savemyworld">US</span> to mitigate the changes impact that
+          such disasters brings as this could be avoided.
         </h6>
 
-        <h6 class="mb-2">
-          Hence, play your part in limiting the effects of global warming and
-          take care of our planet.
-          <span id="savemyworld">Make the right choices today.</span> You can be
-          part of the solution and influence change.
-        </h6>
+        <div class="timeline">
+          <div class="timeline-component">
+            <div class="timelinedate timelinedate-right">August 20</div>
+          </div>
+        </div>
+
+        <div class="timelinemiddle">
+          <div class="timelinepoint"></div>
+        </div>
       </div>
     </section>
   </section>
@@ -73,15 +81,14 @@ export default {
 
   data() {
     return {
-      disasterShow: { 
+      disasterShow: {
         "Forest fires": "fire",
-        "Hurricanes": "wind",
-        "Heat waves":"temperature-high",
-        "Floods":"water",
-        "Droughts": "tint-slash",
-        "Storms":"poo-storm",
+        Hurricanes: "wind",
+        "Heat waves": "temperature-high",
+        Floods: "water",
+        Droughts: "tint-slash",
+        Storms: "poo-storm",
       },
-
     };
   },
 };
@@ -98,21 +105,43 @@ export default {
   .disaster-info-top {
     padding: 1rem;
     border-radius: 10px;
-
   }
 
-  .textformat{
-  font-size: 20px;
+  .textformat {
+    font-size: 20px;
   }
 
-  .icon{
-      border-radius: 100%;
-        justify-content: center;
-
-
+  .icon {
+    border-radius: 100%;
+    justify-content: center;
   }
+
+  
 }
 
+.timeline {
+    display: grid;
+    //  Make 2 equal columns then make a freaking bar  that is 3px
+    grid-template-columns: 1fr 3px 1fr;
+  }
+  .timeline
 
+  .timelinedate {
+    margin: 0 20px 20px 20px;
+  }
 
+  .timelinemiddle {
+    position: relative;
+    background: white
+  }
+
+  .timelinepoint {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 15px;
+    height: 15px;
+    background: red;
+    border-radius: 100%;
+  }
 </style>
