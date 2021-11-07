@@ -1,98 +1,28 @@
 <template>
   <!-- video -->
-  <!-- <div class="video-wrapper">
-    <h4><strong>Video Gallery</strong></h4>
-    <p style="font-size: 15px">
-      <i>Watch these videos to better understand about Climate Change</i>
-    </p>
-    <div class="row my-2">
-      <div class="col-md-6 col-sm-6">
-        <div class="embed-responsive embed-responsive-16by9 z-depth-1-half">
-          <iframe width="300" height="150"
-            class="embed-responsive-item"
-            src="https://www.youtube.com/embed/dcBXmj1nMTQ"
-            allowfullscreen
-          ></iframe>
-        </div>
-      </div> -->
-
-      <!-- Grid column -->
-      <!-- <div class="col-md-6 col-sm-6">
-        <div class="embed-responsive embed-responsive-16by9 z-depth-1-half">
-          <iframe width="300" height="150"
-            class="embed-responsive-item"
-            src="https://www.youtube.com/embed/0Puv0Pss33M"
-            allowfullscreen
-          ></iframe>
-        </div>
-      </div> -->
-
-      <!-- Grid column -->
-      <!-- <div class="col-md-6 col-sm-6">
-        <div class="embed-responsive embed-responsive-16by9 z-depth-1-half">
-          <iframe width="300" height="150"
-            class="embed-responsive-item"
-            src="https://www.youtube.com/embed/aNX__544IO0"
-            allowfullscreen
-          ></iframe>
-        </div>
-      </div> -->
-
-      <!-- Grid column -->
-      <!-- <div class="col-md-6 col-sm-6">
-        <div class="embed-responsive embed-responsive-16by9 z-depth-1-half">
-          <iframe width="300" height="150"
-            class="embed-responsive-item"
-            src="https://www.youtube.com/embed/SN5-DnOHQmE"
-            allowfullscreen
-          ></iframe>
-        </div>
-      </div> -->
-
-      <!-- Grid column -->
-      <!-- <div class="col-md-6 col-sm-6">
-        <div class="embed-responsive embed-responsive-16by9 z-depth-1-half">
-          <iframe width="300" height="150"
-            class="embed-responsive-item"
-            src="https://www.youtube.com/embed/G4H1N_yXBiA"
-            allowfullscreen
-          ></iframe>
-        </div>
-      </div> -->
-
-      <!-- Grid column -->
-      <!-- <div class="col-md-6 col-sm-6">
-        <div class="embed-responsive embed-responsive-16by9 z-depth-1-half">
-          <iframe width="300" height="150"
-            class="embed-responsive-item"
-            src="https://www.youtube.com/embed/fu5lwMissg0"
-            allowfullscreen
-          ></iframe>
-        </div>
-      </div>
-    </div>
-  </div> -->
-
-  <!-- something new -->
   <h4><strong>Video Gallery</strong></h4>
     <p style="font-size: 15px">
       <i>Watch these videos to better understand about Climate Change</i>
     </p>
   <div class="main">
     <ul class="cards">
-      <li class="cards_item">
+      <li 
+      :key="index"
+      v-for="(srcset, index) of sources"
+      class="cards_item"
+      >
         <div class="card bg-transparent">
           <div class="card_image"><iframe width="100%" height="100%"
-              src="https://www.youtube.com/embed/G4H1N_yXBiA"
+              :src="srcset.link"
               allowfullscreen
             ></iframe></div>
           <div class="card_content">
-            <h6 class="card_title">Cause and Effect of Climate Change</h6>
-            <p class="card_text">What causes climate change (also known as global warming)? And what are the effects of climate change? Learn the human impact and consequences of climate change for the environment, and our lives.</p>
+            <h6 class="card_title">{{ srcset.title }}</h6>
+            <p class="card_text">{{ srcset.text }}</p>
           </div>
         </div>
       </li>
-      <li class="cards_item">
+      <!-- <li class="cards_item">
         <div class="card bg-transparent">
           <div class="card_image"><iframe width="100%" height="100%"
               src="https://www.youtube.com/embed/dcBXmj1nMTQ"
@@ -151,7 +81,7 @@
             <p class="card_text">Arctic scientists have reported that the speed at which the northern ice cap is melting risks triggering 19 climate tipping points, with disastrous consequences.</p>
           </div>
         </div>
-      </li>
+      </li> -->
     </ul>
   </div>
 </template>
@@ -162,7 +92,40 @@ export default {
   name: "Video",
   components: {},
   data() {
-    return {};
+    return {
+      sources: [
+        {
+          link: "https://www.youtube.com/embed/G4H1N_yXBiA",
+          title: "Cause and Effect of Climate Change",
+          text: "What causes climate change (also known as global warming)? And what are the effects of climate change? Learn the human impact and consequences of climate change for the environment, and our lives."
+        },
+        {
+          link: "https://www.youtube.com/embed/dcBXmj1nMTQ",
+          title: "What is Climate Change?",
+          text: "The hard facts about global warming - a defining issue of our time. Climate change is happening now, and even world leaders meeting for climate talks at this year’s Cop25 know we aren’t doing enough to stop it."
+        },
+        {
+          link: "https://www.youtube.com/embed/0Puv0Pss33M",
+          title: "How to Save Our Planet",
+          text: "It’s simple. Sir David Attenborough explains how humans can take charge of our future and save our planet."
+        },
+        {
+          link: "https://www.youtube.com/embed/aNX__544IO0",
+          title: "Queen Elizabeth: Time for action on climate change",
+          text: "Britain's Queen Elizabeth told the United Nations climate change summit on Monday that \"the time for words has now moved to the time for action\", as she urged world leaders to think of future generations when negotiating a deal to limit global warming"
+        },
+        {
+          link: "https://www.youtube.com/embed/SN5-DnOHQmE",
+          title: "What Is the Greenhouse Effect?",
+          text: "Earth is a comfortable place for living things. It’s just the right temperatures for plants and animals – including humans – to thrive. Why is Earth so special?"
+        },
+        {
+          link: "https://www.youtube.com/embed/fu5lwMissg0",
+          title: "How melting Arctic ice could cause uncontrollable climate change",
+          text: "Arctic scientists have reported that the speed at which the northern ice cap is melting risks triggering 19 climate tipping points, with disastrous consequences."
+        },
+      ],
+    };
   },
 };
 </script>
