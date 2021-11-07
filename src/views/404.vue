@@ -1,5 +1,41 @@
 <template>
-  <main>
+  <div class="outer-track">
+    <div class="inner-track">
+      <div class="tractor-container">
+        <div class="tractor">
+          <div class="body">
+            <div class="light"></div>
+            <div class="grill"></div>
+            <div class="exhaust"></div>
+            <div class="steering"></div>
+            <div class="seat"></div>
+            <div class="wheel-front"></div>
+            <div class="fender"></div>
+            <div class="wheel-back"></div>
+            <div class="hitch"></div>
+          </div>
+        </div>
+      </div>
+      <div class="rope"></div>
+      <div class="tractor-container">
+        <div class="tractor">
+          <div class="body">
+            <div class="light"></div>
+            <div class="grill"></div>
+            <div class="exhaust"></div>
+            <div class="steering"></div>
+            <div class="seat"></div>
+            <div class="wheel-front"></div>
+            <div class="fender"></div>
+            <div class="wheel-back"></div>
+            <div class="hitch"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <button @click="handleClick" class="mt-3 btn btn-outline-light">Go Back Home</button>
+  <!-- <main>
     <div class="container">
       <div class="row">
         <div class="col-md-6 align-self-center">
@@ -681,7 +717,7 @@
         </div>
       </div>
     </div>
-  </main>
+  </main> -->
 </template>
 
 <script>
@@ -696,148 +732,609 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import url("https://fonts.googleapis.com/css?family=Nunito+Sans");
-:root {
-  --blue: #0e0620;
-  --white: #fff;
-  --green: #2ccf6d;
+// @import url("https://fonts.googleapis.com/css?family=Nunito+Sans");
+// :root {
+//   --blue: #0e0620;
+//   --white: #fff;
+//   --green: #2ccf6d;
+// }
+// html,
+// body {
+//   height: 100%;
+// }
+// body {
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+//   font-family: "Nunito Sans";
+//   color: var(--blue);
+//   font-size: 1em;
+// }
+// button {
+//   font-family: "Nunito Sans";
+// }
+// ul {
+//   list-style-type: none;
+//   padding-inline-start: 35px;
+// }
+// svg {
+//   width: 100%;
+//   visibility: hidden;
+// }
+// h1 {
+//   font-size: 7.5em;
+//   margin: 15px 0px;
+//   font-weight: bold;
+// }
+// h2 {
+//   font-weight: bold;
+// }
+// .hamburger-menu {
+//   position: absolute;
+//   top: 0;
+//   left: 0;
+//   padding: 35px;
+//   z-index: 2;
+
+//   & button {
+//     position: relative;
+//     width: 30px;
+//     height: 22px;
+//     border: none;
+//     background: none;
+//     padding: 0;
+//     cursor: pointer;
+
+//     & span {
+//       position: absolute;
+//       height: 3px;
+//       background: #000;
+//       width: 100%;
+//       left: 0px;
+//       top: 0px;
+//       transition: 0.1s ease-in;
+//       &:nth-child(2) {
+//         top: 9px;
+//       }
+//       &:nth-child(3) {
+//         top: 18px;
+//       }
+//     }
+//   }
+//   & [data-state="open"] {
+//     & span {
+//       &:first-child {
+//         transform: rotate(45deg);
+//         top: 10px;
+//       }
+//       &:nth-child(2) {
+//         width: 0%;
+//         opacity: 0;
+//       }
+//       &:nth-child(3) {
+//         transform: rotate(-45deg);
+//         top: 10px;
+//       }
+//     }
+//   }
+// }
+// nav {
+//   position: absolute;
+//   height: 100%;
+//   top: 0;
+//   left: 0;
+//   background: var(--green);
+//   color: var(--blue);
+//   width: 300px;
+//   z-index: 1;
+//   padding-top: 80px;
+//   transform: translateX(-100%);
+//   transition: 0.24s cubic-bezier(0.52, 0.01, 0.8, 1);
+//   & li {
+//     transform: translateX(-5px);
+//     transition: 0.16s cubic-bezier(0.44, 0.09, 0.46, 0.84);
+//     opacity: 0;
+//   }
+//   & a {
+//     display: block;
+//     font-size: 1.75em;
+//     font-weight: bold;
+//     text-decoration: none;
+//     color: inherit;
+//     transition: 0.24s ease-in-out;
+//     &:hover {
+//       text-decoration: none;
+//       color: var(--white);
+//     }
+//   }
+//   &[data-state="open"] {
+//     transform: translateX(0%);
+//     & ul {
+//       @for $i from 1 through 4 {
+//         li:nth-child(#{$i}) {
+//           transition-delay: 0.16s * $i;
+//           transform: translateX(0px);
+//           opacity: 1;
+//         }
+//       }
+//     }
+//   }
+// }
+// .btn-new {
+//   padding: 5px 50px;
+//   position: relative;
+//   border-radius: 30px;
+//   font-weight: bold;
+// }
+
+// @media screen and (max-width: 768px) {
+//   body {
+//     display: block;
+//   }
+//   .container {
+//     margin-top: 70px;
+//     margin-bottom: 70px;
+//   }
+// }
+
+@import url('https://fonts.googleapis.com/css?family=Fredoka+One|Open+Sans');
+
+$bulb: #ffee35;
+$rope: #efd09e;
+$rope-shade: #E8B86A;
+$dark: #333333;
+$red: green;
+$green: green;
+$gray: #cccccc;
+$dirt: #efd09e;
+
+.center{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform-origin: center;
+  transform: translate(-50%, -50%);
 }
-html,
-body {
-  height: 100%;
+.grill-item{
+  position: absolute;
+  width: 10px;
+  height: 2px;
+  background: $dark;
+  z-index: 10;
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
 }
-body {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: "Nunito Sans";
-  color: var(--blue);
-  font-size: 1em;
+.spin{
+  animation-name: spin;
+  animation-duration: 2000ms;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
 }
-button {
-  font-family: "Nunito Sans";
+.putt{
+  animation-name: putt;
+  animation-duration: 1500ms;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
 }
-ul {
-  list-style-type: none;
-  padding-inline-start: 35px;
+.bob{
+  animation-name: bob;
+  animation-duration: 1000ms;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
 }
-svg {
+.rattle{
+  animation-name: rattle;
+  animation-duration: 200ms;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+.smoke{
+  animation-name: smoke;
+  animation-duration: 1000ms;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+.pull{
+  animation-name: pull;
+  animation-duration: 4000ms;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+.title{
+  font-family: "Fredoka One";
+  font-size: 32px;
+  text-shadow: 2px 2px 0px $rope-shade;
+  letter-spacing: 1px;
+  color: $rope;
+  text-align: center;
+}
+.subtext{
+  font-family: "Fredoka One";
+  letter-spacing: 1px;
+  font-size: 18px;
+  color: darken($dirt, 15%);
+  text-align: center;
+}
+
+.outer-track{
   width: 100%;
-  visibility: hidden;
-}
-h1 {
-  font-size: 7.5em;
-  margin: 15px 0px;
-  font-weight: bold;
-}
-h2 {
-  font-weight: bold;
-}
-.hamburger-menu {
-  position: absolute;
-  top: 0;
-  left: 0;
-  padding: 35px;
-  z-index: 2;
-
-  & button {
-    position: relative;
-    width: 30px;
-    height: 22px;
-    border: none;
-    background: none;
-    padding: 0;
-    cursor: pointer;
-
-    & span {
-      position: absolute;
-      height: 3px;
-      background: #000;
-      width: 100%;
-      left: 0px;
-      top: 0px;
-      transition: 0.1s ease-in;
-      &:nth-child(2) {
-        top: 9px;
-      }
-      &:nth-child(3) {
-        top: 18px;
-      }
-    }
-  }
-  & [data-state="open"] {
-    & span {
-      &:first-child {
-        transform: rotate(45deg);
-        top: 10px;
-      }
-      &:nth-child(2) {
-        width: 0%;
-        opacity: 0;
-      }
-      &:nth-child(3) {
-        transform: rotate(-45deg);
-        top: 10px;
-      }
-    }
-  }
-}
-nav {
-  position: absolute;
-  height: 100%;
-  top: 0;
-  left: 0;
-  background: var(--green);
-  color: var(--blue);
-  width: 300px;
-  z-index: 1;
-  padding-top: 80px;
-  transform: translateX(-100%);
-  transition: 0.24s cubic-bezier(0.52, 0.01, 0.8, 1);
-  & li {
-    transform: translateX(-5px);
-    transition: 0.16s cubic-bezier(0.44, 0.09, 0.46, 0.84);
-    opacity: 0;
-  }
-  & a {
-    display: block;
-    font-size: 1.75em;
-    font-weight: bold;
-    text-decoration: none;
-    color: inherit;
-    transition: 0.24s ease-in-out;
-    &:hover {
-      text-decoration: none;
-      color: var(--white);
-    }
-  }
-  &[data-state="open"] {
-    transform: translateX(0%);
-    & ul {
-      @for $i from 1 through 4 {
-        li:nth-child(#{$i}) {
-          transition-delay: 0.16s * $i;
-          transform: translateX(0px);
-          opacity: 1;
-        }
-      }
-    }
-  }
-}
-.btn-new {
-  padding: 5px 50px;
+  height: 125px;
   position: relative;
-  border-radius: 30px;
-  font-weight: bold;
+  margin-top: 200px;
+  transform: translateY(-50%);
+  &:before{
+    content: "";
+    position: absolute;
+    z-index: -9;
+    width: 100%;
+    height: 30px;
+    left: 0px;
+    bottom: 0px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    background: lighten($dirt, 10%);
+  }
+  &:after{
+    content: "How did you even get here, Friend?";
+    min-width: 320px;
+    position: absolute;
+    left: 50%;
+    bottom: -60px;
+    transform: translateX(-50%);
+    @extend .subtext;
+    //white-space: nowrap;
+  }
+}
+.inner-track{
+  //border: 1px solid black;
+  left: 50%;
+  transform: translateX(-50%);
+  position: relative;
+  height: 100%;
+  max-width: 540px;
+  min-width: 310px;
+  @extend .pull;
+}
+.tractor-container{
+  //border: 1px solid black;
+  display: inline-block;
+  position: relative;
+  height: 100%;
+  width: 100px;
+}
+.tractor-container:first-child{
+  float: left;
+}
+.tractor-container:last-child{
+  float: right;
+}
+.rope{
+  position: absolute;
+  top: 56%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 48%;
+  height: 4px;
+  background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAASElEQVQoU2N8f2HefwYC4OezEwyMhBSCFLFLWeBXCFMEshCniciKcCpEV4RVITZFGApxKUJRiE8RXCEhRWCFL7al/QeFEyEAAGNAPEomtNLvAAAAAElFTkSuQmCC) repeat;
+  &:before{
+    content: "404 Error";
+    display: inline-block;
+    position: absolute;
+    @extend .title;
+    white-space: nowrap;
+    top: -40px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+.tractor{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform-origin: center;
+  //border: 1px solid red;
+}
+.tractor-container:first-child .tractor{
+  transform: translate(-50%, -50%);
+}
+.tractor-container:last-child .tractor{
+  transform: translate(-50%, -50%) scaleX(-1);
+}
+.body{
+  width: 48px;
+  height: 20px;
+  background: $red;
+  border-radius: 2px;
+  @extend .putt;
+  &:after{
+    content: "";
+    position: absolute;
+    width: 105%;
+    height: 14px;
+    border-radius: 5px;
+    background: darken($red, 10%);
+    left: 50%;
+    top: -10px;
+    transform: translateX(-50%);
+    @extend .rattle;
+  }
+  &:before{
+    content: "";
+    position: absolute;
+    width: 30%;
+    height: 100%;
+    background: lighten($red, 30%);
+    bottom: 0px;
+    border-radius: 2px;
+    left: -1px;
+  }
+}
+.light{
+  width: 7px;
+  height: 8px;
+  position: absolute;
+  z-index: 5;
+  border-radius: 100%;
+  background: $bulb;
+  top: -6px;
+  left: 3px;
+  &:before{
+    content: "";
+    width: 8px;
+    height: 10px;
+    z-index: 5;
+    position: absolute;
+    left: 3px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: darken($red, 0%);
+    border-top-right-radius: 100%;
+    border-bottom-right-radius: 100%;
+  }
+}
+.exhaust{
+  position: absolute;
+  z-index: 1;
+  width: 8px;
+  border-radius: 5px;
+  height: 17px;
+  background: darken($red, 30%);
+  left: 22px;
+  top: -4px;
+  &:before{
+    content: "";
+    width: 5px;
+    height: 18px;
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px;
+    z-index: 5;
+    position: absolute;
+    background: lighten($red, 15%);
+    left: 50%;
+    top: -15px;
+    transform: translateX(-50%);
+  }
+  &:after{
+    content: "";
+    width: 12px;
+    height: 12px;
+    top: -15px;
+    background: $gray;
+    position: absolute;
+    border-radius: 100%;
+    left: 50%;
+    transform: translate(-50%, 0px) scale(0);
+    opacity: 0.5;
+    @extend .smoke;
+  }
+}
+.steering{
+  position: absolute;
+  width: 4px;
+  height: 25px;
+  background: $red;
+  right: -7px;
+  top: -18px;
+  transform: rotate(45deg);
+  &:before{
+    content: "";
+    width: 13px;
+    height: 4px;
+    background: darken($red, 30%);
+    position: absolute;
+    border-radius: 4px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+.seat{
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  border-radius: 3px;
+  border-top-left-radius: 50px;
+  background: darken($red, 5%);
+  right: -44px;
+  top: -17px;
+  z-index: -1;
+}
+.grill{
+  @extend .grill-item;
+  top: 7px;
+  &:before{
+    content: "";
+    @extend .grill-item;
+    top: 4px;
+  }
+  &:after{
+    content: "";
+    @extend .grill-item;
+    top: 8px;
+  }
+}
+.wheel-front{
+  z-index: -5;
+  position: absolute;
+  width: 6px;
+  height: 12px;
+  background: lighten($red, 5%);
+  left: 2px;
+  bottom: -11px;
+  @extend .bob;
+  &:before{
+    content: "";
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    border: 6px solid $dark;
+    border-radius: 100%;
+    top: 6px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  &:after{
+    content: "";
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    background: $dark;
+    border-radius: 50%;
+    top: 13.4px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+.fender{
+  position: absolute;
+  overflow: hidden;
+  left: 44px;
+  top: -10px;
+  width: 65px;
+  height: 30px;
+  border-bottom-right-radius: 100px;
+  background: transparent;
+  &:before{
+    content: "";
+    position: absolute;
+    border-radius: 100%;
+    border: 5px solid $red;
+    width: 60px;
+    height: 60px;
+    left: 67%;
+    transform: translateX(-50%);
+  }
+  &:after{
+    content: "";
+    position: absolute;
+    width: 12px;
+    height: 10px;
+    bottom: 0px;
+    background: $red;
+    z-index: 100;
+  }
+}
+.wheel-back{
+  position: absolute;
+  right: -62px;
+  bottom: -26px;
+  width: 21px;
+  height: 21px;
+  border: 12px solid $dark;
+  border-radius: 50%;
+  @extend .spin;
+  &:after{
+    content: "";
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    border: 3px dashed $dark;
+    @extend .center;
+    transform: translate(-51%, -51%);
+  }
+  &:before{
+    content: "";
+    border-radius: 100%;
+    width: 12px;
+    height: 12px;
+    background: $dark;
+    @extend .center;
+    transform: translate(-52%, -52%);
+  }
+}
+.hitch{
+  position: absolute;
+  width: 17px;
+  height: 6px;
+  border-radius: 3px;
+  background: darken($red, 5%);
+  bottom: 0px;
+  right: -68px;
+  z-index: -1;
+  &:before{
+    content: "";
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    border-radius: 50%;
+    background: $dark;
+    right: 2px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  &:after{
+    content: "";
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: $rope;
+    right: -1px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
 }
 
-@media screen and (max-width: 768px) {
-  body {
-    display: block;
+@keyframes spin { 
+  from { 
+    transform: rotate(0deg); 
+  } to { 
+    transform: rotate(-360deg); 
   }
-  .container {
-    margin-top: 70px;
-    margin-bottom: 70px;
-  }
+}
+@keyframes putt {
+  0%{transform: translateY(0px)}
+  50%{transform: translateY(2px)}
+  100%{transform: translateY(0px)}
+}
+@keyframes bob {
+  0%{transform: translateY(0px)}
+  50%{transform: translateY(1px)}
+  100%{transform: translateY(0px)}
+}
+@keyframes rattle {
+  0%{transform: translate(-50%, 0px)}
+  50%{transform: translate(-50%, 1px)}
+  100%{transform: translate(-50%, 0px)}
+}
+@keyframes smoke {
+  0%{transform: translate(-50%, 0px) scale(0);}
+  10%{transform: translate(-50%, -6px) scale(0.2);}
+  20%{transform: translate(-50%, -8px) scale(0.4);}
+  30%{transform: translate(-50%, -10px) scale(0.6);}
+  40%{transform: translate(-50%, -12px) scale(0.8);}
+  50%{transform: translate(-50%, -14px) scale(1);}
+  60%{transform: translate(-50%, -16px) scale(0.8);}
+  70%{transform: translate(-50%, -18px) scale(0.6);}
+  80%{transform: translate(-50%, -20px) scale(0.4);}
+  90%{transform: translate(-50%, -22px) scale(0.2);}
+  100%{transform: translate(-50%, -24px) scale(0);}
+}
+
+@keyframes pull {
+  0%{transform: translateX(-50%)}
+  25%{transform: translateX(-60%)}
+  50%{transform: translateX(-50%)}
+  75%{transform: translateX(-40%)}
+  100%{transform: translateX(-50%)}
 }
 </style>
