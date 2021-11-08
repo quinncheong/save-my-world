@@ -76,17 +76,14 @@
           <section>
             <div class="icon"></div>
             <div class="details">
-              <span class="title">Title of Section 1</span>
-              <span>1st Jan 2021</span>
+              <span class="title fs-4">Aleppo earthquake</span>
+              <span>Oct. 11, 1138</span>
             </div>
-            <p>
-              Lorem ipsum dolor sit ameters consectetur adipisicing elit. Sed
-              qui veroes praesentium maiores, sint eos vero sapiente voluptas
-              debitis dicta dolore.
+            <p class="fs-6 text-start">
+              On Oct. 11, 1138, the ground under the Syrian city of Aleppo began to shake. The city sits on the confluence of the Arabian and African plates, making it prone to temblors, but this one was particularly violent. The magnitude of the quake is lost to time, but contemporary chroniclers reported that the city's citadel collapsed and houses crumbled across Aleppo.
             </p>
             <div class="bottom">
-              <a href="#">Read more</a>
-              <i>- Someone famous</i>
+              <a href="https://devastatingdisasters.com/aleppo-earthquake-syria-1138-ad/">Read more</a>
             </div>
           </section>
         </div>
@@ -105,10 +102,12 @@
             </p>
             <div class="bottom">
               <a href="#">Read more</a>
-              <i>- Someone famous</i>
             </div>
           </section>
         </div>
+
+
+        <!-- https://www.livescience.com/33316-top-10-deadliest-natural-disasters.html -->
 
         <!-- Third disaster -->
         <div class="bubble bubble-1">
@@ -125,7 +124,6 @@
             </p>
             <div class="bottom">
               <a href="#">Read more</a>
-              <i>- Someone famous</i>
             </div>
           </section>
         </div>
@@ -144,7 +142,6 @@
             </p>
             <div class="bottom">
               <a href="#">Read more</a>
-              <i>- Someone famous</i>
             </div>
           </section>
         </div>
@@ -164,7 +161,6 @@
             </p>
             <div class="bottom">
               <a href="#">Read more</a>
-              <i>- Someone famous</i>
             </div>
           </section>
         </div>
@@ -183,7 +179,6 @@
             </p>
             <div class="bottom">
               <a href="#">Read more</a>
-              <i>- Someone famous</i>
             </div>
           </section>
         </div>
@@ -203,7 +198,6 @@
             </p>
             <div class="bottom">
               <a href="#">Read more</a>
-              <i>- Someone famous</i>
             </div>
           </section>
         </div>
@@ -222,7 +216,6 @@
             </p>
             <div class="bottom">
               <a href="#">Read more</a>
-              <i>- Someone famous</i>
             </div>
           </section>
         </div>
@@ -242,7 +235,6 @@
             </p>
             <div class="bottom">
               <a href="#">Read more</a>
-              <i>- Someone famous</i>
             </div>
           </section>
         </div>
@@ -260,8 +252,6 @@
               debitis dicta dolore.
             </p>
             <div class="bottom">
-              <a href="#">Read more</a>
-              <i>- Someone famous</i>
             </div>
           </section>
         </div>
@@ -418,6 +408,50 @@ html{
   text-decoration: none;
   color: green;
   padding: 7px;
+}
+
+@media(max-width: 772px){
+  .timeline .center-line{
+    left: 20px;
+
+  }
+  .timeline .bubble{
+    margin: 30px 0 3px 60px; 
+  }
+
+  .timeline .bubble section{
+    width: 100%;
+  }
+
+  .bubble-1 section::before{
+    left:-7px;
+  }
+
+  .bubble-1 section .icon{
+
+    left: -60px;
+
+  }
+
+  .bubble-1 section .icon{
+    left: -60px;
+  }
+
+}
+
+
+@media(max-width: 440px){
+
+  .timeline .center-line,
+  .timeline section::before,
+  .timeline section .icon{
+    display: none;
+  }
+  
+  .timeline .bubble{
+    margin: 10px 0;
+  }
+
 }
 
 
