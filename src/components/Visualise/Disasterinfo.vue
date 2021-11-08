@@ -51,27 +51,48 @@
     </section>
 
     <!-- Top disasters occurence -->
+  </section>
+  <section class="timeline-section bg-success">
+    <div class="disaster-content p-5 container-fluid bg-success w-100">
+      <h1 class="mb-3">Top 10 disasters of all time</h1>
+      <h6 class="mb-4">
+        Natural disasters have persisted for a long time. It is only up to
+        <span id="savemyworld">US</span> to mitigate the changes impact that
+        such disasters brings as this could be avoided.
+      </h6>
 
-    <section class="timeline  bg-success">
-      <div class="disaster-content p-5 container-fluid bg-success w-100">
-        <h1 class="mb-3">Top 10 disasters of all time</h1>
-        <h6 class="mb-4">
-          Natural disasters have persisted for a long time. It is only up to
-          <span id="savemyworld">US</span> to mitigate the changes impact that
-          such disasters brings as this could be avoided.
-        </h6>
-
-        <div class="timeline">
-          <div class="timeline-component">
-            <div class="timelinedate timelinedate-right">August 20</div>
-          </div>
+      <div class="timeline">
+        <div class="timeline-component">
+          <div class="timelinedate timelinedate-right">August 20</div>
         </div>
-
         <div class="timelinemiddle">
           <div class="timelinepoint"></div>
         </div>
+
+        <div class="timeline-component time-component-bg">
+          <h2 class="timeline-title text-start">asdasodk</h2>
+          <p class="timeline-paragraph text-start">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod neque
+            pariatur
+          </p>
+        </div>
+           <div class="timeline-component time-component-bg">
+          <h2 class="timeline-title text-start">
+            asdasodk
+          </h2 >
+          <p class="timeline-paragraph text-start">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod neque pariatur 
+          </p>
+              
+        </div>
+        <div class="timelinemiddle">
+          <div class="timelinepoint"></div>
+        </div>
+         <div class="timeline-component">
+          <div class="timelinedate">August 20</div>
+        </div>
       </div>
-    </section>
+    </div>
   </section>
 </template>
 
@@ -115,33 +136,66 @@ export default {
     border-radius: 100%;
     justify-content: center;
   }
-
-  
 }
 
 .timeline {
-    display: grid;
-    //  Make 2 equal columns then make a freaking bar  that is 3px
-    grid-template-columns: 1fr 3px 1fr;
-  }
-  .timeline
+  display: grid;
+  //  Make 2 equal columns then make a freaking bar  that is 3px
+  grid-template-columns: 1fr 3px 1fr;
+}
+.timeline .timelinedate {
+  margin: 0 20px 20px 20px;
+}
 
-  .timelinedate {
-    margin: 0 20px 20px 20px;
-  }
+.timelinemiddle {
+  position: relative;
+  background: white;
+}
 
-  .timelinemiddle {
-    position: relative;
-    background: white
-  }
+.timelinepoint {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 15px;
+  height: 15px;
+  background: red;
+  border-radius: 100%;
+  transform: translateX(-50%);
+}
 
-  .timelinepoint {
-    position: absolute;
-    top: 0;
-    left: 50%;
-    width: 15px;
-    height: 15px;
-    background: red;
-    border-radius: 100%;
+.time-component-bg {
+  padding: 1.5em;
+  margin: 15px;
+  background: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 0 5px rg ba (0, 0, 0, 0.2);
+  border-radius: 10px;
+}
+
+.timeline-title {
+  margin: 0;
+  font-size: 1.15em;
+  font-weight: bold;
+}
+.timeline-paragraph {
+  line-height: 1.5;
+}
+
+
+@media screen and (min-width: 768px) {
+  .timeline {
+    width: 100%;
   }
+}
+
+@media screen and (min-width: 968px) {
+  .timeline {
+    width: 80%;
+  }
+}
+
+@media screen and (min-width: 1268px) {
+  .timeline {
+    width: 70%;
+  }
+}
 </style>
