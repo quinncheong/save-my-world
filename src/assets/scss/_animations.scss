@@ -58,41 +58,14 @@
 
 // repeat animation
 
-.anim-typewriter {
-  animation: typewriter 4s steps(44) 1s 1 normal both,
-    blinkTextCursor 500ms steps(44) infinite normal;
-}
-@keyframes typewriter {
-  from {
-    width: 4em;
-  }
-  to {
-    width: 24em;
-  }
-}
-@keyframes blinkTextCursor {
-  from {
-    border-right-color: rgba(255, 255, 255, 0.75);
-  }
-  to {
-    border-right-color: transparent;
-  }
-}
-
 .typewriter-text {
   display: inline-block;
   overflow: hidden;
   letter-spacing: 2px;
-  animation: typing 5s steps(30, end), blink 0.75s step-end infinite;
+  animation: typing 4s steps(44) alternate-reverse infinite, blink 0.75s steps(22) infinite;
   white-space: nowrap;
   border-right: 4px solid orange;
   box-sizing: border-box;
-}
-
-@media screen and (max-width: 568px) {
-  .typewriter-text {
-    white-space: normal;
-  }
 }
     
 @keyframes typing {

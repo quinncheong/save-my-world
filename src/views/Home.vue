@@ -202,7 +202,8 @@ export default {
   }
 
   .start-learning {
-    padding: 3rem;
+    padding: 0.5rem;
+    height: 300px;
     background: #9796f0; /* fallback for old browsers */
     background: -webkit-linear-gradient(
       to right,
@@ -218,8 +219,13 @@ export default {
     flex-direction: column;
 
     .start-learning-content {
-      width: 50px;
+      // width: 50px;
     }
+  }
+
+  .typewriter {
+    margin: auto;
+    // width: 60%;
   }
 }
 
@@ -229,6 +235,11 @@ export default {
 //     width: 80%;
 //   }
 // }
+@media screen and (max-width: 768px) {
+  .typewriter {
+    width: 90%;
+  }
+}
 
 // @media screen and (min-width: 992px) {
 //   .home-page-wrapper {
