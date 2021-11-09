@@ -492,10 +492,15 @@ export default {
   }
 
   .map {
-    height: 500px;
+    height: 60vh;
     color: black;
     position: relative;
     border-radius: 25px;
+  }
+
+  .result-col{
+    height: 60vh;
+
   }
 
   .console {
