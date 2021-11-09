@@ -14,6 +14,7 @@
         :key="chart.id"
         :name="chart.name"
         :src="chart.src"
+        :information="chart.information"
         @click="setSelectedChart(chart.id)"
       />
     </div>
@@ -22,8 +23,8 @@
       <iframe src="https://datahub.io/core/glacier-mass-balance/view/0" width="100%" height="475px" frameborder="0"></iframe>
 
       <div class="card mt-4">
-      <div class="card-body text-dark">
-        This chart shows the visualisations of the annual mass balance of glaciers throughout the years and how is has been dwindling at an increasing rate
+      <div class="card-body text-dark bold">
+        This chart shows the visualisations of the <span class='bold text-primary'>annual mass balance of glaciers</span> throughout the years and how is has been dwindling at an <span class='bold text-primary'>increasing rate</span>.
       </div>
     </div>
     
@@ -68,17 +69,20 @@ export default {
         {
           id: 1,
           name: "Sea Ice",
-          src: "",
+          src: "seaIce.png",
+          information: "Explore real-time statistics of the avergae mass of glaciers worldwide",  //added
         },
         {
           id: 2,
-          name: "Carbon Dioxide",
-          src: "",
+          name: "Air Pollution",
+          src: "Co2.png",
+          information: "Visualise real-time statistics of how air pollution has changed over time", //added
         },
         {
           id: 3,
           name: "Global Temperature",
-          src: "",
+          src: "temp.png",
+          information: "Explore real-time statistics of how global temperature have changed over the years", //added
         },
       ],
       selectedChart: 0,
@@ -99,12 +103,44 @@ export default {
 
   .chart-select {
     font-weight: bold;
+    animation: fadeIn 3s ease-out;
   }
+
+//   @keyframes chartText {
+//     0%   { 
+//     transform: translateX(200%); 		
+//     }
+//     100% { 
+//     transform: translateX(0%); 
+//     }
+// }
 
   .charts-card-wrapper {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
+  }
+
+  .chart-title{
+    animation: fadeIn 2.5s linear forwards;
+  }
+
+  @keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+  .chart-details{
+    animation: fadeIn 4.5s linear forwards;
+  }
+
+  .bold{
+    font-weight: bold;
+  
   }
 
   .main-chart {

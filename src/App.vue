@@ -24,6 +24,9 @@
 import Navbar from "@/Layout/Navbar.vue";
 // import Navbar1 from "@/Layout/Navbar1.vue";
 import Footer from "@/Layout/Footer.vue";
+// import Vue from vue;
+// import { DropDownListPlugin } from '@syncfusion/ej2-vue-dropdowns';
+// Vue.use(DropDownListPlugin)
 
 export default {
   name: "App",
