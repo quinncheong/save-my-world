@@ -2,7 +2,7 @@
   <div>
     <div class="card border-primary mb-3">
       <div class="card-header text-primary weight">Air Pollution</div>
-      <div class="card-body text-info">
+      <div class="card-body text-dark">
         <vue3-chart-js
           :id="barChart.id"
           ref="chartRef"
@@ -11,13 +11,13 @@
           :options="barChart.options"
         />
 
-        <p class="card-text text-primary weight">
+        <p class="card-text weight">
           <small class="text-muted">
-            <span class="text-primary weight">Temperature</span>
+            <span class="text-primary weight">Temperature</span>  <!--need to change-->
             <span class="text-muted weight"> (°C)</span>
           </small>
           <br />
-          The chart shows the 3 crucial emissions (CO, NO2 and SO2) for the past year.
+          The chart shows the <span class='text-primary weight'>3 crucial emissions (CO, NO2 and SO2)</span> for the past year.
         </p>
       </div>
     </div>
@@ -27,8 +27,10 @@
       <div class='form-box'> 
       <label class="form-label">
         <!-- <p>Select a country:</p> -->
-        <select class='include-margin' v-model="country"> <!--added the data-live-search and w-100-->
-        <!-- <select data-live-search="true" class=" include-margin selectpicker"  v-model="country" > -->
+         <!-- <select data-live-search="true" class=" include-margin selectpicker"  v-model="country" > -->
+
+           <!--the following drop down list is correct-->
+        <select class='include-margin' v-model="country">
           <option
             :key="country.name"
             v-for="country in countries"
@@ -37,6 +39,9 @@
             {{ country.name }}
           </option>
         </select>
+
+
+
       </label>
       <button class="btn btn-success search-btn">Get Data</button>
       </div>
@@ -59,6 +64,10 @@ import axios from "axios";
 import moment from "moment";
 import { countries } from "countries-list";
 import iso from "iso-3166-1"; // Library to key in country name and get iso no.
+
+// import Vue from 'vue';
+// import { DropDownListPlugin } from '@syncfusion/ej2-vue-dropdowns';
+// Vue.use(DropDownListPlugin) //doesnt exit for  vue3 need to do sth liek createApp(App).use(store)
 
 
 export default {

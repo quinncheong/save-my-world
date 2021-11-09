@@ -10,13 +10,13 @@
           :data="lineChart.data"
           :options="lineChart.options"
         />
-        <p class="card-text weight">
+        <p class="card-text text-dark weight">
           <small class="text-muted">
             <span class="text-primary weight">Temperature</span>
             <span class="text-muted weight"> (°C)</span>
           </small>
           <br />
-          This chart shows the the progression of changing temperature from the
+          This chart shows the the <span class='text-primary weight'>progression of changing temperature</span> from the
           past to the present. It also shows the future predicted temperature
         </p>
       </div>
@@ -342,13 +342,6 @@ export default {
 }
 
 .search-btn{
-  // background: green;
-  // color: #fff;
-  // height: 38px;
-  // // width: 100px;
-  // border: none;
-  // border-radius: 3px;
-  // padding: 5px;
   background: green;
   color: #fff;
   height: 28px;

@@ -399,15 +399,16 @@ form .form-control {
 //   animation: typewriter 1s ease;
 // }
 
-@keyframes typewriter {
-  to {
-    left: 100%;
-  }
-}
+// @keyframes typewriter {
+//   to {
+//     left: 100%;
+//   }
+// }
 
-.bottom-left {
-  position: absolute;
-  bottom: 8px;
-  left: 16px;
-}
+// .bottom-left {
+//   position: absolute;
+//   bottom: 8px;
+//   left: 16px;
+// }
 </style>
+
