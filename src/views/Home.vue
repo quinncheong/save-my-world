@@ -34,7 +34,7 @@
     </div> -->
 
     <!--How we can play our part-->
-    <future ref='future' />
+    <future ref="future" />
     <!-- remove chart component first because its buggy -->
     <!-- <three-rs /> -->
 
@@ -49,7 +49,7 @@
         <h1 class="typewriter-text">Start Learning Now!</h1>
         <br />
         <br />
-        <button @click="pushToQuiz()" class="btn btn-dark rounded">
+        <button @click="pushToQuiz()" class="test test-white">
           Take me away
           <font-awesome-icon :icon="['fas', 'hand-holding-heart']" />
         </button>
@@ -106,9 +106,9 @@ export default {
 </script>
 
 <style lang="scss">
+@include animated-button('test');
 .home-page-wrapper {
   // min-height: 100vh;
-  min-width: 100vw;
   font-size: $variable-font;
   overflow-x: hidden;
 
@@ -227,6 +227,15 @@ export default {
     margin: auto;
     // width: 60%;
   }
+
+  .test {
+    @extend .ani-btn;
+  }
+
+  .test-white {
+    @extend .ani-btn-white;
+  }
+  
 }
 
 // Accounting for the different breakpoints
@@ -256,13 +265,4 @@ export default {
 #savemyworld {
   color: yellow;
 }
-
-// :root {
-//   --primary: #0d6efd;
-//   --dark: #21252f;
-//   // --body: #888;
-//   --white: #ffffff;
-//   // --box-shadow: 0 8px 22px rgba(0,0,0,0.1);
-// }
 </style>
-
