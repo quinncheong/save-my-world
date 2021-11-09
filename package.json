@@ -30,7 +30,6 @@
     "moment": "^2.29.1",
     "sass": "^1.42.1",
     "vue": "^3.0.0",
-    "vue-class-component": "^7.2.6",
     "vue-compare-image": "^0.2.0",
     "vue-nav-ui": "^1.0.5",
     "vue-router": "^4.0.12",
