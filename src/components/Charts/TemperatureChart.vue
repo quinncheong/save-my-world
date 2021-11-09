@@ -337,6 +337,7 @@ export default {
   width: 100%;
 }
 
+
 .weight{
   font-weight: bold;
 }
@@ -363,4 +364,7 @@ export default {
   margin: 5px;
   font-size: 18px;
 }
+
+
 </style>
+

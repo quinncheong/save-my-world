@@ -6,7 +6,9 @@
         <p class="mb-2" style="font-size: 15px">
           <i
             >Challenge yourself with our quiz! Answer all the questions to the
-            best of your capabilities. May the force be with you.</i
+            best of your capabilities! May the force be with you.
+            If you need some preparation, feel free to <b>SCROLL</b> down to look through the articles and videos provided by our team
+            </i
           >
         </p>
         <button class="btn btn-light my-2" @click="startQuiz()">
@@ -24,8 +26,6 @@
 </template>
 
 <script>
-// import Searchbar from "@/components/Quiz/Searchbar.vue";
-// import Campaigns from "@/components/Quiz/Campaigns.vue";
 import Quizzes from "@/components/Quiz/Quizzes.vue";
 import Header from "@/components/Quiz/Header.vue";
 import Video from "@/components/Quiz/Videos.vue";
@@ -36,8 +36,6 @@ import { getQuizzes } from "@/firebase.js";
 export default {
   name: "Community",
   components: {
-    // Searchbar,
-    // Campaigns,
     Quizzes,
     Header,
     Video,
@@ -62,7 +60,20 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+
+button {
+  transition: all 0.35s ease;
+
+  &:hover {
+    box-shadow: none;
+    transform: translateY(10px);
+  }
+}
+
 .quiz-wrapper {
+  animation: appear 1s ease-in;
+  line-height: 1.7;
+  font-family: "Sora", sans-serif;
   height: 100%;
   width: 100%;
   display: flex;
@@ -71,6 +82,16 @@ export default {
   justify-content: space-between;
   font-size: $variable-font;
 }
+
+@keyframes appear {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
 // display 70% width on desktop
 @media screen and (min-width: 768px) {
   .quiz-wrapper {
