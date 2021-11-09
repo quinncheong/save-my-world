@@ -8,6 +8,13 @@
         <router-view />
       </div>
     </div>
+    <div v-else>
+      <Navbar />
+      <!-- <Navbar1 /> -->
+      <div class="app-content-wrapper">
+        <router-view />
+      </div>
+    </div>
     <Footer />
   </div>
 
