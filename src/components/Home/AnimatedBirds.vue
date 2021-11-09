@@ -1,6 +1,6 @@
 <template>
   <!--animated birds-->
-  <div class="">
+  <div class="bird-wrapper">
     <div class="bird-container bird-container--one">
       <div class="bird bird--one"></div>
     </div>
@@ -27,6 +27,13 @@ export default {
 
 <style lang="scss" scoped>
 //for the animated birds
+
+// .bird-wrapper {
+//   position: relative;
+//   width: 100%;
+//   height: 100%;
+//   overflow: hidden;
+// }
 
 .bird {
   background-image: url("../../assets/img/bird-cells-new.svg");

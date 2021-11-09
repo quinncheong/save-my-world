@@ -113,3 +113,44 @@
     border-color: orange;
   }
 }
+
+.animate{
+  white-space: nowrap;
+  overflow: hidden;
+  border-right: solid 3px rdba(0, 255, 0 , 0.75);
+  font-size: 28px;
+  color: rgba(255, 255, 255, 0.7);
+  animation: animated-text 4s steps(29,end) 1s 1 normal animated-cursor 600ms steps(29,end) infinite;
+}
+
+@keyframes animated-text {
+  0%{
+    width: 0;
+  }
+  to{
+    width: 472px;
+  }
+
+}
+
+@keyframes animated-cursor {
+  from{
+    border-right-color: rgba(0, 255, 0, 0.75);
+  }
+  to{
+    border-right-color: transparent ;
+  }
+}
+
+.add-fade-in {
+  animation: fadeIn 1s linear forwards;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
