@@ -17,8 +17,7 @@
             <span class="text-muted"> (°C)</span>
           </small>
           <br />
-          This chart shows the the progression of changing temperature over a
-          span of 19 years for the selected country.
+          The chart shows the 3 crucial emissions (CO, NO2 and SO2) for the past year.
         </p>
       </div>
     </div>
@@ -37,10 +36,10 @@
         </select>
       </label>
 
-      <label>
+      <!-- <label>
         Select a year (must be 2020 only):
         <input v-model="year" type="number" required />
-      </label>
+      </label> -->
       <button class="btn btn-success">Get Data</button>
     </form>
 
@@ -62,27 +61,27 @@ export default {
   },
   setup() {
     const chartRef = ref(null);
-    const country = ref("");
+    const country = ref("Singapore");
     const year = ref(2020);
 
     const barChart = {
       id: "bar",
       type: "bar",
       data: {
-        labels: ["2020", 2040],
+        labels: [],
         datasets: [
-          {
-            label: "Temperature Over Time",
-            backgroundColor: [
-              "#41B883",
-              // "#E46651",
-              // '#00D8FF',
-              // '#DD1B16'
-            ],
-            borderColor: "#41B883",
-            data: [65, 59, 80, 81, 56, 55, 40],
-            fill: false,
-          },
+          // {
+          //   label: "Temperature Over Time",
+          //   backgroundColor: [
+          //     "#41B883",
+          //     // "#E46651",
+          //     // '#00D8FF',
+          //     // '#DD1B16'
+          //   ],
+          //   borderColor: "#41B883",
+          //   data: [65, 59, 80, 81, 56, 55, 40],
+          //   fill: false,
+          // },
         ],
       },
       options: {
@@ -155,7 +154,7 @@ export default {
       e.preventDefault();
 
       //   First portion is to do forward geocoding to get the lat and long
-      let geolocationUrl = "https://api.positionstack.com/v1/forward";
+      let geolocationUrl = "http://api.positionstack.com/v1/forward";
       let access_key = process.env.VUE_APP_POSITIONSTACK_API_KEY;
       let query = country.value;
       let isoCountry = iso.whereCountry(country.value).alpha3;
@@ -245,6 +244,9 @@ export default {
           "July",
           "Aug",
           "Sep",
+          "Oct",
+          "Nov",
+          "Dec",
         ];
         barChart.data.datasets = [
           {

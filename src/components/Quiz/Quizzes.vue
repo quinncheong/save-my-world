@@ -1,79 +1,66 @@
 <template>
-  <div>
-    <div v-if="started">
-      <flow-form
-        class="mt-2"
-        ref="flowform"
-        v-bind:questions="questions"
-        v-bind:language="language"
-        v-bind:standalone="true"
-        v-bind:timer="true"
-        v-on:complete="onComplete"
-        v-on:submit="onQuizSubmit"
-        v-on:timer="onTimer"
-        timer-start-step="start"
-      >
-      
-      <!-- Custom content for the Complete/Submit screen slots in the FlowForm component -->
-      <!-- We've overriden the default "complete" slot content -->
-      <template v-slot:complete>
-        <p>
-          <span class="fh2">You did it!</span>
-          <span v-if="!submitted" class="f-section-text">
-            Review your answers or press Calculate score to see your result.
-          </span>
-        </p>
-      </template>
+  <flow-form
+    class="mt-2 text-white flow-class"
+    ref="flowform"
+    v-bind:questions="questions"
+    v-bind:language="language"
+    v-bind:standalone="true"
+    v-bind:timer="true"
+    v-on:complete="onComplete"
+    v-on:submit="onQuizSubmit"
+    v-on:timer="onTimer"
+    timer-start-step="start"
+  >
+    <!-- Custom content for the Complete/Submit screen slots in the FlowForm component -->
+    <!-- We've overriden the default "complete" slot content -->
+    <template v-slot:complete>
+      <p>
+        <span class="fh2">You did it!</span>
+        <span v-if="!submitted" class="f-section-text">
+          Review your answers or press Calculate score to see your result.
+        </span>
+      </p>
+    </template>
 
-      <!-- We've overriden the default "completeButton" slot content -->
-      <template v-slot:completeButton>
-        <div class="f-submit mt-3" v-if="!submitted">
-          <button
-            class="o-btn-action"
-            ref="button"
-            type="submit"
-            href="#"
-            v-on:click.prevent="onQuizSubmit()"
-            aria-label="Press to submit"
-          >
-            <span>Calculate score</span>
-          </button>
-          <a
-            class="f-enter-desc"
-            href="#"
-            v-on:click.prevent="onQuizSubmit()"
-            v-html="language.formatString(language.pressEnter)"
-          >
-          </a>
-        </div>
+    <!-- We've overriden the default "completeButton" slot content -->
+    <template v-slot:completeButton>
+      <div class="f-submit mt-3" v-if="!submitted">
+        <button
+          class="o-btn-action"
+          ref="button"
+          type="submit"
+          href="#"
+          v-on:click.prevent="onQuizSubmit()"
+          aria-label="Press to submit"
+        >
+          <span>Calculate Score</span>
+        </button>
+        <a
+          class="f-enter-desc"
+          href="#"
+          v-on:click.prevent="onQuizSubmit()"
+          v-html="language.formatString(language.pressEnter)"
+        >
+        </a>
+      </div>
 
-        <p class="text-success" v-if="submitted && time">
-          Your time: {{ formattedTime }}
-        </p>
-        <p class="text-success" v-if="submitted && score < 4">
-          "You scored {{ score }} out of {{ total }}. There's a lot of room for
-          improvement..."
-        </p>
-        <p class="text-success" v-else-if="submitted && score < 7">
-          "You scored {{ score }} out of {{ total }}. Not bad at all! You know your Climate well!"
-        </p>
-        <p class="text-success" v-else-if="submitted && score <= total">
-          "You scored {{ score }} out of {{ total }}. Wow, you are a Climate Change Evangelist! Excellent!"
-        </p>
-      </template>
-      
-    </flow-form>
-
-
-    </div>
-    <div v-else>
-      <button class="btn btn-success" @click="startQuiz()">Start Quiz</button>
-    </div>
-    <!-- Button for debugging -->
-    <!-- <button class="btn btn-success" @click="logQuestions()">
-      Log questions
-    </button> -->
-  </div>
+      <p class="text-success" v-if="submitted && time">
+        Your time: {{ formattedTime }}
+      </p>
+      <p class="text-success" v-if="submitted && score < 4">
+        "You scored {{ score }} out of {{ total }}. There's a lot of room for
+        improvement..."
+      </p>
+      <p class="text-success" v-else-if="submitted && score < 7">
+        "You scored {{ score }} out of {{ total }}. Not bad at all! You know
+        your Climate well!"
+      </p>
+      <p class="text-success" v-else-if="submitted && score <= total">
+        "You scored {{ score }} out of {{ total }}. Wow, you are a Climate
+        Change Evangelist! Excellent!"
+      </p>
+    </template>
+  </flow-form>
 </template>
 
 <script>
@@ -89,21 +76,13 @@ import { getQuizzes } from "@/firebase.js";
 
 export default {
   name: "Quizzes",
+  props: ['quizzes'],
   components: {
     FlowForm,
   },
   data() {
     return {
-      questions: [
-        // new QuestionModel({
-        //   id: "start",
-        //   tagline: "7",
-        //   title: "How much do you know about the environment?",
-        //   content: "Test how well you know about Climate Change.",
-        //   type: QuestionType.SectionBreak,
-        //   required: true,
-        // }),
-      ],
+      questions: [],
       started: false,
       submitted: false,
       completed: false,
@@ -136,10 +115,6 @@ export default {
   },
   methods: {
     async startQuiz() {
-      // Generate random id from 1-3 to get quiz
-      const quizId = Math.floor(Math.random() * 3) + 1;
-      const quizzes = await getQuizzes(quizId);
-
       // Generate question model array from quizzes
       // This is the first question for the qns model array
       let qnsModelArray = [
@@ -152,7 +127,7 @@ export default {
           required: true,
         }),
       ];
-      for (let { Question, Options, Explanation, Answer, id } of quizzes) {
+      for (let { Question, Options, Explanation, Answer, id } of this.quizzes) {
         // console.log(Question);
         // console.log(Options);
         // console.log(Explanation);
@@ -191,7 +166,6 @@ export default {
       console.log(qnsModelArray);
       console.log(this.answers);
       this.questions = qnsModelArray;
-      this.started = true;
     },
     logQuestions() {
       console.log(this.questions);
@@ -237,20 +211,79 @@ export default {
       this.formattedTime = formattedTime;
     },
   },
+  async created() {
+    // Generate question model array from quizzes
+      // This is the first question for the qns model array
+      let qnsModelArray = [
+        new QuestionModel({
+          id: "start",
+          tagline: "Climate Quiz",
+          title: "How much do you know about the environment?",
+          content: "Test how well you know about Climate Change.",
+          type: QuestionType.SectionBreak,
+          required: true,
+        }),
+      ];
+      for (let { Question, Options, Explanation, Answer, id } of this.quizzes) {
+        // console.log(Question);
+        // console.log(Options);
+        // console.log(Explanation);
+        // console.log(Answer);
+        // console.log(id);
+
+        let optionsArray = [];
+        for (let choice of Options) {
+          optionsArray.push(
+            new ChoiceOption({
+              label: choice,
+              value: choice,
+            })
+          );
+        }
+        // let multiple =
+        //   Options.length > 2
+        //     ? QuestionType.SingleChoice
+        //     : QuestionType.SingleChoice
+
+        // console.log(QuestionType.SingleChoice);
+        // console.log(QuestionType.MultipleChoice);
+
+        let qnModel = new QuestionModel({
+          id,
+          title: Question,
+          type: QuestionType.MultipleChoice,
+          options: optionsArray,
+          required: true,
+          multiple: false,
+        });
+        this.answers[id] = Answer;
+        qnsModelArray.push(qnModel);
+      }
+
+      console.log(qnsModelArray);
+      console.log(this.answers);
+      this.questions = qnsModelArray;
+  },
 };
 </script>
 
-<style>
+<style lang="scss" scoped>
 /* Import Vue Flow Form base CSS */
 @import "~@ditdot-dev/vue-flow-form/dist/vue-flow-form.css";
 
 /* Import one of the Vue Flow Form CSS themes (optional) */
-@import '~@ditdot-dev/vue-flow-form/dist/vue-flow-form.theme-minimal.css';
-/* @import "~@ditdot-dev/vue-flow-form/dist/vue-flow-form.theme-green.css"; */
+/* @import '~@ditdot-dev/vue-flow-form/dist/vue-flow-form.theme-minimal.css'; */
+@import "~@ditdot-dev/vue-flow-form/dist/vue-flow-form.theme-green.css";
 /* @import '~@ditdot-dev/vue-flow-form/dist/vue-flow-form.theme-purple.css'; */
 
 p.text-success {
   margin-bottom: 10px;
 }
 
+// When screen height is large, flow form should be only 50%
+@media screen and (min-height: 1000px) {
+  .flow-class {
+    height: 50vh;
+  }
+}
 </style>

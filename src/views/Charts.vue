@@ -95,13 +95,7 @@ export default {
 
 <style lang="scss" scoped>
 .chart-wrapper {
-  height: 100%;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  margin: auto;
-  justify-content: space-between;
-  font-size: $variable-font;
+  @extend %page-wrapper;
 
   .chart-select {
     font-weight: bold;
@@ -126,10 +120,33 @@ export default {
     }
   }
 }
+
 // display 70% width on desktop
-@media (min-width: 768px) {
+@media screen and (min-width: 768px) {
   .chart-wrapper {
     width: 70%;
+  }
+}
+
+// display 70% width on large screen sizes
+@media screen and (min-width: 992px) {
+  .chart-wrapper {
+    width: 60%;
+  }
+}
+
+// // display 70% width on extra large screen sizes
+@media screen and (min-width: 1200px) {
+  .chart-wrapper {
+    width: 50%;
+  }
+}
+
+// // display 70% width on extra large screen sizes
+@media screen and (min-width: 1350px) {
+  .chart-wrapper {
+    width: 40%;
+    font-size: 15px;
   }
 }
 </style>

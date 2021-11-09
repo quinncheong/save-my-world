@@ -1,18 +1,21 @@
 <template>
-  <Splide :options="thumbsOptions" ref="thumbs">
-    <SplideSlide :key="index" v-for="(image, index) of images">
-      <img style="width: 230px" :src="getUrl(image.img1)" :alt="image.title" />
+  <Splide @click="handleActive" :options="thumbsOptions" ref="thumbs">
+    <SplideSlide  :key="image.id" v-for="(image, index) of images">
+      <img style="width: 230px;" :src="getUrl(image.img1)" :alt="image.title" />
     </SplideSlide>
   </Splide>
   <br />
-  <Splide :options="mainOptions" ref="main">
-    <SplideSlide :key="index" v-for="(image, index) of images">
-      <!-- <img style="width: 230px" :src="getUrl(image.img1)" :alt="image.title" /> -->
+  <Splide @click="handleActive" :options="mainOptions" ref="main">
+    <SplideSlide :key="image.id" v-for="(image, index) of images">
       <img-slider
         class="img-slider"
         :img-a="getUrl(image.img1)"
         :img-b="getUrl(image.img2)"
       ></img-slider>
+      <div class="d-flex justify-content-around">
+        <p>Before</p>
+        <p>After</p>
+      </div>
     </SplideSlide>
   </Splide>
 </template>
@@ -20,7 +23,7 @@
 <script>
 // import "img-comparison-slider";
 import { Splide, SplideSlide } from "@splidejs/vue-splide";
-import ImageCard from "./ImageCard.vue";
+// import ImageCard from "./ImageCard.vue";
 import "@splidejs/splide/dist/css/themes/splide-default.min.css";
 import { defineComponent, onMounted, ref } from "vue";
 import ImgSlider from "./ImgSlider.vue";
@@ -30,14 +33,16 @@ export default defineComponent({
   components: {
     Splide,
     SplideSlide,
-    ImageCard,
+    // ImageCard,
     ImgSlider
   },
   props: ["images", "getUrl"],
+//   emits: ['on-active-splide'],
 
-  setup() {
+  setup(props, context) {
     const main = ref();
     const thumbs = ref();
+
     const stdOptions = {
       rewind: true,
       type: "loop",
@@ -114,6 +119,12 @@ export default defineComponent({
       },
     };
 
+    // Function to console log out the current active slide
+    const handleActive = (e) => {
+        console.log(main.value.splide.index)
+        context.emit("on-active-splide", main.value.splide.index);
+    };
+
     onMounted(() => {
       const thumbsSplide = thumbs.value.splide;
       if (thumbsSplide) {
@@ -131,14 +142,27 @@ export default defineComponent({
       thumbs,
       mainOptions,
       thumbsOptions,
+      handleActive,
     };
   },
+  methods: {
+    // Console log out the current active slide
+    // handleActive() {
+    //   console.log(this.$refs.main.splide);
+    // },
+  }
 });
 </script>
 
 <style lang="scss" scoped>
 // Import the splider csss
-.splide.is-active .splide__list {
-  display: flex;
+
+.splide__slide {
+  opacity: 0.5;
+}
+
+.splide__slide.is-active {
+  opacity: 1;
+//   border: 1px solid white;
 }
 </style>

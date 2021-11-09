@@ -1,200 +1,86 @@
 <template>
-  <div class="container-fluid">
-    <!-- This would be where the globe would be  -->
-    <div class="row mt-3" id="login">
-      <div class="col">
-        <!-- <img src="@/assets/img/globe.png" alt="searchicon" /> -->
-        <!-- <div class="row-4">
-        </div> -->
-        <div class="row-4 position">  <!--to include breakpoint later on-->
-            <div class="earth "></div>
-            <div class="circle ">
-              <!--This is for a rotating text-->
-              <span  style='--i:1;'>#</span>
-              <span  style='--i:2;'>S</span>
-              <span  style='--i:3;'>A</span>
-              <span  style='--i:4;'>V</span>
-              <span  style='--i:5;'>E</span>
-              <span  style='--i:6;'>O</span>
-              <span  style='--i:7;'>U</span>
-              <span  style='--i:8;'>R</span>
-              <span  style='--i:9;'>W</span>
-              <span  style='--i:10;'>O</span>
-              <span  style='--i:11;'>R</span>
-              <span  style='--i:12;'>L</span>
-              <span  style='--i:13;'>D</span>
-              <span  style='--i:14;'>#</span>
-              <span  style='--i:15;'>S</span>
-              <span  style='--i:16;'>A</span>
-              <span  style='--i:17;'>V</span>
-              <span  style='--i:18;'>E</span>
-              <span  style='--i:19;'>O</span>
-              <span  style='--i:20;'>U</span>
-              <span  style='--i:21;'>R</span>
-              <span  style='--i:22;'>W</span>
-              <span  style='--i:23;'>O</span>
-              <span  style='--i:24;'>R</span>
-              <span  style='--i:25;'>L</span>
-              <span  style='--i:26;'>D</span>
-            </div>
-
-
-        </div>
-
-
+  <div class="home-page-wrapper">
+    <!--top header-->
+    <header class="header">
+      <div class="links text-white">
+        <template :key="route.path" v-for="(route, index) in routes">
+          <router-link v-if="route.meta.visible" :to="route.path.toLowerCase()">
+            {{ route.name }}
+          </router-link>
+        </template>
       </div>
-      <!-- Login section -->
 
-      <!-- Tile of login  -->
-      <div class="col"> <!--removed class text-star idk what's star-->
-        <div class="row">
-          <div class="col">
-            <h1 class="mt-3 text-center">
-              You have the power to <span id="savemyworld">#SaveOurWorld</span>
-            </h1>
-            <br>
-            <hr>
-            <br>
+      <div class="header-middle-text d-flex">
+        <h4 class="text-white">Save My World,</h4>
+        <h4 class="text-white">Together</h4>
+      </div>
+      <!-- SVG birds animation -->
+      <animated-birds />
 
-            <div class="col text-start">
-              <h4>Towards a Net-Zero Future: </h4>
-              <br>
-              <h6>
-                According to United Nations, to preserve a livable climate, greenhouse-gas emissions must be reduced to net zero by 2050. 
-                Bold, fast, and wide-ranging action needs to be taken by governments and businesses. 
-                But the transition to a low-carbon world also <span id="savemyworld" >requires</span> the <span id="savemyworld">participation of citizens</span> – especially in advanced economies.
-                
-                <br>
-                <br>
-                Hence, play your part in limiting the effects of global warming and take care of our planet. <span id="savemyworld">Make the right choices today.</span> You can be part of the solution and influence change. 
-              </h6>
-              <br>
-            </div>
-            
-          </div>
+      <a href="#main" class="header-arrow">
+        <span></span>
+      </a>
+    </header>
+    <!-- About us -->
+    <about id="main" />
+    <!-- Block about what the site is -->
+    <!-- <div class="row">
+      <div class="col-1"></div>
+      <div class="col-lg-4 text-white alignment-left my-3">
+        Climate change will affect all of us, whether directly or indirectly. We
+        all have a stake in helping to reduce our emissions and in preparing for
+        the effects of climate change.
+      </div>
+    </div> -->
 
-        </div>
+    <!--How we can play our part-->
+    <future />
+    <!-- remove chart component first because its buggy -->
+    <!-- <three-rs /> -->
+
+    <div class="call-to-action header">
+      <h1 class="text-white">
+        You have the power to <span id="savemyworld">#SaveOurWorld</span>
+      </h1>
+    </div>
+
+    <div class="start-learning">
+      <div class="typewriter">
+        <h1 class="typewriter-text">Start Learning Now!</h1>
+        <br />
+        <br />
+        <button @click="pushToQuiz()" class="btn btn-dark rounded">
+          Take me away
+          <font-awesome-icon :icon="['fas', 'hand-holding-heart']" />
+        </button>
       </div>
     </div>
   </div>
-
-  <!-- Guide section -->
-
-  <div class="container-fluid mt-5 guide">
-    <!-- Individual steps for the guide -->
-
-    <div class="row px-2 pb-5">
-
-      <div class="guide-wrapper">
-        <h1 class="guide-header">How You Can Play Your Part</h1>
-      </div>
-
-      <br>
-      <br>
-      <br>
-      <p>Climate change will affect all of us, whether directly or indirectly. Everyone—as individuals, as employees, as members of a family and as a wider community—has a stake in helping to reduce our emissions and in preparing for the effects of climate change.</p>
-    </div> 
-
-
-    <div class='row bg-light' style='color:black'> <!--Use mx-auto d-block for centering--> 
-      <!-- <section class="reduce bg-light"> -->
-      <!-- <div class="container text-center"> -->
-
-        <!--for the image--> 
-        <div class='col-6'>
-            <img class="imgsize " src="@/assets/img/planetearth.png" />
-        </div>
-
-      <!--for the text-->
-      <div class='col-6 fullwidth'>
-        <div class="grid-2">
-          <div class="center">
-          </div>
-          <div>
-            <br>
-            <h3>REDUCE</h3>
-            <p>
-              The best way to manage waste is to not produce it. This can be done by shopping carefully and being aware of a few guidelines: 
-            </p>
-            <ul class="mt-4 wrap">
-              <li><i class="fa fa-rocket" aria-hidden="true">
-                
-                </i>Flyby spacecraft</li>
-              <li><i class="fa fa-rocket" aria-hidden="true"></i>Orbiter spacecraft</li>
-              <li><i class="fa fa-rocket" aria-hidden="true"></i>Atmospheric spacecraft</li>
-              <li><i class="fa fa-rocket" aria-hidden="true"></i>Lander spacecraft</li>
-              <li><i class="fa fa-rocket" aria-hidden="true"></i>Rover spacecraft</li>
-              <li><i class="fa fa-rocket" aria-hidden="true"></i>Penetrator spacecraft</li>
-              <li><i class="fa fa-rocket" aria-hidden="true"></i>Observatory spacecraft</li>
-              <li><i class="fa fa-rocket" aria-hidden="true"></i>Communications spacecraft</li>
-            </ul>
-          </div>
-        </div>
-        </div>
-
-        
-      <!-- </div> -->
-    <!-- </section> -->
-    </div>
-
-
-    
-    <div class='row '>
-      <!-- <section class="reduce bg-light"> -->
-      <!-- <div class="container text-center"> -->
-        <img class="imgsize" src="@/assets/img/clothes.png" />
-        <div class="grid-2">
-          <div class="center">
-          </div>
-          <div>
-            <br>
-            <h3>REUSE</h3>
-            <p>
-              It makes economic and environmental sense to reuse products. Sometimes it takes creativity: 
-            </p>
-          </div>
-        </div>
-      <!-- </div> -->
-    <!-- </section> -->
-    </div>
-
-
-    <div class='row bg-light ' style='color:black'>
-      <!-- <section class="reduce bg-light"> -->
-      <!-- <div class="container text-center"> -->
-        <img class="imgsize" src="@/assets/img/recyclingbin.png" />
-        <div class="grid-2">
-          <!-- <div class="center"> 
-          </div> -->
-          <div>
-            <br>
-            <h3>RECYCLE</h3>
-            <br>
-            <p>
-              Recycling is a series of steps that takes a used material and processes, remanufactures, and sells it as a new product. Begin recycling at home and at work:
-            </p>
-          </div>
-        </div>
-      <!-- </div> -->
-    <!-- </section> -->
-    </div>
-
-
-
-    </div>
-  <!-- </div> -->
 </template>
 
 <script>
 // @ is an alias to /src
+// Components
+import About from "@/components/Home/About.vue";
+import ThreeRs from "@/components/Home/ThreeRs.vue";
+import Future from "@/components/Home/Future.vue";
+import AnimatedBirds from "@/components/Home/AnimatedBirds.vue";
+
 import Globe from "@/assets/img/globe.png";
 import Guide from "@/assets/img/guidebackgroundimg.jpg";
 import Recycle from "@/assets/img/recyclingbin.png";
 import GlobeGuide from "@/assets/img/planetearth.png";
 import Clothes from "@/assets/img/clothes.png";
+import LandingPage from "@/assets/img/LandingPage.jpeg";
 
 export default {
   name: "Home",
+  components: {
+    About,
+    ThreeRs,
+    Future,
+    AnimatedBirds,
+  },
   data() {
     return {
       Globe,
@@ -202,211 +88,326 @@ export default {
       Recycle,
       GlobeGuide,
       Clothes,
+      LandingPage,
     };
+  },
+  methods: {
+    pushToQuiz() {
+      this.$router.push("/quiz");
+    },
+  },
+  computed: {
+    routes() {
+      console.log(this.$router.options.routes);
+      return this.$router.options.routes;
+    },
   },
 };
 </script>
 
 <style lang="scss">
-// .fullwidth {
-//   // width: 100vw !important;
-// }
+.home-page-wrapper {
+  // min-height: 100vh;
+  min-width: 100vw;
+  font-size: $variable-font;
 
-.gg {
-  color: $testing-variable;
+  .header {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+    max-height: 100vh;
+    padding: 1rem;
+    background-image: url("~@/assets/img/LandingPage3.jpeg");
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Do not repeat the image */
+    background-size: cover; /* Resize the background image to cover the entire container */
+    position: relative;
+
+    .header-middle-text {
+      margin-top: 9rem;
+      width: 70%;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .links {
+      display: flex;
+      width: 90%;
+      justify-content: space-around;
+    }
+
+    .header-arrow {
+      margin-top: auto;
+      cursor: pointer;
+      animation: 2.5s infinite alternate bouncer;
+
+      span {
+        display: block;
+        width: 32px;
+        height: 32px;
+        border-right: 2px solid;
+        border-bottom: 2px solid;
+        border-color: #fefefe;
+        -webkit-transform: rotate(45deg);
+        transform: rotate(45deg);
+      }
+    }
+  }
+
+  .hero {
+    position: relative;
+    z-index: 1;
+
+    .bg-image-holder {
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: url("~@/assets/img/LandingPage3.jpeg") center center;
+      opacity: 0.7;
+      width: 100%;
+      height: 100%;
+      background-attachment: fixed;
+    }
+
+    .top-header-wrapper {
+      position: absolute;
+      width: 80%;
+      top: 50%;
+      left: 50%;
+      z-index: 1;
+      transform: translate(-50%, -50%);
+    }
+  }
+
+  .call-to-action {
+    padding: 3rem;
+    background-image: url("~@/assets/img/LandingPage.jpeg");
+    height: 6550px;
+  }
+
+  .start-learning {
+    padding: 3rem;
+    background: #9796f0; /* fallback for old browsers */
+    background: -webkit-linear-gradient(
+      to right,
+      #fbc7d4,
+      #9796f0
+    ); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(
+      to right,
+      #fbc7d4,
+      #9796f0
+    ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    display: flex;
+    flex-direction: column;
+
+    .start-learning-content {
+      width: 50px;
+    }
+  }
+}
+
+// Accounting for the different breakpoints
+@media screen and (min-width: 768px) {
+  .home-page-wrapper {
+    width: 80%;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .home-page-wrapper {
+    width: 70%;
+  }
+}
+
+@media screen and (min-width: 1400px) {
+  .home-page-wrapper {
+    width: 60%;
+  }
+}
+
+.alignment-left {
+  text-align: left;
 }
 
 #savemyworld {
   color: yellow;
 }
 
-.centered {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+// :root {
+//   --primary: #0d6efd;
+//   --dark: #21252f;
+//   // --body: #888;
+//   --white: #ffffff;
+//   // --box-shadow: 0 8px 22px rgba(0,0,0,0.1);
+// }
+
+a {
+  color: var(--dark);
+  text-decoration: none;
 }
 
-.guide {
-  // background-image: url("~@/assets/img/guidebackgroundimg.jpg");
-  background-size: contain, cover;
+.btn {
+  padding: 14px 18px;
+  border-width: 2px;
+  border-radius: 0;
 }
 
-.imgsize {
-  width: 200px;
-  height: 200px;
-  margin-top: 20px;
-}
-
-.background-transparent {
-  background: rgba(160, 154, 154, 0.445);
-  margin-left: 10px;
-  border-radius: 25px;
-}
-
-
-//the following css is for the globe - quinn pls help transfer to scss
-.position{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 75vh; /*can change this height of height relative to the page later on */
-  transform-style: preserve-3d;
-}
-
-.earth{
-  position: absolute; 
-  top: 50%; 
-  left: 50%; 
-  transform: translate(-50%, -50%); /*to adjust the position of the globe */
-  width: 300px;  /*adjust the size of the globe here but in acordance to the the width and height of the image*/
-  height: 300px;
-  background: url('~@/assets/img/flatglobe.jpg');
-  background-size:cover;
-  background-repeat: repeat-x;
-  border-radius: 50%;
-  box-shadow: inset 0 0 20px rgba(0,0,0,1), 0 0 50px; //edit the shodow colour of the globe here
-  animation: animateEarth 30s linear infinite; //rotation timing 
-}
-
-@keyframes animateEarth {
-  0%{
-    background-position: 0 0; 
-  }
-  100%{
-    background-position: -750px 0; /*follow picture dimensions */
-  }
-  
-}
-
-.circle{
-  transform-style: preserve-3d;
-  animation: animateText 30s linear infinite;
-
-}
-
-.circle span{
+.hero::after {
+  content: "";
+  width: 100%;
+  height: 100%;
   position: absolute;
   top: 0;
   left: 0;
-  background: rgba(255, 255, 255, 0.5);
-  // background: #fff;
-  color: black; 
-  font-size: 30px; 
-  transform-origin: center;
-  transform-style: preserve-3d;
-  padding: 5px 11px;
-  transform: rotateY(calc(var(--i) * calc(360deg/ 27 ))) translateZ(200px);
-  border: 0px;
-  // border-top: 2px solid grey;
-  // border-bottom: 2px solid grey;
+  // background-color: rgba(21, 20, 51, 0.8);
+  z-index: -1;
 }
 
-.transparent{
-  opacity: 0.5;
+.col-img {
+  // background-image: url(../img/cover2.jpg);
+  background-position: center;
+  background-size: cover;
+  min-height: 500px;
 }
 
-
-@keyframes animateText {
-  0%{
-    transform: perspective(1000px) rotateY(360deg) rotateX(15deg) translateY(-30px);
-  }
-  100%{
-    transform: perspective(1000px) rotateY(0deg) rotateX(15deg) translateY(-30px);
-  }
+form input.form-control {
+  height: 56px;
 }
 
+form .form-control {
+  border: transparent;
+  border-radius: 0;
+  background-color: rgba(0, 0, 0, 0.02);
+}
 
-//for the guide section 
-.guide-wrapper {
+//for the vertical line
+
+.vl {
+  border-left: 3px solid green;
+  height: auto;
+}
+
+//for the nav tab
+.main {
+  box-sizing: border-box;
+  width: auto;
+  height: auto;
   position: relative;
-  width: 100%;
+  display: flex;
 
-  .guide-header{
-    text-align: center;
-    font-size: $variable-font;
-
-    @media screen and (min-width: 768px ) {
-      font-size: $variable-font-large;
-    }
-
-    &:before,
-    &:after {
-      background-color: white;
-      content: "";
-      display: inline-block;
-      height: 1px;
-      position: relative;
-      vertical-align: middle;
-      width: 20%;
-    }
-
-    &:before {
-      margin-right: 20px;
-      // right: 0.5em;
-      // margin-left: -50%;
-    }
-
-    &:after {
-      margin-left: 20px;
-      // left: 0.5em;
-      // margin-right: -50%;
-    }
+  li.header-top {
+    width: 100%;
+    display: inline-block;
+    background-color: rgb(17, 16, 16);
   }
-  
 }
 
+.content {
+  background: rgb(17, 16, 16);
+  color: white;
+  position: absolute;
+  left: 0;
+  display: none;
+  padding: 30px;
+  width: 100%;
+}
 
-// #guideMe:before,
-// #guideMe:after {
-//   background-color: white;
+.content > p {
+  font-size: 1em;
+  font-weight: 300;
+  margin: 10px;
+}
+
+.main [id^="label"]:checked ~ .content {
+  display: block;
+}
+
+.main input[type="radio"] {
+  display: none;
+}
+
+.main label {
+  padding: 20px 30px;
+}
+
+.main[id^="label"]:checked + label {
+  background-color: black;
+  color: green;
+}
+
+.heading {
+  font-size: 3.5vw;
+  text-shadow: 4px 5px 5px #3f7fbf;
+  // position: absolute;
+  // text-align: center;
+  // mix-blend-mode: screen;
+  animation: fadeIn 2.5s linear forwards;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+// .animate{
+//   white-space: nowrap;
+//   overflow: hidden;
+//   border-right: solid 3px rdba(0, 255, 0 , 0.75);
+//   font-size: 28px;
+//   color: rgba(255, 255, 255, 0.7);
+//   animation: animated-text 4s steps(29,end) 1s 1 normal animated-cursor 600ms steps(29,end) infinite;
+// }
+
+// @keyframes animated-text {
+//   0%{
+//     width: 0;
+//   }
+//   to{
+//     width: 472px;
+//   }
+
+// }
+
+// @keyframes animated-cursor {
+//   from{
+//     border-right-color: rgba(0, 255, 0, 0.75);
+//   }
+//   to{
+//     border-right-color: transparent ;
+//   }
+// }
+
+// .heading::before,
+// .heading::after {
 //   content: "";
-//   display: inline-block;
-//   height: 1px;
-//   position: relative;
-//   vertical-align: middle;
-//   width: 50%;
+//   position: absolute;
 // }
 
-// #guideMe:before {
-//   right: 0.5em;
-//   margin-left: -50%;
+// .heading {
+//   font-size: clamp(1rem, 3.3vw + 1rem, 4rem);
+// }
+// .heading::before {
+//   background: teal;
+//   animation: typewriter 1s ease;
 // }
 
-// #guideMe:after {
-//   left: 0.5em;
-//   margin-right: -50%;
-// }
-
-
-//for the rows below 
-
-.container {
-  max-width: 960px;
-  margin: auto;
-  overflow: hidden;
-  padding: 4rem 1rem;
+@keyframes typewriter {
+  to {
+    left: 100%;
+  }
 }
 
-// .grid-3 {
-//   display: grid;
-//   grid-template-columns: 1fr 1fr 1fr; 
-//   grid-gap: 20px;
-// }
-
-// .grid-2 {
-//   display: grid;
-//   grid-gap: 20px;
-//   grid-template-columns: repeat(2, 1fr);
-// }
-
-.text-center {
-  text-align: center;
-  margin: auto;
+.bottom-left {
+  position: absolute;
+  bottom: 8px;
+  left: 16px;
 }
-
-.bg-light {
-  background: #fff;
-  color: #333;
-}
-
 </style>
