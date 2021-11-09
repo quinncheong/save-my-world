@@ -17,12 +17,12 @@
       <!-- SVG birds animation -->
       <animated-birds />
 
-      <a href="#main" class="header-arrow">
+      <a @click="$refs.main.$el.scrollIntoView()" class="header-arrow">
         <span></span>
       </a>
     </header>
     <!-- About us -->
-    <about id="main" />
+    <about id="main" ref="main" />
     <!-- Block about what the site is -->
     <!-- <div class="row">
       <div class="col-1"></div>
@@ -34,7 +34,7 @@
     </div> -->
 
     <!--How we can play our part-->
-    <future />
+    <future ref='future' />
     <!-- remove chart component first because its buggy -->
     <!-- <three-rs /> -->
 
@@ -141,6 +141,7 @@ export default {
 
     .header-arrow {
       margin-top: auto;
+      margin-bottom: 30px;
       cursor: pointer;
       animation: 2.5s infinite alternate bouncer;
 
