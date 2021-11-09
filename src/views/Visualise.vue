@@ -495,6 +495,7 @@ export default {
     color: black;
     position: relative;
     border-radius: 25px;
+    height: 100%;
   }
 
   .result-col{

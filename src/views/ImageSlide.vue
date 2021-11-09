@@ -7,20 +7,20 @@
 </template>
 
 <script >
-import { Splide, SplideSlide } from "@splidejs/vue-splide";
-import "@splidejs/splide/dist/css/themes/splide-default.min.css";
-import 'img-comparison-slider';
-import imageCarol from "../components/ImageOfChange/ImageCarousel.vue";
-import imageSlider from "../components/ImageOfChange/ImageSlider.vue";
+// import { Splide, SplideSlide } from "@splidejs/vue-splide";
+// import "@splidejs/splide/dist/css/themes/splide-default.min.css";
+// import 'img-comparison-slider';
+// import imageCarol from "../components/ImageOfChange/ImageCarousel.vue";
+// import imageSlider from "../components/ImageOfChange/ImageSlider.vue";
 import ImageOfChange from "../components/ImageOfChange/ImageOfChange.vue";
 
 export default {
   name: "imageCarousel",
   components: {
-    Splide,
-    SplideSlide,
-    imageCarol,
-    imageSlider,
+    // Splide,
+    // SplideSlide,
+    // imageCarol,
+    // imageSlider,
     ImageOfChange,
   },
   data() {
@@ -126,8 +126,8 @@ export default {
         },
         {
           id: 13,
-          img1: "img13A.jpeg",
-          img2: "img13B.jpeg",
+          img1: "img13A.webp",
+          img2: "img13B.webp",
           title: "\"Great Migration\" Back to Atlanta, Georgia",
           description: "In a reversal of the \"Great Migration\" north of the early 20th century, people from the Northeast and Midwest have been moving to Atlanta, Georgia, making it one of the fastest growing metropolitan areas in the U.S. These false-color images have been processed to emphasize the contrast between urban and forested or rural areas. Much of the new development visible in the 2020 image is relatively distant from downtown Atlanta."
         },
@@ -141,8 +141,8 @@ export default {
         },
         {
           id: 15,
-          img1: "img15A.jpeg",
-          img2: "img15B.jpeg",
+          img1: "img15A.webp",
+          img2: "img15B.webp",
           title: "Stalled Landslide Threatens Tsunami in Alaskan Fjord",
           description: "A slow-motion landslide on the slope that defines the western side of Barry Arm, one of the glacial fjords of Alaska's Prince William Sound, has stalled. But scientists warn that the mountainside could fail catastrophically and slide into the fjord, endangering people in the area with a tsunami hundreds of feet high. The slide appears to have begun at least 50 years ago, but sped up between 2009 and 2015 as warming temperatures shortened Barry Arm Glacier, which had supported the slope's base. The mountainside slid about 400 feet (120 meters) between 2010 and 2017, but has moved little since then.",
           timeline: "Sept. 15, 2013 - Aug. 24, 2019"

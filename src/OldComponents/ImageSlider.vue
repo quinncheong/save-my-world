@@ -52,7 +52,7 @@
 
 <script>
 import "img-comparison-slider";
-import ImgSlider from "./ImgSlider.vue";
+import ImgSlider from "../components/ImageOfChange/ImgSlider.vue";
 
 export default {
   name: "imageSlide",
@@ -67,38 +67,38 @@ export default {
         {
           id: 1,
           // relative import image
-          img1: "img2A.jpeg",
-          img2: "img2B.jpeg",
+          img1: "img2A.webp",
+          img2: "img2B.webp",
         },
         {
           id: 2,
-          img1: "img3A.jpeg",
-          img2: "img3B.jpeg",
+          img1: "img3A.webp",
+          img2: "img3B.webp",
         },
         {
           id: 3,
-          img1: "img4A.jpeg", // 4A is wrong and need to change it
-          img2: "img4B.jpeg",
+          img1: "img4A.webp", // 4A is wrong and need to change it
+          img2: "img4B.webp",
         },
         {
           id: 4,
-          img1: "img5A.jpeg",
-          img2: "img5B.jpeg",
+          img1: "img5A.webp",
+          img2: "img5B.webp",
         },
         {
           id: 5,
-          img1: "img6A.jpeg",
-          img2: "img6B.jpeg",
+          img1: "img6A.webp",
+          img2: "img6B.webp",
         },
         {
           id: 6,
-          img1: "img7A.jpeg",
-          img2: "img7B.jpeg",
+          img1: "img7A.webp",
+          img2: "img7B.webp",
         },
         // {
         //   id: 7,
-        //   img1: "img4A.jpeg",
-        //   img2: "img4B.jpeg",
+        //   img1: "img4A.webp",
+        //   img2: "img4B.webp",
         // }
       ],
     };
