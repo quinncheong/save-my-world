@@ -55,17 +55,26 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.image-change-wrapper {
-  line-height: 1.7;
-  font-family: "Sora", sans-serif;
-  height: 100%;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  margin: auto;
-  justify-content: space-between;
-  font-size: $variable-font;
-}
+   @keyframes appear {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+  .image-change-wrapper {
+    animation: appear 4s ease-in;
+    line-height: 1.7;
+    font-family: "Sora", sans-serif;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    justify-content: space-between;
+    font-size: $variable-font;
+  }
 
   // display 70% width on desktop
   @media screen and (min-width: 768px) {
