@@ -1,8 +1,8 @@
 <template>
   <div>
     <div class="card border-primary mb-3">
-      <div class="card-header">Air Pollution</div>
-      <div class="card-body text-info">
+      <div class="card-header text-primary weight">Air Pollution</div>
+      <div class="card-body text-dark">
         <vue3-chart-js
           :id="barChart.id"
           ref="chartRef"
@@ -11,21 +11,26 @@
           :options="barChart.options"
         />
 
-        <p class="card-text">
+        <p class="card-text weight">
           <small class="text-muted">
-            <span class="text-primary">Temperature</span>
-            <span class="text-muted"> (°C)</span>
+            <span class="text-primary weight">Temperature</span>  <!--need to change-->
+            <span class="text-muted weight"> (°C)</span>
           </small>
           <br />
-          The chart shows the 3 crucial emissions (CO, NO2 and SO2) for the past year.
+          The chart shows the <span class='text-primary weight'>3 crucial emissions (CO, NO2 and SO2)</span> for the past year.
         </p>
       </div>
     </div>
 
-    <form @submit="handleClick">
+    <form  @submit="handleClick">
+      <p>Select a country:</p>
+      <div class='form-box'> 
       <label class="form-label">
-        Select a country:
-        <select v-model="country">
+        <!-- <p>Select a country:</p> -->
+         <!-- <select data-live-search="true" class=" include-margin selectpicker"  v-model="country" > -->
+
+           <!--the following drop down list is correct-->
+        <select class='include-margin' v-model="country">
           <option
             :key="country.name"
             v-for="country in countries"
@@ -34,13 +39,19 @@
             {{ country.name }}
           </option>
         </select>
+
+
+
       </label>
+      <button class="btn btn-success search-btn">Get Data</button>
+      </div>
 
       <!-- <label>
         Select a year (must be 2020 only):
         <input v-model="year" type="number" required />
       </label> -->
-      <button class="btn btn-success">Get Data</button>
+      <!-- <button class="btn btn-success search-btn">Get Data</button> -->
+
     </form>
 
   </div>
@@ -53,6 +64,11 @@ import axios from "axios";
 import moment from "moment";
 import { countries } from "countries-list";
 import iso from "iso-3166-1"; // Library to key in country name and get iso no.
+
+// import Vue from 'vue';
+// import { DropDownListPlugin } from '@syncfusion/ej2-vue-dropdowns';
+// Vue.use(DropDownListPlugin) //doesnt exit for  vue3 need to do sth liek createApp(App).use(store)
+
 
 export default {
   name: "App",
@@ -307,8 +323,22 @@ export default {
       countries,
     };
   },
+
+  //added 
+  // mounted(){
+  //   const plugin = document.createElement("script");
+  //   plugin.setAttribute(
+  //     "src",
+  //     "../src/assets/js/script.js"
+  //   );
+  //   plugin.async = true;
+  //   document.head.appendChild(plugin);
+  // }
 };
 </script>
+
+
+
 
 <style lang="scss" scoped>
 .temp-chart-bg {
@@ -321,4 +351,33 @@ export default {
   margin: auto;
   width: 100%;
 }
+
+
+.search-btn{
+  background: green;
+  color: #fff;
+  height: 28px;
+  // width: 100px;
+  border: none;
+  border-radius: 3px;
+  padding: 5px;
+  font-size: 15px;
+}
+.search-btn:hover{
+  border: 2px solid white;
+}
+
+.weight{
+  font-weight: bold;
+}
+
+.include-margin{
+  margin: 5px;
+  font-size: 18px;
+  
+}
+.form-box{
+  display: inline;
+}
+
 </style>

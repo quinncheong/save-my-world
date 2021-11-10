@@ -1,8 +1,6 @@
 <template>
-  <div>
-    <div v-if="currentRoute === '/'">
-      <router-view />
-    </div>
+  <div class="app-wrapper">
+    <router-view v-if="currentRoute === '/'" />
     <div v-else>
       <Navbar />
       <!-- <Navbar1 /> -->
@@ -26,6 +24,9 @@
 import Navbar from "@/Layout/Navbar.vue";
 // import Navbar1 from "@/Layout/Navbar1.vue";
 import Footer from "@/Layout/Footer.vue";
+// import Vue from vue;
+// import { DropDownListPlugin } from '@syncfusion/ej2-vue-dropdowns';
+// Vue.use(DropDownListPlugin)
 
 export default {
   name: "App",
@@ -48,7 +49,7 @@ html {
   box-sizing: border-box;
   font-size: $font-size-primary;
   min-height: 100vh;
-  min-width: 100vw;
+  // min-width: 98vw;
   @extend %background-overlay;
 }
 
@@ -83,6 +84,12 @@ img {
   height: auto;
 }
 
+// Removing the default app link colors
+a {
+  color: var(--dark);
+  text-decoration: none;
+}
+
 // CSS of the app
 #app {
   font-family: "Montserrat";
@@ -93,6 +100,10 @@ img {
 
   // background-color: $bg-color-primary; //background colour of the app
   background-color: $bg-color-primary; //background colour of the app
+}
+
+.app-wrapper {
+  // overflow-x: hidden;
 }
 
 .app-content-wrapper {

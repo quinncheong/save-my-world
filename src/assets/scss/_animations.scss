@@ -56,43 +56,15 @@
   }
 }
 
-// repeat animation
-
-.anim-typewriter {
-  animation: typewriter 4s steps(44) 1s 1 normal both,
-    blinkTextCursor 500ms steps(44) infinite normal;
-}
-@keyframes typewriter {
-  from {
-    width: 4em;
-  }
-  to {
-    width: 24em;
-  }
-}
-@keyframes blinkTextCursor {
-  from {
-    border-right-color: rgba(255, 255, 255, 0.75);
-  }
-  to {
-    border-right-color: transparent;
-  }
-}
-
+// Add this to have typewriter animator
 .typewriter-text {
   display: inline-block;
   overflow: hidden;
   letter-spacing: 2px;
-  animation: typing 5s steps(30, end), blink 0.75s step-end infinite;
+  animation: typing 4s steps(44) alternate-reverse infinite, blink 0.75s steps(22) infinite;
   white-space: nowrap;
   border-right: 4px solid orange;
   box-sizing: border-box;
-}
-
-@media screen and (max-width: 568px) {
-  .typewriter-text {
-    white-space: normal;
-  }
 }
     
 @keyframes typing {
@@ -111,5 +83,119 @@
   }
   50% {
     border-color: orange;
+  }
+}
+
+.animate{
+  white-space: nowrap;
+  overflow: hidden;
+  border-right: solid 3px rdba(0, 255, 0 , 0.75);
+  font-size: 28px;
+  color: rgba(255, 255, 255, 0.7);
+  animation: animated-text 4s steps(29,end) 1s 1 normal animated-cursor 600ms steps(29,end) infinite;
+}
+
+@keyframes animated-text {
+  0%{
+    width: 0;
+  }
+  to{
+    width: 472px;
+  }
+
+}
+
+@keyframes animated-cursor {
+  from{
+    border-right-color: rgba(0, 255, 0, 0.75);
+  }
+  to{
+    border-right-color: transparent ;
+  }
+}
+
+.add-fade-in {
+  animation: fadeIn 1s linear forwards;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+// Animated button class
+.ani-btn {
+  padding: 0.75rem;
+  border: none;
+  border-radius: 20px;
+
+  &:active {
+    transform: translateY(-1px);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  }
+
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+
+    &::after {
+      transform: scaleX(1.4) scaleY(1.6);
+      opacity: 0;
+    }
+  }
+
+  &:link,
+  &:visited {
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 15px 40px;
+    display: inline-block;
+    border-radius: 100px;
+    transition: all 0.2s;
+    position: absolute;
+  }
+
+  &::after {
+    content: "";
+    display: inline-block;
+    height: 100%;
+    width: 100%;
+    border-radius: 100px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    transition: all 0.4s;
+  }
+
+  // Some weird move in animation
+  &-animated {
+    animation: moveInBottom 5s ease-out;
+    animation-fill-mode: backwards;
+  }
+}
+
+.ani-btn-white {
+  background-color: #fff;
+  color: #777;
+
+  &::after {
+    background-color: #fff;
+  }
+}
+
+@keyframes moveInBottom {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0px);
   }
 }

@@ -25,3 +25,6 @@ pnpm-debug.log*
 # Personal notes and API keys
 tokens
 .env
+
+# Sent uncompressed old images to an ignored file jpeg_images
+jpeg_images
