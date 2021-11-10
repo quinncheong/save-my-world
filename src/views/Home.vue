@@ -110,6 +110,7 @@ export default {
   // min-height: 100vh;
   min-width: 100vw;
   font-size: $variable-font;
+  overflow-x: hidden;
 
   .header {
     height: 100vh;
@@ -118,7 +119,7 @@ export default {
     justify-content: flex-start;
     flex-direction: column;
     max-height: 100vh;
-    padding: 1rem;
+    padding: 0.5rem;
     background-image: url("~@/assets/img/LandingPage3.jpeg");
     background-position: center; /* Center the image */
     background-repeat: no-repeat; /* Do not repeat the image */
@@ -159,6 +160,17 @@ export default {
   .hero {
     position: relative;
     z-index: 1;
+
+    &::after {
+      content: "";
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      // background-color: rgba(21, 20, 51, 0.8);
+      z-index: -1;
+    }
 
     .bg-image-holder {
       top: 0;
@@ -211,27 +223,23 @@ export default {
 }
 
 // Accounting for the different breakpoints
-@media screen and (min-width: 768px) {
-  .home-page-wrapper {
-    width: 80%;
-  }
-}
+// @media screen and (min-width: 768px) {
+//   .home-page-wrapper {
+//     width: 80%;
+//   }
+// }
 
-@media screen and (min-width: 992px) {
-  .home-page-wrapper {
-    width: 70%;
-  }
-}
+// @media screen and (min-width: 992px) {
+//   .home-page-wrapper {
+//     width: 70%;
+//   }
+// }
 
-@media screen and (min-width: 1400px) {
-  .home-page-wrapper {
-    width: 60%;
-  }
-}
-
-.alignment-left {
-  text-align: left;
-}
+// @media screen and (min-width: 1400px) {
+//   .home-page-wrapper {
+//     width: 60%;
+//   }
+// }
 
 #savemyworld {
   color: yellow;
@@ -243,172 +251,6 @@ export default {
 //   // --body: #888;
 //   --white: #ffffff;
 //   // --box-shadow: 0 8px 22px rgba(0,0,0,0.1);
-// }
-
-a {
-  color: var(--dark);
-  text-decoration: none;
-}
-
-.btn {
-  padding: 14px 18px;
-  border-width: 2px;
-  border-radius: 0;
-}
-
-.hero::after {
-  content: "";
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-  // background-color: rgba(21, 20, 51, 0.8);
-  z-index: -1;
-}
-
-.col-img {
-  // background-image: url(../img/cover2.jpg);
-  background-position: center;
-  background-size: cover;
-  min-height: 500px;
-}
-
-form input.form-control {
-  height: 56px;
-}
-
-form .form-control {
-  border: transparent;
-  border-radius: 0;
-  background-color: rgba(0, 0, 0, 0.02);
-}
-
-//for the vertical line
-
-.vl {
-  border-left: 3px solid green;
-  height: auto;
-}
-
-//for the nav tab
-.main {
-  box-sizing: border-box;
-  width: auto;
-  height: auto;
-  position: relative;
-  display: flex;
-
-  li.header-top {
-    width: 100%;
-    display: inline-block;
-    background-color: rgb(17, 16, 16);
-  }
-}
-
-.content {
-  background: rgb(17, 16, 16);
-  color: white;
-  position: absolute;
-  left: 0;
-  display: none;
-  padding: 30px;
-  width: 100%;
-}
-
-.content > p {
-  font-size: 1em;
-  font-weight: 300;
-  margin: 10px;
-}
-
-.main [id^="label"]:checked ~ .content {
-  display: block;
-}
-
-.main input[type="radio"] {
-  display: none;
-}
-
-.main label {
-  padding: 20px 30px;
-}
-
-.main[id^="label"]:checked + label {
-  background-color: black;
-  color: green;
-}
-
-.heading {
-  font-size: 3.5vw;
-  text-shadow: 4px 5px 5px #3f7fbf;
-  // position: absolute;
-  // text-align: center;
-  // mix-blend-mode: screen;
-  animation: fadeIn 2.5s linear forwards;
-}
-
-@keyframes fadeIn {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-
-// .animate{
-//   white-space: nowrap;
-//   overflow: hidden;
-//   border-right: solid 3px rdba(0, 255, 0 , 0.75);
-//   font-size: 28px;
-//   color: rgba(255, 255, 255, 0.7);
-//   animation: animated-text 4s steps(29,end) 1s 1 normal animated-cursor 600ms steps(29,end) infinite;
-// }
-
-// @keyframes animated-text {
-//   0%{
-//     width: 0;
-//   }
-//   to{
-//     width: 472px;
-//   }
-
-// }
-
-// @keyframes animated-cursor {
-//   from{
-//     border-right-color: rgba(0, 255, 0, 0.75);
-//   }
-//   to{
-//     border-right-color: transparent ;
-//   }
-// }
-
-// .heading::before,
-// .heading::after {
-//   content: "";
-//   position: absolute;
-// }
-
-// .heading {
-//   font-size: clamp(1rem, 3.3vw + 1rem, 4rem);
-// }
-// .heading::before {
-//   background: teal;
-//   animation: typewriter 1s ease;
-// }
-
-// @keyframes typewriter {
-//   to {
-//     left: 100%;
-//   }
-// }
-
-// .bottom-left {
-//   position: absolute;
-//   bottom: 8px;
-//   left: 16px;
 // }
 </style>
 
