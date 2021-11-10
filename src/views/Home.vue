@@ -17,12 +17,12 @@
       <!-- SVG birds animation -->
       <animated-birds />
 
-      <a href="#main" class="header-arrow">
+      <a @click="$refs.main.$el.scrollIntoView()" class="header-arrow">
         <span></span>
       </a>
     </header>
     <!-- About us -->
-    <about id="main" />
+    <about id="main" ref="main" />
     <!-- Block about what the site is -->
     <!-- <div class="row">
       <div class="col-1"></div>
@@ -34,7 +34,7 @@
     </div> -->
 
     <!--How we can play our part-->
-    <future />
+    <future ref="future" />
     <!-- remove chart component first because its buggy -->
     <!-- <three-rs /> -->
 
@@ -49,7 +49,7 @@
         <h1 class="typewriter-text">Start Learning Now!</h1>
         <br />
         <br />
-        <button @click="pushToQuiz()" class="btn btn-dark rounded">
+        <button @click="pushToQuiz()" class="test test-white">
           Take me away
           <font-awesome-icon :icon="['fas', 'hand-holding-heart']" />
         </button>
@@ -106,9 +106,9 @@ export default {
 </script>
 
 <style lang="scss">
+@include animated-button('test');
 .home-page-wrapper {
   // min-height: 100vh;
-  min-width: 100vw;
   font-size: $variable-font;
   overflow-x: hidden;
 
@@ -141,6 +141,7 @@ export default {
 
     .header-arrow {
       margin-top: auto;
+      margin-bottom: 30px;
       cursor: pointer;
       animation: 2.5s infinite alternate bouncer;
 
@@ -201,7 +202,8 @@ export default {
   }
 
   .start-learning {
-    padding: 3rem;
+    padding: 0.5rem;
+    height: 300px;
     background: #9796f0; /* fallback for old browsers */
     background: -webkit-linear-gradient(
       to right,
@@ -217,9 +219,23 @@ export default {
     flex-direction: column;
 
     .start-learning-content {
-      width: 50px;
+      // width: 50px;
     }
   }
+
+  .typewriter {
+    margin: auto;
+    // width: 60%;
+  }
+
+  .test {
+    @extend .ani-btn;
+  }
+
+  .test-white {
+    @extend .ani-btn-white;
+  }
+  
 }
 
 // Accounting for the different breakpoints
@@ -228,6 +244,11 @@ export default {
 //     width: 80%;
 //   }
 // }
+@media screen and (max-width: 768px) {
+  .typewriter {
+    width: 90%;
+  }
+}
 
 // @media screen and (min-width: 992px) {
 //   .home-page-wrapper {
@@ -244,13 +265,4 @@ export default {
 #savemyworld {
   color: yellow;
 }
-
-// :root {
-//   --primary: #0d6efd;
-//   --dark: #21252f;
-//   // --body: #888;
-//   --white: #ffffff;
-//   // --box-shadow: 0 8px 22px rgba(0,0,0,0.1);
-// }
 </style>
-

@@ -103,7 +103,7 @@ a {
 }
 
 .app-wrapper {
-  overflow-x: hidden;
+  // overflow-x: hidden;
 }
 
 .app-content-wrapper {

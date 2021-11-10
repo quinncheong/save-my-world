@@ -66,20 +66,23 @@
       <div class="col-3 bg-white result-col">
         <div class="row">
           <div class="col">
-            <p class="text-dark text-start mt-2 fs-6">Search results: <span v-if="resultArray.length>0" ><b>{{resultArray.length}}</b></span></p>
-            <hr/>
+            <p class="text-dark text-start mt-2 fs-6">
+              Search results:
+              <span v-if="resultArray.length > 0"
+                ><b>{{ resultArray.length }}</b></span
+              >
+            </p>
+            <hr />
           </div>
         </div>
         <div v-if="resultArray != []">
-         
-        <div v-for="result in resultArray" :key="result" class="row">
-          <div class="col">
-            <p class="text-dark text-start ">{{result}}</p>
-          </div>
+          <div v-for="result in resultArray" :key="result" class="row">
+            <div class="col">
+              <p class="text-dark text-start">{{ result }}</p>
+            </div>
 
-          <hr class='lead'>
-        </div>
-          
+            <hr class="lead" />
+          </div>
         </div>
 
         <div v-else class="loader"></div>
@@ -101,11 +104,8 @@
       </div>
     </div>
 
-
     <!-- Disaster infographic -->
-    <Disasterinfo/>
-
-   
+    <Disasterinfo />
   </div>
 </template>
 
@@ -118,7 +118,7 @@ import Disasterinfo from "@/components/Visualise/Disasterinfo.vue";
 
 export default {
   name: "Visualise",
-  components: {Disasterinfo},
+  components: { Disasterinfo },
   data() {
     return {
       loading: false,
@@ -444,8 +444,7 @@ export default {
 <style lang="scss" scoped>
 .visualisation-wrapper {
   @extend %page-wrapper;
-    font-size: $variable-font;
-  
+  font-size: $variable-font;
 
   ::-webkit-scrollbar {
     width: 0px;
@@ -487,8 +486,6 @@ export default {
       animation: appear 6s ease;
       overflow: hidden;
     }
-
-  
   }
 
   .map {
@@ -498,8 +495,7 @@ export default {
     height: 100%;
   }
 
-  .result-col{
-
+  .result-col {
   }
 
   .console {
@@ -613,7 +609,7 @@ export default {
 
 @media screen and (min-width: 1268px) {
   .visualisation-wrapper {
-    width: 70%;
+    width: 60%;
   }
 }
 </style>
