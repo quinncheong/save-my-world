@@ -282,3 +282,11 @@ font-family: "Sora", sans-serif;
   justify-content: space-between;
   font-size: $variable-font;
 }
+
+// 404 animations
+
+@keyframes floating {
+  from { transform: translateY(0px); }
+  65%  { transform: translateY(15px); }
+  to   { transform: translateY(-0px); }
+}

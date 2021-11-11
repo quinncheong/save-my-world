@@ -34,13 +34,6 @@ $nunito-font: 'Nunito', sans-serif;
     }
 }
 
-// keyrames
-@keyframes floating {
-    from { transform: translateY(0px); }
-    65%  { transform: translateY(15px); }
-    to   { transform: translateY(-0px); }
-}
-
 
 .title{
   color: white;
