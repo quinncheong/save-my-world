@@ -1,16 +1,4 @@
 <template>
-  <!-- <div class="bg-transparent">
-    <div class="container">
-      <div v-if="nothing">
-        <h6 class="class-title my-1" style="color: yellow"><strong>{{title}}</strong></h6>
-        <p class="card-text" style="font-size: 15px">{{description}}</p>
-      </div>
-      <div v-else class="card-body">
-        <h6 class="class-title my-1" style="color: yellow"><strong>{{ image.title }}</strong></h6>
-        <p class="card-text" style="font-size: 15px">{{ image.description }}</p>
-      </div>
-    </div>
-  </div> -->
   <div class="container my-2">
     <div class="card bg-transparent">
       <!-- <div class="img-container"></div> -->
