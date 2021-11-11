@@ -33,6 +33,12 @@ export default {
 
 <style lang="scss" scoped>
 
+  .container{
+    padding-left: 0px;
+    padding-right: 0px;
+    margin: 0 auto;
+  }
+
   .card-body{
     text-align: left;
 
@@ -42,23 +48,13 @@ export default {
     }
   }
   .card {
-    max-width: 800px;
     box-shadow: 2px 2px 5px #9E9E9E, -1px -1px 5px #9E9E9E;
-    border-radius: 3px;
-    display: grid;
-    grid-template-column: repeat(5, 1fr);
+    // display: grid;
+    // grid-template-column: repeat(5, 1fr);
   }
-  .card .img-container {
-    width: 230px;
-    height: 100%;
-    grid-column: 2;
-    background-color: #c1b7b4;
-    background-image: url('https://www.dropbox.com/s/7d5qt5wb2xpqeww/city-street.jpg?raw=1');
-    background-size: cover;
-    background-position: center center;
-  }
+  
   .card-content {
-    grid-column: 3 / 5;
+    // grid-column: 3 / 5;
     padding: 10px 30px;
     border-left: 1px solid #ccc;
   }
@@ -100,17 +96,30 @@ export default {
     color: #555;
   }
 
-  @media only screen and (max-width:600px) {
-    .card {
-      display: block;
-    }
-    .card .img-container {
-      height: 250px;
+  @media screen and (max-width: 576px) {
+    .container {
       width: 100%;
     }
-    .card-content {
-      border: 0;
-      border-top: 1px solid #ccc;
+  }
+
+  @media screen and (max-width: 768px) {
+    .container {
+      width: 100%;
     }
   }
+
+  // display 70% width on large screen sizes
+  @media screen and (max-width: 992px) {
+    .container {
+      width: 100%;
+    }
+  }
+
+  // // display 70% width on extra large screen sizes
+  @media screen and (max-width: 1200px) {
+    .container {
+      width: 100%;
+    }
+  }
+
 </style>
