@@ -1,10 +1,14 @@
 <template>
   <!-- video -->
   <h4><strong>Video Gallery</strong></h4>
+  <!-- <h1><font-awesome-icon :icon="['fas', 'video']" /></h1> -->
     <p style="font-size: 15px">
-      <i>Watch these videos to better understand about Climate Change</i>
+      <!-- <i class="fas fa-book"></i> -->
+      
+      <i>Watch these videos to better understand about Climate Change
+      </i>
     </p>
-  <div class="main">
+  <div class="video">
     <ul class="cards">
       <li 
       :key="index"
@@ -72,23 +76,6 @@ export default {
 
 <style lang="scss" scoped>
 
-  @keyframes appear {
-      from {
-        opacity: 0;
-      }
-      to {
-        opacity: 1;
-      }
-    }
-
-  .main{
-    animation: appear 5s ease-in;
-    max-width: 1200px;
-    margin: 0 auto;
-    line-height: 1.7;
-    font-family: "Sora", sans-serif;
-  }
-
   h1 {
       font-size: 24px;
       font-weight: 400;
@@ -104,16 +91,6 @@ export default {
     
   }
 
-  .cards_item {
-    display: flex;
-    padding: 1rem;
-    transition: all 0.3s ease;
-  }
-
-  .cards_item:hover {
-        box-shadow: none;
-        transform: translateY(15px);
-      }
 
   @media (min-width: 40rem) {
     .cards_item {

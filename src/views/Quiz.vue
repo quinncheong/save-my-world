@@ -3,7 +3,9 @@
     <div v-if="!started">
       <div class="mb-3">
         <h4 class="mb-2"><strong>Quiz Time</strong></h4>
+        <!-- <font-awesome-icon icon="fa-solid fa-comments-question-check" /> -->
         <p class="mb-2" style="font-size: 15px">
+          
           <i
             >Challenge yourself with our quiz! Answer all the questions to the
             best of your capabilities! May the force be with you.
@@ -11,7 +13,7 @@
             </i
           >
         </p>
-        <button class="btn btn-light my-2" @click="startQuiz()">
+        <button class="quizBtn btn btn-light my-2" @click="startQuiz()">
           Start Quiz
         </button>
       </div>
@@ -60,38 +62,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
-button {
-  transition: all 0.35s ease;
-
-  &:hover {
-    box-shadow: none;
-    transform: translateY(10px);
-  }
-}
-
-.quiz-wrapper {
-  animation: appear 1s ease-in;
-  line-height: 1.7;
-  font-family: "Sora", sans-serif;
-  height: 100%;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  margin: auto;
-  justify-content: space-between;
-  font-size: $variable-font;
-}
-
-@keyframes appear {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
 // display 70% width on desktop
 @media screen and (min-width: 768px) {
   .quiz-wrapper {

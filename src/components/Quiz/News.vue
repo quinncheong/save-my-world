@@ -1,6 +1,6 @@
 <template>
   <!-- header -->
-  <div class="image-change-wrapper">
+  <div class="news-change-wrapper">
     <h5 class="mb-3" style="text-align: left">
       <strong>Overview: Weather, Global Warming and Climate Change</strong>
     </h5>
@@ -30,7 +30,7 @@
             </p>
             <p class="mb-1 text-center">
               <a
-                class="text-success  badge border py-1"
+                class="buttonText text-success badge border py-1"
                 href="https://www.nature.com/articles/d41586-021-02990-w"
                 >{{ srcset.buttonText }}</a
               >
@@ -72,31 +72,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  @keyframes appear {
-    from {
-      opacity: 0;
-    }
-    to {
-      opacity: 1;
-    }
-  }
-
-  a {
-    // box-shadow: var(--box-shadow);
-    // background-color: var(--white);
-    // padding: 25px;
-    transition: all 0.35s ease;
-
-    &:hover {
-      box-shadow: none;
-      transform: translateY(5px);
-    }
-  }
-
-  .image-change-wrapper{
-    animation: appear 3s ease-in;
-  }
-
   p {
     text-align: left;
     font-size: 15px;
