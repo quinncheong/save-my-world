@@ -32,11 +32,13 @@
       <img class="homeimg" src="@/assets/img/logo5.png" alt="Globe Icon" />
     </router-link>
 
-    <template :key="route.path" v-for="(route, index) in routes">
+    <!--added in a class called topnav (remvoed)-->
+    <template :key="route.path" v-for="(route, index) in routes" >
       <router-link v-if="route.meta.visible" :to="route.path.toLowerCase()">
-        {{ route.name }}
+        {{ route.name }} 
       </router-link>
     </template>
+
   </nav>
 
   <nav class="nav small" v-else>
@@ -45,9 +47,32 @@
       <router-link id="home" to="/">
         <img class="homeimg" src="@/assets/img/logo5.png" alt="Globe Icon" />
       </router-link>
-      <button @click="showButton()" class="nav-dropdown-button btn btn-success">
+      <!--initial drop down--> 
+      <!-- <button @click="showButton()" class="nav-dropdown-button btn btn-success">
         Dropdown
-      </button>
+      </button> -->
+
+      <!--top nav-->
+
+      <input @click="showButton()" type='checkbox' id='check' class='checkbtn'>
+      <label for='check'>
+        <i class='fas fa-bars nav-label'>
+          <div class='menu'></div>
+          <div class='menu'></div>
+          <div class='menu'></div>
+        </i>
+      </label>
+
+<!-- 
+      <input @click="showButton()" type='checkbox' id='check' class='checkbtn'>
+      <label for='check'>
+        <span class='fas fa-bars nav-label'>x</span>
+      </label> -->
+
+    
+
+
+
     </div>
     <div :class="dropdownClass">
       <router-link
@@ -192,5 +217,111 @@ export default {
       }
     }
   }
+
+//   .checkbtn{
+//   font-size: 30px; 
+//   color: white; 
+//   line-height:80px;
+//   margin-right: 40px;
+//   float: right; 
+//   display: None;
+  
+// }
+
 }
+
+.checkbtn{
+  font-size: 30px; 
+  color: white; 
+  line-height:80px;
+  margin-right: 40px;
+  float: right; 
+  display: none;
+  // content: ''
+
+}
+
+.nav-label{
+  border: 1px solid white;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+}
+
+.nav-label i, 
+.nav-label i::before,
+.nav-label i::after{
+  display: block;
+  background: white;
+  height: 2px;
+  width: 2em;
+  border-radius: 2px;
+  position: relative;
+}
+
+.nav-label i::before,
+.nav-label i::after{
+  content: '';
+  position: absolute; 
+}
+
+.nav-label i::before{
+  bottom: 10px;
+  
+}
+
+.nav-label i::after{
+  top : 10px;
+  
+}
+
+//with the use of span 
+
+// .nav-label span, 
+// .nav-label span::before,
+// .nav-label span::after{
+//   display: block;
+//   background: white;
+//   height: 2px;
+//   width: 2em;
+//   border-radius: 2px;
+//   position: relative;
+// }
+
+// .nav-label span::before,
+// .nav-label span::after{
+//   content: '';
+//   position: absolute; 
+// }
+
+// .nav-label span::before{
+//   bottom: 7px;
+  
+// }
+
+// .nav-label span::after{
+//   top : 7px;
+  
+// }
+
+.menu{
+  width: 35px;
+  height: 3px;
+  background-color: rgb(255, 255, 255);
+  // content: '';
+  // padding: 10px;
+  margin: 3px;
+  padding: 1px;
+}
+
+//for the responsiveness of the top nav 
+// @media screen and (max-width: 600px) {
+//   .topnav a:not(:first-child) {display: none;}
+//   .topnav a.icon {
+//     float: right;
+//     display: block;
+//   }
+// }
 </style>
