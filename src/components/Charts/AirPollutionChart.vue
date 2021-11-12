@@ -13,37 +13,74 @@
 
         <p class="card-text weight">
           <small class="text-muted">
-            <span class="text-primary weight">Temperature</span>  <!--need to change-->
-            <span class="text-muted weight"> (°C)</span>
+            <span class="text-primary weight">Pollutant Concentration</span>
+            <!--need to change-->
+            <span class="text-muted weight"> (μg/m3)</span>
           </small>
           <br />
-          The chart shows the <span class='text-primary weight'>3 crucial emissions (CO, NO2 and SO2)</span> for the past year.
+          The chart shows the
+          <span class="text-primary weight"
+            >3 crucial emissions (CO, NO2 and SO2)</span
+          >
+          for the past year.
         </p>
       </div>
     </div>
 
-    <form  @submit="handleClick">
-      <p>Select a country:</p>
-      <div class='form-box'> 
-      <label class="form-label">
-        <!-- <p>Select a country:</p> -->
-         <!-- <select data-live-search="true" class=" include-margin selectpicker"  v-model="country" > -->
+    <!--this is the correct one-->
 
-           <!--the following drop down list is correct-->
-        <select class='include-margin' v-model="country">
+    <!-- <form @submit="handleClick"> -->
+      <!-- <p>Select a country:</p> -->
+      <!-- <div class="form-box"> -->
+        <!-- <div class= 'container'> -->
+        <!-- <label class="form-label"> -->
+          <!-- <p>Select a country:</p> -->
+
+          <!-- <select data-live-search="true" class=" include-margin selectpicker"  v-model="country" > -->
+          <!--the following drop down list is correct-->
+          <!-- <select class='include-margin' v-model="country">
           <option
             :key="country.name"
             v-for="country in countries"
             :value="country.name"
-          >
+          > 
             {{ country.name }}
           </option>
-        </select>
+        </select> -->
+        <!-- </label> -->
+        <!-- </div> -->
+        <!-- <button class="btn btn-success search-btn">Get Data</button> -->
+      <!-- </div> -->
 
+      <!-- <label>
+        Select a year (must be 2020 only):
+        <input v-model="year" type="number" required />
+      </label> -->
+      <!-- <button class="btn btn-success search-btn">Get Data</button> -->
+    <!-- </form> -->
 
+    <!--seeing how to make the bar responsive  -->
 
-      </label>
-      <button class="btn btn-success search-btn">Get Data</button>
+    <form @submit="handleClick">
+      <p>Select a country:</p>
+      <div class="form-box">
+        <!-- <div class= 'container'> -->
+        <label class="form-label">
+          <!-- <p>Select a country:</p> -->
+          <!-- <select data-live-search="true" class=" include-margin selectpicker"  v-model="country" > -->
+          <!--the following drop down list is correct-->
+          <select class="include-margin md font resp" v-model="country" >
+            <option class='font resp' 
+              :key="country.name"
+              v-for="country in countries"
+              :value="country.name"
+            >
+              {{ country.name }}
+            </option>
+          </select>
+        </label>
+        <!-- </div> -->
+        <button class="btn btn-success search-btn">Get Data</button>
       </div>
 
       <!-- <label>
@@ -51,9 +88,7 @@
         <input v-model="year" type="number" required />
       </label> -->
       <!-- <button class="btn btn-success search-btn">Get Data</button> -->
-
     </form>
-
   </div>
 </template>
 
@@ -68,7 +103,6 @@ import iso from "iso-3166-1"; // Library to key in country name and get iso no.
 // import Vue from 'vue';
 // import { DropDownListPlugin } from '@syncfusion/ej2-vue-dropdowns';
 // Vue.use(DropDownListPlugin) //doesnt exit for  vue3 need to do sth liek createApp(App).use(store)
-
 
 export default {
   name: "App",
@@ -324,7 +358,7 @@ export default {
     };
   },
 
-  //added 
+  //added
   // mounted(){
   //   const plugin = document.createElement("script");
   //   plugin.setAttribute(
@@ -336,9 +370,6 @@ export default {
   // }
 };
 </script>
-
-
-
 
 <style lang="scss" scoped>
 .temp-chart-bg {
@@ -352,8 +383,7 @@ export default {
   width: 100%;
 }
 
-
-.search-btn{
+.search-btn {
   background: green;
   color: #fff;
   height: 28px;
@@ -362,22 +392,57 @@ export default {
   border-radius: 3px;
   padding: 5px;
   font-size: 15px;
+  
 }
-.search-btn:hover{
+.search-btn:hover {
   border: 2px solid white;
 }
 
-.weight{
+.weight {
   font-weight: bold;
 }
 
-.include-margin{
+.include-margin {
   margin: 5px;
   font-size: 18px;
-  
 }
-.form-box{
+.form-box {
   display: inline;
+  // box-shadow: 0 10px 25px rgb(79, 78, 78);
 }
+
+// select {
+//   padding: 0px 10px;
+// }
+
+@media screen and (max-width: 600px) {
+  .font{
+    font-size: $variable-font;
+  }
+
+  .form-box{
+    font-size: $variable-font;
+    // width: 16.66%;
+    
+  }
+  
+  .search-btn{
+    font-size: $variable-font;
+    // margin: 5px;
+  }
+
+  .resp{
+    width: 100%
+  }
+}
+
+select{
+  // width: 100px;
+  text-overflow: ellipsis;
+}
+
+
+
+
 
 </style>

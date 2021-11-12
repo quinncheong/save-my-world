@@ -27,7 +27,7 @@
       <div class='form-box'>
       <label class="form-label">
         <!-- Select a country: -->
-        <select class='include-margin' v-model="country">
+        <select class='include-margin md resp font' v-model="country">
           <option
             :key="country.name"
             v-for="country in countries"
@@ -363,6 +363,32 @@ export default {
   margin: 5px;
   font-size: 18px;
 }
+
+@media screen and (max-width: 600px) {
+  .font{
+    font-size: $variable-font;
+  }
+
+  .form-box{
+    font-size: $variable-font;
+  }
+  
+  .search-btn{
+    font-size: $variable-font;
+  }
+
+  .resp{
+    width: 100%;
+  }
+}
+
+select{
+  // width: 100px;
+  text-overflow: ellipsis;
+}
+
+
+
 
 
 </style>
