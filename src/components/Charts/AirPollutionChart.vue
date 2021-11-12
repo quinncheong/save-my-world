@@ -30,15 +30,15 @@
     <!--this is the correct one-->
 
     <!-- <form @submit="handleClick"> -->
-      <!-- <p>Select a country:</p> -->
-      <!-- <div class="form-box"> -->
-        <!-- <div class= 'container'> -->
-        <!-- <label class="form-label"> -->
-          <!-- <p>Select a country:</p> -->
+    <!-- <p>Select a country:</p> -->
+    <!-- <div class="form-box"> -->
+    <!-- <div class= 'container'> -->
+    <!-- <label class="form-label"> -->
+    <!-- <p>Select a country:</p> -->
 
-          <!-- <select data-live-search="true" class=" include-margin selectpicker"  v-model="country" > -->
-          <!--the following drop down list is correct-->
-          <!-- <select class='include-margin' v-model="country">
+    <!-- <select data-live-search="true" class=" include-margin selectpicker"  v-model="country" > -->
+    <!--the following drop down list is correct-->
+    <!-- <select class='include-margin' v-model="country">
           <option
             :key="country.name"
             v-for="country in countries"
@@ -47,38 +47,37 @@
             {{ country.name }}
           </option>
         </select> -->
-        <!-- </label> -->
-        <!-- </div> -->
-        <!-- <button class="btn btn-success search-btn">Get Data</button> -->
-      <!-- </div> -->
+    <!-- </label> -->
+    <!-- </div> -->
+    <!-- <button class="btn btn-success search-btn">Get Data</button> -->
+    <!-- </div> -->
 
-      <!-- <label>
+    <!-- <label>
         Select a year (must be 2020 only):
         <input v-model="year" type="number" required />
       </label> -->
-      <!-- <button class="btn btn-success search-btn">Get Data</button> -->
+    <!-- <button class="btn btn-success search-btn">Get Data</button> -->
     <!-- </form> -->
 
     <!--seeing how to make the bar responsive  -->
 
     <form @submit="handleClick">
-      <p>Select a country:</p>
-      <div class="form-box">
+      <p class="mb-2">Select a country:</p>
+      <div class="form-box mb-3">
         <!-- <div class= 'container'> -->
-        <label class="form-label">
-          <!-- <p>Select a country:</p> -->
-          <!-- <select data-live-search="true" class=" include-margin selectpicker"  v-model="country" > -->
-          <!--the following drop down list is correct-->
-          <select class="include-margin md font resp" v-model="country" >
-            <option class='font resp' 
-              :key="country.name"
-              v-for="country in countries"
-              :value="country.name"
-            >
-              {{ country.name }}
-            </option>
-          </select>
-        </label>
+        <!-- <p>Select a country:</p> -->
+        <!-- <select data-live-search="true" class=" include-margin selectpicker"  v-model="country" > -->
+        <!--the following drop down list is correct-->
+        <select class="w-50 mr-3" v-model="country">
+          <option
+            class="font resp"
+            :key="country.name"
+            v-for="country in countries"
+            :value="country.name"
+          >
+            {{ country.name }}
+          </option>
+        </select>
         <!-- </div> -->
         <button class="btn btn-success search-btn">Get Data</button>
       </div>
@@ -392,57 +391,53 @@ export default {
   border-radius: 3px;
   padding: 5px;
   font-size: 15px;
-  
 }
+
+// change background color on horver
 .search-btn:hover {
-  border: 2px solid white;
+  background: #fff;
+  color: black;
+  font-weight: bold;
 }
 
 .weight {
   font-weight: bold;
 }
 
-.include-margin {
-  margin: 5px;
-  font-size: 18px;
-}
 .form-box {
-  display: inline;
-  // box-shadow: 0 10px 25px rgb(79, 78, 78);
+  display: flex;
+  align-items: top;
+  justify-content: center;
+  gap: 10px;
 }
 
 // select {
 //   padding: 0px 10px;
 // }
 
-@media screen and (max-width: 600px) {
-  .font{
-    font-size: $variable-font;
-  }
+// @media screen and (max-width: 600px) {
+//   .font{
+//     font-size: $variable-font;
+//   }
 
-  .form-box{
-    font-size: $variable-font;
-    // width: 16.66%;
-    
-  }
-  
-  .search-btn{
-    font-size: $variable-font;
-    // margin: 5px;
-  }
+//   .form-box{
+//     font-size: $variable-font;
+//     // width: 16.66%;
 
-  .resp{
-    width: 100%
-  }
-}
+//   }
 
-select{
+//   .search-btn{
+//     font-size: $variable-font;
+//     // margin: 5px;
+//   }
+
+//   .resp{
+//     width: 100%
+//   }
+// }
+
+select {
   // width: 100px;
   text-overflow: ellipsis;
 }
-
-
-
-
-
 </style>
