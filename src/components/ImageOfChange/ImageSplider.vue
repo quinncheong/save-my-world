@@ -89,8 +89,8 @@ export default defineComponent({
       rewind: true,
       gap: "1rem",
       pagination: false,
-      // fixedWidth: 100,
-      // fixedHeight: 70,
+      fixedWidth: 100,
+      fixedHeight: 70,
       cover: true,
       focus: "center",
       isNavigation: true,
@@ -101,20 +101,21 @@ export default defineComponent({
         // Desktop
         1024: {
           perPage: 5,
-          gap: ".7rem",
-          height: "3rem",
+          // gap: ".7rem",
+          // width: "100em",
+          // height: "3rem",
         },
         // Tablet
         768: {
           perPage: 5,
-          gap: ".7rem",
-          height: "2rem",
+          // gap: ".7rem",
+          // height: "3rem",
         },
         // Mobile
         320: {
           perPage: 3,
-          gap: ".5rem",
-          height: "2rem",
+          // gap: ".5rem",
+          // height: "3rem",
         },
       },
     };
