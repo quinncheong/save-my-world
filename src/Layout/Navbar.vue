@@ -89,9 +89,12 @@ export default {
     },
   },
   created() {
-    //   track the width on resize
+    if (window.innerWidth < 760) {
+      this.fullView = false;
+    }
+      //   track the width on resize
     window.addEventListener("resize", () => {
-      if (window.innerWidth > 800) {
+      if (window.innerWidth > 760) {
         //   reset it if you expand the screen
         this.dropdownShown = false;
         this.dropdownClass = "dropdown-content";
@@ -122,7 +125,7 @@ export default {
   background-color: $bg-color-primary;
   display: flex;
   justify-content: flex-end;
-  font-size: calc($font-size-primary * 0.6) !important;
+  font-size: calc($font-size-primary * 0.5);
 
   #home {
     margin-right: auto;
