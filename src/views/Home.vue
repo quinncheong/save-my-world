@@ -244,11 +244,12 @@ export default {
 //     width: 80%;
 //   }
 // }
-@media screen and (max-width: 768px) {
-  .typewriter {
-    width: 90%;
-  }
-}
+
+// @media screen and (max-width: 768px) {
+//   .typewriter {
+//     width: 90%;
+//   }
+// }
 
 // @media screen and (min-width: 992px) {
 //   .home-page-wrapper {
@@ -261,6 +262,12 @@ export default {
 //     width: 60%;
 //   }
 // }
+
+@media screen and (max-width: 768px) {
+  .typewriter {
+    width: 90%;
+  }
+}
 
 #savemyworld {
   color: yellow;

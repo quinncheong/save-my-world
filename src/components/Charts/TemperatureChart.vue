@@ -347,7 +347,7 @@ export default {
 .search-btn{
   background: green;
   color: #fff;
-  height: 28px;
+  height: 26px;
   // width: 100px;
   border: none;
   border-radius: 3px;
@@ -388,9 +388,8 @@ export default {
 //   }
 // }
 
-select{
-  // width: 100px;
-  text-overflow: ellipsis;
+.add-margin{
+  margin: 5px;
 }
 
 </style>
