@@ -23,12 +23,15 @@
     </div>
 
     <form @submit="handleClick">
-      <p>Select a country:</p>
-      <div class='form-box'>
-      <label class="form-label">
-        <!-- Select a country: -->
-        <select class='include-margin resp font' v-model="country">
+      <p class="mb-2">Select a country:</p>
+      <div class="form-box mb-3">
+        <!-- <div class= 'container'> -->
+        <!-- <p>Select a country:</p> -->
+        <!-- <select data-live-search="true" class=" include-margin selectpicker"  v-model="country" > -->
+        <!--the following drop down list is correct-->
+        <select class="w-50 mr-3" v-model="country">
           <option
+            class="font resp"
             :key="country.name"
             v-for="country in countries"
             :value="country.name"
@@ -36,16 +39,15 @@
             {{ country.name }}
           </option>
         </select>
-      </label>
-  
+        <!-- </div> -->
+        <button class="btn btn-success search-btn">Get Data</button>
+      </div>
 
-      <!-- <label class="form-label">
-        Select a year (must be multiples of 20):
+      <!-- <label>
+        Select a year (must be 2020 only):
         <input v-model="year" type="number" required />
       </label> -->
-    
-      <button class="btn btn-success add-margin search-btn">Get Data</button>
-      </div>
+      <!-- <button class="btn btn-success search-btn">Get Data</button> -->
     </form>
   </div>
 </template>
@@ -64,7 +66,7 @@ export default {
   },
   setup() {
     const chartRef = ref(null);
-    const country = ref("");
+    const country = ref("Singapore");
     const year = ref(2020);
 
     const chartYears = {
@@ -352,48 +354,42 @@ export default {
   padding: 5px;
   font-size: 15px;
 }
-.search-btn:hover{
-  border: 2px solid white;
+
+// change background color on horver
+.search-btn:hover {
+  background: #fff;
+  color: black;
+  font-weight: bold;
 }
 
-.form-box{
-  display: inline;
+
+.form-box {
+  display: flex;
+  align-items: top;
+  justify-content: center;
+  gap: 10px;
 }
 
-.include-margin{
-  margin: 5px;
-  font-size: 18px;
-}
+// @media screen and (max-width: 600px) {
+//   .font{
+//     font-size: $variable-font;
+//   }
 
-@media screen and (max-width: 600px) {
-  .font{
-    font-size: $variable-font;
-  }
-
-  .form-box{
-    font-size: $variable-font;
-  }
+//   .form-box{
+//     font-size: $variable-font;
+//   }
   
-  .search-btn{
-    font-size: $variable-font;
-  }
+//   .search-btn{
+//     font-size: $variable-font;
+//   }
 
-  .resp{
-    width: 100%;
-  }
-}
+//   .resp{
+//     width: 100%;
+//   }
+// }
 
 .add-margin{
   margin: 5px;
-}
-
-
-
-
-
-select{
-  // width: 100px;
-  text-overflow: ellipsis;
 }
 
 </style>
