@@ -66,9 +66,16 @@ export default {
 <style lang="scss" scoped>
 
 .quiz-image{
-  width: 200px;
-  height: 200px;
+  width: 100px;
+  height: 100px;
 }
+
+@media screen and (min-width: 320px) {
+  .quiz-wrapper {
+    width: 90%;
+  }
+}
+
 
 // display 70% width on desktop
 @media screen and (min-width: 768px) {

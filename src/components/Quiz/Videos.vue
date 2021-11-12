@@ -78,8 +78,8 @@ export default {
 <style lang="scss" scoped>
 
   .video-img{
-    width: 350px;
-    height: 300px;
+    width: 150px;
+    height: 150px;
   }
 
   h1 {
