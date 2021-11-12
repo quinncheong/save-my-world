@@ -57,7 +57,7 @@ export default defineComponent({
         // Mobile
         320: {
           perPage: 3,
-          gap: "10px",
+          gap: "5px",
           height: "100%",
         },
         // Tablet
@@ -89,33 +89,33 @@ export default defineComponent({
       rewind: true,
       gap: "1rem",
       pagination: false,
-      fixedWidth: 110,
-      fixedHeight: 70,
+      // fixedWidth: 100,
+      // fixedHeight: 70,
       cover: true,
       focus: "center",
       isNavigation: true,
       updateOnMove: true,
-      perPage: 4,
+      perPage: 5,
       arrows: false,
       breakpoints: {
-        // Mobile
-        320: {
-          perPage: 3,
-          gap: "10px",
-          height: "100%",
+        // Desktop
+        1024: {
+          perPage: 5,
+          gap: ".7rem",
+          height: "3rem",
         },
         // Tablet
         768: {
-          perPage: 4,
-          gap: "0.5rem",
-          height: "100%",
+          perPage: 5,
+          gap: ".7rem",
+          height: "2rem",
         },
-        // Desktop
-        // 1024: {
-        //     perPage: 3,
-        //     gap: "0px",
-        //     height: "100%"
-        // }
+        // Mobile
+        320: {
+          perPage: 3,
+          gap: ".5rem",
+          height: "2rem",
+        },
       },
     };
 
