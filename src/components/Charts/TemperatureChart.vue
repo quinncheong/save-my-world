@@ -27,7 +27,7 @@
       <div class='form-box'>
       <label class="form-label">
         <!-- Select a country: -->
-        <select class='include-margin md resp font' v-model="country">
+        <select class='include-margin resp font' v-model="country">
           <option
             :key="country.name"
             v-for="country in countries"
@@ -37,13 +37,14 @@
           </option>
         </select>
       </label>
+  
 
       <!-- <label class="form-label">
         Select a year (must be multiples of 20):
         <input v-model="year" type="number" required />
       </label> -->
-
-      <button class="btn btn-success search-btn">Get Data</button>
+    
+      <button class="btn btn-success add-margin search-btn">Get Data</button>
       </div>
     </form>
   </div>
@@ -344,7 +345,7 @@ export default {
 .search-btn{
   background: green;
   color: #fff;
-  height: 28px;
+  height: 26px;
   // width: 100px;
   border: none;
   border-radius: 3px;
@@ -382,13 +383,17 @@ export default {
   }
 }
 
-select{
-  // width: 100px;
-  text-overflow: ellipsis;
+.add-margin{
+  margin: 5px;
 }
 
 
 
 
+
+select{
+  // width: 100px;
+  text-overflow: ellipsis;
+}
 
 </style>

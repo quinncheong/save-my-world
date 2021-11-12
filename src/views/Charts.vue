@@ -18,23 +18,36 @@
         @click="setSelectedChart(chart.id)"
       />
     </div>
+
+
+    
     <div v-if="selectedChart === 0"></div>
-    <div v-else-if="selectedChart === 1">
-      <iframe src="https://datahub.io/core/glacier-mass-balance/view/0" width="100%" height="475px" frameborder="0"></iframe>
+    <div v-else-if="selectedChart === 1
+    ">
+      <!-- <iframe src="https://datahub.io/core/glacier-mass-balance/view/0" width="100%" height="475px" frameborder="0"></iframe>
+
+      <div class="card mt-4">
+      <div class="card-body text-dark bold">
+        This chart shows the visualisations of the <span class='bold text-primary'>annual mass balance of glaciers</span> throughout the years and how is has been dwindling at an <span class='bold text-primary'>increasing rate</span>.
+      </div>
+    </div> -->
+    <TempChart />
+    </div>
+
+    <div v-else-if="selectedChart === 2">
+      <AirPollutionChart />
+    </div>
+
+    <div v-else>
+      <!-- <TempChart /> -->
+        <iframe src="https://datahub.io/core/glacier-mass-balance/view/0" width="100%" height="475px" frameborder="0"></iframe>
 
       <div class="card mt-4">
       <div class="card-body text-dark bold">
         This chart shows the visualisations of the <span class='bold text-primary'>annual mass balance of glaciers</span> throughout the years and how is has been dwindling at an <span class='bold text-primary'>increasing rate</span>.
       </div>
     </div>
-    
-    
-    </div>
-    <div v-else-if="selectedChart === 2">
-      <AirPollutionChart />
-    </div>
-    <div v-else>
-      <TempChart />
+
     </div>
     <!-- <MainChart /> -->
 
@@ -67,22 +80,22 @@ export default {
     return {
       charts: [
         {
-          id: 1,
-          name: "Sea Ice",
-          src: "seaIce.png",
-          information: "Explore real-time statistics of the avergae mass of glaciers worldwide",  //added
+          id: 1,  //3
+          name: "Global Temperature",
+          src: "temp.png",
+          information: "Explore real-time statistics of how global temperature have changed over the years", //added
         },
         {
-          id: 2,
+          id: 2,  //2
           name: "Air Pollution",
           src: "Co2.png",
           information: "Visualise real-time statistics of how air pollution has changed over time", //added
         },
         {
-          id: 3,
-          name: "Global Temperature",
-          src: "temp.png",
-          information: "Explore real-time statistics of how global temperature have changed over the years", //added
+          id: 3,   //1
+          name: "Sea Ice",
+          src: "seaIce.png",
+          information: "Explore real-time statistics of the avergae mass of glaciers worldwide",  //added
         },
       ],
       selectedChart: 0,
