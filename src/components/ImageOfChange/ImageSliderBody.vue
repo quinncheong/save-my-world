@@ -1,7 +1,6 @@
 <template>
   <div class="container my-2">
     <div class="card bg-transparent">
-      <!-- <div class="img-container"></div> -->
       <div class="card-content">
         <!-- <h3>BEFORE AND AFTER</h3> -->
         <h4>{{ image.title }}</h4>
@@ -49,12 +48,9 @@ export default {
   }
   .card {
     box-shadow: 2px 2px 5px #9E9E9E, -1px -1px 5px #9E9E9E;
-    // display: grid;
-    // grid-template-column: repeat(5, 1fr);
   }
   
   .card-content {
-    // grid-column: 3 / 5;
     padding: 10px 30px;
     border-left: 1px solid #ccc;
   }
@@ -115,7 +111,7 @@ export default {
     }
   }
 
-  // // display 70% width on extra large screen sizes
+  // display 70% width on extra large screen sizes
   @media screen and (max-width: 1200px) {
     .container {
       width: 100%;
