@@ -1,6 +1,7 @@
 <template>
   <!-- video -->
   <h4><strong>Video Gallery</strong></h4>
+  <img class="video-img my-2" src="../../assets/img/videos.webp" alt="">
   <!-- <h1><font-awesome-icon :icon="['fas', 'video']" /></h1> -->
     <p style="font-size: 15px">
       <!-- <i class="fas fa-book"></i> -->
@@ -75,6 +76,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+
+  .video-img{
+    width: 150px;
+    height: 150px;
+  }
 
   h1 {
       font-size: 24px;

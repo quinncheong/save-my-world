@@ -65,7 +65,7 @@ export default {
   &:hover {
     background-color: $bg-color-secondary;
     cursor: pointer;
-    border: 4px solid white;
+    border: 3px solid white;
 
   }
 

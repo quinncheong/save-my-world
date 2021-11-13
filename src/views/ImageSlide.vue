@@ -26,6 +26,7 @@ export default {
   data() {
     return {
       images: [
+        // This is the first default image
         {
           id: 8,
           // relative import image

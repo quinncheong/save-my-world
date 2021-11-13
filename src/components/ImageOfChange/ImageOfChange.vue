@@ -11,7 +11,11 @@
       Select an image and see how different the world has become
     </p>
     <!-- insert image splider component -->
-    <image-splider @on-active-splide="handleActiveSplide" :get-url="getUrl" :images="images" />
+    <image-splider
+      @on-active-splide="handleActiveSplide"
+      :get-url="getUrl"
+      :images="images"
+    />
     <!-- Body of the image slider component for the text -->
     <image-slider-body :image="selectedImage" />
   </div>
@@ -21,7 +25,7 @@
 // import "img-comparison-slider";
 // import ImgSlider from "./ImgSlider.vue";
 import ImageSplider from "./ImageSplider.vue";
-import ImageSliderBody from './ImageSliderBody.vue';
+import ImageSliderBody from "./ImageSliderBody.vue";
 
 export default {
   name: "imageSlide",
@@ -32,7 +36,16 @@ export default {
   props: ["images"],
   data() {
     return {
-      selectedImage: {}
+      selectedImage: {
+        id: 8,
+        // relative import image
+        img1: "img1A.webp",
+        img2: "img1B.webp",
+        title: "Deforestation in Papua, Indonesia",
+        description:
+          "The 2019 image shows an area of Papua (also known as Western New Guinea) where the forest was cleared between 2011 and 2016, reportedly to make way for plantation agriculture",
+        timeline: "Nov. 20, 2002 - Nov. 27, 2019",
+      },
     };
   },
   methods: {
@@ -44,37 +57,35 @@ export default {
       return require(`../../assets/imagesChanges/${pic}`);
     },
     handleActiveSplide(index) {
-      console.log('handling the onclick event')
-      console.log(index)
+      console.log("handling the onclick event");
+      console.log(index);
       let selected = this.images[index];
-      console.log(selected)
-      this.selectedImage = selected
-    }
+      console.log(selected);
+      this.selectedImage = selected;
+    },
   },
 };
 </script>
 
 <style lang="scss" scoped>
-
-  // display 70% width on desktop
-  @media screen and (min-width: 768px) {
-    .image-change-wrapper {
-      width: 70%;
-    }
+// display 70% width on desktop
+@media screen and (min-width: 768px) {
+  .image-change-wrapper {
+    width: 70%;
   }
+}
 
-  // display 70% width on large screen sizes
-  @media screen and (min-width: 992px) {
-    .image-change-wrapper {
-      width: 60%;
-    }
+// display 70% width on large screen sizes
+@media screen and (min-width: 992px) {
+  .image-change-wrapper {
+    width: 60%;
   }
+}
 
-  // // display 70% width on extra large screen sizes
-  @media screen and (min-width: 1200px) {
-    .image-change-wrapper {
-      width: 60%;
-    }
+// // display 70% width on extra large screen sizes
+@media screen and (min-width: 1200px) {
+  .image-change-wrapper {
+    width: 60%;
   }
-
+}
 </style>

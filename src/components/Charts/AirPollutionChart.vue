@@ -13,25 +13,64 @@
 
         <p class="card-text weight">
           <small class="text-muted">
-            <span class="text-primary weight">Temperature</span>  <!--need to change-->
-            <span class="text-muted weight"> (°C)</span>
+            <span class="text-primary weight">Pollutant Concentration</span>
+            <!--need to change-->
+            <span class="text-muted weight"> (μg/m3)</span>
           </small>
           <br />
-          The chart shows the <span class='text-primary weight'>3 crucial emissions (CO, NO2 and SO2)</span> for the past year.
+          The chart shows the
+          <span class="text-primary weight"
+            >3 crucial emissions (CO, NO2 and SO2)</span
+          >
+          for the past year.
         </p>
       </div>
     </div>
 
-    <form  @submit="handleClick">
-      <p>Select a country:</p>
-      <div class='form-box'> 
-      <label class="form-label">
-        <!-- <p>Select a country:</p> -->
-         <!-- <select data-live-search="true" class=" include-margin selectpicker"  v-model="country" > -->
+    <!--this is the correct one-->
 
-           <!--the following drop down list is correct-->
-        <select class='include-margin' v-model="country">
+    <!-- <form @submit="handleClick"> -->
+    <!-- <p>Select a country:</p> -->
+    <!-- <div class="form-box"> -->
+    <!-- <div class= 'container'> -->
+    <!-- <label class="form-label"> -->
+    <!-- <p>Select a country:</p> -->
+
+    <!-- <select data-live-search="true" class=" include-margin selectpicker"  v-model="country" > -->
+    <!--the following drop down list is correct-->
+    <!-- <select class='include-margin' v-model="country">
           <option
+            :key="country.name"
+            v-for="country in countries"
+            :value="country.name"
+          > 
+            {{ country.name }}
+          </option>
+        </select> -->
+    <!-- </label> -->
+    <!-- </div> -->
+    <!-- <button class="btn btn-success search-btn">Get Data</button> -->
+    <!-- </div> -->
+
+    <!-- <label>
+        Select a year (must be 2020 only):
+        <input v-model="year" type="number" required />
+      </label> -->
+    <!-- <button class="btn btn-success search-btn">Get Data</button> -->
+    <!-- </form> -->
+
+    <!--seeing how to make the bar responsive  -->
+
+    <form @submit="handleClick">
+      <p class="mb-2">Select a country:</p>
+      <div class="form-box mb-3">
+        <!-- <div class= 'container'> -->
+        <!-- <p>Select a country:</p> -->
+        <!-- <select data-live-search="true" class=" include-margin selectpicker"  v-model="country" > -->
+        <!--the following drop down list is correct-->
+        <select class="w-50 mr-3" v-model="country">
+          <option
+            class="font resp"
             :key="country.name"
             v-for="country in countries"
             :value="country.name"
@@ -39,11 +78,8 @@
             {{ country.name }}
           </option>
         </select>
-
-
-
-      </label>
-      <button class="btn btn-success search-btn">Get Data</button>
+        <!-- </div> -->
+        <button class="btn btn-success search-btn">Get Data</button>
       </div>
 
       <!-- <label>
@@ -51,9 +87,7 @@
         <input v-model="year" type="number" required />
       </label> -->
       <!-- <button class="btn btn-success search-btn">Get Data</button> -->
-
     </form>
-
   </div>
 </template>
 
@@ -68,7 +102,6 @@ import iso from "iso-3166-1"; // Library to key in country name and get iso no.
 // import Vue from 'vue';
 // import { DropDownListPlugin } from '@syncfusion/ej2-vue-dropdowns';
 // Vue.use(DropDownListPlugin) //doesnt exit for  vue3 need to do sth liek createApp(App).use(store)
-
 
 export default {
   name: "App",
@@ -170,38 +203,61 @@ export default {
       e.preventDefault();
 
       //   First portion is to do forward geocoding to get the lat and long
-      let geolocationUrl = "http://api.positionstack.com/v1/forward";
-      let access_key = process.env.VUE_APP_POSITIONSTACK_API_KEY;
+      // Need better plan to support https
+      // let geolocationUrl = "https://api.positionstack.com/v1/forward";
+      // let access_key = process.env.VUE_APP_POSITIONSTACK_API_KEY;
       let query = country.value;
-      let isoCountry = iso.whereCountry(country.value).alpha3;
+      let isoCountry = iso.whereCountry(country.value).country;
+      console.log(iso.whereCountry(country.value))
+
+      // New forward geocoding api
+      let access_key = process.env.VUE_APP_LOCATION_IQ_API;
+      let geolocationUrl = `https://us1.locationiq.com/v1/search.php?`
 
       try {
+        // This is for position stack api
+        // let res = await axios.get(geolocationUrl, {
+        //   params: {
+        //     access_key,
+        //     query,
+        //   },
+        // });
+
         let res = await axios.get(geolocationUrl, {
           params: {
-            access_key,
-            query,
+            key: access_key,
+            q: isoCountry,
+            format: "json",
           },
         });
+
         if (!res) {
           throw new Error("Error with access forward geolocation API");
         }
         let geolocation = {};
-        for (let country of res.data.data) {
-          console.log(country);
-          console.log(isoCountry);
-          if (country.country_code === isoCountry) {
-            geolocation.lat = country.latitude;
-            geolocation.lon = country.longitude;
-            break;
-          }
-        }
+        // Position stack api implementation
+        // for (let country of res.data.data) {
+        //   console.log(country);
+        //   console.log(isoCountry);
+        //   if (country.country_code === isoCountry) {
+        //     geolocation.lat = country.latitude;
+        //     geolocation.lon = country.longitude;
+        //     break;
+        //   }
+        // }
+
+        geolocation.lat = res.data[0].lat;
+        geolocation.lon = res.data[0].lon;
+        // Have to handle error for when the country is not found
+
         console.log("Completed the first API request: ");
         console.log(geolocation);
         // After getting the lat and long, we can make a call
         // to get the air pollution history
 
+        // Open weather accepts https from url. Should be ok on deployment.
         let baseUrl =
-          "http://api.openweathermap.org/data/2.5/air_pollution/history";
+          "https://api.openweathermap.org/data/2.5/air_pollution/history";
 
         let appid = process.env.VUE_APP_OPENWEATHER_API_KEY;
         let { lat, lon } = geolocation;
@@ -324,7 +380,7 @@ export default {
     };
   },
 
-  //added 
+  //added
   // mounted(){
   //   const plugin = document.createElement("script");
   //   plugin.setAttribute(
@@ -352,8 +408,7 @@ export default {
   width: 100%;
 }
 
-
-.search-btn{
+.search-btn {
   background: green;
   color: #fff;
   height: 28px;
@@ -363,21 +418,52 @@ export default {
   padding: 5px;
   font-size: 15px;
 }
-.search-btn:hover{
-  border: 2px solid white;
-}
 
-.weight{
+// change background color on horver
+.search-btn:hover {
+  background: #fff;
+  color: black;
   font-weight: bold;
 }
 
-.include-margin{
-  margin: 5px;
-  font-size: 18px;
-  
-}
-.form-box{
-  display: inline;
+.weight {
+  font-weight: bold;
 }
 
+.form-box {
+  display: flex;
+  align-items: top;
+  justify-content: center;
+  gap: 10px;
+}
+
+// select {
+//   padding: 0px 10px;
+// }
+
+// @media screen and (max-width: 600px) {
+//   .font{
+//     font-size: $variable-font;
+//   }
+
+//   .form-box{
+//     font-size: $variable-font;
+//     // width: 16.66%;
+
+//   }
+
+//   .search-btn{
+//     font-size: $variable-font;
+//     // margin: 5px;
+//   }
+
+//   .resp{
+//     width: 100%
+//   }
+// }
+
+select {
+  // width: 100px;
+  text-overflow: ellipsis;
+}
 </style>

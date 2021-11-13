@@ -190,6 +190,7 @@ export default {
       desc: [],
       markerList: [],
       features: [],
+      featuresMain: [],
       yearVal: null,
       year: "",
       flying: true,
@@ -200,6 +201,9 @@ export default {
       resultArray: [],
       display: true,
       mapCenter: true,
+      offset: 0,
+      offsetCount: 0,
+      queryInterval: true,
     };
   },
   async mounted() {
@@ -207,7 +211,15 @@ export default {
     // Load the markers here when loading
 
     this.map.on("load", async () => {
-      await this.getLocation(); // After getting location then we add the markers
+
+      // Call get location 4 times
+      // for (let index = 0; index < 4; index++) {
+      //   await this.getLocation(); // After getting location then we add the markers
+      // }
+
+      // let x = await this.useInterval();
+
+      await this.getLocation();
 
       // Loading marker image
       this.map.loadImage(
@@ -222,11 +234,11 @@ export default {
             type: "geojson",
             data: {
               type: "FeatureCollection",
-              features: this.features,
+              features: this.featuresMain,
             },
           });
 
-          console.log(this.features);
+          console.log(this.featuresMain);
 
           console.log("added source");
 
@@ -361,6 +373,17 @@ export default {
         console.log("map error", err);
       }
     },
+    // async useInterval() {
+    //   if (this.offsetCount === 3) {
+    //     clearInterval(this.queryInterval)
+    //     console.log('cleared the interval')
+    //   } else {
+    //     this.queryInterval = setInterval(async () => {
+    //       await this.getLocation();
+    //     }, 10000);
+    //   }
+    // },
+
     // trying to get location of prepopulated data.
     async getLocation() {
       // Reset
@@ -369,18 +392,28 @@ export default {
       // "https://api.reliefweb.int/v1/disasters?appname=apidoc&query[value]=" + this.selectedQuery + "&query[fields][]=type&fields[include][]=type.name&limit=100"
       //           "https://api.reliefweb.int/v1/disasters?type&fields[include][]=type.name&limit=20&sort[]=date:desc"
       // Changed to 100 first for faster loading time.
+
       try {
         const response = await axios.get(
-          "https://api.reliefweb.int/v1/disasters?type&fields[include][]=type.name&limit=500&sort[]=date:desc"
+          `https://api.reliefweb.int/v1/disasters?type&fields[include][]=type.name&limit=800&offset=${this.offset}&sort[]=date:desc`
         );
+
+        this.offset += 800;
+        this.offsetCount += 1;
         if (!response) {
           throw Error("Failed to get data");
         }
         // Score and desc needed for pop up
         this.desc = []; // Set the desc to an empty array?
         let results = response.data.data ?? [];
-        await this.createFeaturesArray(results);
-        await this.pushGeo();
+        let x = await this.createFeaturesArray(results);
+        let yu = await this.pushGeo();
+
+        this.featureMain = this.featuresMain.concat(this.features);
+        // Reset the features array since gonna loop
+        this.features = [];
+
+        console.log("starting the timer");
 
         this.loading = false;
 
@@ -430,7 +463,7 @@ export default {
       let geoListFulfilled = await Promise.all(geoListPromises);
       let dataArray = geoListFulfilled.map((res) => res.data.data[0]);
 
-      console.log(dataArray);
+      // console.log(dataArray);
 
       // have to initialise a dictionary to store id as key
       let geoIdDictionary = {};
@@ -453,7 +486,7 @@ export default {
 
     // Function to add the coordinates to the features array
     async addCoordToFeatures(geoIdDictionary) {
-      console.log(geoIdDictionary);
+      // console.log(geoIdDictionary);
       // Loop through features and do the lookup in the geo dictionary
       // and add it to the array
       this.features.forEach((feature, index) => {
