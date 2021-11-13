@@ -32,7 +32,7 @@
         <font-awesome-icon :icon="['fas', 'envelope']" />
       </div>
       <div class="footer-copyright">
-        <p class="m-0 text-center text-white">
+        <p class="m-0 pb-2 text-center text-white">
           © {{ date }} Copyright: WAD 2 Gods 🤩🥺
         </p>
       </div>
