@@ -480,7 +480,7 @@ export default {
   font-size: $variable-font;
 
   ::-webkit-scrollbar {
-    width: 0px;
+    @extend %scrollbar-thumb;
   }
 
   ::-webkit-scrollbar-track {

@@ -1,3 +1,13 @@
+@import './variables';
+
+::-webkit-scrollbar {
+    width: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: $color-secondary;
+}
+
 .font-big {
     font-size: 14px;
     font-weight: bold;
