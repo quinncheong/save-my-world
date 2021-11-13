@@ -114,6 +114,7 @@ export default {
       display: flex;
       justify-content: space-around;
       margin: 1rem;
+      font-size: 25px;
     }
   }
 }
