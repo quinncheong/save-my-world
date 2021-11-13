@@ -91,7 +91,7 @@ export default {
     align-items: center;
     text-align: center;
     text-justify: inter-word;
-    font-size: 14px;
+    font-size: $font-size-small;
 
     .links {
       display: flex;
