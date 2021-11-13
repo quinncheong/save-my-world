@@ -213,11 +213,6 @@ export default {
       // New forward geocoding api
       let access_key = process.env.VUE_APP_LOCATION_IQ_API;
       let geolocationUrl = `https://us1.locationiq.com/v1/search.php?`
-
-      // New forward geocoding api
-      let access_key = process.env.VUE_APP_LOCATION_IQ_API;
-      let geolocationUrl = `https://us1.locationiq.com/v1/search.php?`
-
       try {
         // This is for position stack api
         // let res = await axios.get(geolocationUrl, {
