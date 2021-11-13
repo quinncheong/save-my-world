@@ -40,19 +40,19 @@
             value="indivyear"
             v-model="selected"
             @change="handleChange()"
-
-
           />
-          <label class="form-check-label" for="inlineRadio2">Individual Year</label>
+          <label class="form-check-label" for="inlineRadio2"
+            >Individual Year</label
+          >
         </div>
       </div>
 
       <!-- Container to hold  the slider -->
       <div class="console justify-self-center" v-if="loading == false">
         <h5 class="sliderValue">{{ yearVal }}</h5>
-        <div class="row" v-if="selected== 'indivyear'">
+        <div class="row" v-if="selected == 'indivyear'">
           <div class="col-1 col-sm-1 p-0">1981</div>
-          <div class="col-9 col-sm-10" >
+          <div class="col-9 col-sm-10">
             <input
               id="slider"
               class="w-100"
@@ -231,9 +231,9 @@ export default {
       offsetCount: 0,
       queryInterval: true,
 
-      //  For the filter for the different years 
+      //  For the filter for the different years
       yearAll: true,
-      selected: ""
+      selected: "",
     };
   },
   async mounted() {
@@ -600,36 +600,70 @@ export default {
       this.display = false;
     },
 
-// Function to deal with the filters
-    handleChange(){
-
+    // Function to deal with the filters
+    handleChange() {
       // From v-model we will determine the relevant filters here.
-      if (this.selected == "indivyear"){
-
-        this.yearVal = "2021";
+      if (this.selected == "indivyear") {
+        this.yearVal = 2021;
 
         this.map.setFilter("result", [
-        "==",
-        ["number", ["get", "year"]],
-        parseInt(this.yearVal),
-      ]);
+          "==",
+          ["number", ["get", "year"]],
+          parseInt(this.yearVal),
+        ]);
 
+        // Get queried layer data here
+        const test = this.map.querySourceFeatures("disasters", {
+          sourceLayer: "disasters",
+          filter: ["==", ["number", ["get", "year"]], parseInt(this.yearVal)],
+        });
+        console.log(test);
 
+        // Change result list everytime
+        this.resultArray = [];
+
+        for (let indivResult of test) {
+          console.log(indivResult.properties.name);
+
+          this.resultArray.push(indivResult.properties.name);
+        }
+
+        this.map.setCenter(this.center);
       }
 
-      if(this.selected =="everyyear"){
+      if (this.selected == "everyyear") {
+
         this.yearVal = null;
 
-
+        // This is to reset the map
         this.map.setFilter("result", null);
 
+        // Update research bar
+
+        const test = this.map.querySourceFeatures("disasters", {
+          sourceLayer: "disasters",
+        });
+
+        console.log(test);
+
+        // Change result list everytime
+        this.resultArray = [];
+
+        for (let indivResult of test) {
+          console.log(indivResult.properties.name);
+
+          this.resultArray.push(indivResult.properties.name);
+        }
+
+        // The map shows all but not in order
+
+        this.map.setCenter(this.center);
       }
 
       // if (this.selected == "everyyear"){
 
       // }
-
-    }
+    },
   },
 };
 </script>
