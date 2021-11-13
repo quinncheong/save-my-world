@@ -108,7 +108,7 @@ a {
 
 .app-content-wrapper {
   min-height: 100vh;
-  padding: 0.2rem;
+  padding: 0.5rem;
   @extend %background-overlay;
 }
 

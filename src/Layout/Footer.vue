@@ -137,7 +137,7 @@ export default {
   }
 }
 
-@media screen and (min-width: 556px) {
+@media screen and (min-width: 600px) {
   .footer-bg-wrapper {
     .footer-content-wrapper {
 
