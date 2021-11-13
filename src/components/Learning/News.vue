@@ -7,7 +7,7 @@
     <div class="card bg-transparent text-white">
       <img
         class="card-img"
-        src="https://climate.nasa.gov/system/content_pages/main_images/1321_cc-vs-gw-vs-wx-768px.jpg"
+        src="../../img/climate.webp"
         alt="Card image"
       />
       <p style="font-weight: light">

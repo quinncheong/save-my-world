@@ -18,14 +18,13 @@
       </p>
     </div>
     <div class="row">
-      <div 
-        :key="index"
-        v-for="(srcset, index) of sources"
-        class="col-md-4">
+      <div :key="index" v-for="(srcset, index) of sources" class="col-md-4">
         <div class="card my-2 bg-transparent border-light">
-          <p class="border-bottom text-center" style="color: yellow">{{ srcset.title }}</p>
+          <p class="border-bottom text-center" style="color: yellow">
+            {{ srcset.title }}
+          </p>
           <div class="card-body">
-            <p class="card-text text-center">
+            <p class="text-center">
               {{ srcset.text }}
             </p>
             <p class="mb-1 text-center">
@@ -43,7 +42,6 @@
 </template>
 
 <script>
-
 export default {
   name: "News",
   components: {},
@@ -53,17 +51,17 @@ export default {
         {
           title: "Climate Change",
           text: "Contemporary climate change includes both global warming caused by humans and its impacts on Earth's weather patterns.",
-          buttonText: "Click for more info"
+          buttonText: "Click for more info",
         },
         {
           title: "Greenhouse Gases",
           text: "The main gases responsible for the greenhouse effect include carbon dioxide, methane, nitrous oxide, water vapor and fluorinated gases.",
-          buttonText: "Click for more info"
+          buttonText: "Click for more info",
         },
         {
           title: "Ways to contribute",
           text: "Foster innovation and resilient infrastructure, creating communities and cities able to produce and consume sustainably.",
-          buttonText: "Click for more info"
+          buttonText: "Click for more info",
         },
       ],
     };
@@ -72,9 +70,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  p {
-    text-align: left;
-    font-size: 15px;
-    padding: 10px;
-  }
+p {
+  text-align: left;
+  font-size: 15px;
+  padding: 10px;
+}
 </style>

@@ -26,7 +26,7 @@
   }
 
   100% {
-    opacity: 1;
+    opacity: 1; 
     visibility: visible;
     left: 0;
     top: 15px;
@@ -312,3 +312,16 @@ font-family: "Sora", sans-serif;
     transform: translateY(5px);
   }
 }
+// icons in learning 
+@keyframes float {
+	0% {
+		transform: translatey(0px);
+	}
+	50% {
+		transform: translatey(-10px);
+	}
+	100% {
+		transform: translatey(0px);
+	}
+}
+

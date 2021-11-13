@@ -1,37 +1,26 @@
 <template>
-  <section class="about-wrapper container pt-5">
-    <div class="row mb-2">
-      <div class="col-md-8 mx-auto text-center">
-        <h1 class="mb-2">About Us</h1>
-        <p>
-          With us, you'll get to learn more about how you can play your part in
-          saving Gaia as well as getting more insights on how our beloved mother
-          earth is affected by climate change and it's impacts
-        </p>
-      </div>
+  <section class="about-wrapper container mt-3">
+    <div class="col-md-8 mx-auto text-center">
+      <h1 class="mb-2">About Us</h1>
+      <p>
+        With us, you'll get to learn more about how you can play your part in
+        saving Gaia as well as getting more insights on how our beloved mother
+        earth is affected by climate change and it's impacts
+      </p>
     </div>
 
-    <div class="row g-2">
+    <div class="cards-wrapper">
       <!-- V-for for each card -->
-      <div
-        :key="card.title"
-        v-for="card of cards"
-        class="col col-sm-6 col-lg-3"
-      >
+      <div class="service card-effect col-sm-5 col-lg-2" :key="card.title" v-for="card of cards">
         <router-link :to="card.link">
-          <div class="service card-effect">
-            <div class="iconbox">
-              <i class="bx bxs-check-shield"></i>
-            </div>
-            <h5 class="mt-4 mb-2">{{ card.title }}</h5>
-            <img
-              class="img-fluid mx-auto d-block"
-              :src="getUrl(card.imageSrc)"
-            />
-            <p>
-              {{ card.description }}
-            </p>
-          </div>
+          <!-- <div class="iconbox">
+            <i class="bx bxs-check-shield"></i>
+          </div> -->
+          <h5 class="service-card-title">{{ card.title }}</h5>
+          <img class="service-img" :src="getUrl(card.imageSrc)" />
+          <p class="service-card-desc">
+            {{ card.description }}
+          </p>
         </router-link>
       </div>
       <!-- End of card v-for -->
@@ -47,7 +36,8 @@ export default {
       cards: [
         {
           title: "Learning",
-          description: "Learn more about climate change and its impacts through our unique gamification system",
+          description:
+            "Learn more about climate change and its impacts through our unique gamification system",
           image: "../assets/img/learn.png",
           imageSrc: "learn.png",
           link: "/quiz",
@@ -89,54 +79,53 @@ export default {
 
 <style lang="scss" scoped>
 .container {
-//   font-size: $variable-font;
-  font-size: $font-size-secondary;
+  font-size: $font-size-small;
+  margin-bottom: 2rem;
 
-  .card-effect {
-    // box-shadow: var(--box-shadow);
-    background-color: var(--white);
-    padding: 25px;
-    transition: all 0.35s ease;
+  .cards-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    gap: 1rem 2rem;
+    justify-content: center;
+    margin-top: 1rem;
 
-    &:hover {
-      box-shadow: none;
-      transform: translateY(5px);
+    .service {
+      position: relative;
+      z-index: 2;
+
+      &:hover .iconbox {
+        background-color: var(--white);
+        color: var(--primary);
+      }
+
+      &:hover h5,
+      &:hover p {
+        color: var(--white);
+      }
+
+      .service-img {
+        height: 100px;
+      }
+
+      .card-title {
+      }
+
+      .card-desc {
+        text-align: justify;
+      }
     }
   }
 }
 
-.service {
-  position: relative;
-  z-index: 2;
-  overflow: hidden;
+.card-effect {
+  // box-shadow: var(--box-shadow);
+  background-color: var(--white);
+  transition: all 0.35s ease;
 
-  p {
-    font-size: $font-size-secondary;
-  }
-
-  &::after {
-    content: "";
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    top: -100%;
-    left: 0;
-    background-color: var(--primary);
-    z-index: -1;
-    opacity: 0;
-    transition: all 0.4s ease;
-    opacity: 1;
-    top: 0;
-  }
-
-  &:hover .iconbox {
-    background-color: var(--white);
-    color: var(--primary);
-  }
-
-  &:hover h5,
-  &:hover p {
-    color: var(--white);
+  &:hover {
+    box-shadow: none;
+    transform: translateY(5px);
   }
 }
 // .iconbox {
@@ -153,29 +142,37 @@ export default {
 // }
 
 // Accounting for the different breakpoints
-
-// *{
-//   font: $variable-font;
-// }
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 468px) {
   .about-wrapper {
     width: 80%;
     font-size: $variable-font;
-    
+
+    .cards-wrapper {
+      flex-direction: row;
+      margin-top: 2rem;
+
+      .service-img {
+        height: 50%;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .about-wrapper {
+    width: 90%;
   }
 }
 
 @media screen and (min-width: 992px) {
   .about-wrapper {
-    width: 70%;
-    // font-size: $variable-font-medium;
+    width: 80%;
   }
 }
 
 @media screen and (min-width: 1400px) {
   .about-wrapper {
-    width: 60%;
-
+    width: 70%;
   }
 }
 </style>

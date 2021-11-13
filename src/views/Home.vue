@@ -39,9 +39,9 @@
     <!-- <three-rs /> -->
 
     <div class="call-to-action header">
-      <h1 class="text-white">
+      <h3 class="text-white">
         You have the power to <span id="savemyworld">#SaveOurWorld</span>
-      </h1>
+      </h3>
     </div>
 
     <div class="start-learning">
@@ -218,9 +218,6 @@ export default {
     display: flex;
     flex-direction: column;
 
-    .start-learning-content {
-      // width: 50px;
-    }
   }
 
   .typewriter {
@@ -239,11 +236,12 @@ export default {
 }
 
 // Accounting for the different breakpoints
-// @media screen and (min-width: 768px) {
-//   .home-page-wrapper {
-//     width: 80%;
-//   }
-// }
+@media screen and (min-width: 468px) {
+  h1 {
+    font-size: 40px;
+  }
+    
+}
 
 // @media screen and (max-width: 768px) {
 //   .typewriter {
@@ -262,6 +260,16 @@ export default {
 //     width: 60%;
 //   }
 // }
+
+@media screen and (max-width: 468px) {
+  .typewriter {
+    width: 90%;
+
+    h1 {
+      font-size: $font-size-small;
+    }
+  }
+}
 
 @media screen and (max-width: 768px) {
   .typewriter {
