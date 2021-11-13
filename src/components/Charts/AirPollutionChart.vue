@@ -207,7 +207,8 @@ export default {
       // let geolocationUrl = "https://api.positionstack.com/v1/forward";
       // let access_key = process.env.VUE_APP_POSITIONSTACK_API_KEY;
       let query = country.value;
-      let isoCountry = iso.whereCountry(country.value).alpha3;
+      let isoCountry = iso.whereCountry(country.value).country;
+      console.log(iso.whereCountry(country.value))
 
       // New forward geocoding api
       let access_key = process.env.VUE_APP_LOCATION_IQ_API;
