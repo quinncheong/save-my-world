@@ -10,24 +10,49 @@
         The map below shows the frequency of disasters in the world.
       </p>
       <i class="chart-select mb-2">
-        Select a filter to understand how disasters have been increasing
-        rapidly throughout the years
+        Select a filter to understand how disasters have been increasing rapidly
+        throughout the years
       </i>
 
-      <h2>Filters</h2>  
-      <label>Everything</label>
-      <input type="radio">
+      <h2>Filters</h2>
 
-      <label>Individual Years</label>
-      <input type="radio">
-      
-     
+      <!-- Bootstrap radio  -->
+      <div class="d-flex justify-content-around">
+        <div class="form-check form-check-inline">
+          <input
+            class="form-check-input"
+            type="radio"
+            name="inlineRadioOptions"
+            id="inlineRadio1"
+            value="everyyear"
+            v-model="selected"
+            @change="handleChange()"
+            checked
+          />
+          <label class="form-check-label" for="inlineRadio1">Every Year</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input
+            class="form-check-input"
+            type="radio"
+            name="inlineRadioOptions"
+            id="inlineRadio2"
+            value="indivyear"
+            v-model="selected"
+            @change="handleChange()"
+
+
+          />
+          <label class="form-check-label" for="inlineRadio2">Individual Year</label>
+        </div>
+      </div>
+
       <!-- Container to hold  the slider -->
       <div class="console justify-self-center" v-if="loading == false">
         <h5 class="sliderValue">{{ yearVal }}</h5>
-        <div class="row">
+        <div class="row" v-if="selected== 'indivyear'">
           <div class="col-1 col-sm-1 p-0">1981</div>
-          <div class="col-9 col-sm-10">
+          <div class="col-9 col-sm-10" >
             <input
               id="slider"
               class="w-100"
@@ -63,7 +88,8 @@
 
         <div class="container">
           <div v-if="flying == false && display == true" id="desc" class="my-2">
-            <button id="close"
+            <button
+              id="close"
               type="button"
               @click="stopDisplay()"
               class="btn-close"
@@ -84,7 +110,7 @@
                 Button with data-target
               </button> -->
 
-<!-- 
+                <!-- 
               <div class="modal" tabindex="-1">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -204,6 +230,10 @@ export default {
       offset: 0,
       offsetCount: 0,
       queryInterval: true,
+
+      //  For the filter for the different years 
+      yearAll: true,
+      selected: ""
     };
   },
   async mounted() {
@@ -211,7 +241,6 @@ export default {
     // Load the markers here when loading
 
     this.map.on("load", async () => {
-
       // Call get location 4 times
       // for (let index = 0; index < 4; index++) {
       //   await this.getLocation(); // After getting location then we add the markers
@@ -237,6 +266,8 @@ export default {
               features: this.featuresMain,
             },
           });
+
+          console.log(this.features);
 
           console.log(this.featuresMain);
 
@@ -393,6 +424,8 @@ export default {
       //           "https://api.reliefweb.int/v1/disasters?type&fields[include][]=type.name&limit=20&sort[]=date:desc"
       // Changed to 100 first for faster loading time.
 
+      //           `https://api.reliefweb.int/v1/disasters?type&fields[include][]=type.name&limit=800&offset=${this.offset}&sort[]=date:desc`
+
       try {
         const response = await axios.get(
           `https://api.reliefweb.int/v1/disasters?type&fields[include][]=type.name&limit=800&offset=${this.offset}&sort[]=date:desc`
@@ -409,7 +442,7 @@ export default {
         let x = await this.createFeaturesArray(results);
         let yu = await this.pushGeo();
 
-        this.featureMain = this.featuresMain.concat(this.features);
+        this.featuresMain = this.featuresMain.concat(this.features);
         // Reset the features array since gonna loop
         this.features = [];
 
@@ -494,6 +527,7 @@ export default {
         feature.geometry.coordinates = [geoCode.lon, geoCode.lat];
         feature.properties.description = desc;
       });
+      console.log(this.features);
     },
 
     async handleClick() {},
@@ -555,8 +589,8 @@ export default {
       await this.map.flyTo({
         center: [0, 20],
         zoom: 1,
-        pitch:0,
-        bearing:0
+        pitch: 0,
+        bearing: 0,
       });
 
       // Conditionals to remove the button
@@ -565,6 +599,37 @@ export default {
       // Conditionals to remove the modal
       this.display = false;
     },
+
+// Function to deal with the filters
+    handleChange(){
+
+      // From v-model we will determine the relevant filters here.
+      if (this.selected == "indivyear"){
+
+        this.yearVal = "2021";
+
+        this.map.setFilter("result", [
+        "==",
+        ["number", ["get", "year"]],
+        parseInt(this.yearVal),
+      ]);
+
+
+      }
+
+      if(this.selected =="everyyear"){
+        this.yearVal = null;
+
+
+        this.map.setFilter("result", null);
+
+      }
+
+      // if (this.selected == "everyyear"){
+
+      // }
+
+    }
   },
 };
 </script>
@@ -664,20 +729,13 @@ export default {
       outline: none;
 
       --progress-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2) inset;
-  --progress-flll-shadow: var(--progress-shadow);
-  --fill-color: linear-gradient(to right, LightCyan, var(--primary-color));
-  --thumb-shadow: 0 0 4px rgba(0, 0, 0, 0.3),
-    -3px 9px 9px rgba(255, 255, 255, 0.33) inset,
-    -1px 3px 2px rgba(255, 255, 255, 0.33) inset,
-    0 0 0 99px var(--primary-color) inset;
-    
-
-      
-
-      
+      --progress-flll-shadow: var(--progress-shadow);
+      --fill-color: linear-gradient(to right, LightCyan, var(--primary-color));
+      --thumb-shadow: 0 0 4px rgba(0, 0, 0, 0.3),
+        -3px 9px 9px rgba(255, 255, 255, 0.33) inset,
+        -1px 3px 2px rgba(255, 255, 255, 0.33) inset,
+        0 0 0 99px var(--primary-color) inset;
     }
-
-   
   }
 
   #console-alt {
@@ -701,7 +759,7 @@ export default {
     text-align: left;
     overflow-wrap: break-word;
 
-    #close{
+    #close {
       position: sticky;
     }
 
@@ -716,9 +774,6 @@ export default {
   }
 
   .result-col:hover {
-
-
-
   }
 
   .result-list {
@@ -737,32 +792,19 @@ export default {
 
   #descriptionparagraph {
     font-size: $variable-font-small;
-
   }
 
-
-  
-
-
-
-
-  .modalResult{
-
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-
-    
+  .modalResult {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+      Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 
     a:active {
       background-color: yellow;
     }
-    p{
-                  line-height: 120%;
-
+    p {
+      line-height: 120%;
     }
   }
-
-
-
 
   @keyframes spin {
     0% {
