@@ -15,7 +15,7 @@
         </div>
       </div>
       <hr class="w-75 justify-self-center mx-auto" />
-      <div class="footer-text mt-2">
+      <div class="footer-text mt-2 mx-2">
         Save My World is a team of Software Developers passionate about the
         environment. Situated in Singapore and developing software for 2 years,
         Save My World provides a platform for people to save the environment and
