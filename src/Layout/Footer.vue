@@ -24,12 +24,12 @@
         exceptional gamification, and factbased charts.
       </div>
       <div class="footer-social my-4">
-        <font-awesome-icon :icon="['fab', 'facebook-square']" />
-        <font-awesome-icon :icon="['fab', 'github']" />
-        <font-awesome-icon :icon="['fab', 'linkedin']" />
-        <font-awesome-icon :icon="['fab', 'twitter']" />
-        <font-awesome-icon :icon="['fab', 'instagram']" />
-        <font-awesome-icon :icon="['fas', 'envelope']" />
+        <a href="https://www.facebook.com/login/?next=https%3A%2F%2Fwww.facebook.com%2Fcampaign%2Flanding.php%3Fcampaign_id%3D1635645017%26extra_1%3Ds%257Cc%257C313627652544%257Ce%257Cfacebook%2527%257C%26placement%26creative%3D313627652544%26keyword%3Dfacebook%2527%26partner_id%3Dgooglesem%26extra_2%3Dcampaignid%253D1635645017%2526adgroupid%253D60549328697%2526matchtype%253De%2526network%253Dg%2526source%253Dnotmobile%2526search_or_content%253Ds%2526device%253Dc%2526devicemodel%253D%2526adposition%253D%2526target%253D%2526targetid%253Dkwd-362360550869%2526loc_physical_ms%253D9062530%2526loc_interest_ms%253D%2526feeditemid%253D%2526param1%253D%2526param2%253D%26gclid%3DCj0KCQiA4b2MBhD2ARIsAIrcB-Rtvf3kc9eebVytSOvvg4_qrOk-iwqPHwqWDdj6vmIxOb16ncVmz2oaAlTsEALw_wcB"><font-awesome-icon :icon="['fab', 'facebook-square']" /></a>
+        <a href="https://github.com/quinncheong/save-my-world.git"><font-awesome-icon :icon="['fab', 'github']" /></a>
+        <a href="https://www.linkedin.com"><font-awesome-icon :icon="['fab', 'linkedin']" /></a>
+        <a href="https://twitter.com/i/flow/login"><font-awesome-icon :icon="['fab', 'twitter']" /></a>
+        <a href="https://www.instagram.com/accounts/login/"><font-awesome-icon :icon="['fab', 'instagram']" /></a>
+        <a href="https://login.microsoftonline.com/"><font-awesome-icon :icon="['fas', 'envelope']" /></a>
       </div>
       <div class="footer-copyright">
         <p class="m-0 pb-2 text-center text-white">
