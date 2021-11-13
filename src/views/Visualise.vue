@@ -36,7 +36,7 @@
     -->
 
       <!-- Container to hold  the slider -->
-      <div class="console justify-self-center" v-if="loading==false">
+      <div class="console justify-self-center" v-if="loading == false">
         <h5 class="sliderValue">{{ yearVal }}</h5>
         <div class="row">
           <div class="col-1 col-sm-1 p-0">1981</div>
@@ -56,7 +56,7 @@
         </div>
       </div>
 
-      <div id="console-alt" v-else-if="loading==true">
+      <div id="console-alt" v-else-if="loading == true">
         Loading please wait!!!!!!
       </div>
     </div>
@@ -68,14 +68,15 @@
 
       <!-- Button to go back to original center -->
 
-      <button v-if="mapCenter == false" id="flydisplay" @click="returnCenter()">Go back to original</button>
+      <button v-if="mapCenter == false" id="flydisplay" @click="returnCenter()">
+        Go back to original
+      </button>
       <div class="map" id="map">
         <!-- Result individual modal to be placed here  -->
 
         <div class="container">
-
           <div v-if="flying == false && display == true" id="desc" class="my-2">
-            <button
+            <button id="close"
               type="button"
               @click="stopDisplay()"
               class="btn-close"
@@ -84,13 +85,64 @@
             <div class="descriptiontext">
               <h5 class="text-start">{{ title }}</h5>
               <hr />
-              <p id="descriptionparagraph">{{ descriptionModal }}</p>
+              <div
+                v-for="(indivDesc, index) in descriptionModal"
+                :key="index"
+                class="mt-2"
+              >
+                <h6>
+                  <b>Occurence {{ index + 1 }}</b>
+                </h6>
+                <!-- <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="`#modal${index}`" aria-expanded="false" aria-controls="collapseExample">
+                Button with data-target
+              </button> -->
+
+<!-- 
+              <div class="modal" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Modal title</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Modal body text goes here.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div> -->
+
+                <div class="scrollbox">
+                  <!-- Create a a href here to read more  -->
+
+                  <div class="modalResult">
+                    <a
+                      data-bs-toggle="collapse"
+                      :href="`#modal${index}`"
+                      aria-expanded="false"
+                      aria-controls="collapseExample"
+                    >
+                      Give me more details
+                    </a>
+
+                    <!-- This doesn't work why ?? -->
+                    <p class="collapse mt-2" :id="`modal${index}`">
+                      {{ indivDesc }}
+                    </p>
+                  </div>
+                </div>
+
+                <br />
+              </div>
             </div>
           </div>
         </div>
         <!-- </div> -->
       </div>
-
     </div>
 
     <!-- Result outer modal to hold all results (WIP) , same row as map-->
@@ -160,7 +212,7 @@ export default {
       status: "",
       resultArray: [],
       display: true,
-      mapCenter: true
+      mapCenter: true,
     };
   },
   async mounted() {
@@ -257,17 +309,11 @@ export default {
 
         console.log(description);
 
-        // Split into paragraphs 
-        let tempList = description.split('\n\n');
+        // Split into paragraphs
+        let tempList = description.split("\n\n");
 
         this.descriptionModal = tempList;
 
-        
-
-
-
-        
-        
         console.log(tempList);
 
         console.log("end fly here");
@@ -489,6 +535,8 @@ export default {
       await this.map.flyTo({
         center: [0, 20],
         zoom: 1,
+        pitch:0,
+        bearing:0
       });
 
       // Conditionals to remove the button
@@ -496,7 +544,6 @@ export default {
 
       // Conditionals to remove the modal
       this.display = false;
-      
     },
   },
 };
@@ -589,7 +636,6 @@ export default {
 
   #flydisplay {
     animation: appear 0.5s;
-
   }
 
   .console {
@@ -604,28 +650,28 @@ export default {
     z-index: 1;
 
     #slider {
-      -webkit-appearance: none;
       width: 100%;
       height: 7px;
       outline: none;
-      -slider-filled-track-color: red;
-      -slider-track-color: -slider-filled-track-color;
-      border-radius: 3px;
+
+      --progress-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2) inset;
+  --progress-flll-shadow: var(--progress-shadow);
+  --fill-color: linear-gradient(to right, LightCyan, var(--primary-color));
+  --thumb-shadow: 0 0 4px rgba(0, 0, 0, 0.3),
+    -3px 9px 9px rgba(255, 255, 255, 0.33) inset,
+    -1px 3px 2px rgba(255, 255, 255, 0.33) inset,
+    0 0 0 99px var(--primary-color) inset;
+    
+
+      
+
+      
     }
 
-    #slider::-webkit-slider-thumb {
-      -webkit-appearance: none;
-      height: 20px;
-      width: 20px;
-      background: greenyellow;
-      border-radius: 50%;
-      cursor: pointer;
-      z-index: 3;
-      position: relative;
-    }
+   
   }
 
-  #console-alt{
+  #console-alt {
     animation: appear 5s ease;
   }
 
@@ -644,7 +690,11 @@ export default {
     animation: appear 0.5s;
     border-radius: 10px;
     text-align: left;
-    overflow-wrap:break-word;
+    overflow-wrap: break-word;
+
+    #close{
+      position: sticky;
+    }
 
     // overflow-x: hidden;
   }
@@ -657,6 +707,9 @@ export default {
   }
 
   .result-col:hover {
+
+
+
   }
 
   .result-list {
@@ -675,16 +728,32 @@ export default {
 
   #descriptionparagraph {
     font-size: $variable-font-small;
-    // overflow: hidden;
-    // position: relative;
-    // line-height: 1rem;
-    // max-height: 2rem;
-    // text-align: justify;
-    // margin-right: -1rem;
-    // padding-right: 1rem;
+
   }
 
- 
+
+  
+
+
+
+
+  .modalResult{
+
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+
+    
+
+    a:active {
+      background-color: yellow;
+    }
+    p{
+                  line-height: 120%;
+
+    }
+  }
+
+
+
 
   @keyframes spin {
     0% {

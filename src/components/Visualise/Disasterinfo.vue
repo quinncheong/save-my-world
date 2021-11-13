@@ -32,10 +32,10 @@
               </div>
             </div>
 
-            <div class="col order-sm-1">
+            <div class="col-lg-6 col-md-8 col-sm-12">
               <img
                 src="@/assets/img/NaturalDisaster.webp"
-                class="img-fluid mt-5"
+                class="img-fluid w-100 mt-5"
               />
             </div>
           </div>
