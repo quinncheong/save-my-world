@@ -68,6 +68,8 @@ export default {
 .quiz-image{
   width: 100px;
   height: 100px;
+  animation: float 4s ease-in-out infinite;
+  pointer-events: none;
 }
 
 @media screen and (min-width: 320px) {
