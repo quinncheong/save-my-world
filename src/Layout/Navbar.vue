@@ -51,14 +51,18 @@
       <span></span>
       <span></span>
     </div>
-    <div :class="dropdownClass">
-      <router-link
-        :key="route.path"
-        :to="route.path.toLowerCase()"
-        v-for="(route, index) in routes"
-      >
-        {{ route.name }}
+
+    <div :class="dropdownClass" @click="showButton">
+      <!-- router link to home -->
+      <router-link :to="routes[0].path.toLowerCase()">
+        Home
       </router-link>
+      <!-- Router link to other paths -->
+      <template :key="route.path" v-for="(route, index) in routes">
+        <router-link v-if="route.meta.visible" :to="route.path.toLowerCase()">
+          {{ route.name }}
+        </router-link>
+      </template>
     </div>
   </nav>
 </template>
@@ -92,7 +96,7 @@ export default {
     if (window.innerWidth < 760) {
       this.fullView = false;
     }
-      //   track the width on resize
+    //   track the width on resize
     window.addEventListener("resize", () => {
       if (window.innerWidth > 760) {
         //   reset it if you expand the screen
