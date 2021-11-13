@@ -2,13 +2,35 @@
   <div class="home-page-wrapper">
     <!--top header-->
     <header class="header">
-      <div class="links text-white">
+      <nav class="links text-white" v-if="fullView">
         <template :key="route.path" v-for="(route, index) in routes">
           <router-link v-if="route.meta.visible" :to="route.path.toLowerCase()">
             {{ route.name }}
           </router-link>
         </template>
-      </div>
+      </nav>
+
+      <!-- If on small screen -->
+      <nav class="nav small" v-else>
+        <div id="nav-icon3" :class="classNames" @click="showButton">
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+
+        <div id="home-dropdown-small" :class="dropdownClass" @click="showButton">
+          <!-- Router link to other paths -->
+          <template :key="route.path" v-for="(route, index) in routes">
+            <router-link
+              v-if="route.meta.visible"
+              :to="route.path.toLowerCase()"
+            >
+              {{ route.name }}
+            </router-link>
+          </template>
+        </div>
+      </nav>
 
       <div class="header-middle-text d-flex">
         <h4 class="text-white">Save My World,</h4>
@@ -73,6 +95,8 @@ import GlobeGuide from "@/assets/img/planetearth.png";
 import Clothes from "@/assets/img/clothes.png";
 import LandingPage from "@/assets/img/LandingPage.jpeg";
 
+import Navbar1 from "@/Layout/Navbar1.vue";
+
 export default {
   name: "Home",
   components: {
@@ -80,6 +104,7 @@ export default {
     ThreeRs,
     Future,
     AnimatedBirds,
+    Navbar1,
   },
   data() {
     return {
@@ -89,11 +114,26 @@ export default {
       GlobeGuide,
       Clothes,
       LandingPage,
+      fullView: true,
+      dropdownClass: "dropdown-content",
+      dropdownShown: false,
+      classNames: { open: false, "ml-auto": true },
     };
   },
   methods: {
     pushToQuiz() {
       this.$router.push("/quiz");
+    },
+    showButton() {
+      if (this.dropdownShown) {
+        this.dropdownShown = false;
+        this.dropdownClass = "dropdown-content";
+        this.classNames.open = false;
+      } else {
+        this.dropdownShown = true;
+        this.dropdownClass = "dropdown-content show-content";
+        this.classNames.open = true;
+      }
     },
   },
   computed: {
@@ -102,11 +142,28 @@ export default {
       return this.$router.options.routes;
     },
   },
+  created() {
+    if (window.innerWidth < 760) {
+      this.fullView = false;
+    }
+    //   track the width on resize
+    window.addEventListener("resize", () => {
+      if (window.innerWidth > 760) {
+        //   reset it if you expand the screen
+        this.dropdownShown = false;
+        this.dropdownClass = "dropdown-content";
+        this.fullView = true;
+        this.classNames.open = false;
+      } else {
+        this.fullView = false;
+      }
+    });
+  },
 };
 </script>
 
 <style lang="scss">
-@include animated-button('test');
+@include animated-button("test");
 .home-page-wrapper {
   // min-height: 100vh;
   font-size: $variable-font;
@@ -154,6 +211,41 @@ export default {
         border-color: #fefefe;
         -webkit-transform: rotate(45deg);
         transform: rotate(45deg);
+      }
+    }
+  }
+
+  .small {
+    position: relative;
+    padding: 20px 20px 30px;
+    margin-left: auto;
+
+    .dropdown-content {
+      position: absolute;
+      top: 60px;
+      right: 0px;
+      display: none;
+      flex-direction: column;
+      box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+      z-index: 1;
+      width: 200px;
+
+      &.show-content {
+        display: flex;
+      }
+
+      a {
+        color: white;
+        padding: 12px 16px;
+        margin-left: 0px;
+        margin-right: 0px;
+        text-decoration: none;
+        display: flex;
+        text-align: left;
+
+        &:hover {
+          background-color: $bg-color-primary;
+        }
       }
     }
   }
@@ -217,7 +309,6 @@ export default {
     ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     display: flex;
     flex-direction: column;
-
   }
 
   .typewriter {
@@ -232,15 +323,20 @@ export default {
   .test-white {
     @extend .ani-btn-white;
   }
-  
 }
 
 // Accounting for the different breakpoints
+
+@media screen and (max-width: 230px) {
+  #home-dropdown-small {
+    width: 150px;
+  }
+}
+
 @media screen and (min-width: 468px) {
   h1 {
     font-size: 40px;
   }
-    
 }
 
 // @media screen and (max-width: 768px) {
