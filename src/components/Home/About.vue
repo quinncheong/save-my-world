@@ -153,21 +153,29 @@ export default {
 // }
 
 // Accounting for the different breakpoints
+
+// *{
+//   font: $variable-font;
+// }
 @media screen and (min-width: 768px) {
   .about-wrapper {
     width: 80%;
+    font-size: $variable-font;
+    
   }
 }
 
 @media screen and (min-width: 992px) {
   .about-wrapper {
     width: 70%;
+    // font-size: $variable-font-medium;
   }
 }
 
 @media screen and (min-width: 1400px) {
   .about-wrapper {
     width: 60%;
+
   }
 }
 </style>

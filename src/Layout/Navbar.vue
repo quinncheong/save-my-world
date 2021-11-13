@@ -69,10 +69,6 @@
         <span class='fas fa-bars nav-label'>x</span>
       </label> -->
 
-    
-
-
-
     </div>
     <div :class="dropdownClass">
       <router-link
@@ -227,7 +223,6 @@ export default {
 //   display: None;
   
 // }
-
 }
 
 .checkbtn{
@@ -238,7 +233,10 @@ export default {
   float: right; 
   display: none;
   // content: ''
+}
 
+.checkbtn:hover{
+  background-color: lightblue;
 }
 
 .nav-label{
@@ -274,7 +272,6 @@ export default {
 
 .nav-label i::after{
   top : 10px;
-  
 }
 
 //with the use of span 

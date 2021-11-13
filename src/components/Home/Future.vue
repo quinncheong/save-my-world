@@ -73,12 +73,15 @@ export default {
   flex-direction: column;
   align-items: center;
   margin: auto;
+  font-size: $variable-font; 
 }
 
 // Accounting for the different breakpoints
 @media screen and (min-width: 768px) {
   .future-content {
     width: 80%;
+    // font-size: 100px !important	;
+    // font: $variable-font-large; 
   }
 }
 
