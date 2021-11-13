@@ -392,6 +392,9 @@ export default {
 };
 </script>
 
+
+
+
 <style lang="scss" scoped>
 .temp-chart-bg {
   display: flex;
