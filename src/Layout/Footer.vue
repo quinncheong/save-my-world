@@ -2,13 +2,18 @@
   <footer class="footer-bg-wrapper">
     <div class="footer-content-wrapper">
       <div class="links">
-        <template :key="route.path" v-for="(route, index) in routes">
-          <router-link v-if="route.meta.visible" :to="route.path.toLowerCase()">
-            {{ route.name }}
-          </router-link>
-        </template>
+        <div class="row text-center justify-content-center">
+          <template :key="route.path" v-for="(route, index) in routes">
+          
+            <div class="col-sm-2">
+              <router-link v-if="route.meta.visible" :to="route.path.toLowerCase()">
+                {{ route.name }}
+              </router-link>
+            </div>
+          
+          </template>
+        </div>
       </div>
-
       <hr class="w-75 justify-self-center mx-auto" />
       <div class="footer-text mt-2">
         Save My World is a team of Software Developers passionate about the
@@ -28,7 +33,7 @@
       </div>
       <div class="footer-copyright">
         <p class="m-0 text-center text-white">
-          © {{ date }} Copyright: WAD 2 Gods 🤩 🥺
+          © {{ date }} Copyright: WAD 2 Gods 🤩🥺
         </p>
       </div>
     </div>
@@ -74,7 +79,7 @@ export default {
   .footer-content-wrapper {
     @extend %page-wrapper;
     font-family: "Montserrat";
-    padding: 1rem;
+    // padding: 1rem;
     align-items: center;
     text-align: center;
     text-justify: inter-word;
@@ -82,7 +87,7 @@ export default {
     .links {
       display: flex;
       width: 100%;
-      justify-content: space-between;
+      justify-content: center;
       padding: 1rem 0 0 0;
       font-weight: bold;
     }
@@ -113,7 +118,7 @@ export default {
 // Remove padding when screen is small
 @media (min-width: 992px) {
   .footer-bg-wrapper {
-    width: 60%;
+    width: 70%;
     // text-align: justify;
   }
 }
@@ -121,7 +126,7 @@ export default {
 // Remove padding when screen is small
 @media (min-width: 1200px) {
   .footer-bg-wrapper {
-    width: 50%;
+    width: 60%;
     // text-align: justify;
   }
 }
