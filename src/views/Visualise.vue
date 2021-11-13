@@ -36,13 +36,11 @@
     -->
 
       <!-- Container to hold  the slider -->
-      <div class="console justify-self-center">
+      <div class="console justify-self-center" v-if="loading==false">
         <h5 class="sliderValue">{{ yearVal }}</h5>
         <div class="row">
-          <div class="col-1">
-            <div class="value-left">1981</div>
-          </div>
-          <div class="col-10">
+          <div class="col-1 col-sm-1 p-0">1981</div>
+          <div class="col-9 col-sm-10">
             <input
               id="slider"
               class="w-100"
@@ -54,16 +52,50 @@
               @change="listenEvent"
             />
           </div>
-          <div class="col-1">
-            <div class="value-right">2021</div>
-          </div>
+          <div class="col-1 col-sm-1 p-0">2021</div>
         </div>
+      </div>
+
+      <div id="console-alt" v-else-if="loading==true">
+        Loading please wait!!!!!!
       </div>
     </div>
 
+    <!--  Supposed map row -->
+    <div class="row" id="mapcontainer">
+      <!-- Col to hold the map -->
+      <!-- <div class="col" id="mapcontainer"> -->
+
+      <!-- Button to go back to original center -->
+
+      <button v-if="mapCenter == false" id="flydisplay" @click="returnCenter()">Go back to original</button>
+      <div class="map" id="map">
+        <!-- Result individual modal to be placed here  -->
+
+        <div class="container">
+
+          <div v-if="flying == false && display == true" id="desc" class="my-2">
+            <button
+              type="button"
+              @click="stopDisplay()"
+              class="btn-close"
+            ></button>
+
+            <div class="descriptiontext">
+              <h5 class="text-start">{{ title }}</h5>
+              <hr />
+              <p id="descriptionparagraph">{{ descriptionModal }}</p>
+            </div>
+          </div>
+        </div>
+        <!-- </div> -->
+      </div>
+
+    </div>
+
     <!-- Result outer modal to hold all results (WIP) , same row as map-->
-    <div class="row">
-      <div class="col-3 bg-white result-col">
+    <div class="row" v-if="loading == false">
+      <div class="col bg-white result-col">
         <div class="row">
           <div class="col">
             <p class="text-dark text-start mt-2 fs-6">
@@ -75,7 +107,8 @@
             <hr />
           </div>
         </div>
-        <div v-if="resultArray != []">
+        <div>
+          <!-- Iterate through the results  -->
           <div v-for="result in resultArray" :key="result" class="row">
             <div class="col">
               <p class="text-dark text-start">{{ result }}</p>
@@ -84,24 +117,10 @@
             <hr class="lead" />
           </div>
         </div>
-
-        <div v-else class="loader"></div>
       </div>
-      <!-- Col to hold the map -->
-      <div class="col-9">
-        <div class="map" id="map">
-          <!-- Slider Filter on the top left portion of the map -->
-          <!-- Result individual modal to be placed here  -->
-          <div class="container">
-            <div v-if="flying == false" id="desc" class="my-2">
-              <h5 class="text-center">{{ title }}</h5>
-              <div>
-                <p class="p-3">{{ descriptionModal }}</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+    </div>
+    <div v-else-if="loading == true">
+      <div class="loader"></div>
     </div>
 
     <!-- Disaster infographic -->
@@ -116,12 +135,13 @@ import MapboxGeocoder from "@mapbox/mapbox-gl-geocoder";
 import "@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css";
 import Disasterinfo from "@/components/Visualise/Disasterinfo.vue";
 
+const regexExpression = /(https?:\/\/[^ ]*)/;
 export default {
   name: "Visualise",
   components: { Disasterinfo },
   data() {
     return {
-      loading: false,
+      loading: true,
       location: "",
       access_token: process.env.VUE_APP_MAP_ACCESS_TOKEN,
       center: [0, 20],
@@ -139,11 +159,14 @@ export default {
       descriptionModal: "",
       status: "",
       resultArray: [],
+      display: true,
+      mapCenter: true
     };
   },
   async mounted() {
     this.createMap();
     // Load the markers here when loading
+
     this.map.on("load", async () => {
       await this.getLocation(); // After getting location then we add the markers
 
@@ -196,7 +219,8 @@ export default {
     this.map.on("click", "result", async (e) => {
       // Can use e to access properties and key in the description
 
-      // To-dos : Push description into Modal.
+      // Display == true
+      this.display = true;
 
       console.log(e.features[0]);
       // Copy coordinates array.
@@ -226,12 +250,25 @@ export default {
       });
       this.map.on("flyend", () => {
         this.flying = false;
+        this.mapCenter = false;
         //  Once ended, we add it into the modal.
 
         this.title = name;
-        this.descriptionModal = description;
 
         console.log(description);
+
+        // Split into paragraphs 
+        let tempList = description.split('\n\n');
+
+        this.descriptionModal = tempList;
+
+        
+
+
+
+        
+        
+        console.log(tempList);
 
         console.log("end fly here");
       });
@@ -311,6 +348,8 @@ export default {
         let results = response.data.data ?? [];
         await this.createFeaturesArray(results);
         await this.pushGeo();
+
+        this.loading = false;
 
         // Catching the erorr
       } catch (err) {
@@ -399,12 +438,16 @@ export default {
       // this.year = year;
       // console.log(year)
       // update the map
+      this.loading = true;
+
       console.log("hittin listen event");
       this.map.setFilter("result", [
         "==",
         ["number", ["get", "year"]],
         parseInt(this.yearVal),
       ]);
+
+      this.loading = false;
       console.log("End filter event");
 
       // const test = this.map.querySourceFeatures('disaster', {'sourceLayer': 'result'})
@@ -437,38 +480,74 @@ export default {
       });
       this.map.fire("flystart");
     },
+
+    stopDisplay() {
+      this.display = false;
+    },
+
+    async returnCenter() {
+      await this.map.flyTo({
+        center: [0, 20],
+        zoom: 1,
+      });
+
+      // Conditionals to remove the button
+      this.mapCenter = true;
+
+      // Conditionals to remove the modal
+      this.display = false;
+      
+    },
   },
 };
 </script>
 
 <style lang="scss" scoped>
+* {
+  font-size: $variable-font;
+}
 .visualisation-wrapper {
   @extend %page-wrapper;
   font-size: $variable-font;
 
-  ::-webkit-scrollbar {
-    width: 0px;
-  }
+  //   ::-webkit-scrollbar{
+  //     width: 10px;
+  // }
+  // ::-webkit-scrollbar-track{
+  //     background-color: rgb(0, 0, 0);
+  //     border-radius: 5px;
+  // }
+  // ::-webkit-scrollbar-thumb{
+  //     background: linear-gradient(transparent, #30ff00);
+  //     border-radius: 5px;
+  // }
+  // ::-webkit-scrollbar-thumb:hover{
+  //     background: linear-gradient(transparent, #00c6ff);
+  // }
 
-  ::-webkit-scrollbar-track {
-    background: hsl(100 75% 40% / 1);
-    border-radius: 100vw;
-    margin-block: 0.5em;
-  }
+  // ::-webkit-scrollbar {
+  //   width: 1px;
+  // }
 
-  ::-webkit-scrollbar-thumb {
-    background: hsl(120 100% 20% / 1);
-    border: 0.25em solid black;
-    border-radius: 100vw;
-  }
+  // ::-webkit-scrollbar-track {
+  //   background: hsl(100 75% 40% / 1);
+  //   border-radius: 100vw;
+  //   margin-block: 0.5em;
+  // }
 
-  ::-webkit-scrollbar-thumb:hover {
-    background: hsl(120 100% 5% /1);
-  }
+  // ::-webkit-scrollbar-thumb {
+  //   background: hsl(120 100% 20% / 1);
+  //   border: 0.25em solid black;
+  //   border-radius: 100vw;
+  // }
 
-  .scrollable-element {
-    scrollbar-width: thin;
-  }
+  // ::-webkit-scrollbar-thumb:hover {
+  //   background: hsl(120 100% 5% /1);
+  // }
+
+  // .scrollable-element {
+  //   scrollbar-width: thin;
+  // }
 
   #tile-2 {
     .chart-title {
@@ -490,12 +569,27 @@ export default {
 
   .map {
     color: black;
-    position: relative;
-    border-radius: 25px;
-    height: 100%;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    // height: 100%;
+  }
+
+  #mapcontainer {
+    // height: 100%;
+  }
+
+  #map {
+    //  display: block;
+    height: 100vh;
+    width: 100%;
   }
 
   .result-col {
+  }
+
+  #flydisplay {
+    animation: appear 0.5s;
+
   }
 
   .console {
@@ -531,6 +625,12 @@ export default {
     }
   }
 
+  #console-alt{
+    animation: appear 5s ease;
+  }
+
+  // How to fit the text inside ????
+
   #desc {
     position: absolute;
     width: 40%;
@@ -542,8 +642,11 @@ export default {
     z-index: 1;
     overflow-y: auto;
     animation: appear 0.5s;
-    border-radius: 25px;
+    border-radius: 10px;
     text-align: left;
+    overflow-wrap:break-word;
+
+    // overflow-x: hidden;
   }
 
   .result-col {
@@ -551,6 +654,9 @@ export default {
     height: 500px;
     overflow-x: hidden;
     overflow-y: scroll;
+  }
+
+  .result-col:hover {
   }
 
   .result-list {
@@ -564,7 +670,21 @@ export default {
     width: 120px;
     height: 120px;
     animation: spin 2s linear infinite;
+    margin: 0 auto;
   }
+
+  #descriptionparagraph {
+    font-size: $variable-font-small;
+    // overflow: hidden;
+    // position: relative;
+    // line-height: 1rem;
+    // max-height: 2rem;
+    // text-align: justify;
+    // margin-right: -1rem;
+    // padding-right: 1rem;
+  }
+
+ 
 
   @keyframes spin {
     0% {
