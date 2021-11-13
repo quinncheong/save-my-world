@@ -203,38 +203,60 @@ export default {
       e.preventDefault();
 
       //   First portion is to do forward geocoding to get the lat and long
-      let geolocationUrl = "http://api.positionstack.com/v1/forward";
-      let access_key = process.env.VUE_APP_POSITIONSTACK_API_KEY;
+      // Need better plan to support https
+      // let geolocationUrl = "https://api.positionstack.com/v1/forward";
+      // let access_key = process.env.VUE_APP_POSITIONSTACK_API_KEY;
       let query = country.value;
       let isoCountry = iso.whereCountry(country.value).alpha3;
 
+      // New forward geocoding api
+      let access_key = process.env.VUE_APP_LOCATION_IQ_API;
+      let geolocationUrl = `https://us1.locationiq.com/v1/search.php?`
+
       try {
+        // This is for position stack api
+        // let res = await axios.get(geolocationUrl, {
+        //   params: {
+        //     access_key,
+        //     query,
+        //   },
+        // });
+
         let res = await axios.get(geolocationUrl, {
           params: {
-            access_key,
-            query,
+            key: access_key,
+            q: isoCountry,
+            format: "json",
           },
         });
+
         if (!res) {
           throw new Error("Error with access forward geolocation API");
         }
         let geolocation = {};
-        for (let country of res.data.data) {
-          console.log(country);
-          console.log(isoCountry);
-          if (country.country_code === isoCountry) {
-            geolocation.lat = country.latitude;
-            geolocation.lon = country.longitude;
-            break;
-          }
-        }
+        // Position stack api implementation
+        // for (let country of res.data.data) {
+        //   console.log(country);
+        //   console.log(isoCountry);
+        //   if (country.country_code === isoCountry) {
+        //     geolocation.lat = country.latitude;
+        //     geolocation.lon = country.longitude;
+        //     break;
+        //   }
+        // }
+
+        geolocation.lat = res.data[0].lat;
+        geolocation.lon = res.data[0].lon;
+        // Have to handle error for when the country is not found
+
         console.log("Completed the first API request: ");
         console.log(geolocation);
         // After getting the lat and long, we can make a call
         // to get the air pollution history
 
+        // Open weather accepts https from url. Should be ok on deployment.
         let baseUrl =
-          "http://api.openweathermap.org/data/2.5/air_pollution/history";
+          "https://api.openweathermap.org/data/2.5/air_pollution/history";
 
         let appid = process.env.VUE_APP_OPENWEATHER_API_KEY;
         let { lat, lon } = geolocation;
