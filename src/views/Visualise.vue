@@ -238,6 +238,8 @@ export default {
             },
           });
 
+          console.log(this.features);
+
           console.log(this.featuresMain);
 
           console.log("added source");
@@ -393,6 +395,10 @@ export default {
       //           "https://api.reliefweb.int/v1/disasters?type&fields[include][]=type.name&limit=20&sort[]=date:desc"
       // Changed to 100 first for faster loading time.
 
+
+      //           `https://api.reliefweb.int/v1/disasters?type&fields[include][]=type.name&limit=800&offset=${this.offset}&sort[]=date:desc`
+
+
       try {
         const response = await axios.get(
           `https://api.reliefweb.int/v1/disasters?type&fields[include][]=type.name&limit=800&offset=${this.offset}&sort[]=date:desc`
@@ -409,7 +415,7 @@ export default {
         let x = await this.createFeaturesArray(results);
         let yu = await this.pushGeo();
 
-        this.featureMain = this.featuresMain.concat(this.features);
+        this.featuresMain = this.featuresMain.concat(this.features);
         // Reset the features array since gonna loop
         this.features = [];
 
@@ -463,6 +469,7 @@ export default {
       let geoListFulfilled = await Promise.all(geoListPromises);
       let dataArray = geoListFulfilled.map((res) => res.data.data[0]);
 
+
       // console.log(dataArray);
 
       // have to initialise a dictionary to store id as key
@@ -494,6 +501,9 @@ export default {
         feature.geometry.coordinates = [geoCode.lon, geoCode.lat];
         feature.properties.description = desc;
       });
+      console.log(this.features);
+
+      
     },
 
     async handleClick() {},
@@ -577,20 +587,9 @@ export default {
   @extend %page-wrapper;
   font-size: $variable-font;
 
-  //   ::-webkit-scrollbar{
-  //     width: 10px;
-  // }
-  // ::-webkit-scrollbar-track{
-  //     background-color: rgb(0, 0, 0);
-  //     border-radius: 5px;
-  // }
-  // ::-webkit-scrollbar-thumb{
-  //     background: linear-gradient(transparent, #30ff00);
-  //     border-radius: 5px;
-  // }
-  // ::-webkit-scrollbar-thumb:hover{
-  //     background: linear-gradient(transparent, #00c6ff);
-  // }
+  ::-webkit-scrollbar {
+    @extend %scrollbar-thumb;
+  }
 
   // ::-webkit-scrollbar {
   //   width: 1px;
