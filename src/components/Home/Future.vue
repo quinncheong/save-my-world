@@ -1,3 +1,4 @@
+p
 <template>
   <section class="future-wrapper container-fluid w-100">
     <!-- SVG effect -->
@@ -19,8 +20,8 @@
     </svg>
     <!-- Content -->
     <div class="future-content">
-      <h1 class="mb-3">Towards a Net-Zero Future</h1>
-      <h6 class="mb-4">
+      <h3 class="mb-3">Towards a Net-Zero Future</h3>
+      <p class="mb-4">
         According to United Nations, to preserve a livable climate,
         greenhouse-gas emissions must be reduced to net zero by 2050. Bold,
         fast, and wide-ranging action needs to be taken by governments and
@@ -28,14 +29,14 @@
         <span id="savemyworld">requires</span> the
         <span id="savemyworld">participation of citizens</span> – especially in
         advanced economies.
-      </h6>
+      </p>
 
-      <h6 class="mb-2">
+      <p class="mb-2">
         Hence, play your part in limiting the effects of global warming and take
         care of our planet.
         <span id="savemyworld">Make the right choices today.</span> You can be
         part of the solution and influence change.
-      </h6>
+      </p>
     </div>
   </section>
 </template>
@@ -48,14 +49,14 @@ export default {
 
 <style lang="scss" scoped>
 .future-wrapper {
-  font-size: $font-size-secondary;
+  font-size: $font-size-small;
   background-image: linear-gradient(
     to bottom right,
     rgba(80, 167, 194, 0.9),
     rgba(144, 243, 199, 0.9)
   );
   position: relative;
-  padding: 4rem 1rem;
+  padding: 2rem 0.5rem;
 
   .svg-wave {
     position: absolute;
@@ -73,9 +74,24 @@ export default {
   flex-direction: column;
   align-items: center;
   margin: auto;
+
+  p {
+    text-align: justify;
+  }
 }
 
 // Accounting for the different breakpoints
+@media screen and (min-width: 468px) {
+  .future-wrapper {
+    font-size: $variable-font;
+    padding: 3rem 2rem;
+
+    .future-content p {
+      text-align: center;
+    }
+  }
+}
+
 @media screen and (min-width: 768px) {
   .future-content {
     width: 80%;
