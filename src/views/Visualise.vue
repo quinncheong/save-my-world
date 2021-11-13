@@ -26,6 +26,7 @@
             id="inlineRadio1"
             value="everyyear"
             v-model="selected"
+            @change="handleChange()"
             checked
           />
           <label class="form-check-label" for="inlineRadio1">Every Year</label>
@@ -38,6 +39,8 @@
             id="inlineRadio2"
             value="indivyear"
             v-model="selected"
+            @change="handleChange()"
+
 
           />
           <label class="form-check-label" for="inlineRadio2">Individual Year</label>
@@ -214,7 +217,7 @@ export default {
       markerList: [],
       features: [],
       featuresMain: [],
-      yearVal: 2021,
+      yearVal: null,
       year: "",
       flying: true,
       // For result modal
@@ -284,7 +287,7 @@ export default {
               "text-offset": [0, 1.25],
               "text-anchor": "top",
             },
-            filter: ["==", ["number", ["get", "year"]], parseInt(this.yearVal)],
+            // filter: ["==", ["number", ["get", "year"]], parseInt(this.yearVal)],
           });
         }
       );
@@ -596,6 +599,37 @@ export default {
       // Conditionals to remove the modal
       this.display = false;
     },
+
+// Function to deal with the filters
+    handleChange(){
+
+      // From v-model we will determine the relevant filters here.
+      if (this.selected == "indivyear"){
+
+        this.yearVal = "2021";
+
+        this.map.setFilter("result", [
+        "==",
+        ["number", ["get", "year"]],
+        parseInt(this.yearVal),
+      ]);
+
+
+      }
+
+      if(this.selected =="everyyear"){
+        this.yearVal = null;
+
+
+        this.map.setFilter("result", null);
+
+      }
+
+      // if (this.selected == "everyyear"){
+
+      // }
+
+    }
   },
 };
 </script>
