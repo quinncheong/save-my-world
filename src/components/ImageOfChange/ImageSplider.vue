@@ -57,7 +57,7 @@ export default defineComponent({
         // Mobile
         320: {
           perPage: 3,
-          gap: "10px",
+          gap: "5px",
           height: "100%",
         },
         // Tablet
@@ -66,12 +66,6 @@ export default defineComponent({
           gap: "0.5rem",
           height: "100%",
         },
-        // Desktop
-        // 1024: {
-        //     perPage: 3,
-        //     gap: "0px",
-        //     height: "100%"
-        // }
       },
     };
 
@@ -89,33 +83,27 @@ export default defineComponent({
       rewind: true,
       gap: "1rem",
       pagination: false,
-      fixedWidth: 110,
+      fixedWidth: 100,
       fixedHeight: 70,
       cover: true,
       focus: "center",
       isNavigation: true,
       updateOnMove: true,
-      perPage: 4,
+      perPage: 5,
       arrows: false,
       breakpoints: {
-        // Mobile
-        320: {
-          perPage: 3,
-          gap: "10px",
-          height: "100%",
+        // Desktop
+        1024: {
+          gap: ".5rem",
         },
         // Tablet
         768: {
-          perPage: 4,
-          gap: "0.5rem",
-          height: "100%",
+          gap: ".3rem",
         },
-        // Desktop
-        // 1024: {
-        //     perPage: 3,
-        //     gap: "0px",
-        //     height: "100%"
-        // }
+        // Mobile
+        320: {
+          gap: ".1rem",
+        },
       },
     };
 
@@ -146,10 +134,6 @@ export default defineComponent({
     };
   },
   methods: {
-    // Console log out the current active slide
-    // handleActive() {
-    //   console.log(this.$refs.main.splide);
-    // },
   }
 });
 </script>
@@ -163,6 +147,5 @@ export default defineComponent({
 
 .splide__slide.is-active {
   opacity: 1;
-//   border: 1px solid white;
 }
 </style>

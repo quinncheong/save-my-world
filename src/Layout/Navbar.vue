@@ -25,13 +25,14 @@
       </div>
     </div>
   </nav> -->
-  
+
   <nav class="nav" v-if="fullView">
     <!-- <router-link id="home" to="/">Home img</router-link> -->
     <router-link id="home" to="/">
       <img class="homeimg" src="@/assets/img/logo5.png" alt="Globe Icon" />
     </router-link>
 
+    <!--added in a class called topnav (remvoed)-->
     <template :key="route.path" v-for="(route, index) in routes">
       <router-link v-if="route.meta.visible" :to="route.path.toLowerCase()">
         {{ route.name }}
@@ -41,13 +42,14 @@
 
   <nav class="nav small" v-else>
     <!-- <router-link id="home" to="/">Home img</router-link> -->
-    <div class="top">
-      <router-link id="home" to="/">
+    <!-- <router-link id="home" to="/">
         <img class="homeimg" src="@/assets/img/logo5.png" alt="Globe Icon" />
-      </router-link>
-      <button @click="showButton()" class="nav-dropdown-button btn btn-success">
-        Dropdown
-      </button>
+      </router-link> -->
+    <div id="nav-icon3" :class="classNames" @click="showButton">
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
     </div>
     <div :class="dropdownClass">
       <router-link
@@ -70,6 +72,7 @@ export default {
       dropdownClass: "dropdown-content",
       dropdownShown: false,
       views: ["News", "Charts", "Image", "Community", "Profile"],
+      classNames: { open: false, "ml-auto": true },
     };
   },
   methods: {
@@ -77,20 +80,26 @@ export default {
       if (this.dropdownShown) {
         this.dropdownShown = false;
         this.dropdownClass = "dropdown-content";
+        this.classNames.open = false;
       } else {
         this.dropdownShown = true;
         this.dropdownClass = "dropdown-content show-content";
+        this.classNames.open = true;
       }
     },
   },
   created() {
-    //   track the width on resize
+    if (window.innerWidth < 760) {
+      this.fullView = false;
+    }
+      //   track the width on resize
     window.addEventListener("resize", () => {
-      if (window.innerWidth > 800) {
+      if (window.innerWidth > 760) {
         //   reset it if you expand the screen
         this.dropdownShown = false;
         this.dropdownClass = "dropdown-content";
         this.fullView = true;
+        this.classNames.open = false;
       } else {
         this.fullView = false;
       }
@@ -116,7 +125,7 @@ export default {
   background-color: $bg-color-primary;
   display: flex;
   justify-content: flex-end;
-  font-size: calc($font-size-primary * 0.6) !important;
+  font-size: calc($font-size-primary * 0.5);
 
   #home {
     margin-right: auto;
@@ -150,18 +159,7 @@ export default {
     flex-direction: column;
     align-items: space-around;
     position: relative;
-
-    .top {
-      display: flex;
-      align-content: center;
-
-      // For dropdown
-      .dropdown-button {
-        background-color: inherit;
-        font-family: inherit; /* Important for vertical align on mobile phones */
-        margin: 0; /* Important for vertical align on mobile phones */
-      }
-    }
+    padding: 20px 40px 30px;
 
     .dropdown-content {
       position: absolute;
@@ -192,5 +190,151 @@ export default {
       }
     }
   }
+
+  //   .checkbtn{
+  //   font-size: 30px;
+  //   color: white;
+  //   line-height:80px;
+  //   margin-right: 40px;
+  //   float: right;
+  //   display: None;
+
+  // }
 }
+
+#nav-icon1,
+#nav-icon2,
+#nav-icon3,
+#nav-icon4 {
+  width: 45px;
+  height: 10px;
+  position: relative;
+  margin-left: auto;
+  -webkit-transform: rotate(0deg);
+  -moz-transform: rotate(0deg);
+  -o-transform: rotate(0deg);
+  transform: rotate(0deg);
+  -webkit-transition: 0.5s ease-in-out;
+  -moz-transition: 0.5s ease-in-out;
+  -o-transition: 0.5s ease-in-out;
+  transition: 0.5s ease-in-out;
+  cursor: pointer;
+}
+
+#nav-icon1 span,
+#nav-icon3 span,
+#nav-icon4 span {
+  display: block;
+  position: absolute;
+  height: 5px;
+  width: 100%;
+  background: white;
+  border-radius: 9px;
+  opacity: 1;
+  left: 0;
+  -webkit-transform: rotate(0deg);
+  -moz-transform: rotate(0deg);
+  -o-transform: rotate(0deg);
+  transform: rotate(0deg);
+  -webkit-transition: 0.25s ease-in-out;
+  -moz-transition: 0.25s ease-in-out;
+  -o-transition: 0.25s ease-in-out;
+  transition: 0.25s ease-in-out;
+}
+#nav-icon3 span:nth-child(1) {
+  top: 0px;
+}
+
+#nav-icon3 span:nth-child(2),
+#nav-icon3 span:nth-child(3) {
+  top: 10px;
+}
+
+#nav-icon3 span:nth-child(4) {
+  top: 20px;
+}
+
+#nav-icon3.open span:nth-child(1) {
+  top: 15px;
+  width: 0%;
+  left: 50%;
+}
+
+#nav-icon3.open span:nth-child(2) {
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+#nav-icon3.open span:nth-child(3) {
+  -webkit-transform: rotate(-45deg);
+  -moz-transform: rotate(-45deg);
+  -o-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+}
+
+#nav-icon3.open span:nth-child(4) {
+  top: 18px;
+  width: 0%;
+  left: 50%;
+}
+
+.checkbtn {
+  font-size: 30px;
+  color: white;
+  line-height: 80px;
+  margin-right: 40px;
+  float: right;
+  display: none;
+  // content: ''
+}
+
+#check:checked + label {
+  #middle {
+    display: none;
+  }
+}
+
+.nav-label {
+  border: 1px solid white;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &::before,
+  &::after {
+    display: block;
+    background: white;
+    height: 2px;
+    width: 2em;
+    border-radius: 2px;
+    position: relative;
+  }
+
+  &:hover {
+    cursor: pointer;
+    border: none;
+  }
+}
+
+.menu {
+  width: 35px;
+  height: 3px;
+  background-color: rgb(255, 255, 255);
+  // content: '';
+  // padding: 10px;
+  margin: 3px;
+  padding: 1px;
+}
+
+//for the responsiveness of the top nav
+// @media screen and (max-width: 600px) {
+//   .topnav a:not(:first-child) {display: none;}
+//   .topnav a.icon {
+//     float: right;
+//     display: block;
+//   }
+// }
 </style>

@@ -2,9 +2,7 @@
   <div class="quiz-wrapper">
     <div v-if="!started">
       <div class="mb-3">
-        
         <h4 class="mb-2"><strong>Quiz Time</strong></h4>
-        <img class="quiz-image my-2" src="../assets/img/quiz.webp">
         <!-- <font-awesome-icon icon="fa-solid fa-comments-question-check" /> -->
         <p class="mb-2" style="font-size: 15px">
           
@@ -64,19 +62,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
-.quiz-image{
-  width: 100px;
-  height: 100px;
-}
-
-@media screen and (min-width: 320px) {
-  .quiz-wrapper {
-    width: 90%;
-  }
-}
-
-
 // display 70% width on desktop
 @media screen and (min-width: 768px) {
   .quiz-wrapper {
