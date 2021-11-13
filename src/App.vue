@@ -103,12 +103,26 @@ a {
 }
 
 .app-wrapper {
-  // overflow-x: hidden;
+  overflow-x: hidden;
 }
 
 .app-content-wrapper {
   min-height: 100vh;
-  padding: 1rem;
+  padding: 0.2rem;
   @extend %background-overlay;
 }
+
+// small screens place some padding
+@media screen and (min-width: 468px) {
+  .app-content-wrapper {
+    padding: 0.5rem;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .app-content-wrapper {
+    padding: 1rem;
+  }
+}
+  
 </style>
