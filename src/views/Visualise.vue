@@ -214,7 +214,7 @@ export default {
       markerList: [],
       features: [],
       featuresMain: [],
-      yearVal: null,
+      yearVal: 2021,
       year: "",
       flying: true,
       // For result modal
@@ -284,7 +284,7 @@ export default {
               "text-offset": [0, 1.25],
               "text-anchor": "top",
             },
-            // filter: ["==", ["number", ["get", "year"]], parseInt(this.yearVal)],
+            filter: ["==", ["number", ["get", "year"]], parseInt(this.yearVal)],
           });
         }
       );
