@@ -10,31 +10,18 @@
         The map below shows the frequency of disasters in the world.
       </p>
       <i class="chart-select mb-2">
-        Select the filter to understand how disasters have been increasing
+        Select a filter to understand how disasters have been increasing
         rapidly throughout the years
       </i>
-      <!--
-    <div class="d-flex justify-content-center">
-      <form @submit="handleClick()">
-        <select
-          class="form-select text-center"
-          v-model="selectedQuery"
-          @change="help"
-        >
-          <option
-            v-for="indivDisaster of disaster"
-            :key="indivDisaster"
-            :value="indivDisaster"
-            selected
-          >
-            {{ indivDisaster }}
-          </option>
-        </select>
-      </form>
-      <button class="btn btn-outline-success">Confirm</button>
-    </div> 
-    -->
 
+      <h2>Filters</h2>  
+      <label>Everything</label>
+      <input type="radio">
+
+      <label>Individual Years</label>
+      <input type="radio">
+      
+     
       <!-- Container to hold  the slider -->
       <div class="console justify-self-center" v-if="loading == false">
         <h5 class="sliderValue">{{ yearVal }}</h5>
