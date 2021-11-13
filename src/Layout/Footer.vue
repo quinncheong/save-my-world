@@ -151,7 +151,7 @@ export default {
 
 @media screen and (min-width: 768px) {
   .footer-bg-wrapper {
-    width: 80%;
+    width: 90%;
 
     .footer-content-wrapper {
       .links {
@@ -175,6 +175,14 @@ export default {
 @media screen and (min-width: 1200px) {
   .footer-bg-wrapper {
     width: 70%;
+    // text-align: justify;
+  }
+}
+
+// Remove padding when screen is small
+@media screen and (min-width: 1450px) {
+  .footer-bg-wrapper {
+    width: 60%;
     // text-align: justify;
   }
 }
