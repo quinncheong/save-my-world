@@ -72,6 +72,7 @@
             <div class="col-1 col-sm-1 p-0">2021</div>
           </div>
         </div>
+        <!-- </div> -->
       </div>
 
       <div id="console-alt" v-else>Loading please wait!!!!!!</div>
@@ -717,7 +718,7 @@ export default {
 <style lang="scss" scoped>
 .visualisation-wrapper {
   @extend %page-wrapper;
-  font-size: $variable-font;
+  font-size: $font-size-small;
 
   .disaster-header-title {
     margin-bottom: 1rem;
