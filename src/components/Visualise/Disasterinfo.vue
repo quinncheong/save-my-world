@@ -65,8 +65,10 @@
                 ></span
               >
               <span>Nov 1923</span>
+
+
             </div>
-            <img src="./greatkanto.jpg" class="img-fluid w-100 rounded" />
+            <img src="../../assets/DisasterInfo/greatkanto.webp" class="img-fluid w-100 rounded" />
 
             <div class="bottom text-start mt-2">
               <a
@@ -76,7 +78,7 @@
                 aria-expanded="false"
                 aria-controls="collapse1"
               >
-                Details
+                More details
               </a>
               <!-- https://devastatingdisasters.com/aleppo-earthquake-syria-1138-ad/ -->
 
@@ -105,7 +107,7 @@
               >
               <span>July 1931</span>
             </div>
-            <img src="./yangtzeflood.jpg" class="img-fluid w-100 rounded" />
+            <img src="../../assets/DisasterInfo/yangtzeflood.webp" class="img-fluid w-100 rounded" />
             <div class="bottom text-start mt-2">
               <a
                 data-bs-toggle="collapse"
@@ -146,7 +148,7 @@
               <span>Nov 1970</span>
             </div>
 
-            <img src="./bholacyclone.jpg" class="img-fluid w-100 rounded" />
+            <img src="../../assets/DisasterInfo/bholacyclone.webp" class="img-fluid w-100 rounded" />
 
             <div class="bottom text-start mt-2">
               <a
@@ -183,7 +185,7 @@
               >
               <span>Aug 1975</span>
             </div>
-            <img src="./typhoonnina.jpg" class="img-fluid w-100 rounded" />
+            <img src="../../assets/DisasterInfo/typhoonnina.webp" class="img-fluid w-100 rounded" />
 
             <div class="bottom text-start mt-2">
               <a
@@ -224,7 +226,7 @@
               <span>July 1976</span>
             </div>
             <img
-              src="./tangshanearthquake.jpg"
+              src="../../assets/DisasterInfo/tangshanearthquake.webp"
               class="img-fluid w-100 rounded"
             />
 
@@ -264,11 +266,12 @@
                   target="_blank"
                   >Bangladesh Cyclone</a
                 ></span
+               
               >
               <span>April 1991</span>
             </div>
             <img
-              src="./bangladeshcyclone.jpg"
+              src="../../assets/DisasterInfo/bangladeshcyclone.webp"
               class="img-fluid w-100 rounded"
             />
 
@@ -311,7 +314,7 @@
               >
               <span>Dec 2004</span>
             </div>
-            <img src="./indianocean.jpg" class="img-fluid w-100 rounded" />
+            <img src="../../assets/DisasterInfo/indianocean.webp" class="img-fluid w-100 rounded" />
 
             <div class="bottom text-start mt-2">
               <a
@@ -352,7 +355,7 @@
               <span>Oct 2005</span>
             </div>
             <img
-              src="./kashmirearthquake.jpg"
+              src="../../assets/DisasterInfo/kashmirearthquake.webp"
               class="img-fluid w-100 rounded"
             />
 
@@ -393,7 +396,7 @@
               >
               <span>May 2008</span>
             </div>
-            <img src="./cyclonenargis.jpg" class="img-fluid w-100 rounded" />
+            <img src="../../assets/DisasterInfo/cyclonenargis.webp" class="img-fluid w-100 rounded" />
 
             <div class="bottom text-start mt-2">
               <a
@@ -423,10 +426,10 @@
           <section>
             <i class="icon fas fa-home"></i>
             <div class="details">
-              <span class="title">Haiti Earthquake</span>
+              <span class="title"><a href="https://www.history.com/this-day-in-history/massive-earthquake-strikes-haiti">Haiti Earthquake</a></span>
               <span>Jan 2010</span>
             </div>
-            <img src="./haitiearthquake.jpg" class="img-fluid w-100 rounded" />
+            <img src="../../assets/DisasterInfo/haitiearthquake.webp" class="img-fluid w-100 rounded" />
 
             <div class="bottom text-start mt-2">
               <a
