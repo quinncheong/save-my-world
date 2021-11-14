@@ -68,6 +68,7 @@
           </div>
           <div class="col-1 col-sm-1 p-0">2021</div>
         </div>
+        <!-- </div> -->
       </div>
 
       <div id="console-alt" v-else>Loading please wait!!!!!!</div>
@@ -156,6 +157,9 @@
         </div>
         <!-- </div> -->
       </div>
+    </div>
+    <div v-else-if="loading == true">
+      <div class="loader"></div>
     </div>
 
     <!-- Outer division to hold information -->
@@ -659,6 +663,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+* {
+  font-size: $variable-font;
+}
 .visualisation-wrapper {
   @extend %page-wrapper;
   font-size: $variable-font;
