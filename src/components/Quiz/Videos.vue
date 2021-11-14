@@ -110,6 +110,7 @@ export default {
       @extend %vertical-flex;
       justify-content: flex-start;
       height: 100%;
+      width: 100%;
       padding: 0.5rem;
       background: linear-gradient(
         to bottom right,
