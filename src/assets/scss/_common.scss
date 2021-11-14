@@ -1,12 +1,17 @@
 @import "./variables";
+@import "./placeholders";
 
-::-webkit-scrollbar {
-  width: 4px;
-}
+// ::-webkit-scrollbar {
+//   width: 8px;
+// }
 
-::-webkit-scrollbar-thumb:hover {
-  background: $color-secondary;
-}
+// ::-webkit-scrollbar-thumb {
+//   @extend %scrollbar-thumb;
+// }
+
+// ::-webkit-scrollbar-thumb:hover {
+//   background: $color-secondary;
+// }
 
 .font-big {
   font-size: 14px;

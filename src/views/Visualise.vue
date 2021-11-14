@@ -663,8 +663,15 @@ export default {
     overflow-y: scroll;
 
     &::-webkit-scrollbar {
+      width: 12px;
+    }
+
+    &::-webkit-scrollbar-thumb {
       @extend %scrollbar-thumb;
-      width: 4px;
+
+      &:hover {
+        background-color: black;
+      }
     }
 
     .disaster-info-text {
