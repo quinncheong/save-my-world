@@ -88,21 +88,21 @@ export default {
         {
           id: 1, //3
           name: "Global Temperature",
-          src: "temp.png",
+          src: "temp.webp",
           information:
             "Explore real-time statistics of how global temperature have changed over the years", //added
         },
         {
           id: 2, //2
           name: "Air Pollution",
-          src: "Co2.png",
+          src: "Co2.webp",
           information:
             "Visualise real-time statistics of how air pollution has changed over time", //added
         },
         {
           id: 3, //1
           name: "Sea Ice",
-          src: "seaIce.png",
+          src: "seaIce.webp",
           information:
             "Explore real-time statistics of the avergae mass of glaciers worldwide", //added
         },
