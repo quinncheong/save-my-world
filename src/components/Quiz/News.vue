@@ -18,12 +18,15 @@
     <div class="news-cards-wrapper">
       <div
         :key="index"
+        :style="{color: srcset.color}"
         v-for="(srcset, index) of sources"
         class="col"
       >
         <div class="news-card text-center">
            
-          <p class="border-bottom news-card-title" style="color: yellow">
+          <p class="border-bottom news-card-title" style="color: #5A716A">
+
+          <!-- <p class="border-bottom news-card-title"> -->
             {{ srcset.title }}
              <font-awesome-icon :icon="srcset.icon" size="lg"></font-awesome-icon>
           </p>
@@ -60,19 +63,23 @@ export default {
           title: "Climate Change",
           text: "Contemporary climate change includes both global warming caused by humans and its impacts on Earth's weather patterns.",
           buttonText: "Click for more info",
-          icon: "cloud-sun-rain"
+          icon: "cloud-sun-rain",
+          color: 'white'
+
         },
         {
           title: "Greenhouse Gases",
           text: "The main gases responsible for the greenhouse effect include carbon dioxide, methane, nitrous oxide, water vapor and fluorinated gases.",
           buttonText: "Click for more info",
-          icon: "wind"
+          icon: "wind", 
+          color: 'white'
         },
         {
           title: "Ways to Contribute",
           text: "Foster innovation and resilient infrastructure, creating communities and cities able to produce and consume sustainably.",
           buttonText: "Click for more info",
-          icon: "hands-helping"
+          icon: "hands-helping", 
+          color: 'white'
         },
       ],
     };
@@ -101,7 +108,8 @@ export default {
       @extend %vertical-flex;
       justify-content: space-between;
       padding: 0.5rem;
-      background-color: green;
+      background-color:#6dc0d5;
+      // background-color: #8ABAD3FF;
       height: 100%;
 
       .news-card-title {
@@ -120,7 +128,7 @@ export default {
   text-align: center;
   margin: 0 auto;
   font-size: 12px !important;
-  color: green;
+  color: rgb(29, 108, 128);
 }
 
 @media screen and (min-width: 558px) {
