@@ -31,6 +31,7 @@ Relief Web API
 2) Ensure that git is installed. https://git-scm.com/book/en/v2/Getting-Started-Installing-Git
 3) Choose a folder which you want to store the repo and go into the folder
 4) git clone https://github.com/quinncheong/save-my-world.git to clone the new repo and change directory into the folder
+5) Ensure that you have the .env file and place it in the root directory. WE ARE NOT UPLOADING IT FOR SECURITY'S PURPOSES. Please contact [Quinn Cheong](https://github.com/quinncheong)  
 
 ## Starting the project
 ```
