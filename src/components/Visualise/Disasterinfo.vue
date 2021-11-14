@@ -4,8 +4,8 @@
     <section ref="x" class="disaster-info-top">
       <h3 class="mb-3 disaster-title">Disaster Types</h3>
       <p>
-        Climate change affects global temperature and precipitation patterns.
-        These are some of the listed effects:
+        The current climate models indicate that rising temperatures will intensify the Earth’s water cycle, increasing evaporation. This would result in more and frequent extreme weather events. 
+        The following are some of the listed effects:
       </p>
       <!-- icon box -->
       <div class="disaster-icons-container">
@@ -65,10 +65,11 @@
                 ></span
               >
               <span>Nov 1923</span>
-
-
             </div>
-            <img src="../../assets/DisasterInfo/greatkanto.webp" class="img-fluid w-100 rounded" />
+            <img
+              src="../../assets/DisasterInfo/greatkanto.webp"
+              class="img-fluid w-100 rounded"
+            />
 
             <div class="bottom text-start mt-2">
               <a
@@ -107,7 +108,10 @@
               >
               <span>July 1931</span>
             </div>
-            <img src="../../assets/DisasterInfo/yangtzeflood.webp" class="img-fluid w-100 rounded" />
+            <img
+              src="../../assets/DisasterInfo/yangtzeflood.webp"
+              class="img-fluid w-100 rounded"
+            />
             <div class="bottom text-start mt-2">
               <a
                 data-bs-toggle="collapse"
@@ -148,7 +152,10 @@
               <span>Nov 1970</span>
             </div>
 
-            <img src="../../assets/DisasterInfo/bholacyclone.webp" class="img-fluid w-100 rounded" />
+            <img
+              src="../../assets/DisasterInfo/bholacyclone.webp"
+              class="img-fluid w-100 rounded"
+            />
 
             <div class="bottom text-start mt-2">
               <a
@@ -185,7 +192,10 @@
               >
               <span>Aug 1975</span>
             </div>
-            <img src="../../assets/DisasterInfo/typhoonnina.webp" class="img-fluid w-100 rounded" />
+            <img
+              src="../../assets/DisasterInfo/typhoonnina.webp"
+              class="img-fluid w-100 rounded"
+            />
 
             <div class="bottom text-start mt-2">
               <a
@@ -266,7 +276,6 @@
                   target="_blank"
                   >Bangladesh Cyclone</a
                 ></span
-               
               >
               <span>April 1991</span>
             </div>
@@ -314,7 +323,10 @@
               >
               <span>Dec 2004</span>
             </div>
-            <img src="../../assets/DisasterInfo/indianocean.webp" class="img-fluid w-100 rounded" />
+            <img
+              src="../../assets/DisasterInfo/indianocean.webp"
+              class="img-fluid w-100 rounded"
+            />
 
             <div class="bottom text-start mt-2">
               <a
@@ -396,7 +408,10 @@
               >
               <span>May 2008</span>
             </div>
-            <img src="../../assets/DisasterInfo/cyclonenargis.webp" class="img-fluid w-100 rounded" />
+            <img
+              src="../../assets/DisasterInfo/cyclonenargis.webp"
+              class="img-fluid w-100 rounded"
+            />
 
             <div class="bottom text-start mt-2">
               <a
@@ -426,10 +441,18 @@
           <section>
             <i class="icon fas fa-home"></i>
             <div class="details">
-              <span class="title"><a href="https://www.history.com/this-day-in-history/massive-earthquake-strikes-haiti">Haiti Earthquake</a></span>
+              <span class="title"
+                ><a
+                  href="https://www.history.com/this-day-in-history/massive-earthquake-strikes-haiti"
+                  >Haiti Earthquake</a
+                ></span
+              >
               <span>Jan 2010</span>
             </div>
-            <img src="../../assets/DisasterInfo/haitiearthquake.webp" class="img-fluid w-100 rounded" />
+            <img
+              src="../../assets/DisasterInfo/haitiearthquake.webp"
+              class="img-fluid w-100 rounded"
+            />
 
             <div class="bottom text-start mt-2">
               <a
@@ -469,28 +492,28 @@ export default {
     return {
       disasterShow: {
         "Forest fires": {
-          color: 'red',
-          icon: "fire"
+          color: "red",
+          icon: "fire",
         },
         Hurricanes: {
-          color: 'blue',
-          icon: "wind"
+          color: "blue",
+          icon: "wind",
         },
         "Heat waves": {
-          color: 'orange',
-          icon: "temperature-high"
+          color: "orange",
+          icon: "temperature-high",
         },
         Floods: {
-          color: 'lightBlue',
-          icon: "water"
+          color: "lightBlue",
+          icon: "water",
         },
         Droughts: {
-          color: 'chocolate',
-          icon: "tint-slash"
+          color: "chocolate",
+          icon: "tint-slash",
         },
         Storms: {
-          color: 'grey',
-          icon: "poo-storm"
+          color: "grey",
+          icon: "poo-storm",
         },
       },
       topDisasters: [
@@ -508,7 +531,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
+$disaster-color-1: #f5f5ef;
+$disaster-color-2: #b69d74;
+$disaster-color-3: #1f2839;
 html {
   scroll-behavior: smooth;
 }
@@ -597,7 +622,7 @@ html {
 }
 
 .timeline .bubble section {
-  background: rgb(76, 191, 48);
+  background: $disaster-color-2;
   width: calc(50% - 40px);
   padding: 20px;
   position: relative;
@@ -608,7 +633,7 @@ html {
   content: "";
   height: 15px;
   width: 15px;
-  background: rgb(76, 191, 48);
+  background: $disaster-color-1;
   top: 28px;
   transform: rotate(45deg);
   z-index: 1;
@@ -617,7 +642,7 @@ html {
 .bubble section .icon,
 .center-line .scroll-icon {
   position: absolute;
-  background: green;
+  background: $disaster-color-2;
   height: 40px;
   width: 40px;
   border-radius: 50%;
@@ -687,8 +712,13 @@ html {
 
 .row section .bottom a {
   text-decoration: none;
-  color: green;
+  color: $disaster-color-2;
   padding: 7px;
+}
+
+a:hover,
+a:active {
+  color: $disaster-color-3;
 }
 
 @media screen and (min-width: 600px) {
