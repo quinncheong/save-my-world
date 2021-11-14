@@ -1,47 +1,29 @@
 <template>
   <section class="disaster-wrapper">
-    <section class="disasterinfo">
-      <div class="disaster-info-top bg-light text-dark">
-        <div class="container">
-          <header class="section-header">
-            <h1 class="mb-3">Disasters</h1>
-          </header>
-
-          <div class="row">
-            <div class="col-lg-6 col-md-4 col-sm-12 text-start mt-3">
-              <h6 class="textformat">
-                Climate change affects global temperature and precipitation
-                patterns. These are some of the listed effects:
-              </h6>
-
-              <!-- icon box -->
-
-              <div
-                class="text-center icon-box p-2 d-flex justify-content-start"
-                v-for="(icon, disaster) in disasterShow"
-                :key="disaster"
-              >
-                <div
-                  class="icon p-2 border border-dark p-2 rounded-circle me-2"
-                >
-                  <!-- <font-awesome-icon icon="circle" ></font-awesome-icon> -->
-                  <font-awesome-icon :icon="icon" size="md"></font-awesome-icon>
-                </div>
-
-                <p class="mt-2 ms-2 fw-bolder textformat">{{ disaster }}</p>
-              </div>
-            </div>
-
-            <div class="col-lg-6 col-md-8 col-sm-12">
-              <img
-                src="@/assets/img/NaturalDisaster.webp"
-                class="img-fluid w-100 mt-5"
-              />
-            </div>
-          </div>
+    <!-- Disasters info component -->
+    <section class="disaster-info-top">
+      <h3 class="mb-3">Disaster Types</h3>
+      <p>
+        Climate change affects global temperature and precipitation patterns.
+        These are some of the listed effects:
+      </p>
+      <!-- icon box -->
+      <div class="disaster-icons-container">
+        <div
+          class="disaster-icon col-5 col-sm-3"
+          v-for="(details, key) in disasterShow"
+          :key="key"
+          :style="{ color: details.color }"
+        >
+          <!-- <font-awesome-icon icon="circle" ></font-awesome-icon> -->
+          <font-awesome-icon :icon="details.icon" size="lg"></font-awesome-icon>
+          <p class="ms-2">{{ key }}</p>
         </div>
+      </div>
 
-        <!-- <div class="row">
+      <!-- <img src="@/assets/img/NaturalDisaster.webp" class="img-fluid mt-3" /> -->
+
+      <!-- <div class="row">
           <p class="col-md-12 mt-3 text-center fs-5">
             Climate change affects global temperature and precipitation
             patterns. These are some of the listed effects: 1) Forest fires 2)
@@ -49,20 +31,17 @@
           </p>
         </div> -->
 
-        <!-- Top 5 disasters of all time (Time line perhaps) -->
-      </div>
+      <!-- Top 5 disasters of all time (Time line perhaps) -->
     </section>
 
     <!-- Top disasters occurence -->
-  </section>
-  <section class="timeline-section bg-success" name="timeline-section">
-    <div class="disaster-content p-5 container-fluid bg-success w-100">
-      <h1 class="mb-3">Top 10 disasters of all time</h1>
-      <h6 class="mb-4">
+    <section class="timeline-section bg-dark" name="timeline-section">
+      <h3 class="timeline-header-title">Top 10 disasters of all time</h3>
+      <p class="timeline-header-text">
         Natural disasters have persisted for a long time. It is only up to
         <span id="savemyworld">US</span> to mitigate the changes impact that
         such disasters brings as this could be avoided.
-      </h6>
+      </p>
       <!-- Timeline starts here  -->
       <div class="timeline" id="start_timeline">
         <div class="center-line">
@@ -475,7 +454,7 @@
           </section>
         </div>
       </div>
-    </div>
+    </section>
   </section>
 </template>
 
@@ -486,48 +465,116 @@ export default {
   data() {
     return {
       disasterShow: {
-        "Forest fires": "fire",
-        Hurricanes: "wind",
-        "Heat waves": "temperature-high",
-        Floods: "water",
-        Droughts: "tint-slash",
-        Storms: "poo-storm",
+        "Forest fires": {
+          color: 'red',
+          icon: "fire"
+        },
+        Hurricanes: {
+          color: 'blue',
+          icon: "wind"
+        },
+        "Heat waves": {
+          color: 'orange',
+          icon: "temperature-high"
+        },
+        Floods: {
+          color: 'lightBlue',
+          icon: "water"
+        },
+        Droughts: {
+          color: 'chocolate',
+          icon: "tint-slash"
+        },
+        Storms: {
+          color: 'grey',
+          icon: "poo-storm"
+        },
       },
+      topDisasters: [
+        {
+          title: "Great Kanto Earthquake",
+          year: "Nov 1923",
+          imgsrc: "greatkanto.jpg",
+          link: "https://www.smithsonianmag.com/history/the-great-japan-earthquake-of-1923-1764539/",
+          details: `This earthquake struck at 11:58 am (local time), reaching a magnitude of 8.2 on the Richter scale and leaving the capital Tokyo and the city of Yokohama in ruins. It also produced a tsunami with waves that reached 12 meters high and provoked fires that were caused by overturned cooking stoves in numerous homes combined with heavy winds.`,
+        },
+      ],
     };
   },
 };
 </script>
 
 <style lang="scss" scoped>
-* {
-  font-size: $variable-font;
-}
 html {
   scroll-behavior: smooth;
 }
+
 .disaster-wrapper {
-  font-size: $variable-font-small;
+  font-size: $font-size-small;
   width: 100%;
   display: flex;
   flex-direction: column;
   margin-top: 1rem;
 
   .disaster-info-top {
-    padding: 1rem;
+    @extend %bg-card-rounded;
+    background: none;
     border-radius: 10px;
-  }
-
-  .textformat {
-    font-size: 20px;
-  }
-
-  .icon {
-    border-radius: 100%;
-    height: 50px;
-    width: 50px;
+    text-align: justify;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
+
+    .disaster-icons-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      margin-top: 1rem;
+      gap: 1rem 0.5rem;
+      font-size: calc($font-size-secondary * 0.8);
+
+      .disaster-icon {
+        border-radius: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        transition: all 0.3s ease-in-out;
+        font-size: inherit;
+
+        &:hover {
+          transform: scale(1.1);
+        }
+      }
+    }
+  }
+}
+
+.icon {
+  border-radius: 100%;
+  height: 50px;
+  width: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+// timeline css
+.timeline-section {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+
+  .timeline-header-title {
+    margin: 1rem;
+  }
+
+  .timeline-header-text {
+    margin: 1rem;
+    font-size: inherit;
   }
 }
 
@@ -632,6 +679,20 @@ html {
   text-decoration: none;
   color: green;
   padding: 7px;
+}
+
+@media screen and (min-width: 600px) {
+  .disaster-wrapper {
+    font-size: $variable-font;
+
+    .disaster-info-top {
+      text-align: center;
+
+      .disaster-icons-container {
+        font-size: $variable-font;
+      }
+    }
+  }
 }
 
 @media (max-width: 900px) {

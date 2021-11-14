@@ -119,7 +119,7 @@ export default {
       selectedChart: 0,
       loading: true,
     };
-  },
+  }, 
   methods: {
     setSelectedChart(id) {
       this.selectedChart = id;
@@ -138,6 +138,7 @@ export default {
 
   .chart-select {
     font-weight: bold;
+    font-style: italic;
     animation: fadeIn 3s ease-out;
   }
 
@@ -233,4 +234,14 @@ export default {
     font-size: 15px;
   }
 }
+
+ .loader {
+    border: 16px solid #f3f3f3; /* Light grey */
+    border-top: 16px solid #3498db; /* Blue */
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    animation: spin 1s linear infinite;
+    margin: 0 auto;
+  }
 </style>
