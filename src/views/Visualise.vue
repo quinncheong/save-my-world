@@ -97,7 +97,7 @@
       <!-- Button to go back to original center -->
 
       <button
-        class="btn-success btn"
+        class="quizBtn btn btn-light mb-3"
         v-if="mapCenter == false"
         id="flydisplay"
         @click="returnCenter()"
