@@ -44,7 +44,7 @@
           width="100%"
           height="475px"
           frameborder="0"
-          @load="loading = false"
+          @load="handleLoad"
           v-show="!loading"
         ></iframe>
 
@@ -110,15 +110,23 @@ export default {
         },
       ],
       selectedChart: 0,
-      loading: true,
+      loading: false,
+      hadLoaded: false,
     };
   },
   methods: {
     setSelectedChart(id) {
       this.selectedChart = id;
-      this.loading = true;
-      console.log(this.selectedChart);
+
+      if (id === 3 && !this.hasLoaded) {
+        this.loading = true;
+      }
     },
+
+    handleLoad() {
+      this.loading = false;
+      this.hasLoaded = true;
+    }
   },
 };
 </script>
