@@ -12,110 +12,105 @@
 </template>
 
 <script>
-import { createElementBlock } from '@vue/runtime-core';
+import { createElementBlock } from "@vue/runtime-core";
 export default {
-    name: 'ImageSliderBody',
-    props: ["image"],
-    data() {
-        return {
-            //
-            title: "Deforestation in Papua, Indonesia",
-            description: "The 2019 image shows an area of Papua (also known as Western New Guinea) where the forest was cleared between 2011 and 2016, reportedly to make way for plantation agriculture"
-        }
-    },
-    methods:{
-      
-    }
-    
-}
+  name: "ImageSliderBody",
+  props: ["image"],
+  data() {
+    return {
+      //
+      title: "Deforestation in Papua, Indonesia",
+      description:
+        "The 2019 image shows an area of Papua (also known as Western New Guinea) where the forest was cleared between 2011 and 2016, reportedly to make way for plantation agriculture",
+    };
+  },
+  methods: {},
+};
 </script>
 
 <style lang="scss" scoped>
+.container {
+  padding-left: 0px;
+  padding-right: 0px;
+  margin: 0 auto;
+}
 
-  .container{
-    padding-left: 0px;
-    padding-right: 0px;
-    margin: 0 auto;
+.card-body {
+  text-align: left;
+
+  .card-title {
+    line-height: 1.7;
+    font-family: "Sora", sans-serif;
   }
+}
+.card {
+  box-shadow: 2px 2px 5px #9e9e9e, -1px -1px 5px #9e9e9e;
+}
 
-  .card-body{
-    text-align: left;
+.card-content {
+  padding: 10px 30px;
+  border-left: 1px solid #ccc;
 
-    .card-title{
-      line-height: 1.7;
-      font-family: "Sora", sans-serif;
-    }
-  }
-  .card {
-    box-shadow: 2px 2px 5px #9E9E9E, -1px -1px 5px #9E9E9E;
-  }
-  
-  .card-content {
-    padding: 10px 30px;
-    border-left: 1px solid #ccc;
-  }
-
-  h4 {
-    margin-top: 10px;
-    text-transform: uppercase;
-    margin-bottom: 0;
-    color: yellow;
-    font-size: 20px;
-    text-align: left;
-    font-weight: 900;
-
-  }
-
-  h5{
-    margin-top: 5px;
-    text-transform: uppercase;
-    margin-bottom: 0;
-    color: lightgrey;
-    font-size: 14px;
-    text-align: left;
-    font-weight: 900;
-  }
-
-  p{
-    margin-top: 5px;
-    margin-bottom: 0;
-    color: lightgrey;
-    font-size: 12px;
-    text-align: left;
-  }
-
-  .card-content .author {
+  .author {
     border-top: 1px solid #cdcdcd;
     font-weight: 700;
     margin-top: 25px;
     padding: 25px 0 10px 0;
     color: #555;
   }
+}
 
-  @media screen and (max-width: 576px) {
-    .container {
-      width: 100%;
-    }
+h4 {
+  margin-top: 10px;
+  text-transform: uppercase;
+  margin-bottom: 0;
+  color: yellow;
+  font-size: 20px;
+  text-align: left;
+  font-weight: 900;
+}
+
+h5 {
+  margin-top: 5px;
+  text-transform: uppercase;
+  margin-bottom: 0;
+  color: lightgrey;
+  font-size: 14px;
+  text-align: left;
+  font-weight: 900;
+}
+
+p {
+  margin-top: 5px;
+  margin-bottom: 0;
+  color: lightgrey;
+  font-size: 12px;
+  text-align: left;
+}
+
+@media screen and (max-width: 576px) {
+  .container {
+    width: 100%;
   }
+}
 
-  @media screen and (max-width: 768px) {
-    .container {
-      width: 100%;
-    }
+@media screen and (max-width: 768px) {
+  .container {
+    width: 100%;
   }
+}
 
-  // display 70% width on large screen sizes
-  @media screen and (max-width: 992px) {
-    .container {
-      width: 100%;
-    }
+// display 70% width on large screen sizes
+@media screen and (max-width: 992px) {
+  .container {
+    width: 100%;
   }
+}
 
-  // display 70% width on extra large screen sizes
-  @media screen and (max-width: 1200px) {
-    .container {
-      width: 100%;
-    }
+// display 70% width on extra large screen sizes
+@media screen and (max-width: 1200px) {
+  .container {
+    width: 100%;
   }
-
+}
 </style>
