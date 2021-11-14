@@ -19,10 +19,6 @@
       />
     </div>
 
-
-
-
-    
     <div v-if="selectedChart === 0"></div>
     <div v-else-if="selectedChart === 1
     ">
@@ -42,7 +38,11 @@
 
     <div v-else>
       <!-- <TempChart /> -->
-        <iframe src="https://datahub.io/core/glacier-mass-balance/view/0" width="100%" height="475px" frameborder="0"></iframe>
+      <div v-if='loading == true'>
+        <div class='loader'></div>
+      </div>
+
+      <iframe src="https://datahub.io/core/glacier-mass-balance/view/0" width="100%" height="475px" frameborder="0"></iframe>
 
       <div class="card mt-4">
       <div class="card-body text-dark bold">
@@ -97,17 +97,27 @@ export default {
           id: 3,   //1
           name: "Sea Ice",
           src: "seaIce.png",
-          information: "Explore real-time statistics of the avergae mass of glaciers worldwide",  //added
+          information: "Explore real-time statistics of the average mass of glaciers worldwide",  //added
         },
       ],
       selectedChart: 0,
+      loading: false, //added 
     };
-  },
+  }, 
   methods: {
     setSelectedChart(id) {
       this.selectedChart = id;
       console.log(this.selectedChart)
-    }
+
+      this.loading = true; 
+      this.loading = false; 
+    }, 
+
+    //added 
+    // async fetchData(){
+    //   this.loading = true; 
+    //   this.loading = false; 
+    // }
   }
  };
 </script>
@@ -118,6 +128,7 @@ export default {
 
   .chart-select {
     font-weight: bold;
+    font-style: italic;
     animation: fadeIn 3s ease-out;
   }
 
@@ -200,4 +211,14 @@ export default {
     font-size: 15px;
   }
 }
+
+ .loader {
+    border: 16px solid #f3f3f3; /* Light grey */
+    border-top: 16px solid #3498db; /* Blue */
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    animation: spin 1s linear infinite;
+    margin: 0 auto;
+  }
 </style>

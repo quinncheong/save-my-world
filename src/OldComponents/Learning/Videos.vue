@@ -15,6 +15,19 @@
       v-for="(srcset, index) of sources"
       class="cards_item"
       >
+
+      <!--original-->
+        <!-- <div class="card bg-transparent">
+          <div class="card_image"><iframe width="100%" height="100%"
+              :src="srcset.link"
+              allowfullscreen
+            ></iframe></div>
+          <div class="card_content">
+            <h6 class="card_title">{{ srcset.title }}</h6>
+            <p class="card_text">{{ srcset.text }}</p>
+          </div>
+        </div> -->
+
         <div class="card bg-transparent">
           <div class="card_image"><iframe width="100%" height="100%"
               :src="srcset.link"
@@ -25,6 +38,7 @@
             <p class="card_text">{{ srcset.text }}</p>
           </div>
         </div>
+
       </li>
     </ul>
   </div>
