@@ -6,24 +6,24 @@ We wanted to tackle the question “How can we convert climate change skeptics i
 
 ## Technologies used
 ### Main application:
-Vue CLI
-Javascript
+Vue CLI<br />
+Javascript<br />
 NPM
 ### Styling:
-Bootstrap
+Bootstrap <br />
 SCSS
 ### Database: 
 Firebase 
 ### BTL technologies:
-GitHub - Version Control
-Netlify - Deployment
-SCSS Framework
+GitHub - Version Control<br />
+Netlify - Deployment<br />
+SCSS Framework<br />
 AWS Integration
 ### APIs Used:
-AWS API Gateway
-Open weather API
-World Bank API
-Location IQ API
+AWS API Gateway<br />
+Open weather API<br />
+World Bank API<br />
+Location IQ API<br />
 Relief Web API
 
 ## Project Environment Setup
