@@ -42,6 +42,7 @@
 
     <div v-else>
       <!-- <TempChart /> -->
+      <div class="loader"></div>
         <iframe src="https://datahub.io/core/glacier-mass-balance/view/0" width="100%" height="475px" frameborder="0"></iframe>
 
       <div class="card mt-4">
@@ -170,6 +171,8 @@ export default {
       margin-left: auto;
     }
   }
+
+  
 }
 
 // display 70% width on desktop
