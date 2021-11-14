@@ -5,78 +5,89 @@
     <div class="add-fade-in">
       <h3 class="disaster-header-title">Disaster Frequency</h3>
       <p class="disaster-header-text">
-        The map below shows the frequency of disasters in the world.
+        The map below shows the frequency of disasters in the world. This is an indication of the impact of Climate Change as climate changes such as the increase in global surface temperature can lead to increased possibility of disasters like droughts and higher intensity storms such as tsunamis.
       </p>
+      <br>
       <i class="disaster-header-select">
         Select a filter to understand how disasters have been increasing rapidly
         throughout the years
       </i>
+      <div class="filterandslider" v-if="!loading">
+        <div class="disaster-filter">
+          <h4>Filters:</h4>
 
-      <div class="disaster-filter">
-        <h4>Filters:</h4>
-
-        <!-- Bootstrap radio  -->
-        <div class="filter-radio">
-          <div class="filter-radio-1">
-            <input
-              class="form-check-input"
-              type="radio"
-              name="inlineRadioOptions"
-              id="inlineRadio1"
-              value="everyyear"
-              v-model="selected"
-              @change="handleChange()"
-              :disabled = "disabledCheck"
-
-              checked
-            />
-            <label class="form-check-label" for="inlineRadio1"
-              >Every Year</label
-            >
-          </div>
-          <div class="filter-radio-2">
-            <input
-              class="form-check-input"
-              type="radio"
-              name="inlineRadioOptions"
-              id="inlineRadio2"
-              value="indivyear"
-              v-model="selected"
-              @change="handleChange()"
-              :disabled = "disabledCheck"
-            />
-            <label class="form-check-label" for="inlineRadio2"
-              >Individual Year</label
-            >
+          <!-- Bootstrap radio  -->
+          <div class="filter-radio">
+            <div class="filter-radio-1">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="inlineRadioOptions"
+                id="inlineRadio1"
+                value="everyyear"
+                v-model="selected"
+                @change="handleChange()"
+                :disabled="disabledCheck"
+                checked
+              />
+              <label class="form-check-label" for="inlineRadio1"
+                >Every Year</label
+              >
+            </div>
+            <div class="filter-radio-2">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="inlineRadioOptions"
+                id="inlineRadio2"
+                value="indivyear"
+                v-model="selected"
+                @change="handleChange()"
+                :disabled="disabledCheck"
+              />
+              <label class="form-check-label" for="inlineRadio2"
+                >Individual Year</label
+              >
+            </div>
           </div>
         </div>
-      </div>
 
-      <!-- Container to hold  the slider -->
-      <div class="console justify-self-center" v-if="!loading">
-        <h5 class="sliderValue">{{ yearVal }}</h5>
-        <div class="row" v-if="selected == 'indivyear'">
-          <div class="col-1 col-sm-1 p-0">1981</div>
-          <div class="col-9 col-sm-10">
-            <input
-              id="slider"
-              class="w-100"
-              type="range"
-              min="1981"
-              max="2021"
-              step="1"
-              v-model="yearVal"
-              @change="listenEvent"
-              :disabled = "disabledCheck"
-
-            />
+        <!-- Container to hold  the slider -->
+        <div class="console justify-self-center">
+          <h5 class="sliderValue">{{ yearVal }}</h5>
+          <div class="row" v-if="selected == 'indivyear'">
+            <div class="col-1 col-sm-1 p-0">2012</div>
+            <div class="col-9 col-sm-10">
+              <input
+                id="slider"
+                class="w-100"
+                type="range"
+                min="2012"
+                max="2021"
+                step="1"
+                v-model="yearVal"
+                @change="listenEvent"
+                :disabled="disabledCheck"
+              />
+            </div>
+            <div class="col-1 col-sm-1 p-0">2021</div>
           </div>
-          <div class="col-1 col-sm-1 p-0">2021</div>
         </div>
         <!-- </div> -->
       </div>
 
-      <div id="console-alt" v-else>Loading please wait!!!!!!</div>
+      <!-- Loading component -->
+      <section v-else>
+        <div class="loading loading07">
+          <span data-text="L">L</span>
+          <span data-text="O">O</span>
+          <span data-text="A">A</span>
+          <span data-text="D">D</span>
+          <span data-text="I">I</span>
+          <span data-text="N">N</span>
+          <span data-text="G">G</span>
+        </div>
+      </section>
     </div>
 
     <!--  Supposed map row -->
@@ -86,104 +97,76 @@
 
       <!-- Button to go back to original center -->
 
-      <button class="btn-success btn" v-if="mapCenter == false" id="flydisplay" @click="returnCenter()">
+      <button
+        class="quizBtn btn btn-light mb-3"
+        v-if="mapCenter == false"
+        id="flydisplay"
+        @click="returnCenter()"
+      >
         Return to original position
       </button>
       <div class="map" id="map">
         <!-- Result individual modal to be placed here  -->
 
-        <div class="container">
-          <div v-if="flying == false && display == true" id="desc" class="my-2">
-            <button
-              id="close"
-              type="button"
-              @click="stopDisplay()"
-              class="btn-close"
-            ></button>
-
-            <div class="descriptiontext">
-              <h5 class="text-start">{{ title }}</h5>
-              <hr />
-              <div
-                v-for="(indivDesc, index) in descriptionModal"
-                :key="index"
-                class="mt-2"
-              >
-                <h6>
-                  <b>Occurence {{ index + 1 }}</b>
-                </h6>
-                <!-- <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="`#modal${index}`" aria-expanded="false" aria-controls="collapseExample">
-                Button with data-target
-              </button> -->
-
-                <!-- 
-              <div class="modal" tabindex="-1">
-              <div class="modal-dialog">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h5 class="modal-title">Modal title</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                  </div>
-                  <div class="modal-body">
-                    <p>Modal body text goes here.</p>
-                  </div>
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
-                  </div>
-                </div>
-              </div>
-            </div> -->
-
-                <div class="scrollbox">
-                  <!-- Create a a href here to read more  -->
-
-                  <div class="modalResult">
-                    <a
-                      data-bs-toggle="collapse"
-                      :href="`#modal${index}`"
-                      aria-expanded="false"
-                      aria-controls="collapseExample"
-                    >
-                      Give me more details
-                    </a>
-
-                    <!-- This doesn't work why ?? -->
-                    <p class="collapse mt-2" :id="`modal${index}`">
-                      {{ indivDesc }}
-                    </p>
-                  </div>
-                </div>
-
-                <br />
-              </div>
-            </div>
-          </div>
-        </div>
         <!-- </div> -->
       </div>
     </div>
 
     <!-- Outer division to hold information -->
-    <div class="disaster-info" v-if="!loading">
-      <p class="disaster-info-text">
+    <div
+      class="disaster-info"
+      v-if="loading == false && descriptionModal.length > 0"
+    >
+      <!-- <p class="disaster-info-text">
         Search results:
         <span>{{ resultArray.length ?? "No Results Found" }}</span>
-      </p>
+      </p> -->
 
-      <!-- Iterate through the results  -->
-      <div v-for="result in resultArray" :key="result" class="row">
-        <div class="col">
-          <p class="text-dark text-start">{{ result }}</p>
+      <div v-if="flying == false && display == true" id="desc" class="my-2">
+        <h5 class="modal-desc">{{ title }}</h5>
+        <hr />
+        <div
+          v-for="(indivDesc, index) in descriptionModal"
+          :key="index"
+          class="mt-2 text-start"
+        >
+          <h6>
+            <b>Occurence {{ index + 1 }}</b>
+          </h6>
+
+          <div class="scrollbox">
+            <!-- Create a a href here to read more  -->
+
+            <div class="modalResult">
+              <a
+                data-bs-toggle="collapse"
+                :href="`#modal${index}`"
+                aria-expanded="false"
+                aria-controls="collapseExample"
+              >
+                Give me more details
+              </a>
+
+              <!-- This doesn't work why ?? -->
+              <p class="collapse mt-2" :id="`modal${index}`">
+                {{ indivDesc }}
+              </p>
+            </div>
+          </div>
+
+          <br />
         </div>
 
         <hr class="lead" />
       </div>
     </div>
-    <div v-else>
+
+    <div
+      v-else-if="loading == true && descriptionModal.length <= 0"
+      class="noneselected"
+    >
       <div class="loader"></div>
     </div>
-
     <!-- Disaster infographic -->
     <Disasterinfo />
   </div>
@@ -237,15 +220,20 @@ export default {
     this.createMap();
     // Load the markers here when loading
 
+    const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+
     this.map.on("load", async () => {
       // Call get location 4 times
-      // for (let index = 0; index < 4; index++) {
-      //   await this.getLocation(); // After getting location then we add the markers
-      // }
-
-      // let x = await this.useInterval();
+      let locked = true;
 
       await this.getLocation();
+      await this.getLocation();
+      // await this.getLocation();
+      locked = false;
+
+      // while (locked) {
+      //   continue;
+      // }
 
       // Loading marker image
       this.map.loadImage(
@@ -263,8 +251,6 @@ export default {
               features: this.featuresMain,
             },
           });
-
-          console.log(this.featuresMain);
 
           console.log(this.featuresMain);
 
@@ -299,12 +285,14 @@ export default {
     this.map.on("click", "result", async (e) => {
       // Can use e to access properties and key in the description
 
+      this.loading = true;
+      this.descriptionModal = ""; 
+
       // Display == true
       this.display = true;
-      // get center 
+      // get center
 
-      this.center = this.map.getCenter
-
+      this.center = this.map.getCenter;
 
       console.log(e.features[0]);
       // Copy coordinates array.
@@ -329,52 +317,70 @@ export default {
       // Add popup after the screen arrives at the marker
 
       this.map.on("flystart", () => {
-
         // Disable dragpan upon flystart event is emitted
         // this.map.dragPan.disable();
 
         this.flying = true;
+        this.loading = true;
         console.log("start fly here");
       });
       this.map.on("flyend", () => {
+        this.loading = false;
         this.flying = false;
 
-        let homeCoords =  [0,20];
+        let homeCoords = [0, 20];
         let tempCoord = this.map.getCenter();
-        this.center = [tempCoord['lng'],tempCoord['lat']];
+        this.center = [tempCoord["lng"], tempCoord["lat"]];
 
-        console.log(this.arrayEquals(homeCoords,this.center));
+        console.log(this.arrayEquals(homeCoords, this.center));
 
-        if (!this.arrayEquals(homeCoords,this.center)){
+        if (!this.arrayEquals(homeCoords, this.center)) {
           // Disable interactiveness here.
           this.map.dragPan.disable();
           this.disabledCheck = true;
-           this.mapCenter = false;
-        //  Once ended, we add it into the modal.
-        this.title = name;
+          this.mapCenter = false;
+          //  Once ended, we add it into the modal.
+          this.title = name;
 
+          // Split into paragraphs
+          let tempList = description.split("\n\n");
 
-        // Split into paragraphs
-        let tempList = description.split("\n\n");
+          this.descriptionModal = tempList;
 
-        this.descriptionModal = tempList;
+          // console.log(tempList);
 
-        // console.log(tempList);
-
-        console.log("end fly here");
-                  console.log("`Coords not equal`")
-
-          
+          console.log("end fly here");
+          console.log("`Coords not equal`");
         } else {
           this.map.dragPan.enable();
-          console.log("Coords are equal ")
+          console.log("Coords are equal ");
           this.disabledCheck = false;
           this.mapCenter = true;
         }
 
-        //  Let this.center = test 2 then we check if its equal to [0,20] , if its not equal we disable 
+        //  Let this.center = test 2 then we check if its equal to [0,20] , if its not equal we disable
+      });
 
-       
+      this.map.on("flystartend", () => {
+        console.log("this is the flying back center coord " + this.center);
+
+        this.flying = true;
+        console.log("start fly here from the end");
+      });
+
+      this.map.on("flyendorigin", () => {
+        this.flying = false;
+        this.mapCenter = false;
+        console.log("2nd fly event change center");
+
+        this.center = [0, 20];
+        console.log(
+          "helphelphelphehlphelphelphepelhelphelphelpehlehelphelphelphelhep"
+        );
+
+        if (this.center == [0, 20]) {
+          this.disabledCheck = false;
+        }
       });
 
       
@@ -407,22 +413,16 @@ export default {
 
       this.map.on("moveend", (e) => {
         if (this.flying) {
-     
           this.center = this.map.getCenter();
           const test = this.map.getCenter();
           console.log(this.center);
 
-            this.map.fire("flyend");
-              console.log("First fly event ends here")
-
-        
-      
-
-        } 
+          this.map.fire("flyend");
+          console.log("First fly event ends here");
+        }
       });
 
-
-      this.map
+      this.map;
 
       // new mapboxgl.Popup()
       //   .setLngLat(coordinates)
@@ -471,6 +471,17 @@ export default {
         console.log("map error", err);
       }
     },
+    // Create a short 10 second timer which blocks the code
+    // from running until the timer is over.
+    async createTimer() {
+      this.timer = setTimeout(() => {
+        console.log("timer is here");
+      }, 10000);
+    },
+
+    // Creates a blocktimer which blocks the code from running
+    // until the timer is over.
+
     // async useInterval() {
     //   if (this.offsetCount === 3) {
     //     clearInterval(this.queryInterval)
@@ -495,10 +506,10 @@ export default {
 
       try {
         const response = await axios.get(
-          `https://api.reliefweb.int/v1/disasters?type&fields[include][]=type.name&limit=800&offset=${this.offset}&sort[]=date:desc`
+          `https://api.reliefweb.int/v1/disasters?type&fields[include][]=type.name&limit=900&offset=${this.offset}&sort[]=date:desc`
         );
 
-        this.offset += 800;
+        this.offset += 900;
         this.offsetCount += 1;
         if (!response) {
           throw Error("Failed to get data");
@@ -513,12 +524,11 @@ export default {
         // Reset the features array since gonna loop
         this.features = [];
 
-        console.log("starting the timer");
-
         this.loading = false;
 
         // Catching the erorr
       } catch (err) {
+        this.loading = false;
         console.log("I am hitting an error inside getLocation: ", err);
       }
     },
@@ -589,12 +599,23 @@ export default {
       // console.log(geoIdDictionary);
       // Loop through features and do the lookup in the geo dictionary
       // and add it to the array
+
+      // for (let feature of this.features) {
+      //   try {
+      //     let { geoCode, desc } = geoIdDictionary[feature.properties.id];
+      //     feature.geometry.coordinates = [geoCode.lon ?? 0, geoCode.lat ?? 0];
+      //     feature.properties.description = desc;
+      //   } catch (err) {
+      //     console.log(err)
+      //     console.log('hitting this mini error')
+      //   }
+      // }
+
       this.features.forEach((feature, index) => {
         let { geoCode, desc } = geoIdDictionary[feature.properties.id];
         feature.geometry.coordinates = [geoCode.lon, geoCode.lat];
         feature.properties.description = desc;
       });
-      console.log(this.features);
     },
 
     async handleClick() {},
@@ -631,7 +652,7 @@ export default {
       this.resultArray = [];
 
       for (let indivResult of test) {
-        console.log(indivResult.properties.name);
+        // console.log(indivResult.properties.name);
 
         this.resultArray.push(indivResult.properties.name);
       }
@@ -653,9 +674,10 @@ export default {
     },
 
     returnCenter() {
-
+      // Clear modal
+      this.descriptionModal = "";
       this.map.dragPan.disable();
-        this.map.flyTo({
+      this.map.flyTo({
         center: [0, 20],
         zoom: 1,
         pitch: 0,
@@ -708,7 +730,6 @@ export default {
       }
 
       if (this.selected == "everyyear") {
-
         this.yearVal = null;
 
         // This is to reset the map
@@ -741,19 +762,23 @@ export default {
       // }
     },
 
-   arrayEquals(a, b) {
-  return Array.isArray(a) &&
-    Array.isArray(b) &&
-    a.length === b.length &&
-    a.every((val, index) => val === b[index]);
-}
-
-    
+    arrayEquals(a, b) {
+      return (
+        Array.isArray(a) &&
+        Array.isArray(b) &&
+        a.length === b.length &&
+        a.every((val, index) => val === b[index])
+      );
+    },
   },
 };
 </script>
 
 <style lang="scss" scoped>
+$disaster-color-1: #f5f5ef;
+$disaster-color-2: #b69d74;
+$disaster-color-3: #1f2839;
+
 .visualisation-wrapper {
   @extend %page-wrapper;
   font-size: $font-size-small;
@@ -814,9 +839,12 @@ export default {
 
   .disaster-info {
     @extend %bg-card-rounded;
+    background-color: $disaster-color-2;
+    color: $disaster-color-1;
     padding: 1rem;
     height: 300px;
     overflow-y: scroll;
+    animation: appear 0.5s ease-in-out;
 
     &::-webkit-scrollbar {
       width: 12px;
@@ -833,6 +861,26 @@ export default {
     .disaster-info-text {
       span {
         font-weight: bold;
+      }
+    }
+
+    #descriptionparagraph {
+      font-size: $variable-font-small;
+    }
+    .modal-desc {
+      color: $disaster-color-3;
+      font-weight: bold;
+    }
+
+    .modalResult {
+      a:active,
+      a:hover,
+      a:visited {
+        color: $disaster-color-3;
+      }
+
+      p {
+        line-height: 140%;
       }
     }
   }
@@ -877,19 +925,19 @@ export default {
   // How to fit the text inside ????
 
   #desc {
-    position: absolute;
-    width: 40%;
-    height: 200px;
-    margin-left: 10px;
-    padding: 10px 20px;
-    bottom: 30px;
-    background-color: white;
-    z-index: 1;
-    overflow-y: auto;
-    animation: appear 0.5s;
-    border-radius: 10px;
-    text-align: left;
-    overflow-wrap: break-word;
+    // position: absolute;
+    // width: 40%;
+    // height: 200px;
+    // margin-left: 10px;
+    // padding: 10px 20px;
+    // bottom: 30px;
+    // background-color: white;
+    // z-index: 1;
+    // overflow-y: auto;
+    // animation: appear 0.5s;
+    // border-radius: 10px;
+    // text-align: left;
+    // overflow-wrap: break-word;
 
     #close {
       position: sticky;
@@ -912,25 +960,6 @@ export default {
     margin-top: -50px;
   }
 
-  
-
-  #descriptionparagraph {
-    font-size: $variable-font-small;
-  }
-
-  .modalResult {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
-      Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-
-    a:active {
-      background-color: yellow;
-    }
-    p {
-      line-height: 120%;
-    }
-  }
-
-  
   @keyframes appear {
     // 0%{}
     // 100%{transform: translateY(-30px)}
