@@ -48,14 +48,14 @@ const routes = [
       visible: true,
     },
   },
-  {
-    path: "/test",
-    name: "Weird",
-    component: New,
-    meta: {
-      visible: false,
-    },
-  },
+  // {
+  //   path: "/test",
+  //   name: "Weird",
+  //   component: New,
+  //   meta: {
+  //     visible: false,
+  //   },
+  // },
   // This is for the 404 page. To be changed
   {
     // path: "*",

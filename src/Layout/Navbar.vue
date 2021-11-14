@@ -51,14 +51,18 @@
       <span></span>
       <span></span>
     </div>
-    <div :class="dropdownClass">
-      <router-link
-        :key="route.path"
-        :to="route.path.toLowerCase()"
-        v-for="(route, index) in routes"
-      >
-        {{ route.name }}
+
+    <div :class="dropdownClass" @click="showButton">
+      <!-- router link to home -->
+      <router-link :to="routes[0].path.toLowerCase()">
+        Home
       </router-link>
+      <!-- Router link to other paths -->
+      <template :key="route.path" v-for="(route, index) in routes">
+        <router-link v-if="route.meta.visible" :to="route.path.toLowerCase()">
+          {{ route.name }}
+        </router-link>
+      </template>
     </div>
   </nav>
 </template>
@@ -92,7 +96,7 @@ export default {
     if (window.innerWidth < 760) {
       this.fullView = false;
     }
-      //   track the width on resize
+    //   track the width on resize
     window.addEventListener("resize", () => {
       if (window.innerWidth > 760) {
         //   reset it if you expand the screen
@@ -200,133 +204,6 @@ export default {
   //   display: None;
 
   // }
-}
-
-#nav-icon1,
-#nav-icon2,
-#nav-icon3,
-#nav-icon4 {
-  width: 45px;
-  height: 10px;
-  position: relative;
-  margin-left: auto;
-  -webkit-transform: rotate(0deg);
-  -moz-transform: rotate(0deg);
-  -o-transform: rotate(0deg);
-  transform: rotate(0deg);
-  -webkit-transition: 0.5s ease-in-out;
-  -moz-transition: 0.5s ease-in-out;
-  -o-transition: 0.5s ease-in-out;
-  transition: 0.5s ease-in-out;
-  cursor: pointer;
-}
-
-#nav-icon1 span,
-#nav-icon3 span,
-#nav-icon4 span {
-  display: block;
-  position: absolute;
-  height: 5px;
-  width: 100%;
-  background: white;
-  border-radius: 9px;
-  opacity: 1;
-  left: 0;
-  -webkit-transform: rotate(0deg);
-  -moz-transform: rotate(0deg);
-  -o-transform: rotate(0deg);
-  transform: rotate(0deg);
-  -webkit-transition: 0.25s ease-in-out;
-  -moz-transition: 0.25s ease-in-out;
-  -o-transition: 0.25s ease-in-out;
-  transition: 0.25s ease-in-out;
-}
-#nav-icon3 span:nth-child(1) {
-  top: 0px;
-}
-
-#nav-icon3 span:nth-child(2),
-#nav-icon3 span:nth-child(3) {
-  top: 10px;
-}
-
-#nav-icon3 span:nth-child(4) {
-  top: 20px;
-}
-
-#nav-icon3.open span:nth-child(1) {
-  top: 15px;
-  width: 0%;
-  left: 50%;
-}
-
-#nav-icon3.open span:nth-child(2) {
-  -webkit-transform: rotate(45deg);
-  -moz-transform: rotate(45deg);
-  -o-transform: rotate(45deg);
-  transform: rotate(45deg);
-}
-
-#nav-icon3.open span:nth-child(3) {
-  -webkit-transform: rotate(-45deg);
-  -moz-transform: rotate(-45deg);
-  -o-transform: rotate(-45deg);
-  transform: rotate(-45deg);
-}
-
-#nav-icon3.open span:nth-child(4) {
-  top: 18px;
-  width: 0%;
-  left: 50%;
-}
-
-.checkbtn {
-  font-size: 30px;
-  color: white;
-  line-height: 80px;
-  margin-right: 40px;
-  float: right;
-  display: none;
-  // content: ''
-}
-
-#check:checked + label {
-  #middle {
-    display: none;
-  }
-}
-
-.nav-label {
-  border: 1px solid white;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-
-  &::before,
-  &::after {
-    display: block;
-    background: white;
-    height: 2px;
-    width: 2em;
-    border-radius: 2px;
-    position: relative;
-  }
-
-  &:hover {
-    cursor: pointer;
-    border: none;
-  }
-}
-
-.menu {
-  width: 35px;
-  height: 3px;
-  background-color: rgb(255, 255, 255);
-  // content: '';
-  // padding: 10px;
-  margin: 3px;
-  padding: 1px;
 }
 
 //for the responsiveness of the top nav
