@@ -1,58 +1,60 @@
 <template>
   <div class="visualisation-wrapper">
     <!-- header -->
-    <div id="tile-2">
-      <h2 class="chart-title mb-1">Disaster Frequency</h2>
-    </div>
-
-    <div id="tile-1">
-      <p class="chart-details mb-1">
+    <!-- Overall wrapper for fade in animation -->
+    <div class="add-fade-in">
+      <h3 class="disaster-header-title">Disaster Frequency</h3>
+      <p class="disaster-header-text">
         The map below shows the frequency of disasters in the world.
       </p>
-      <i class="chart-select mb-2">
+      <i class="disaster-header-select">
         Select a filter to understand how disasters have been increasing rapidly
         throughout the years
       </i>
 
-      <h2>Filters</h2>
+      <div class="disaster-filter">
+        <h4>Filters:</h4>
 
-      <!-- Bootstrap radio  -->
-      <div class="d-flex justify-content-around">
-        <div class="form-check form-check-inline">
-          <input
-            class="form-check-input"
-            type="radio"
-            name="inlineRadioOptions"
-            id="inlineRadio1"
-            value="everyyear"
-            v-model="selected"
-            @change="handleChange()"
-            checked
-          />
-          <label class="form-check-label" for="inlineRadio1">Every Year</label>
-        </div>
-        <div class="form-check form-check-inline">
-          <input
-            class="form-check-input"
-            type="radio"
-            name="inlineRadioOptions"
-            id="inlineRadio2"
-            value="indivyear"
-            v-model="selected"
-            @change="handleChange()"
-
-
-          />
-          <label class="form-check-label" for="inlineRadio2">Individual Year</label>
+        <!-- Bootstrap radio  -->
+        <div class="d-flex justify-content-around">
+          <div class="form-check form-check-inline">
+            <input
+              class="form-check-input"
+              type="radio"
+              name="inlineRadioOptions"
+              id="inlineRadio1"
+              value="everyyear"
+              v-model="selected"
+              @change="handleChange()"
+              checked
+            />
+            <label class="form-check-label" for="inlineRadio1"
+              >Every Year</label
+            >
+          </div>
+          <div class="form-check form-check-inline">
+            <input
+              class="form-check-input"
+              type="radio"
+              name="inlineRadioOptions"
+              id="inlineRadio2"
+              value="indivyear"
+              v-model="selected"
+              @change="handleChange()"
+            />
+            <label class="form-check-label" for="inlineRadio2"
+              >Individual Year</label
+            >
+          </div>
         </div>
       </div>
 
       <!-- Container to hold  the slider -->
-      <div class="console justify-self-center" v-if="loading == false">
+      <div class="console justify-self-center" v-if="!loading">
         <h5 class="sliderValue">{{ yearVal }}</h5>
-        <div class="row" v-if="selected== 'indivyear'">
+        <div class="row" v-if="selected == 'indivyear'">
           <div class="col-1 col-sm-1 p-0">1981</div>
-          <div class="col-9 col-sm-10" >
+          <div class="col-9 col-sm-10">
             <input
               id="slider"
               class="w-100"
@@ -68,13 +70,11 @@
         </div>
       </div>
 
-      <div id="console-alt" v-else-if="loading == true">
-        Loading please wait!!!!!!
-      </div>
+      <div id="console-alt" v-else>Loading please wait!!!!!!</div>
     </div>
 
     <!--  Supposed map row -->
-    <div class="row" id="mapcontainer">
+    <div class="map-container">
       <!-- Col to hold the map -->
       <!-- <div class="col" id="mapcontainer"> -->
 
@@ -158,33 +158,23 @@
       </div>
     </div>
 
-    <!-- Result outer modal to hold all results (WIP) , same row as map-->
-    <div class="row" v-if="loading == false">
-      <div class="col bg-white result-col">
-        <div class="row">
-          <div class="col">
-            <p class="text-dark text-start mt-2 fs-6">
-              Search results:
-              <span v-if="resultArray.length > 0"
-                ><b>{{ resultArray.length }}</b></span
-              >
-            </p>
-            <hr />
-          </div>
-        </div>
-        <div>
-          <!-- Iterate through the results  -->
-          <div v-for="result in resultArray" :key="result" class="row">
-            <div class="col">
-              <p class="text-dark text-start">{{ result }}</p>
-            </div>
+    <!-- Outer division to hold information -->
+    <div class="disaster-info" v-if="!loading">
+      <p class="disaster-info-text">
+        Search results:
+        <span>{{ resultArray.length ?? "No Results Found" }}</span>
+      </p>
 
-            <hr class="lead" />
-          </div>
+      <!-- Iterate through the results  -->
+      <div v-for="result in resultArray" :key="result" class="row">
+        <div class="col">
+          <p class="text-dark text-start">{{ result }}</p>
         </div>
+
+        <hr class="lead" />
       </div>
     </div>
-    <div v-else-if="loading == true">
+    <div v-else>
       <div class="loader"></div>
     </div>
 
@@ -231,9 +221,9 @@ export default {
       offsetCount: 0,
       queryInterval: true,
 
-      //  For the filter for the different years 
+      //  For the filter for the different years
       yearAll: true,
-      selected: ""
+      selected: "",
     };
   },
   async mounted() {
@@ -600,109 +590,88 @@ export default {
       this.display = false;
     },
 
-// Function to deal with the filters
-    handleChange(){
-
+    // Function to deal with the filters
+    handleChange() {
       // From v-model we will determine the relevant filters here.
-      if (this.selected == "indivyear"){
-
+      if (this.selected == "indivyear") {
         this.yearVal = "2021";
 
         this.map.setFilter("result", [
-        "==",
-        ["number", ["get", "year"]],
-        parseInt(this.yearVal),
-      ]);
-
-
+          "==",
+          ["number", ["get", "year"]],
+          parseInt(this.yearVal),
+        ]);
       }
 
-      if(this.selected =="everyyear"){
+      if (this.selected == "everyyear") {
         this.yearVal = null;
 
-
         this.map.setFilter("result", null);
-
       }
 
       // if (this.selected == "everyyear"){
 
       // }
-
-    }
+    },
   },
 };
 </script>
 
 <style lang="scss" scoped>
-* {
-  font-size: $variable-font;
-}
 .visualisation-wrapper {
   @extend %page-wrapper;
   font-size: $variable-font;
 
-  ::-webkit-scrollbar {
-    @extend %scrollbar-thumb;
+  .disaster-header-title {
+    margin-bottom: 1rem;
   }
 
-  // ::-webkit-scrollbar {
-  //   width: 1px;
-  // }
+  .disaster-header-text {
+  }
 
-  // ::-webkit-scrollbar-track {
-  //   background: hsl(100 75% 40% / 1);
-  //   border-radius: 100vw;
-  //   margin-block: 0.5em;
-  // }
+  .disaster-header-select {
+    margin-bottom: 0.5rem;
+    font-size: $font-size-small;
+  }
 
-  // ::-webkit-scrollbar-thumb {
-  //   background: hsl(120 100% 20% / 1);
-  //   border: 0.25em solid black;
-  //   border-radius: 100vw;
-  // }
+  .disaster-filter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1rem;
 
-  // ::-webkit-scrollbar-thumb:hover {
-  //   background: hsl(120 100% 5% /1);
-  // }
-
-  // .scrollable-element {
-  //   scrollbar-width: thin;
-  // }
-
-  #tile-2 {
-    .chart-title {
-      animation: appear 1s ease;
+    h4 {
+      margin-right: 1rem;
     }
   }
 
-  #tile-1 {
-    .chart-details {
-      animation: appear 4s ease;
+  .map-container {
+    .map {
+      color: black;
+      border-radius: 10px;
+      margin-bottom: 20px;
+      // height: 100%;
+      height: 450px;
+      width: 100%;
+    }
+  }
+
+  .disaster-info {
+    @extend %bg-card-rounded;
+    padding: 1rem;
+    height: 300px;
+    overflow-y: scroll;
+
+    &::-webkit-scrollbar {
+      @extend %scrollbar-thumb;
+      width: 4px;
     }
 
-    i {
-      font-size: 13px;
-      animation: appear 6s ease;
-      overflow: hidden;
+    .disaster-info-text {
+      span {
+        font-weight: bold;
+      }
     }
-  }
-
-  .map {
-    color: black;
-    border-radius: 10px;
-    margin-bottom: 20px;
-    // height: 100%;
-  }
-
-  #mapcontainer {
-    // height: 100%;
-  }
-
-  #map {
-    //  display: block;
-    height: 100vh;
-    width: 100%;
   }
 
   .result-col {
