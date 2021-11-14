@@ -91,12 +91,24 @@ p {
 @media screen and (max-width: 576px) {
   .container {
     width: 100%;
+    font-size: $variable-font;
+    .card-content{
+      padding: 10px 10px;
+      h4{
+        margin: 0px;
+        font-size: $variable-font;
+      }
+      h5{
+        font-size: $variable-font;
+      }
+    }
   }
 }
 
 @media screen and (max-width: 768px) {
   .container {
     width: 100%;
+    font-size: $variable-font;
   }
 }
 
@@ -104,6 +116,7 @@ p {
 @media screen and (max-width: 992px) {
   .container {
     width: 100%;
+    font-size: $variable-font;
   }
 }
 
@@ -111,6 +124,8 @@ p {
 @media screen and (max-width: 1200px) {
   .container {
     width: 100%;
+    font-size: $variable-font;
+    
   }
 }
 </style>
