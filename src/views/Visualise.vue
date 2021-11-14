@@ -55,13 +55,13 @@
         <div class="console justify-self-center">
           <h5 class="sliderValue">{{ yearVal }}</h5>
           <div class="row" v-if="selected == 'indivyear'">
-            <div class="col-1 col-sm-1 p-0">1981</div>
+            <div class="col-1 col-sm-1 p-0">2012</div>
             <div class="col-9 col-sm-10">
               <input
                 id="slider"
                 class="w-100"
                 type="range"
-                min="1981"
+                min="2012"
                 max="2021"
                 step="1"
                 v-model="yearVal"
@@ -298,6 +298,9 @@ export default {
     // We are interacting with the layers here.
     this.map.on("click", "result", async (e) => {
       // Can use e to access properties and key in the description
+
+      this.loading = true;
+      this.descriptionModal = ""; 
 
       // Display == true
       this.display = true;
