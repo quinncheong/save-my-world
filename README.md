@@ -6,11 +6,11 @@ We wanted to tackle the question “How can we convert climate change skeptics i
 
 ## Technologies used
 ### Main application:
-Vue CLI
+Vue CLI<br />
 Javascript
 NPM
 ### Styling:
-Bootstrap
+Bootstrap<br />
 SCSS
 ### Database: 
 Firebase 
