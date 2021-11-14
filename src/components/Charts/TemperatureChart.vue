@@ -46,13 +46,19 @@
         <!-- </div> -->
         <button class="btn btn-success search-btn">Get Data</button>
       </div>
-
-      <!-- <label>
-        Select a year (must be 2020 only):
-        <input v-model="year" type="number" required />
-      </label> -->
-      <!-- <button class="btn btn-success search-btn">Get Data</button> -->
     </form>
+    <!-- Loading component -->
+    <section v-show="isLoading">
+      <div class="loading loading07">
+        <span data-text="L">L</span>
+        <span data-text="O">O</span>
+        <span data-text="A">A</span>
+        <span data-text="D">D</span>
+        <span data-text="I">I</span>
+        <span data-text="N">N</span>
+        <span data-text="G">G</span>
+      </div>
+    </section>
   </div>
 </template>
 
@@ -72,7 +78,7 @@ export default {
     const chartRef = ref(null);
     const country = ref("Singapore");
     const year = ref(2020);
-    const loading = ref(false);
+    const isLoading = ref(false);
 
     const chartYears = {
       past: {
@@ -190,7 +196,7 @@ export default {
     // It needs to send a payload with the isoCountry, startYear and endYear.
     const handleClick = async (e) => {
       e.preventDefault();
-
+      isLoading.value = true;
       try {
         let lamdbaFn =
           "https://u96rjz2jhi.execute-api.ap-southeast-1.amazonaws.com/getClimateData";
@@ -298,7 +304,9 @@ export default {
         ];
 
         chartRef.value.update(null);
+        isLoading.value = false;
       } catch (error) {
+        isLoading.value = false;
         alert(
           "The country you selected is currently not available. Please select another country."
         );
@@ -329,7 +337,7 @@ export default {
       chartRef,
       year,
       country,
-      loading,
+      isLoading,
       updateChart,
       handleClick,
       countries,
