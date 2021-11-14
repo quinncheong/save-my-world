@@ -1,7 +1,7 @@
 <template>
   <section class="disaster-wrapper">
     <!-- Disasters info component -->
-    <section class="disaster-info-top">
+    <section ref="x" class="disaster-info-top">
       <h3 class="mb-3">Disaster Types</h3>
       <p>
         Climate change affects global temperature and precipitation patterns.
@@ -46,7 +46,7 @@
       <div class="timeline" id="start_timeline">
         <div class="center-line">
           <!-- Redirect to first when clicked -->
-          <a href="#timeline-section" class="scroll-icon">
+          <a @click="$refs.x.scrollIntoView()" class="scroll-icon">
             <font-awesome-icon icon="caret-up"></font-awesome-icon>
           </a>
         </div>
@@ -579,6 +579,10 @@ html {
     margin: 1rem;
     font-size: inherit;
   }
+}
+
+.scroll-icon {
+  cursor: pointer;
 }
 
 .timeline {
