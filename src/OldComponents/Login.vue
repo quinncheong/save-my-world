@@ -1,6 +1,5 @@
 <!--This file is a duplicate of the current landing page so that i can revamp the ;adning page -->
 
-
 <template>
   <div class="container-fluid">
     <!-- This would be where the globe would be  -->

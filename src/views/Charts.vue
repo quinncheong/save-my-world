@@ -104,7 +104,7 @@ export default {
           name: "Sea Ice",
           src: "seaIce.webp",
           information:
-            "Explore real-time statistics of the avergae mass of glaciers worldwide", //added
+            "Explore real-time statistics of the average mass of glaciers worldwide", //added
         },
       ],
       selectedChart: 0,

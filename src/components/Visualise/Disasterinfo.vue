@@ -47,7 +47,7 @@
         <div class="center-line">
           <!-- Redirect to first when clicked -->
           <a href="#timeline-section" class="scroll-icon">
-            <font-awesome-icon icon="caret-up"></font-awesome-icon>
+            <font-awesome-icon icon="caret-up"></font-awesome-icon> 
           </a>
         </div>
         <!-- Individual disaster -->
