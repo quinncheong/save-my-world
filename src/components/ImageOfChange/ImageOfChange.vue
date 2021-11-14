@@ -36,9 +36,9 @@ export default {
   props: ["images"],
   data() {
     return {
+      // This is the first image
       selectedImage: {
         id: 8,
-        // relative import image
         img1: "img1A.webp",
         img2: "img1B.webp",
         title: "Deforestation in Papua, Indonesia",

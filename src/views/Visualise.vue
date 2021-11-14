@@ -267,7 +267,7 @@ export default {
             },
           });
 
-          console.log(this.features);
+          console.log(this.featuresMain);
 
           console.log(this.featuresMain);
 
