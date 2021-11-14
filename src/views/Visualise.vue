@@ -16,8 +16,8 @@
         <h4>Filters:</h4>
 
         <!-- Bootstrap radio  -->
-        <div class="d-flex justify-content-around">
-          <div class="form-check form-check-inline">
+        <div class="filter-radio">
+          <div class="filter-radio-1">
             <input
               class="form-check-input"
               type="radio"
@@ -32,7 +32,7 @@
               >Every Year</label
             >
           </div>
-          <div class="form-check form-check-inline">
+          <div class="filter-radio-2">
             <input
               class="form-check-input"
               type="radio"
@@ -637,11 +637,31 @@ export default {
   .disaster-filter {
     display: flex;
     justify-content: center;
+    flex-direction: column;
     align-items: center;
     margin-top: 1rem;
 
     h4 {
-      margin-right: 1rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .filter-radio {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+
+      label {
+        margin-left: 0.5rem;
+      }
+
+      &-1 {
+        margin-bottom: 0.5rem;
+      }
+
+      &-2 {
+        margin-bottom: 0.5rem;
+      }
     }
   }
 
@@ -809,6 +829,34 @@ export default {
   //   border-radius: 50%;
   //   cursor: pointer;
   // }
+}
+
+@media screen and (min-width: 568px) {
+  .visualisation-wrapper .disaster-filter {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+
+    h4 {
+      margin: 0 1rem;
+    }
+
+    .filter-radio {
+      display: flex;
+      flex-direction: row;
+      align-items: bottom;
+      justify-content: space-around;
+
+      &-1 {
+        margin-bottom: 0;
+        margin-right: 0.5rem;
+      }
+
+      &-2 {
+        margin-bottom: 0;
+      }
+    }
+  }
 }
 
 @media screen and (min-width: 768px) {
