@@ -68,17 +68,23 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@media screen and (min-width: 568px) {
+  .image-change-wrapper {
+    width: 90%;
+    font-size: $variable-font;
+  }
+}
 // display 70% width on desktop
 @media screen and (min-width: 768px) {
   .image-change-wrapper {
-    width: 70%;
+    width: 80%;
   }
 }
 
 // display 70% width on large screen sizes
 @media screen and (min-width: 992px) {
   .image-change-wrapper {
-    width: 60%;
+    width: 70%;
   }
 }
 

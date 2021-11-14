@@ -28,3 +28,12 @@
   justify-content: space-between;
   font-size: $variable-font;
 }
+
+// Css for a vertical flex direction baseline
+%vertical-flex {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: justify;
+}
