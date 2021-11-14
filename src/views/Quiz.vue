@@ -72,13 +72,6 @@ export default {
   pointer-events: none;
 }
 
-@media screen and (min-width: 320px) {
-  .quiz-wrapper {
-    width: 90%;
-  }
-}
-
-
 // display 70% width on desktop
 @media screen and (min-width: 768px) {
   .quiz-wrapper {

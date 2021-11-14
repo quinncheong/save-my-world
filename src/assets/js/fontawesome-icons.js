@@ -5,7 +5,9 @@ import { faTwitter } from "@fortawesome/free-brands-svg-icons";
 import { faLinkedin } from "@fortawesome/free-brands-svg-icons";
 import { faInstagram } from "@fortawesome/free-brands-svg-icons";
 import { faGithub, faFacebookSquare } from "@fortawesome/free-brands-svg-icons";
+import { fas } from "@fortawesome/free-solid-svg-icons";
 
+library.add(fas);
 library.add(faTwitter);
 library.add(faInstagram);
 library.add(faLinkedin);
