@@ -2,19 +2,29 @@
   <div class="quiz-wrapper">
     <div v-if="!started">
       <div class="mb-3">
-        
         <h4 class="mb-2"><strong>Quiz Time</strong></h4>
-        <img class="quiz-image my-2" src="../assets/img/quiz.webp">
+        <img class="quiz-image my-2" src="../assets/img/quiz.webp" />
         <!-- <font-awesome-icon icon="fa-solid fa-comments-question-check" /> -->
         <p class="mb-2" style="font-size: 15px">
-          
           <i
             >Challenge yourself with our quiz! Answer all the questions to the
-            best of your capabilities! May the force be with you.
-            If you need some preparation, feel free to <b>SCROLL</b> down to look through the articles and videos provided by our team
-            </i
-          >
+            best of your capabilities! May the force be with you. If you need
+            some preparation, feel free to <b>SCROLL</b> down to look through
+            the articles and videos provided by our team
+          </i>
         </p>
+        <!-- Loading component -->
+        <section v-if="isLoading">
+          <div class="loading loading07">
+            <span data-text="L">L</span>
+            <span data-text="O">O</span>
+            <span data-text="A">A</span>
+            <span data-text="D">D</span>
+            <span data-text="I">I</span>
+            <span data-text="N">N</span>
+            <span data-text="G">G</span>
+          </div>
+        </section>
         <button class="quizBtn btn btn-light my-2" @click="startQuiz()">
           Start Quiz
         </button>
@@ -49,11 +59,13 @@ export default {
     return {
       quizzes: [],
       started: false,
+      isLoading: false,
     };
   },
   methods: {
     async startQuiz() {
       // Generate random id from 1-3 to get quiz
+      this.isLoading = true;
       const quizId = Math.floor(Math.random() * 3) + 1;
       const quizzes = await getQuizzes(quizId);
       this.quizzes = quizzes;
@@ -64,8 +76,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
-.quiz-image{
+.quiz-image {
   width: 100px;
   height: 100px;
   animation: float 4s ease-in-out infinite;
