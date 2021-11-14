@@ -205,6 +205,7 @@ export default {
     list-style: none;
     margin: 0;
     padding: 0; 
+
     
   }
 
@@ -231,10 +232,22 @@ export default {
     flex-direction: column;
     padding: 10px;
     // min-height: 200px;
-    // flex: 1 1 21vh;
+    // flex: 1 0 250px;
+    // max-height: 500px;
+    // max-width: 400px;
+    
     // position: relative;
     // overflow: hidden;
   }
+
+  //   .card {
+  //   background-color: white;
+  //   border-radius: 0.25rem;
+  //   box-shadow: 0 20px 40px -14px rgba(0, 0, 0, 0.25);
+  //   display: flex;
+  //   flex-direction: column;
+  //   // overflow: hidden;
+  // }
 
   .card_content {
     padding: 1rem;
@@ -264,5 +277,26 @@ export default {
     font-weight: 400;
     text-align: left;
   }
+
+
+@media screen and (min-width: 768px) {
+  .card_text  {
+    width: 80%;
+    // flex-grow: 2;
+  
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .card_text  {
+    width: 70%;
+  }
+}
+
+@media screen and (min-width: 1400px) {
+  .card_text  {
+    width: 60%;
+  }
+}
 
 </style>
