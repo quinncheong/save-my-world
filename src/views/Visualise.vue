@@ -156,6 +156,8 @@
 
           <br />
         </div>
+
+        <hr class="lead" />
       </div>
     </div>
 
@@ -267,6 +269,7 @@ export default {
               "text-font": ["Open Sans Semibold", "Arial Unicode MS Bold"],
               "text-offset": [0, 1.25],
               "text-anchor": "top",
+              
             },
             // filter: ["==", ["number", ["get", "year"]], parseInt(this.yearVal)],
           });
@@ -379,6 +382,34 @@ export default {
           this.disabledCheck = false;
         }
       });
+
+      
+
+      this.map.on("flystartend",()=>{
+        console.log("this is the flying back center coord " +  this.center)
+      
+        this.flying = true;
+        console.log("start fly here from the end");
+
+      })
+
+      this.map.on("flyendorigin",()=>{
+
+        this.flying = false;
+        this.mapCenter = false;
+                console.log("2nd fly event change center")
+
+
+        this.center = [0,20];
+        console.log("helphelphelphehlphelphelphepelhelphelphelpehlehelphelphelphelhep")
+
+        if (this.center == [0,20]){
+          this.disabledCheck = false;
+        }
+        
+
+        
+      })
 
       this.map.on("moveend", (e) => {
         if (this.flying) {
@@ -651,6 +682,9 @@ export default {
         zoom: 1,
         pitch: 0,
         bearing: 0,
+
+        
+
       });
 
       this.map.fire("flystart");
