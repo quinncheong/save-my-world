@@ -112,79 +112,58 @@
     </div>
 
     <!-- Outer division to hold information -->
-    <div class="disaster-info" v-if="loading == false && descriptionModal.length > 0">
+    <div
+      class="disaster-info"
+      v-if="loading == false && descriptionModal.length > 0"
+    >
       <!-- <p class="disaster-info-text">
         Search results:
         <span>{{ resultArray.length ?? "No Results Found" }}</span>
       </p> -->
 
-      <div class="container">
-        <div v-if="flying == false && display == true" id="desc" class="my-2">
-          <!-- <button
-              id="close"
-              type="button"
-              @click="stopDisplay()"
-              class="btn-close"
-            ></button> -->
+      <div v-if="flying == false && display == true" id="desc" class="my-2">
+        <h5 class="modal-desc">{{ title }}</h5>
+        <hr />
+        <div
+          v-for="(indivDesc, index) in descriptionModal"
+          :key="index"
+          class="mt-2 text-start"
+        >
+          <h6>
+            <b>Occurence {{ index + 1 }}</b>
+          </h6>
 
-          <div class="descriptiontext">
-            <h5 class="text-start modal-desc">{{ title }}</h5>
-            <hr />
-            <div
-              v-for="(indivDesc, index) in descriptionModal"
-              :key="index"
-              class="mt-2 text-start"
-            >
-              <h6>
-                <b>Occurence {{ index + 1 }}</b>
-              </h6>
+          <div class="scrollbox">
+            <!-- Create a a href here to read more  -->
 
-              <div class="scrollbox">
-                <!-- Create a a href here to read more  -->
+            <div class="modalResult">
+              <a
+                data-bs-toggle="collapse"
+                :href="`#modal${index}`"
+                aria-expanded="false"
+                aria-controls="collapseExample"
+              >
+                Give me more details
+              </a>
 
-                <div class="modalResult">
-                  <a
-                    data-bs-toggle="collapse"
-                    :href="`#modal${index}`"
-                    aria-expanded="false"
-                    aria-controls="collapseExample"
-                  >
-                    Give me more details
-                  </a>
-
-                  <!-- This doesn't work why ?? -->
-                  <p class="collapse mt-2" :id="`modal${index}`">
-                    {{ indivDesc }}
-                  </p>
-                </div>
-              </div>
-
-              <br />
+              <!-- This doesn't work why ?? -->
+              <p class="collapse mt-2" :id="`modal${index}`">
+                {{ indivDesc }}
+              </p>
             </div>
           </div>
+
+          <br />
         </div>
-       
       </div>
     </div>
 
-     <div v-else-if="loading == true && descriptionModal.length <= 0" class="noneselected">
-       <div class="loader"></div>
-          
-      </div>
-
-    <!-- Iterate through the results  -->
-    <!-- <div v-for="result in resultArray" :key="result" class="row">
-                        <div class="col">
-                          <p class="text-dark text-start">{{ result }}</p>
-                        </div>
-
-                        <hr class="lead" />
-                      </div>
-                    </div>
-                    <div v-else>
-                      <div class="loader"></div>
-                    </div> -->
-
+    <div
+      v-else-if="loading == true && descriptionModal.length <= 0"
+      class="noneselected"
+    >
+      <div class="loader"></div>
+    </div>
     <!-- Disaster infographic -->
     <Disasterinfo />
   </div>
@@ -335,7 +314,7 @@ export default {
         // this.map.dragPan.disable();
 
         this.flying = true;
-        this.loading = true 
+        this.loading = true;
         console.log("start fly here");
       });
       this.map.on("flyend", () => {
@@ -758,6 +737,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+$disaster-color-1: #f5f5ef;
+$disaster-color-2: #b69d74;
+$disaster-color-3: #1f2839;
+
 .visualisation-wrapper {
   @extend %page-wrapper;
   font-size: $font-size-small;
@@ -818,6 +801,8 @@ export default {
 
   .disaster-info {
     @extend %bg-card-rounded;
+    background-color: $disaster-color-2;
+    color: $disaster-color-1;
     padding: 1rem;
     height: 300px;
     overflow-y: scroll;
@@ -838,6 +823,26 @@ export default {
     .disaster-info-text {
       span {
         font-weight: bold;
+      }
+    }
+
+    #descriptionparagraph {
+      font-size: $variable-font-small;
+    }
+    .modal-desc {
+      color: $disaster-color-3;
+      font-weight: bold;
+    }
+
+    .modalResult {
+      a:active,
+      a:hover,
+      a:visited {
+        color: $disaster-color-3;
+      }
+
+      p {
+        line-height: 140%;
       }
     }
   }
@@ -916,29 +921,6 @@ export default {
   .result-list {
     margin-top: -50px;
   }
-
-  #descriptionparagraph {
-    font-size: $variable-font-small;
-  }
-
-  .modalResult {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
-      Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-
-    a:active {
-      background-color: yellow;
-    }
-    p {
-      line-height: 120%;
-    }
-  }
-
-  .modal-desc{
-    color: #D6ED17FF;
-    font-weight: bold;
-  }
-
- 
 
   @keyframes appear {
     // 0%{}
