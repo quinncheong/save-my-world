@@ -7,6 +7,9 @@ import store from "./store";
 import FontAwesomeIcon from "@/assets/js/fontawesome-icons.js";
 import { library } from "@fortawesome/fontawesome-svg-core";
 
+// Function to disable all console logs in production. Remember to comment this out.
+console.log = function() {}
+
 createApp(App)
   .use(store)
   .use(router)
