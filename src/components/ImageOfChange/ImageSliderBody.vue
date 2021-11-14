@@ -84,7 +84,6 @@ p {
   margin-top: 5px;
   margin-bottom: 0;
   color: lightgrey;
-  font-size: 12px;
   text-align: left;
 }
 
@@ -92,13 +91,13 @@ p {
   .container {
     width: 100%;
     font-size: $variable-font;
-    .card-content{
+    .card-content {
       padding: 10px 10px;
-      h4{
+      h4 {
         margin: 0px;
         font-size: $variable-font;
       }
-      h5{
+      h5 {
         font-size: $variable-font;
       }
     }
@@ -125,7 +124,6 @@ p {
   .container {
     width: 100%;
     font-size: $variable-font;
-    
   }
 }
 </style>

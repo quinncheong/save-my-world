@@ -70,13 +70,14 @@ export default {
 <style lang="scss" scoped>
 @media screen and (min-width: 568px) {
   .image-change-wrapper {
-    width: 70%;
+    width: 90%;
+    font-size: $variable-font;
   }
 }
 // display 70% width on desktop
 @media screen and (min-width: 768px) {
   .image-change-wrapper {
-    width: 70%;
+    width: 80%;
   }
 }
 
@@ -90,7 +91,7 @@ export default {
 // // display 70% width on extra large screen sizes
 @media screen and (min-width: 1200px) {
   .image-change-wrapper {
-    width: 70%;
+    width: 60%;
   }
 }
 </style>
