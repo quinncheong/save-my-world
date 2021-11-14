@@ -2,7 +2,7 @@
   <section class="disaster-wrapper">
     <!-- Disasters info component -->
     <section ref="x" class="disaster-info-top">
-      <h3 class="mb-3">Disaster Types</h3>
+      <h3 class="mb-3 disaster-title">Disaster Types</h3>
       <p>
         Climate change affects global temperature and precipitation patterns.
         These are some of the listed effects:
@@ -508,9 +508,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-* {
-  font-size: $variable-font;
-}
+
 html {
   scroll-behavior: smooth;
 }
@@ -521,6 +519,8 @@ html {
   display: flex;
   flex-direction: column;
   margin-top: 1rem;
+    font-size: $variable-font;
+
 
   .disaster-info-top {
     @extend %bg-card-rounded;
@@ -747,6 +747,10 @@ html {
   .details {
     display: flex;
     flex-direction: column;
+  }
+
+  .disaster-title{
+    
   }
 }
 
