@@ -260,9 +260,4 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  @media screen and (min-width: 320px) {
-  .quiz-wrapper {
-    width: 90%;
-  }
-}
 </style>
