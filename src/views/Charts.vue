@@ -38,7 +38,7 @@
     <div v-else>
       <!-- <TempChart /> -->
       <div class="seaice-content">
-         <iframe
+        <iframe
           id="test"
           src="https://datahub.io/core/glacier-mass-balance/view/0"
           width="100%"
@@ -48,12 +48,8 @@
           v-show="!loading"
         ></iframe>
 
-          <div v-show="loading" class="loader"></div>
-
+        <div v-show="loading" class="loader"></div>
       </div>
-
-
-        
 
       <div class="card mt-4">
         <div class="card-body text-dark bold">
@@ -64,7 +60,6 @@
         </div>
       </div>
     </div>
-    <!-- <MainChart /> -->
 
     <!-- <div class="main-chart">
       <iframe
@@ -79,7 +74,6 @@
 
 <script>
 import ChartsCard from "../components/Charts/ChartsCard.vue";
-import MainChart from "@/components/Charts/MainChart.vue";
 import TempChart from "@/components/Charts/TemperatureChart.vue";
 import AirPollutionChart from "@/components/Charts/AirPollutionChart.vue";
 
@@ -87,7 +81,6 @@ export default {
   name: "Charts",
   components: {
     ChartsCard,
-    MainChart,
     TempChart,
     AirPollutionChart,
   },
@@ -119,15 +112,13 @@ export default {
       selectedChart: 0,
       loading: true,
     };
-  }, 
+  },
   methods: {
     setSelectedChart(id) {
       this.selectedChart = id;
       this.loading = true;
       console.log(this.selectedChart);
     },
-
-    
   },
 };
 </script>
@@ -235,13 +226,13 @@ export default {
   }
 }
 
- .loader {
-    border: 16px solid #f3f3f3; /* Light grey */
-    border-top: 16px solid #3498db; /* Blue */
-    border-radius: 50%;
-    width: 120px;
-    height: 120px;
-    animation: spin 1s linear infinite;
-    margin: 0 auto;
-  }
+.loader {
+  border: 16px solid #f3f3f3; /* Light grey */
+  border-top: 16px solid #3498db; /* Blue */
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  animation: spin 1s linear infinite;
+  margin: 0 auto;
+}
 </style>

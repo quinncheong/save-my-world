@@ -174,7 +174,7 @@ export default {
             // fontColor: '#4848EE',
           },
           xAxes: {
-            display: false,
+            display: true,
             stacked: true,
           },
           // xAxes: {
@@ -201,19 +201,19 @@ export default {
     // Function to load the new data
     const handleClick = async (e) => {
       e.preventDefault();
-
-      //   First portion is to do forward geocoding to get the lat and long
-      // Need better plan to support https
-      // let geolocationUrl = "https://api.positionstack.com/v1/forward";
-      // let access_key = process.env.VUE_APP_POSITIONSTACK_API_KEY;
-      let query = country.value;
-      let isoCountry = iso.whereCountry(country.value).country;
-      console.log(iso.whereCountry(country.value))
-
-      // New forward geocoding api
-      let access_key = process.env.VUE_APP_LOCATION_IQ_API;
-      let geolocationUrl = `https://us1.locationiq.com/v1/search.php?`
       try {
+        //   First portion is to do forward geocoding to get the lat and long
+        // Need better plan to support https
+        // let geolocationUrl = "https://api.positionstack.com/v1/forward";
+        // let access_key = process.env.VUE_APP_POSITIONSTACK_API_KEY;
+        let query = country.value;
+        let isoCountry = iso.whereCountry(country.value).country;
+        console.log(iso.whereCountry(country.value));
+
+        // New forward geocoding api
+        let access_key = process.env.VUE_APP_LOCATION_IQ_API;
+        let geolocationUrl = `https://us1.locationiq.com/v1/search.php?`;
+
         // This is for position stack api
         // let res = await axios.get(geolocationUrl, {
         //   params: {
@@ -345,7 +345,9 @@ export default {
 
         chartRef.value.update(null);
       } catch (err) {
-        console.log(err);
+        alert(
+          "The country you selected is currently not available. Please select another country."
+        );
       }
     };
 
@@ -391,9 +393,6 @@ export default {
   // }
 };
 </script>
-
-
-
 
 <style lang="scss" scoped>
 .temp-chart-bg {

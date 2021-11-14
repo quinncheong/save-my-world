@@ -16,8 +16,12 @@
             <span class="text-muted weight"> (°C)</span>
           </small>
           <br />
-          This chart shows the the <span class='text-primary weight'>progression of changing temperature</span> from the
-          past to the present. It also shows the future predicted temperature
+          This chart shows the the
+          <span class="text-primary weight"
+            >progression of changing temperature</span
+          >
+          from the past to the present. It also shows the future predicted
+          temperature
         </p>
       </div>
     </div>
@@ -184,57 +188,58 @@ export default {
     // It needs to send a payload with the isoCountry, startYear and endYear.
     const handleClick = async (e) => {
       e.preventDefault();
-      let lamdbaFn =
-        "https://u96rjz2jhi.execute-api.ap-southeast-1.amazonaws.com/getClimateData";
-      let baseUrl =
-        "https://climatedataapi.worldbank.org/climateweb/rest/v1/country/annualavg/tas";
-      let isoCountry = iso.whereCountry(country.value).alpha3;
-      // let startYear = year.value;
-      // let endYear = startYear + 19;
-      // let fullUrl = `${baseUrl}/${startYear}/${endYear}/${isoCountry}`;
-      let pastPromiseArray = [];
-      let futurePromiseArray = [];
-
-      // iterate over chartyears to make request and push to the different arrays
-      for (let key in chartYears) {
-        let type = chartYears[key];
-        if (key === "past") {
-          for (let year in type) {
-            let startYear = year;
-            let endYear = type[year];
-            let promise = axios.post(lamdbaFn, {
-              isoCountry,
-              startYear,
-              endYear,
-            });
-            pastPromiseArray.push(promise);
-          }
-        } else {
-          for (let year in type) {
-            let startYear = year;
-            let endYear = type[year];
-            let promise = axios.post(lamdbaFn, {
-              isoCountry,
-              startYear,
-              endYear,
-            });
-            futurePromiseArray.push(promise);
-          }
-        }
-      }
-
-      // wait for all the promises to resolve
-      let pastData = await Promise.all(pastPromiseArray);
-      let futureData = await Promise.all(futurePromiseArray);
-
-      // get the data from the response
-      let pastDataArray = pastData.map((data) => data.data);
-      let futureDataArray = futureData.map((data) => data.data);
-
-      console.log(pastDataArray);
-      console.log(futureDataArray);
 
       try {
+        let lamdbaFn =
+          "https://u96rjz2jhi.execute-api.ap-southeast-1.amazonaws.com/getClimateData";
+        let baseUrl =
+          "https://climatedataapi.worldbank.org/climateweb/rest/v1/country/annualavg/tas";
+        let isoCountry = iso.whereCountry(country.value).alpha3;
+        // let startYear = year.value;
+        // let endYear = startYear + 19;
+        // let fullUrl = `${baseUrl}/${startYear}/${endYear}/${isoCountry}`;
+        let pastPromiseArray = [];
+        let futurePromiseArray = [];
+
+        // iterate over chartyears to make request and push to the different arrays
+        for (let key in chartYears) {
+          let type = chartYears[key];
+          if (key === "past") {
+            for (let year in type) {
+              let startYear = year;
+              let endYear = type[year];
+              let promise = axios.post(lamdbaFn, {
+                isoCountry,
+                startYear,
+                endYear,
+              });
+              pastPromiseArray.push(promise);
+            }
+          } else {
+            for (let year in type) {
+              let startYear = year;
+              let endYear = type[year];
+              let promise = axios.post(lamdbaFn, {
+                isoCountry,
+                startYear,
+                endYear,
+              });
+              futurePromiseArray.push(promise);
+            }
+          }
+        }
+
+        // wait for all the promises to resolve
+        let pastData = await Promise.all(pastPromiseArray);
+        let futureData = await Promise.all(futurePromiseArray);
+
+        // get the data from the response
+        let pastDataArray = pastData.map((data) => data.data);
+        let futureDataArray = futureData.map((data) => data.data);
+
+        console.log(pastDataArray);
+        console.log(futureDataArray);
+
         // Manipulate the data
         let pastDataset = [];
         let futureDataset = [];
@@ -255,12 +260,12 @@ export default {
         futureDataset.push(pastDataset[pastDataset.length - 1]);
         updatedLabels.push(Math.floor(count));
 
-        count = 2020
+        count = 2020;
 
         for (let dataset of futureDataArray) {
           for (let data of dataset) {
-            if (data.scenario === 'b1') {
-              continue
+            if (data.scenario === "b1") {
+              continue;
             }
             futureDataset.push(data.annualData[0]);
             updatedLabels.push(count);
@@ -292,7 +297,7 @@ export default {
 
         chartRef.value.update(null);
       } catch (error) {
-        console.log(error);
+        alert('The country you selected is currently not available. Please select another country.')
       }
     };
 
@@ -340,11 +345,11 @@ export default {
   width: 100%;
 }
 
-.weight{
+.weight {
   font-weight: bold;
 }
 
-.search-btn{
+.search-btn {
   background: green;
   color: #fff;
   height: 26px;
@@ -362,7 +367,6 @@ export default {
   font-weight: bold;
 }
 
-
 .form-box {
   display: flex;
   align-items: top;
@@ -378,7 +382,7 @@ export default {
 //   .form-box{
 //     font-size: $variable-font;
 //   }
-  
+
 //   .search-btn{
 //     font-size: $variable-font;
 //   }
@@ -388,9 +392,7 @@ export default {
 //   }
 // }
 
-.add-margin{
+.add-margin {
   margin: 5px;
 }
-
 </style>
-
