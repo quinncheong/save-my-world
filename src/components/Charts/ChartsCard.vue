@@ -86,6 +86,7 @@ export default {
 .img-wrap {
   position: relative;
   display: inline-block;
+
 }
 .img-wrap .text-hover {
   visibility: hidden;
@@ -100,7 +101,7 @@ export default {
   position: absolute;
   z-index: 1;
 
-  width: 130px;
+  width: 120px;
   top: 100%;
   left: 50%;
   margin-left: -60px;

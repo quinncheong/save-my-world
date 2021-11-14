@@ -16,6 +16,32 @@
       v-for="(srcset, index) of sources"
       class="cards_item"
       >
+
+      <!--original-->
+        <!-- <div class="card bg-transparent">
+          <div class="card_image"><iframe width="100%" height="100%"
+              :src="srcset.link"
+              allowfullscreen
+            ></iframe></div>
+          <div class="card_content">
+            <h6 class="card_title">{{ srcset.title }}</h6>
+            <p class="card_text">{{ srcset.text }}</p>
+          </div>
+        </div> -->
+
+        <!--rubbish-->
+        <!-- <div class=" card bg-transparent">
+          <div class=" embed-responsive embed-responsive-4by3"><iframe width="100%"  class="embed-responsive-item"
+              :src="srcset.link"
+              allowfullscreen
+            ></iframe></div>
+          <div class="card_content">
+            <h6 class="card_title">{{ srcset.title }}</h6>
+            <p class="card_text">{{ srcset.text }}</p>
+          </div>
+        </div> -->
+
+
         <div class="card bg-transparent">
           <div class="card_image"><iframe width="100%" height="100%"
               :src="srcset.link"
@@ -26,6 +52,8 @@
             <p class="card_text">{{ srcset.text }}</p>
           </div>
         </div>
+
+
       </li>
     </ul>
   </div>
@@ -77,6 +105,87 @@ export default {
 
 <style lang="scss" scoped>
 
+
+//original 
+
+  // .video-img{
+  //   width: 150px;
+  //   height: 150px;
+  //   animation: float 4s ease-in-out infinite;
+  //   pointer-events: none
+  // }
+
+  // h1 {
+  //     font-size: 24px;
+  //     font-weight: 400;
+  //     text-align: center;
+  // }
+
+  // .cards {
+  //   display: flex;
+  //   flex-wrap: wrap;
+  //   list-style: none;
+  //   margin: 0;
+  //   padding: 0;
+    
+  // }
+
+
+  // @media (min-width: 40rem) {
+  //   .cards_item {
+  //     width: 50%;
+  //   }
+  // }
+
+  // @media (min-width: 56rem) {
+  //   .cards_item {
+  //     width: 33.3333%;
+  //   }
+  // }
+
+
+
+  // .card {
+  //   background-color: white;
+  //   border-radius: 0.25rem;
+  //   box-shadow: 0 20px 40px -14px rgba(0, 0, 0, 0.25);
+  //   display: flex;
+  //   flex-direction: column;
+  //   // overflow: hidden;
+  // }
+
+  // .card_content {
+  //   padding: 1rem;
+  //   background: linear-gradient(
+  //     to bottom right,
+  //     rgba(80, 167, 194, 0.9),
+  //     rgba(144, 243, 199, 0.9)
+  //   );
+  //   height: 18rem;
+  // }
+
+  // .card_title {
+  //   color: #ffffff;
+  //   font-size: 1.1rem;
+  //   font-weight: 700;
+  //   letter-spacing: 1px;
+  //   text-transform: capitalize;
+  //   margin: 0px;
+  // }
+
+  // .card_text {
+  //   padding: 10px;
+  //   color: #ffffff;
+  //   font-size: 0.675rem;
+  //   line-height: 1.5;
+  //   margin-bottom: 1.25rem;    
+  //   font-weight: 400;
+  //   text-align: left;
+  // }
+
+
+//edited CSS
+
   .video-img{
     width: 150px;
     height: 150px;
@@ -85,7 +194,7 @@ export default {
   }
 
   h1 {
-      font-size: 24px;
+      font-size: 20px;
       font-weight: 400;
       text-align: center;
   }
@@ -95,22 +204,24 @@ export default {
     flex-wrap: wrap;
     list-style: none;
     margin: 0;
-    padding: 0;
+    padding: 0; 
     
   }
 
 
-  @media (min-width: 40rem) {
+  @media (min-width: 768px) {
     .cards_item {
       width: 50%;
     }
   }
 
-  @media (min-width: 56rem) {
+  @media (min-width: 992px) {
     .cards_item {
       width: 33.3333%;
     }
   }
+
+
 
   .card {
     background-color: white;
@@ -118,7 +229,11 @@ export default {
     box-shadow: 0 20px 40px -14px rgba(0, 0, 0, 0.25);
     display: flex;
     flex-direction: column;
-    overflow: hidden;
+    padding: 10px;
+    // min-height: 200px;
+    // flex: 1 1 21vh;
+    // position: relative;
+    // overflow: hidden;
   }
 
   .card_content {
@@ -133,11 +248,11 @@ export default {
 
   .card_title {
     color: #ffffff;
-    font-size: 1.1rem;
-    font-weight: 700;
-    letter-spacing: 1px;
+    font-size: 20px;
+    font-weight: bold;
+    // letter-spacing: 1px;
     text-transform: capitalize;
-    margin: 0px;
+    // margin: 0px;
   }
 
   .card_text {
@@ -149,4 +264,5 @@ export default {
     font-weight: 400;
     text-align: left;
   }
+
 </style>
