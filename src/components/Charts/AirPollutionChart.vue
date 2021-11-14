@@ -27,40 +27,7 @@
       </div>
     </div>
 
-    <!--this is the correct one-->
-
-    <!-- <form @submit="handleClick"> -->
-    <!-- <p>Select a country:</p> -->
-    <!-- <div class="form-box"> -->
-    <!-- <div class= 'container'> -->
-    <!-- <label class="form-label"> -->
-    <!-- <p>Select a country:</p> -->
-
-    <!-- <select data-live-search="true" class=" include-margin selectpicker"  v-model="country" > -->
-    <!--the following drop down list is correct-->
-    <!-- <select class='include-margin' v-model="country">
-          <option
-            :key="country.name"
-            v-for="country in countries"
-            :value="country.name"
-          > 
-            {{ country.name }}
-          </option>
-        </select> -->
-    <!-- </label> -->
-    <!-- </div> -->
-    <!-- <button class="btn btn-success search-btn">Get Data</button> -->
-    <!-- </div> -->
-
-    <!-- <label>
-        Select a year (must be 2020 only):
-        <input v-model="year" type="number" required />
-      </label> -->
-    <!-- <button class="btn btn-success search-btn">Get Data</button> -->
-    <!-- </form> -->
-
     <!--seeing how to make the bar responsive  -->
-
     <form @submit="handleClick">
       <p class="mb-2">Select a country:</p>
       <div class="form-box mb-3">
@@ -81,13 +48,19 @@
         <!-- </div> -->
         <button class="btn btn-success search-btn">Get Data</button>
       </div>
-
-      <!-- <label>
-        Select a year (must be 2020 only):
-        <input v-model="year" type="number" required />
-      </label> -->
-      <!-- <button class="btn btn-success search-btn">Get Data</button> -->
     </form>
+    <!-- Loading component -->
+    <section v-show="isLoading">
+      <div class="loading loading07">
+        <span data-text="L">L</span>
+        <span data-text="O">O</span>
+        <span data-text="A">A</span>
+        <span data-text="D">D</span>
+        <span data-text="I">I</span>
+        <span data-text="N">N</span>
+        <span data-text="G">G</span>
+      </div>
+    </section>
   </div>
 </template>
 
@@ -112,6 +85,7 @@ export default {
     const chartRef = ref(null);
     const country = ref("Singapore");
     const year = ref(2020);
+    const isLoading = ref(false);
 
     const barChart = {
       id: "bar",
@@ -201,6 +175,7 @@ export default {
     // Function to load the new data
     const handleClick = async (e) => {
       e.preventDefault();
+      isLoading.value = true;
       try {
         //   First portion is to do forward geocoding to get the lat and long
         // Need better plan to support https
@@ -344,7 +319,9 @@ export default {
         ];
 
         chartRef.value.update(null);
+        isLoading.value = false;
       } catch (err) {
+        isLoading.value = false;
         alert(
           "The country you selected is currently not available. Please select another country."
         );
@@ -375,12 +352,12 @@ export default {
       chartRef,
       year,
       country,
+      isLoading,
       updateChart,
       handleClick,
       countries,
     };
   },
-
   //added
   // mounted(){
   //   const plugin = document.createElement("script");
