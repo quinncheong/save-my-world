@@ -37,23 +37,17 @@
 
     <div v-else>
       <!-- <TempChart /> -->
-      <div class="seaice-content">
-         <iframe
-          id="test"
-          src="https://datahub.io/core/glacier-mass-balance/view/0"
-          width="100%"
-          height="475px"
-          frameborder="0"
-          @load="loading = false"
-          v-show="!loading"
-        ></iframe>
+      <iframe 
+      v-show="!loading"
+        id="test"
+        src="https://datahub.io/core/glacier-mass-balance/view/0"
+        width="100%"
+        height="500px"
+        frameborder="0"
+        @load="handleLoad"
+      ></iframe>
 
-          <div v-show="loading" class="loader"></div>
-
-      </div>
-
-
-        
+      <div v-if="loading" class="loader"></div>
 
       <div class="card mt-4">
         <div class="card-body text-dark bold">
@@ -64,7 +58,6 @@
         </div>
       </div>
     </div>
-    <!-- <MainChart /> -->
 
     <!-- <div class="main-chart">
       <iframe
@@ -79,7 +72,6 @@
 
 <script>
 import ChartsCard from "../components/Charts/ChartsCard.vue";
-import MainChart from "@/components/Charts/MainChart.vue";
 import TempChart from "@/components/Charts/TemperatureChart.vue";
 import AirPollutionChart from "@/components/Charts/AirPollutionChart.vue";
 
@@ -87,7 +79,6 @@ export default {
   name: "Charts",
   components: {
     ChartsCard,
-    MainChart,
     TempChart,
     AirPollutionChart,
   },
@@ -117,17 +108,27 @@ export default {
         },
       ],
       selectedChart: 0,
-      loading: true,
+      loading: false,
+      hadLoaded: false,
     };
-  }, 
+  },
   methods: {
     setSelectedChart(id) {
       this.selectedChart = id;
-      this.loading = true;
-      console.log(this.selectedChart);
+
+      if (id === 3 && !this.hasLoaded) {
+        this.loading = true;
+      }
+
+      if (id !== 3) {
+        this.hasLoaded = false;
+      }
     },
 
-    
+    handleLoad() {
+      this.loading = false;
+      this.hasLoaded = true;
+    },
   },
 };
 </script>
@@ -192,56 +193,37 @@ export default {
   }
 }
 
-.seaice-content {
-  position: relative;
-}
-
-// .loader{
-//   position: absolute;
-//   top: 0px;
-//   right: 0px;
-//   bottom: 0px;
-//   left: 0px;
-//   width: 100%;
-//     height: 475px;
+// .seaice-content {
+//   position: relative;
 // }
 
 // display 70% width on desktop
 @media screen and (min-width: 768px) {
   .chart-wrapper {
-    width: 70%;
+    width: 75%;
   }
 }
 
 // display 70% width on large screen sizes
 @media screen and (min-width: 992px) {
   .chart-wrapper {
-    width: 60%;
+    width: 70%;
   }
 }
 
 // // display 70% width on extra large screen sizes
 @media screen and (min-width: 1200px) {
   .chart-wrapper {
-    width: 50%;
+    width: 60%;
   }
 }
 
 // // display 70% width on extra large screen sizes
 @media screen and (min-width: 1350px) {
   .chart-wrapper {
-    width: 40%;
-    font-size: 15px;
+    width: 50%;
   }
 }
 
- .loader {
-    border: 16px solid #f3f3f3; /* Light grey */
-    border-top: 16px solid #3498db; /* Blue */
-    border-radius: 50%;
-    width: 120px;
-    height: 120px;
-    animation: spin 1s linear infinite;
-    margin: 0 auto;
-  }
+
 </style>

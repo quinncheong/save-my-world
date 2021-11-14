@@ -61,10 +61,10 @@ export default {
 
 <style lang="scss" scoped>
 
-.slider-example-split-line {
+// .slider-example-split-line {
     // --divider-width: 2px;
     // --default-handle-opacity: 0;
-}
+// }
 
 .custom-animated-handle {
   transition: transform 0.2s;
@@ -73,34 +73,6 @@ export default {
 .slider-with-animated-handle:hover .custom-animated-handle {
   transform: scale(1.2);
 }
-// .before,
-// .after {
-//   margin: 0;
-// }
-
-// figcaption {
-//   & .before,
-//   & .after {
-//     background: #fff;
-//     border: 1px solid #c0c0c0;
-//     border-radius: 12px;
-//     color: #2e3452;
-//     opacity: 0.8;
-//     padding: 12px;
-//     position: absolute;
-//     top: 50%;
-//     transform: translateY(-50%);
-//     line-height: 100%;
-//   }
-
-//   & .before {
-//     left: 12px;
-//   }
-
-//   & .after {
-//     right: 12px;
-//   }
-// }
 
 .before,
 .after {
@@ -127,5 +99,17 @@ export default {
 
 .after figcaption {
   right: 12px;
+}
+
+@media screen and (max-width: 768px) {
+  .img{
+    width: 80%;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .splide__slide{
+    width: 80%;
+  }
 }
 </style>

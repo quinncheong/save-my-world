@@ -505,6 +505,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+* {
+  font-size: $variable-font;
+}
 html {
   scroll-behavior: smooth;
 }

@@ -26,6 +26,8 @@
               value="everyyear"
               v-model="selected"
               @change="handleChange()"
+              :disabled = "disabledCheck"
+
               checked
             />
             <label class="form-check-label" for="inlineRadio1"
@@ -41,6 +43,7 @@
               value="indivyear"
               v-model="selected"
               @change="handleChange()"
+              :disabled = "disabledCheck"
             />
             <label class="form-check-label" for="inlineRadio2"
               >Individual Year</label
@@ -64,10 +67,13 @@
               step="1"
               v-model="yearVal"
               @change="listenEvent"
+              :disabled = "disabledCheck"
+
             />
           </div>
           <div class="col-1 col-sm-1 p-0">2021</div>
         </div>
+        <!-- </div> -->
       </div>
 
       <div id="console-alt" v-else>Loading please wait!!!!!!</div>
@@ -80,8 +86,8 @@
 
       <!-- Button to go back to original center -->
 
-      <button v-if="mapCenter == false" id="flydisplay" @click="returnCenter()">
-        Go back to original
+      <button class="btn-success btn" v-if="mapCenter == false" id="flydisplay" @click="returnCenter()">
+        Return to original position
       </button>
       <div class="map" id="map">
         <!-- Result individual modal to be placed here  -->
@@ -112,22 +118,22 @@
 
                 <!-- 
               <div class="modal" tabindex="-1">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">Modal title</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <p>Modal body text goes here.</p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-    </div>
-  </div>
-</div> -->
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title">Modal title</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                    <p>Modal body text goes here.</p>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                  </div>
+                </div>
+              </div>
+            </div> -->
 
                 <div class="scrollbox">
                   <!-- Create a a href here to read more  -->
@@ -220,6 +226,7 @@ export default {
       offset: 0,
       offsetCount: 0,
       queryInterval: true,
+      disabledCheck: false,
 
       //  For the filter for the different years
       yearAll: true,
@@ -276,6 +283,7 @@ export default {
               "text-font": ["Open Sans Semibold", "Arial Unicode MS Bold"],
               "text-offset": [0, 1.25],
               "text-anchor": "top",
+              
             },
             // filter: ["==", ["number", ["get", "year"]], parseInt(this.yearVal)],
           });
@@ -293,6 +301,10 @@ export default {
 
       // Display == true
       this.display = true;
+      // get center 
+
+      this.center = this.map.getCenter
+
 
       console.log(e.features[0]);
       // Copy coordinates array.
@@ -317,35 +329,100 @@ export default {
       // Add popup after the screen arrives at the marker
 
       this.map.on("flystart", () => {
+
+        // Disable dragpan upon flystart event is emitted
+        // this.map.dragPan.disable();
+
         this.flying = true;
         console.log("start fly here");
       });
       this.map.on("flyend", () => {
         this.flying = false;
-        this.mapCenter = false;
-        //  Once ended, we add it into the modal.
 
+        let homeCoords =  [0,20];
+        let tempCoord = this.map.getCenter();
+        this.center = [tempCoord['lng'],tempCoord['lat']];
+
+        console.log(this.arrayEquals(homeCoords,this.center));
+
+        if (!this.arrayEquals(homeCoords,this.center)){
+          // Disable interactiveness here.
+          this.map.dragPan.disable();
+          this.disabledCheck = true;
+           this.mapCenter = false;
+        //  Once ended, we add it into the modal.
         this.title = name;
 
-        console.log(description);
 
         // Split into paragraphs
         let tempList = description.split("\n\n");
 
         this.descriptionModal = tempList;
 
-        console.log(tempList);
+        // console.log(tempList);
 
         console.log("end fly here");
+                  console.log("`Coords not equal`")
+
+          
+        } else {
+          this.map.dragPan.enable();
+          console.log("Coords are equal ")
+          this.disabledCheck = false;
+          this.mapCenter = true;
+        }
+
+        //  Let this.center = test 2 then we check if its equal to [0,20] , if its not equal we disable 
+
+       
       });
+
+      
+
+      this.map.on("flystartend",()=>{
+        console.log("this is the flying back center coord " +  this.center)
+      
+        this.flying = true;
+        console.log("start fly here from the end");
+
+      })
+
+      this.map.on("flyendorigin",()=>{
+
+        this.flying = false;
+        this.mapCenter = false;
+                console.log("2nd fly event change center")
+
+
+        this.center = [0,20];
+        console.log("helphelphelphehlphelphelphepelhelphelphelpehlehelphelphelphelhep")
+
+        if (this.center == [0,20]){
+          this.disabledCheck = false;
+        }
+        
+
+        
+      })
 
       this.map.on("moveend", (e) => {
         if (this.flying) {
-          console.log("hi");
+     
+          this.center = this.map.getCenter();
+          const test = this.map.getCenter();
+          console.log(this.center);
 
-          this.map.fire("flyend");
-        }
+            this.map.fire("flyend");
+              console.log("First fly event ends here")
+
+        
+      
+
+        } 
       });
+
+
+      this.map
 
       // new mapboxgl.Popup()
       //   .setLngLat(coordinates)
@@ -575,13 +652,22 @@ export default {
       this.display = false;
     },
 
-    async returnCenter() {
-      await this.map.flyTo({
+    returnCenter() {
+
+      this.map.dragPan.disable();
+        this.map.flyTo({
         center: [0, 20],
         zoom: 1,
         pitch: 0,
         bearing: 0,
+
+        
+
       });
+
+      this.map.fire("flystart");
+
+      // this.map.dragPan.disable();
 
       // Conditionals to remove the button
       this.mapCenter = true;
@@ -654,6 +740,15 @@ export default {
 
       // }
     },
+
+   arrayEquals(a, b) {
+  return Array.isArray(a) &&
+    Array.isArray(b) &&
+    a.length === b.length &&
+    a.every((val, index) => val === b[index]);
+}
+
+    
   },
 };
 </script>
@@ -661,7 +756,7 @@ export default {
 <style lang="scss" scoped>
 .visualisation-wrapper {
   @extend %page-wrapper;
-  font-size: $variable-font;
+  font-size: $font-size-small;
 
   .disaster-header-title {
     margin-bottom: 1rem;
