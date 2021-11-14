@@ -4,8 +4,8 @@
     <section ref="x" class="disaster-info-top">
       <h3 class="mb-3">Disaster Types</h3>
       <p>
-        Climate change affects global temperature and precipitation patterns.
-        These are some of the listed effects:
+        The current climate models indicate that rising temperatures will intensify the Earth’s water cycle, increasing evaporation. This would result in more and frequent extreme weather events. 
+        The following are some of the listed effects:
       </p>
       <!-- icon box -->
       <div class="disaster-icons-container">

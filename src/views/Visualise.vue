@@ -5,8 +5,9 @@
     <div class="add-fade-in">
       <h3 class="disaster-header-title">Disaster Frequency</h3>
       <p class="disaster-header-text">
-        The map below shows the frequency of disasters in the world.
+        The map below shows the frequency of disasters in the world. This is an indication of the impact of Climate Change as climate changes such as the increase in global surface temperature can lead to increased possibility of disasters like droughts and higher intensity storms such as tsunamis.
       </p>
+      <br>
       <i class="disaster-header-select">
         Select a filter to understand how disasters have been increasing rapidly
         throughout the years
