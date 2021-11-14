@@ -11,67 +11,66 @@
         Select a filter to understand how disasters have been increasing rapidly
         throughout the years
       </i>
+      <div class="filterandslider" v-if="!loading">
+        <div class="disaster-filter">
+          <h4>Filters:</h4>
 
-      <div class="disaster-filter">
-        <h4>Filters:</h4>
-
-        <!-- Bootstrap radio  -->
-        <div class="filter-radio">
-          <div class="filter-radio-1">
-            <input
-              class="form-check-input"
-              type="radio"
-              name="inlineRadioOptions"
-              id="inlineRadio1"
-              value="everyyear"
-              v-model="selected"
-              @change="handleChange()"
-              :disabled = "disabledCheck"
-
-              checked
-            />
-            <label class="form-check-label" for="inlineRadio1"
-              >Every Year</label
-            >
-          </div>
-          <div class="filter-radio-2">
-            <input
-              class="form-check-input"
-              type="radio"
-              name="inlineRadioOptions"
-              id="inlineRadio2"
-              value="indivyear"
-              v-model="selected"
-              @change="handleChange()"
-              :disabled = "disabledCheck"
-            />
-            <label class="form-check-label" for="inlineRadio2"
-              >Individual Year</label
-            >
+          <!-- Bootstrap radio  -->
+          <div class="filter-radio">
+            <div class="filter-radio-1">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="inlineRadioOptions"
+                id="inlineRadio1"
+                value="everyyear"
+                v-model="selected"
+                @change="handleChange()"
+                :disabled="disabledCheck"
+                checked
+              />
+              <label class="form-check-label" for="inlineRadio1"
+                >Every Year</label
+              >
+            </div>
+            <div class="filter-radio-2">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="inlineRadioOptions"
+                id="inlineRadio2"
+                value="indivyear"
+                v-model="selected"
+                @change="handleChange()"
+                :disabled="disabledCheck"
+              />
+              <label class="form-check-label" for="inlineRadio2"
+                >Individual Year</label
+              >
+            </div>
           </div>
         </div>
-      </div>
 
-      <!-- Container to hold  the slider -->
-      <div class="console justify-self-center" v-if="!loading">
-        <h5 class="sliderValue">{{ yearVal }}</h5>
-        <div class="row" v-if="selected == 'indivyear'">
-          <div class="col-1 col-sm-1 p-0">1981</div>
-          <div class="col-9 col-sm-10">
-            <input
-              id="slider"
-              class="w-100"
-              type="range"
-              min="1981"
-              max="2021"
-              step="1"
-              v-model="yearVal"
-              @change="listenEvent"
-              :disabled = "disabledCheck"
-
-            />
+        <!-- Container to hold  the slider -->
+        <div class="console justify-self-center">
+          <h5 class="sliderValue">{{ yearVal }}</h5>
+          <div class="row" v-if="selected == 'indivyear'">
+            <div class="col-1 col-sm-1 p-0">1981</div>
+            <div class="col-9 col-sm-10">
+              <input
+                id="slider"
+                class="w-100"
+                type="range"
+                min="1981"
+                max="2021"
+                step="1"
+                v-model="yearVal"
+                @change="listenEvent"
+                :disabled="disabledCheck"
+              />
+            </div>
+            <div class="col-1 col-sm-1 p-0">2021</div>
           </div>
-          <div class="col-1 col-sm-1 p-0">2021</div>
         </div>
         <!-- </div> -->
       </div>
@@ -86,103 +85,91 @@
 
       <!-- Button to go back to original center -->
 
-      <button class="btn-success btn" v-if="mapCenter == false" id="flydisplay" @click="returnCenter()">
+      <button
+        class="btn-success btn"
+        v-if="mapCenter == false"
+        id="flydisplay"
+        @click="returnCenter()"
+      >
         Return to original position
       </button>
       <div class="map" id="map">
         <!-- Result individual modal to be placed here  -->
 
-        <div class="container">
-          <div v-if="flying == false && display == true" id="desc" class="my-2">
-            <button
-              id="close"
-              type="button"
-              @click="stopDisplay()"
-              class="btn-close"
-            ></button>
-
-            <div class="descriptiontext">
-              <h5 class="text-start">{{ title }}</h5>
-              <hr />
-              <div
-                v-for="(indivDesc, index) in descriptionModal"
-                :key="index"
-                class="mt-2"
-              >
-                <h6>
-                  <b>Occurence {{ index + 1 }}</b>
-                </h6>
-                <!-- <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="`#modal${index}`" aria-expanded="false" aria-controls="collapseExample">
-                Button with data-target
-              </button> -->
-
-                <!-- 
-              <div class="modal" tabindex="-1">
-              <div class="modal-dialog">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h5 class="modal-title">Modal title</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                  </div>
-                  <div class="modal-body">
-                    <p>Modal body text goes here.</p>
-                  </div>
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
-                  </div>
-                </div>
-              </div>
-            </div> -->
-
-                <div class="scrollbox">
-                  <!-- Create a a href here to read more  -->
-
-                  <div class="modalResult">
-                    <a
-                      data-bs-toggle="collapse"
-                      :href="`#modal${index}`"
-                      aria-expanded="false"
-                      aria-controls="collapseExample"
-                    >
-                      Give me more details
-                    </a>
-
-                    <!-- This doesn't work why ?? -->
-                    <p class="collapse mt-2" :id="`modal${index}`">
-                      {{ indivDesc }}
-                    </p>
-                  </div>
-                </div>
-
-                <br />
-              </div>
-            </div>
-          </div>
-        </div>
         <!-- </div> -->
       </div>
     </div>
 
     <!-- Outer division to hold information -->
-    <div class="disaster-info" v-if="!loading">
-      <p class="disaster-info-text">
+    <div class="disaster-info" v-if="!loading && descriptionModal.length > 0">
+      <!-- <p class="disaster-info-text">
         Search results:
         <span>{{ resultArray.length ?? "No Results Found" }}</span>
-      </p>
+      </p> -->
 
-      <!-- Iterate through the results  -->
-      <div v-for="result in resultArray" :key="result" class="row">
-        <div class="col">
-          <p class="text-dark text-start">{{ result }}</p>
+      <div class="container">
+        <div v-if="flying == false && display == true" id="desc" class="my-2">
+          <!-- <button
+              id="close"
+              type="button"
+              @click="stopDisplay()"
+              class="btn-close"
+            ></button> -->
+
+          <div class="descriptiontext">
+            <h5 class="text-start">{{ title }}</h5>
+            <hr />
+            <div
+              v-for="(indivDesc, index) in descriptionModal"
+              :key="index"
+              class="mt-2 text-start"
+            >
+              <h6>
+                <b>Occurence {{ index + 1 }}</b>
+              </h6>
+
+              <div class="scrollbox">
+                <!-- Create a a href here to read more  -->
+
+                <div class="modalResult">
+                  <a
+                    data-bs-toggle="collapse"
+                    :href="`#modal${index}`"
+                    aria-expanded="false"
+                    aria-controls="collapseExample"
+                  >
+                    Give me more details
+                  </a>
+
+                  <!-- This doesn't work why ?? -->
+                  <p class="collapse mt-2" :id="`modal${index}`">
+                    {{ indivDesc }}
+                  </p>
+                </div>
+              </div>
+
+              <br />
+            </div>
+          </div>
         </div>
-
-        <hr class="lead" />
+        <div v-else class="noneselected">
+          Click on more of the pop-ups!
+        </div>
       </div>
     </div>
-    <div v-else>
-      <div class="loader"></div>
-    </div>
+
+    <!-- Iterate through the results  -->
+    <!-- <div v-for="result in resultArray" :key="result" class="row">
+                        <div class="col">
+                          <p class="text-dark text-start">{{ result }}</p>
+                        </div>
+
+                        <hr class="lead" />
+                      </div>
+                    </div>
+                    <div v-else>
+                      <div class="loader"></div>
+                    </div> -->
 
     <!-- Disaster infographic -->
     <Disasterinfo />
@@ -283,7 +270,6 @@ export default {
               "text-font": ["Open Sans Semibold", "Arial Unicode MS Bold"],
               "text-offset": [0, 1.25],
               "text-anchor": "top",
-              
             },
             // filter: ["==", ["number", ["get", "year"]], parseInt(this.yearVal)],
           });
@@ -301,10 +287,9 @@ export default {
 
       // Display == true
       this.display = true;
-      // get center 
+      // get center
 
-      this.center = this.map.getCenter
-
+      this.center = this.map.getCenter;
 
       console.log(e.features[0]);
       // Copy coordinates array.
@@ -329,7 +314,6 @@ export default {
       // Add popup after the screen arrives at the marker
 
       this.map.on("flystart", () => {
-
         // Disable dragpan upon flystart event is emitted
         // this.map.dragPan.disable();
 
@@ -339,90 +323,73 @@ export default {
       this.map.on("flyend", () => {
         this.flying = false;
 
-        let homeCoords =  [0,20];
+        let homeCoords = [0, 20];
         let tempCoord = this.map.getCenter();
-        this.center = [tempCoord['lng'],tempCoord['lat']];
+        this.center = [tempCoord["lng"], tempCoord["lat"]];
 
-        console.log(this.arrayEquals(homeCoords,this.center));
+        console.log(this.arrayEquals(homeCoords, this.center));
 
-        if (!this.arrayEquals(homeCoords,this.center)){
+        if (!this.arrayEquals(homeCoords, this.center)) {
           // Disable interactiveness here.
           this.map.dragPan.disable();
           this.disabledCheck = true;
-           this.mapCenter = false;
-        //  Once ended, we add it into the modal.
-        this.title = name;
+          this.mapCenter = false;
+          //  Once ended, we add it into the modal.
+          this.title = name;
 
+          // Split into paragraphs
+          let tempList = description.split("\n\n");
 
-        // Split into paragraphs
-        let tempList = description.split("\n\n");
+          this.descriptionModal = tempList;
 
-        this.descriptionModal = tempList;
+          // console.log(tempList);
 
-        // console.log(tempList);
-
-        console.log("end fly here");
-                  console.log("`Coords not equal`")
-
-          
+          console.log("end fly here");
+          console.log("`Coords not equal`");
         } else {
           this.map.dragPan.enable();
-          console.log("Coords are equal ")
+          console.log("Coords are equal ");
           this.disabledCheck = false;
           this.mapCenter = true;
         }
 
-        //  Let this.center = test 2 then we check if its equal to [0,20] , if its not equal we disable 
-
-       
+        //  Let this.center = test 2 then we check if its equal to [0,20] , if its not equal we disable
       });
 
-      
+      this.map.on("flystartend", () => {
+        console.log("this is the flying back center coord " + this.center);
 
-      this.map.on("flystartend",()=>{
-        console.log("this is the flying back center coord " +  this.center)
-      
         this.flying = true;
         console.log("start fly here from the end");
+      });
 
-      })
-
-      this.map.on("flyendorigin",()=>{
-
+      this.map.on("flyendorigin", () => {
         this.flying = false;
         this.mapCenter = false;
-                console.log("2nd fly event change center")
+        console.log("2nd fly event change center");
 
+        this.center = [0, 20];
+        console.log(
+          "helphelphelphehlphelphelphepelhelphelphelpehlehelphelphelphelhep"
+        );
 
-        this.center = [0,20];
-        console.log("helphelphelphehlphelphelphepelhelphelphelpehlehelphelphelphelhep")
-
-        if (this.center == [0,20]){
+        if (this.center == [0, 20]) {
           this.disabledCheck = false;
         }
-        
-
-        
-      })
+      });
 
       this.map.on("moveend", (e) => {
         if (this.flying) {
-     
           this.center = this.map.getCenter();
           const test = this.map.getCenter();
           console.log(this.center);
 
-            this.map.fire("flyend");
-              console.log("First fly event ends here")
-
-        
-      
-
-        } 
+          this.map.fire("flyend");
+          console.log("First fly event ends here");
+        }
       });
 
-
-      this.map
+      this.map;
 
       // new mapboxgl.Popup()
       //   .setLngLat(coordinates)
@@ -653,16 +620,12 @@ export default {
     },
 
     returnCenter() {
-
       this.map.dragPan.disable();
-        this.map.flyTo({
+      this.map.flyTo({
         center: [0, 20],
         zoom: 1,
         pitch: 0,
         bearing: 0,
-
-        
-
       });
 
       this.map.fire("flystart");
@@ -708,7 +671,6 @@ export default {
       }
 
       if (this.selected == "everyyear") {
-
         this.yearVal = null;
 
         // This is to reset the map
@@ -741,14 +703,14 @@ export default {
       // }
     },
 
-   arrayEquals(a, b) {
-  return Array.isArray(a) &&
-    Array.isArray(b) &&
-    a.length === b.length &&
-    a.every((val, index) => val === b[index]);
-}
-
-    
+    arrayEquals(a, b) {
+      return (
+        Array.isArray(a) &&
+        Array.isArray(b) &&
+        a.length === b.length &&
+        a.every((val, index) => val === b[index])
+      );
+    },
   },
 };
 </script>
@@ -877,19 +839,19 @@ export default {
   // How to fit the text inside ????
 
   #desc {
-    position: absolute;
-    width: 40%;
-    height: 200px;
-    margin-left: 10px;
-    padding: 10px 20px;
-    bottom: 30px;
-    background-color: white;
-    z-index: 1;
-    overflow-y: auto;
-    animation: appear 0.5s;
-    border-radius: 10px;
-    text-align: left;
-    overflow-wrap: break-word;
+    // position: absolute;
+    // width: 40%;
+    // height: 200px;
+    // margin-left: 10px;
+    // padding: 10px 20px;
+    // bottom: 30px;
+    // background-color: white;
+    // z-index: 1;
+    // overflow-y: auto;
+    // animation: appear 0.5s;
+    // border-radius: 10px;
+    // text-align: left;
+    // overflow-wrap: break-word;
 
     #close {
       position: sticky;
@@ -912,8 +874,6 @@ export default {
     margin-top: -50px;
   }
 
-  
-
   #descriptionparagraph {
     font-size: $variable-font-small;
   }
@@ -930,7 +890,8 @@ export default {
     }
   }
 
-  
+ 
+
   @keyframes appear {
     // 0%{}
     // 100%{transform: translateY(-30px)}
