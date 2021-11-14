@@ -22,9 +22,12 @@
         class="col"
       >
         <div class="news-card text-center">
+           
           <p class="border-bottom news-card-title" style="color: yellow">
             {{ srcset.title }}
+             <font-awesome-icon :icon="srcset.icon" size="lg"></font-awesome-icon>
           </p>
+
           <p class="news-card-text">
             {{ srcset.text }}
           </p>
@@ -57,16 +60,19 @@ export default {
           title: "Climate Change",
           text: "Contemporary climate change includes both global warming caused by humans and its impacts on Earth's weather patterns.",
           buttonText: "Click for more info",
+          icon: "cloud-sun-rain"
         },
         {
           title: "Greenhouse Gases",
           text: "The main gases responsible for the greenhouse effect include carbon dioxide, methane, nitrous oxide, water vapor and fluorinated gases.",
           buttonText: "Click for more info",
+          icon: "wind"
         },
         {
-          title: "Ways to contribute",
+          title: "Ways to Contribute",
           text: "Foster innovation and resilient infrastructure, creating communities and cities able to produce and consume sustainably.",
           buttonText: "Click for more info",
+          icon: "hands-helping"
         },
       ],
     };
