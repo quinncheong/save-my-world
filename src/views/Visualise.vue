@@ -158,9 +158,6 @@
         <!-- </div> -->
       </div>
     </div>
-    <div v-else-if="loading == true">
-      <div class="loader"></div>
-    </div>
 
     <!-- Outer division to hold information -->
     <div class="disaster-info" v-if="!loading">
