@@ -594,19 +594,60 @@ export default {
     handleChange() {
       // From v-model we will determine the relevant filters here.
       if (this.selected == "indivyear") {
-        this.yearVal = "2021";
+        this.yearVal = 2021;
 
         this.map.setFilter("result", [
           "==",
           ["number", ["get", "year"]],
           parseInt(this.yearVal),
         ]);
+
+        // Get queried layer data here
+        const test = this.map.querySourceFeatures("disasters", {
+          sourceLayer: "disasters",
+          filter: ["==", ["number", ["get", "year"]], parseInt(this.yearVal)],
+        });
+        console.log(test);
+
+        // Change result list everytime
+        this.resultArray = [];
+
+        for (let indivResult of test) {
+          console.log(indivResult.properties.name);
+
+          this.resultArray.push(indivResult.properties.name);
+        }
+
+        this.map.setCenter(this.center);
       }
 
       if (this.selected == "everyyear") {
+
         this.yearVal = null;
 
+        // This is to reset the map
         this.map.setFilter("result", null);
+
+        // Update research bar
+
+        const test = this.map.querySourceFeatures("disasters", {
+          sourceLayer: "disasters",
+        });
+
+        console.log(test);
+
+        // Change result list everytime
+        this.resultArray = [];
+
+        for (let indivResult of test) {
+          console.log(indivResult.properties.name);
+
+          this.resultArray.push(indivResult.properties.name);
+        }
+
+        // The map shows all but not in order
+
+        this.map.setCenter(this.center);
       }
 
       // if (this.selected == "everyyear"){
@@ -776,15 +817,7 @@ export default {
     margin-top: -50px;
   }
 
-  .loader {
-    border: 16px solid #f3f3f3; /* Light grey */
-    border-top: 16px solid #3498db; /* Blue */
-    border-radius: 50%;
-    width: 120px;
-    height: 120px;
-    animation: spin 2s linear infinite;
-    margin: 0 auto;
-  }
+  
 
   #descriptionparagraph {
     font-size: $variable-font-small;
@@ -802,14 +835,7 @@ export default {
     }
   }
 
-  @keyframes spin {
-    0% {
-      transform: rotate(0deg);
-    }
-    100% {
-      transform: rotate(360deg);
-    }
-  }
+  
   @keyframes appear {
     // 0%{}
     // 100%{transform: translateY(-30px)}

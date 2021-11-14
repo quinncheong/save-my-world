@@ -20,8 +20,7 @@
     </div>
 
     <div v-if="selectedChart === 0"></div>
-    <div v-else-if="selectedChart === 1
-    ">
+    <div v-else-if="selectedChart === 1">
       <!-- <iframe src="https://datahub.io/core/glacier-mass-balance/view/0" width="100%" height="475px" frameborder="0"></iframe>
 
       <div class="card mt-4">
@@ -29,7 +28,7 @@
         This chart shows the visualisations of the <span class='bold text-primary'>annual mass balance of glaciers</span> throughout the years and how is has been dwindling at an <span class='bold text-primary'>increasing rate</span>.
       </div>
     </div> -->
-    <TempChart />
+      <TempChart />
     </div>
 
     <div v-else-if="selectedChart === 2">
@@ -38,18 +37,32 @@
 
     <div v-else>
       <!-- <TempChart /> -->
-      <div v-if='loading == true'>
-        <div class='loader'></div>
+      <div class="seaice-content">
+         <iframe
+          id="test"
+          src="https://datahub.io/core/glacier-mass-balance/view/0"
+          width="100%"
+          height="475px"
+          frameborder="0"
+          @load="loading = false"
+          v-show="!loading"
+        ></iframe>
+
+          <div v-show="loading" class="loader"></div>
+
       </div>
 
-      <iframe src="https://datahub.io/core/glacier-mass-balance/view/0" width="100%" height="475px" frameborder="0"></iframe>
+
+        
 
       <div class="card mt-4">
-      <div class="card-body text-dark bold">
-        This chart shows the visualisations of the <span class='bold text-primary'>annual mass balance of glaciers</span> throughout the years and how is has been dwindling at an <span class='bold text-primary'>increasing rate</span>.
+        <div class="card-body text-dark bold">
+          This chart shows the visualisations of the
+          <span class="bold text-primary">annual mass balance of glaciers</span>
+          throughout the years and how is has been dwindling at an
+          <span class="bold text-primary">increasing rate</span>.
+        </div>
       </div>
-    </div>
-
     </div>
     <!-- <MainChart /> -->
 
@@ -82,44 +95,41 @@ export default {
     return {
       charts: [
         {
-          id: 1,  //3
+          id: 1, //3
           name: "Global Temperature",
           src: "temp.png",
-          information: "Explore real-time statistics of how global temperature have changed over the years", //added
+          information:
+            "Explore real-time statistics of how global temperature have changed over the years", //added
         },
         {
-          id: 2,  //2
+          id: 2, //2
           name: "Air Pollution",
           src: "Co2.png",
-          information: "Visualise real-time statistics of how air pollution has changed over time", //added
+          information:
+            "Visualise real-time statistics of how air pollution has changed over time", //added
         },
         {
-          id: 3,   //1
+          id: 3, //1
           name: "Sea Ice",
           src: "seaIce.png",
-          information: "Explore real-time statistics of the average mass of glaciers worldwide",  //added
+          information:
+            "Explore real-time statistics of the avergae mass of glaciers worldwide", //added
         },
       ],
       selectedChart: 0,
-      loading: false, //added 
+      loading: true,
     };
   }, 
   methods: {
     setSelectedChart(id) {
       this.selectedChart = id;
-      console.log(this.selectedChart)
+      this.loading = true;
+      console.log(this.selectedChart);
+    },
 
-      this.loading = true; 
-      this.loading = false; 
-    }, 
-
-    //added 
-    // async fetchData(){
-    //   this.loading = true; 
-    //   this.loading = false; 
-    // }
-  }
- };
+    
+  },
+};
 </script>
 
 <style lang="scss" scoped>
@@ -132,14 +142,14 @@ export default {
     animation: fadeIn 3s ease-out;
   }
 
-//   @keyframes chartText {
-//     0%   { 
-//     transform: translateX(200%); 		
-//     }
-//     100% { 
-//     transform: translateX(0%); 
-//     }
-// }
+  //   @keyframes chartText {
+  //     0%   {
+  //     transform: translateX(200%);
+  //     }
+  //     100% {
+  //     transform: translateX(0%);
+  //     }
+  // }
 
   .charts-card-wrapper {
     display: flex;
@@ -147,26 +157,25 @@ export default {
     justify-content: space-around;
   }
 
-  .chart-title{
+  .chart-title {
     animation: fadeIn 2.5s linear forwards;
   }
 
   @keyframes fadeIn {
-  0% {
-    opacity: 0;
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
   }
-  100% {
-    opacity: 1;
-  }
-}
 
-  .chart-details{
+  .chart-details {
     animation: fadeIn 4.5s linear forwards;
   }
 
-  .bold{
+  .bold {
     font-weight: bold;
-  
   }
 
   .main-chart {
@@ -182,6 +191,20 @@ export default {
     }
   }
 }
+
+.seaice-content {
+  position: relative;
+}
+
+// .loader{
+//   position: absolute;
+//   top: 0px;
+//   right: 0px;
+//   bottom: 0px;
+//   left: 0px;
+//   width: 100%;
+//     height: 475px;
+// }
 
 // display 70% width on desktop
 @media screen and (min-width: 768px) {
