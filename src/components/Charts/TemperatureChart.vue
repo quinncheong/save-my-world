@@ -2,7 +2,7 @@
   <div>
     <div class="card border-primary mb-3">
       <div class="card-header text-primary weight">Global Temperature</div>
-      <div class="card-body text-primary">
+      <div class="card-body temp-card-body">
         <vue3-chart-js
           :id="lineChart.id"
           ref="chartRef"
@@ -72,6 +72,7 @@ export default {
     const chartRef = ref(null);
     const country = ref("Singapore");
     const year = ref(2020);
+    const loading = ref(false);
 
     const chartYears = {
       past: {
@@ -91,6 +92,7 @@ export default {
     const lineChart = {
       id: "line",
       type: "line",
+      height: "300px",
       data: {
         labels: [],
         datasets: [],
@@ -275,7 +277,7 @@ export default {
         lineChart.data.labels = updatedLabels;
         lineChart.data.datasets = [
           {
-            label: "Past Temperatures [1920 - 2020]",
+            label: "Past Temp [1920 - 2020]",
             backgroundColor: ["#41B883"],
             borderColor: "#41B883",
             data: pastDataset,
@@ -284,7 +286,7 @@ export default {
             yAxisID: "y",
           },
           {
-            label: "Future Predicted Temperatures [2020 - 2080]",
+            label: "Future Predicted Temp [2020 - 2080]",
             backgroundColor: ["#00D8FF"],
             borderColor: "#00D8FF",
             // borderDash: [5, 5],
@@ -297,7 +299,9 @@ export default {
 
         chartRef.value.update(null);
       } catch (error) {
-        alert('The country you selected is currently not available. Please select another country.')
+        alert(
+          "The country you selected is currently not available. Please select another country."
+        );
       }
     };
 
@@ -325,6 +329,7 @@ export default {
       chartRef,
       year,
       country,
+      loading,
       updateChart,
       handleClick,
       countries,
@@ -334,15 +339,14 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.temp-chart-bg {
-  display: flex;
-  flex-direction: column;
-  padding: 1rem;
-  background-color: white;
-  color: black;
-  justify-content: center;
-  margin: auto;
-  width: 100%;
+.temp-card-body {
+  padding: 0.3rem;
+}
+
+@media screen and (min-width: 568px) {
+  .temp-card-body {
+    padding: 1rem;
+  }
 }
 
 .weight {
@@ -350,7 +354,7 @@ export default {
 }
 
 .search-btn {
-  background: green;
+  background: $bg-color-secondary;
   color: #fff;
   height: 26px;
   // width: 100px;
@@ -358,13 +362,13 @@ export default {
   border-radius: 3px;
   padding: 5px;
   font-size: 15px;
-}
 
-// change background color on horver
-.search-btn:hover {
-  background: #fff;
-  color: black;
-  font-weight: bold;
+  // change background color on horver
+  &:hover {
+    background: #fff;
+    color: black;
+    font-weight: bold;
+  }
 }
 
 .form-box {
@@ -374,25 +378,4 @@ export default {
   gap: 10px;
 }
 
-// @media screen and (max-width: 600px) {
-//   .font{
-//     font-size: $variable-font;
-//   }
-
-//   .form-box{
-//     font-size: $variable-font;
-//   }
-
-//   .search-btn{
-//     font-size: $variable-font;
-//   }
-
-//   .resp{
-//     width: 100%;
-//   }
-// }
-
-.add-margin {
-  margin: 5px;
-}
 </style>

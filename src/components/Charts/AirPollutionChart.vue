@@ -2,7 +2,7 @@
   <div>
     <div class="card border-primary mb-3">
       <div class="card-header text-primary weight">Air Pollution</div>
-      <div class="card-body text-dark">
+      <div class="card-body temp-card-body text-dark">
         <vue3-chart-js
           :id="barChart.id"
           ref="chartRef"
@@ -395,33 +395,32 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.temp-chart-bg {
-  display: flex;
-  flex-direction: column;
-  padding: 1rem;
-  background-color: white;
-  color: black;
-  justify-content: center;
-  margin: auto;
-  width: 100%;
+.temp-card-body {
+  padding: 0.3rem;
+}
+
+@media screen and (min-width: 568px) {
+  .temp-card-body {
+    padding: 1rem;
+  }
 }
 
 .search-btn {
-  background: green;
+  background: $bg-color-secondary;
   color: #fff;
-  height: 28px;
+  height: 26px;
   // width: 100px;
   border: none;
   border-radius: 3px;
   padding: 5px;
   font-size: 15px;
-}
 
-// change background color on horver
-.search-btn:hover {
-  background: #fff;
-  color: black;
-  font-weight: bold;
+  // change background color on horver
+  &:hover {
+    background: #fff;
+    color: black;
+    font-weight: bold;
+  }
 }
 
 .weight {
