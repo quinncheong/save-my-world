@@ -75,7 +75,18 @@
         <!-- </div> -->
       </div>
 
-      <div id="console-alt" v-else>Loading please wait!!!!!!</div>
+      <!-- Loading component -->
+      <section v-else>
+        <div class="loading loading07">
+          <span data-text="L">L</span>
+          <span data-text="O">O</span>
+          <span data-text="A">A</span>
+          <span data-text="D">D</span>
+          <span data-text="I">I</span>
+          <span data-text="N">N</span>
+          <span data-text="G">G</span>
+        </div>
+      </section>
     </div>
 
     <!--  Supposed map row -->
