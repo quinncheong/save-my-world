@@ -95,6 +95,8 @@ export default {
 @media screen and (min-width: 768px) {
   .future-content {
     width: 80%;
+    // font-size: 100px !important	;
+    // font: $variable-font-large; 
   }
 }
 

@@ -124,5 +124,4 @@ a {
     padding: 1rem;
   }
 }
-  
 </style>

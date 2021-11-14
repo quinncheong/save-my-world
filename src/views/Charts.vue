@@ -19,13 +19,8 @@
       />
     </div>
 
-
-
-
-    
     <div v-if="selectedChart === 0"></div>
-    <div v-else-if="selectedChart === 1
-    ">
+    <div v-else-if="selectedChart === 1">
       <!-- <iframe src="https://datahub.io/core/glacier-mass-balance/view/0" width="100%" height="475px" frameborder="0"></iframe>
 
       <div class="card mt-4">
@@ -33,7 +28,7 @@
         This chart shows the visualisations of the <span class='bold text-primary'>annual mass balance of glaciers</span> throughout the years and how is has been dwindling at an <span class='bold text-primary'>increasing rate</span>.
       </div>
     </div> -->
-    <TempChart />
+      <TempChart />
     </div>
 
     <div v-else-if="selectedChart === 2">
@@ -42,16 +37,27 @@
 
     <div v-else>
       <!-- <TempChart /> -->
-        <iframe src="https://datahub.io/core/glacier-mass-balance/view/0" width="100%" height="475px" frameborder="0"></iframe>
+      <iframe 
+      v-show="!loading"
+        id="test"
+        src="https://datahub.io/core/glacier-mass-balance/view/0"
+        width="100%"
+        height="500px"
+        frameborder="0"
+        @load="handleLoad"
+      ></iframe>
+
+      <div v-if="loading" class="loader"></div>
 
       <div class="card mt-4">
-      <div class="card-body text-dark bold">
-        This chart shows the visualisations of the <span class='bold text-primary'>annual mass balance of glaciers</span> throughout the years and how is has been dwindling at an <span class='bold text-primary'>increasing rate</span>.
+        <div class="card-body text-dark bold">
+          This chart shows the visualisations of the
+          <span class="bold text-primary">annual mass balance of glaciers</span>
+          throughout the years and how is has been dwindling at an
+          <span class="bold text-primary">increasing rate</span>.
+        </div>
       </div>
     </div>
-
-    </div>
-    <!-- <MainChart /> -->
 
     <!-- <div class="main-chart">
       <iframe
@@ -66,7 +72,6 @@
 
 <script>
 import ChartsCard from "../components/Charts/ChartsCard.vue";
-import MainChart from "@/components/Charts/MainChart.vue";
 import TempChart from "@/components/Charts/TemperatureChart.vue";
 import AirPollutionChart from "@/components/Charts/AirPollutionChart.vue";
 
@@ -74,7 +79,6 @@ export default {
   name: "Charts",
   components: {
     ChartsCard,
-    MainChart,
     TempChart,
     AirPollutionChart,
   },
@@ -82,34 +86,51 @@ export default {
     return {
       charts: [
         {
-          id: 1,  //3
+          id: 1, //3
           name: "Global Temperature",
-          src: "temp.png",
-          information: "Explore real-time statistics of how global temperature have changed over the years", //added
+          src: "temp.webp",
+          information:
+            "Explore real-time statistics of how global temperature have changed over the years", //added
         },
         {
-          id: 2,  //2
+          id: 2, //2
           name: "Air Pollution",
-          src: "Co2.png",
-          information: "Visualise real-time statistics of how air pollution has changed over time", //added
+          src: "Co2.webp",
+          information:
+            "Visualise real-time statistics of how air pollution has changed over time", //added
         },
         {
-          id: 3,   //1
+          id: 3, //1
           name: "Sea Ice",
-          src: "seaIce.png",
-          information: "Explore real-time statistics of the avergae mass of glaciers worldwide",  //added
+          src: "seaIce.webp",
+          information:
+            "Explore real-time statistics of the avergae mass of glaciers worldwide", //added
         },
       ],
       selectedChart: 0,
+      loading: false,
+      hadLoaded: false,
     };
   },
   methods: {
     setSelectedChart(id) {
       this.selectedChart = id;
-      console.log(this.selectedChart)
-    }
-  }
- };
+
+      if (id === 3 && !this.hasLoaded) {
+        this.loading = true;
+      }
+
+      if (id !== 3) {
+        this.hasLoaded = false;
+      }
+    },
+
+    handleLoad() {
+      this.loading = false;
+      this.hasLoaded = true;
+    },
+  },
+};
 </script>
 
 <style lang="scss" scoped>
@@ -118,17 +139,18 @@ export default {
 
   .chart-select {
     font-weight: bold;
+    font-style: italic;
     animation: fadeIn 3s ease-out;
   }
 
-//   @keyframes chartText {
-//     0%   { 
-//     transform: translateX(200%); 		
-//     }
-//     100% { 
-//     transform: translateX(0%); 
-//     }
-// }
+  //   @keyframes chartText {
+  //     0%   {
+  //     transform: translateX(200%);
+  //     }
+  //     100% {
+  //     transform: translateX(0%);
+  //     }
+  // }
 
   .charts-card-wrapper {
     display: flex;
@@ -136,26 +158,25 @@ export default {
     justify-content: space-around;
   }
 
-  .chart-title{
+  .chart-title {
     animation: fadeIn 2.5s linear forwards;
   }
 
   @keyframes fadeIn {
-  0% {
-    opacity: 0;
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
   }
-  100% {
-    opacity: 1;
-  }
-}
 
-  .chart-details{
+  .chart-details {
     animation: fadeIn 4.5s linear forwards;
   }
 
-  .bold{
+  .bold {
     font-weight: bold;
-  
   }
 
   .main-chart {
@@ -172,32 +193,37 @@ export default {
   }
 }
 
+// .seaice-content {
+//   position: relative;
+// }
+
 // display 70% width on desktop
 @media screen and (min-width: 768px) {
   .chart-wrapper {
-    width: 70%;
+    width: 75%;
   }
 }
 
 // display 70% width on large screen sizes
 @media screen and (min-width: 992px) {
   .chart-wrapper {
-    width: 60%;
+    width: 70%;
   }
 }
 
 // // display 70% width on extra large screen sizes
 @media screen and (min-width: 1200px) {
   .chart-wrapper {
-    width: 50%;
+    width: 60%;
   }
 }
 
 // // display 70% width on extra large screen sizes
 @media screen and (min-width: 1350px) {
   .chart-wrapper {
-    width: 40%;
-    font-size: 15px;
+    width: 50%;
   }
 }
+
+
 </style>

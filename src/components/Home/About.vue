@@ -39,7 +39,7 @@ export default {
           description:
             "Learn more about climate change and its impacts through our unique gamification system",
           image: "../assets/img/learn.png",
-          imageSrc: "learn.png",
+          imageSrc: "learn.webp",
           link: "/quiz",
         },
         {
@@ -47,7 +47,7 @@ export default {
           description:
             "Explore how Gaia has evolved over time using state of the art imagery",
           image: "@/assets/img/imagec.png",
-          imageSrc: "imagec.png",
+          imageSrc: "imagec.webp",
           link: "/image",
         },
         {
@@ -55,7 +55,7 @@ export default {
           description:
             "See beautiful visuals of how climate change has affected the world",
           image: "@/assets/img/charts.png",
-          imageSrc: "charts.png",
+          imageSrc: "charts.webp",
           link: "/charts",
         },
         {
@@ -63,7 +63,7 @@ export default {
           description:
             "With mapbox, we can navigate the world to explore the different disasters that has occured",
           image: "@/assets/img/mapbox.png",
-          imageSrc: "mapbox.png",
+          imageSrc: "mapbox.webp",
           link: "/news",
         },
       ],

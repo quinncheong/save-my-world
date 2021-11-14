@@ -2,7 +2,7 @@
   <div>
     <div class="card border-primary mb-3">
       <div class="card-header text-primary weight">Air Pollution</div>
-      <div class="card-body text-dark">
+      <div class="card-body temp-card-body text-dark">
         <vue3-chart-js
           :id="barChart.id"
           ref="chartRef"
@@ -27,40 +27,7 @@
       </div>
     </div>
 
-    <!--this is the correct one-->
-
-    <!-- <form @submit="handleClick"> -->
-    <!-- <p>Select a country:</p> -->
-    <!-- <div class="form-box"> -->
-    <!-- <div class= 'container'> -->
-    <!-- <label class="form-label"> -->
-    <!-- <p>Select a country:</p> -->
-
-    <!-- <select data-live-search="true" class=" include-margin selectpicker"  v-model="country" > -->
-    <!--the following drop down list is correct-->
-    <!-- <select class='include-margin' v-model="country">
-          <option
-            :key="country.name"
-            v-for="country in countries"
-            :value="country.name"
-          > 
-            {{ country.name }}
-          </option>
-        </select> -->
-    <!-- </label> -->
-    <!-- </div> -->
-    <!-- <button class="btn btn-success search-btn">Get Data</button> -->
-    <!-- </div> -->
-
-    <!-- <label>
-        Select a year (must be 2020 only):
-        <input v-model="year" type="number" required />
-      </label> -->
-    <!-- <button class="btn btn-success search-btn">Get Data</button> -->
-    <!-- </form> -->
-
     <!--seeing how to make the bar responsive  -->
-
     <form @submit="handleClick">
       <p class="mb-2">Select a country:</p>
       <div class="form-box mb-3">
@@ -81,13 +48,19 @@
         <!-- </div> -->
         <button class="btn btn-success search-btn">Get Data</button>
       </div>
-
-      <!-- <label>
-        Select a year (must be 2020 only):
-        <input v-model="year" type="number" required />
-      </label> -->
-      <!-- <button class="btn btn-success search-btn">Get Data</button> -->
     </form>
+    <!-- Loading component -->
+    <section v-show="isLoading">
+      <div class="loading loading07">
+        <span data-text="L">L</span>
+        <span data-text="O">O</span>
+        <span data-text="A">A</span>
+        <span data-text="D">D</span>
+        <span data-text="I">I</span>
+        <span data-text="N">N</span>
+        <span data-text="G">G</span>
+      </div>
+    </section>
   </div>
 </template>
 
@@ -112,6 +85,7 @@ export default {
     const chartRef = ref(null);
     const country = ref("Singapore");
     const year = ref(2020);
+    const isLoading = ref(false);
 
     const barChart = {
       id: "bar",
@@ -174,7 +148,7 @@ export default {
             // fontColor: '#4848EE',
           },
           xAxes: {
-            display: false,
+            display: true,
             stacked: true,
           },
           // xAxes: {
@@ -201,19 +175,20 @@ export default {
     // Function to load the new data
     const handleClick = async (e) => {
       e.preventDefault();
-
-      //   First portion is to do forward geocoding to get the lat and long
-      // Need better plan to support https
-      // let geolocationUrl = "https://api.positionstack.com/v1/forward";
-      // let access_key = process.env.VUE_APP_POSITIONSTACK_API_KEY;
-      let query = country.value;
-      let isoCountry = iso.whereCountry(country.value).country;
-      console.log(iso.whereCountry(country.value))
-
-      // New forward geocoding api
-      let access_key = process.env.VUE_APP_LOCATION_IQ_API;
-      let geolocationUrl = `https://us1.locationiq.com/v1/search.php?`
+      isLoading.value = true;
       try {
+        //   First portion is to do forward geocoding to get the lat and long
+        // Need better plan to support https
+        // let geolocationUrl = "https://api.positionstack.com/v1/forward";
+        // let access_key = process.env.VUE_APP_POSITIONSTACK_API_KEY;
+        let query = country.value;
+        let isoCountry = iso.whereCountry(country.value).country;
+        console.log(iso.whereCountry(country.value));
+
+        // New forward geocoding api
+        let access_key = process.env.VUE_APP_LOCATION_IQ_API;
+        let geolocationUrl = `https://us1.locationiq.com/v1/search.php?`;
+
         // This is for position stack api
         // let res = await axios.get(geolocationUrl, {
         //   params: {
@@ -344,8 +319,12 @@ export default {
         ];
 
         chartRef.value.update(null);
+        isLoading.value = false;
       } catch (err) {
-        console.log(err);
+        isLoading.value = false;
+        alert(
+          "The country you selected is currently not available. Please select another country."
+        );
       }
     };
 
@@ -373,12 +352,12 @@ export default {
       chartRef,
       year,
       country,
+      isLoading,
       updateChart,
       handleClick,
       countries,
     };
   },
-
   //added
   // mounted(){
   //   const plugin = document.createElement("script");
@@ -392,37 +371,33 @@ export default {
 };
 </script>
 
-
-
-
 <style lang="scss" scoped>
-.temp-chart-bg {
-  display: flex;
-  flex-direction: column;
-  padding: 1rem;
-  background-color: white;
-  color: black;
-  justify-content: center;
-  margin: auto;
-  width: 100%;
+.temp-card-body {
+  padding: 0.3rem;
+}
+
+@media screen and (min-width: 568px) {
+  .temp-card-body {
+    padding: 1rem;
+  }
 }
 
 .search-btn {
-  background: green;
+  background: $bg-color-secondary;
   color: #fff;
-  height: 28px;
+  height: 26px;
   // width: 100px;
   border: none;
   border-radius: 3px;
   padding: 5px;
   font-size: 15px;
-}
 
-// change background color on horver
-.search-btn:hover {
-  background: #fff;
-  color: black;
-  font-weight: bold;
+  // change background color on horver
+  &:hover {
+    background: #fff;
+    color: black;
+    font-weight: bold;
+  }
 }
 
 .weight {

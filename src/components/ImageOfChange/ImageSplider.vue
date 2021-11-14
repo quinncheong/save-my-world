@@ -139,7 +139,7 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
-// Import the splider csss
+// Import the splider css
 
 .splide__slide {
   opacity: 0.5;
@@ -148,4 +148,5 @@ export default defineComponent({
 .splide__slide.is-active {
   opacity: 1;
 }
+
 </style>

@@ -2,7 +2,7 @@
   <div>
     <div class="card border-primary mb-3">
       <div class="card-header text-primary weight">Global Temperature</div>
-      <div class="card-body text-primary">
+      <div class="card-body temp-card-body">
         <vue3-chart-js
           :id="lineChart.id"
           ref="chartRef"
@@ -16,8 +16,12 @@
             <span class="text-muted weight"> (°C)</span>
           </small>
           <br />
-          This chart shows the the <span class='text-primary weight'>progression of changing temperature</span> from the
-          past to the present. It also shows the future predicted temperature
+          This chart shows the the
+          <span class="text-primary weight"
+            >progression of changing temperature</span
+          >
+          from the past to the present. It also shows the future predicted
+          temperature
         </p>
       </div>
     </div>
@@ -42,13 +46,19 @@
         <!-- </div> -->
         <button class="btn btn-success search-btn">Get Data</button>
       </div>
-
-      <!-- <label>
-        Select a year (must be 2020 only):
-        <input v-model="year" type="number" required />
-      </label> -->
-      <!-- <button class="btn btn-success search-btn">Get Data</button> -->
     </form>
+    <!-- Loading component -->
+    <section v-show="isLoading">
+      <div class="loading loading07">
+        <span data-text="L">L</span>
+        <span data-text="O">O</span>
+        <span data-text="A">A</span>
+        <span data-text="D">D</span>
+        <span data-text="I">I</span>
+        <span data-text="N">N</span>
+        <span data-text="G">G</span>
+      </div>
+    </section>
   </div>
 </template>
 
@@ -68,6 +78,7 @@ export default {
     const chartRef = ref(null);
     const country = ref("Singapore");
     const year = ref(2020);
+    const isLoading = ref(false);
 
     const chartYears = {
       past: {
@@ -87,6 +98,7 @@ export default {
     const lineChart = {
       id: "line",
       type: "line",
+      height: "300px",
       data: {
         labels: [],
         datasets: [],
@@ -184,57 +196,58 @@ export default {
     // It needs to send a payload with the isoCountry, startYear and endYear.
     const handleClick = async (e) => {
       e.preventDefault();
-      let lamdbaFn =
-        "https://u96rjz2jhi.execute-api.ap-southeast-1.amazonaws.com/getClimateData";
-      let baseUrl =
-        "https://climatedataapi.worldbank.org/climateweb/rest/v1/country/annualavg/tas";
-      let isoCountry = iso.whereCountry(country.value).alpha3;
-      // let startYear = year.value;
-      // let endYear = startYear + 19;
-      // let fullUrl = `${baseUrl}/${startYear}/${endYear}/${isoCountry}`;
-      let pastPromiseArray = [];
-      let futurePromiseArray = [];
+      isLoading.value = true;
+      try {
+        let lamdbaFn =
+          "https://u96rjz2jhi.execute-api.ap-southeast-1.amazonaws.com/getClimateData";
+        let baseUrl =
+          "https://climatedataapi.worldbank.org/climateweb/rest/v1/country/annualavg/tas";
+        let isoCountry = iso.whereCountry(country.value).alpha3;
+        // let startYear = year.value;
+        // let endYear = startYear + 19;
+        // let fullUrl = `${baseUrl}/${startYear}/${endYear}/${isoCountry}`;
+        let pastPromiseArray = [];
+        let futurePromiseArray = [];
 
-      // iterate over chartyears to make request and push to the different arrays
-      for (let key in chartYears) {
-        let type = chartYears[key];
-        if (key === "past") {
-          for (let year in type) {
-            let startYear = year;
-            let endYear = type[year];
-            let promise = axios.post(lamdbaFn, {
-              isoCountry,
-              startYear,
-              endYear,
-            });
-            pastPromiseArray.push(promise);
-          }
-        } else {
-          for (let year in type) {
-            let startYear = year;
-            let endYear = type[year];
-            let promise = axios.post(lamdbaFn, {
-              isoCountry,
-              startYear,
-              endYear,
-            });
-            futurePromiseArray.push(promise);
+        // iterate over chartyears to make request and push to the different arrays
+        for (let key in chartYears) {
+          let type = chartYears[key];
+          if (key === "past") {
+            for (let year in type) {
+              let startYear = year;
+              let endYear = type[year];
+              let promise = axios.post(lamdbaFn, {
+                isoCountry,
+                startYear,
+                endYear,
+              });
+              pastPromiseArray.push(promise);
+            }
+          } else {
+            for (let year in type) {
+              let startYear = year;
+              let endYear = type[year];
+              let promise = axios.post(lamdbaFn, {
+                isoCountry,
+                startYear,
+                endYear,
+              });
+              futurePromiseArray.push(promise);
+            }
           }
         }
-      }
 
-      // wait for all the promises to resolve
-      let pastData = await Promise.all(pastPromiseArray);
-      let futureData = await Promise.all(futurePromiseArray);
+        // wait for all the promises to resolve
+        let pastData = await Promise.all(pastPromiseArray);
+        let futureData = await Promise.all(futurePromiseArray);
 
-      // get the data from the response
-      let pastDataArray = pastData.map((data) => data.data);
-      let futureDataArray = futureData.map((data) => data.data);
+        // get the data from the response
+        let pastDataArray = pastData.map((data) => data.data);
+        let futureDataArray = futureData.map((data) => data.data);
 
-      console.log(pastDataArray);
-      console.log(futureDataArray);
+        console.log(pastDataArray);
+        console.log(futureDataArray);
 
-      try {
         // Manipulate the data
         let pastDataset = [];
         let futureDataset = [];
@@ -255,12 +268,12 @@ export default {
         futureDataset.push(pastDataset[pastDataset.length - 1]);
         updatedLabels.push(Math.floor(count));
 
-        count = 2020
+        count = 2020;
 
         for (let dataset of futureDataArray) {
           for (let data of dataset) {
-            if (data.scenario === 'b1') {
-              continue
+            if (data.scenario === "b1") {
+              continue;
             }
             futureDataset.push(data.annualData[0]);
             updatedLabels.push(count);
@@ -270,7 +283,7 @@ export default {
         lineChart.data.labels = updatedLabels;
         lineChart.data.datasets = [
           {
-            label: "Past Temperatures [1920 - 2020]",
+            label: "Past Temp [1920 - 2020]",
             backgroundColor: ["#41B883"],
             borderColor: "#41B883",
             data: pastDataset,
@@ -279,7 +292,7 @@ export default {
             yAxisID: "y",
           },
           {
-            label: "Future Predicted Temperatures [2020 - 2080]",
+            label: "Future Predicted Temp [2020 - 2080]",
             backgroundColor: ["#00D8FF"],
             borderColor: "#00D8FF",
             // borderDash: [5, 5],
@@ -291,8 +304,12 @@ export default {
         ];
 
         chartRef.value.update(null);
+        isLoading.value = false;
       } catch (error) {
-        console.log(error);
+        isLoading.value = false;
+        alert(
+          "The country you selected is currently not available. Please select another country."
+        );
       }
     };
 
@@ -320,6 +337,7 @@ export default {
       chartRef,
       year,
       country,
+      isLoading,
       updateChart,
       handleClick,
       countries,
@@ -329,23 +347,22 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.temp-chart-bg {
-  display: flex;
-  flex-direction: column;
-  padding: 1rem;
-  background-color: white;
-  color: black;
-  justify-content: center;
-  margin: auto;
-  width: 100%;
+.temp-card-body {
+  padding: 0.3rem;
 }
 
-.weight{
+@media screen and (min-width: 568px) {
+  .temp-card-body {
+    padding: 1rem;
+  }
+}
+
+.weight {
   font-weight: bold;
 }
 
-.search-btn{
-  background: green;
+.search-btn {
+  background: $bg-color-secondary;
   color: #fff;
   height: 26px;
   // width: 100px;
@@ -353,15 +370,14 @@ export default {
   border-radius: 3px;
   padding: 5px;
   font-size: 15px;
-}
 
-// change background color on horver
-.search-btn:hover {
-  background: #fff;
-  color: black;
-  font-weight: bold;
+  // change background color on horver
+  &:hover {
+    background: #fff;
+    color: black;
+    font-weight: bold;
+  }
 }
-
 
 .form-box {
   display: flex;
@@ -370,27 +386,4 @@ export default {
   gap: 10px;
 }
 
-// @media screen and (max-width: 600px) {
-//   .font{
-//     font-size: $variable-font;
-//   }
-
-//   .form-box{
-//     font-size: $variable-font;
-//   }
-  
-//   .search-btn{
-//     font-size: $variable-font;
-//   }
-
-//   .resp{
-//     width: 100%;
-//   }
-// }
-
-.add-margin{
-  margin: 5px;
-}
-
 </style>
-

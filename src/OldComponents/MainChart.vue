@@ -6,8 +6,8 @@
 </template>
 
 <script>
-import TempChart from "./TemperatureChart.vue";
-import AirPollutionChart from "./AirPollutionChart.vue";
+import TempChart from "../components/Charts/TemperatureChart.vue";
+import AirPollutionChart from "../components/Charts/AirPollutionChart.vue";
 
 export default {
   name: "MainChart",
