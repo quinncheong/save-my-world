@@ -117,7 +117,7 @@
             ></button> -->
 
           <div class="descriptiontext">
-            <h5 class="text-start">{{ title }}</h5>
+            <h5 class="text-start modal-desc">{{ title }}</h5>
             <hr />
             <div
               v-for="(indivDesc, index) in descriptionModal"
@@ -896,6 +896,11 @@ export default {
     p {
       line-height: 120%;
     }
+  }
+
+  .modal-desc{
+    color: #D6ED17FF;
+    font-weight: bold;
   }
 
  
