@@ -345,10 +345,11 @@ export default {
         console.log(this.arrayEquals(homeCoords,this.center));
 
         if (!this.arrayEquals(homeCoords,this.center)){
+          // Disable interactiveness here.
+          this.map.dragPan.disable();
           this.disabledCheck = true;
            this.mapCenter = false;
         //  Once ended, we add it into the modal.
-
         this.title = name;
 
 
@@ -364,6 +365,7 @@ export default {
 
           
         } else {
+          this.map.dragPan.enable();
           console.log("Coords are equal ")
           this.disabledCheck = false;
           this.mapCenter = true;
@@ -413,11 +415,7 @@ export default {
               console.log("First fly event ends here")
 
         
-          // else{
-          //   this.map.fire("flyendorigin");
-          //                 console.log("2nd fly event ends here")
-
-          // }
+      
 
         } 
       });
