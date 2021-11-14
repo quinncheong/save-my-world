@@ -92,8 +92,8 @@ import Globe from "@/assets/img/globe.png";
 import Guide from "@/assets/img/guidebackgroundimg.jpg";
 import Recycle from "@/assets/img/recyclingbin.png";
 import GlobeGuide from "@/assets/img/planetearth.png";
-import Clothes from "@/assets/img/clothes.png";
-import LandingPage from "@/assets/img/LandingPage.jpeg";
+import Clothes from "@/assets/img/clothes.webp";
+import LandingPage from "@/assets/img/LandingPage.webp";
 
 import Navbar1 from "@/Layout/Navbar1.vue";
 
@@ -177,7 +177,7 @@ export default {
     flex-direction: column;
     max-height: 100vh;
     padding: 0.5rem;
-    background-image: url("~@/assets/img/LandingPage3.jpeg");
+    background-image: url("~@/assets/img/LandingPage3.webp");
     background-position: center; /* Center the image */
     background-repeat: no-repeat; /* Do not repeat the image */
     background-size: cover; /* Resize the background image to cover the entire container */
@@ -270,7 +270,7 @@ export default {
       bottom: 0;
       left: 0;
       right: 0;
-      background: url("~@/assets/img/LandingPage3.jpeg") center center;
+      background: url("~@/assets/img/LandingPage3.webp") center center;
       opacity: 0.7;
       width: 100%;
       height: 100%;
@@ -289,7 +289,7 @@ export default {
 
   .call-to-action {
     padding: 3rem;
-    background-image: url("~@/assets/img/LandingPage.jpeg");
+    background-image: url("~@/assets/img/LandingPage.webp");
     height: 6550px;
   }
 
