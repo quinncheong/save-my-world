@@ -2,7 +2,7 @@
   <section class="disaster-wrapper">
     <!-- Disasters info component -->
     <section ref="x" class="disaster-info-top">
-      <h3 class="mb-3">Disaster Types</h3>
+      <h3 class="mb-3 disaster-title">Disaster Types</h3>
       <p>
         The current climate models indicate that rising temperatures will intensify the Earth’s water cycle, increasing evaporation. This would result in more and frequent extreme weather events. 
         The following are some of the listed effects:
@@ -531,9 +531,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-// * {
-//   font-size: $variable-font;
-// }
 $disaster-color-1: #f5f5ef;
 $disaster-color-2: #b69d74;
 $disaster-color-3: #1f2839;
@@ -547,6 +544,8 @@ html {
   display: flex;
   flex-direction: column;
   margin-top: 1rem;
+    font-size: $variable-font;
+
 
   .disaster-info-top {
     @extend %bg-card-rounded;
@@ -778,6 +777,10 @@ a:active {
   .details {
     display: flex;
     flex-direction: column;
+  }
+
+  .disaster-title{
+    
   }
 }
 
