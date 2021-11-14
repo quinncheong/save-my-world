@@ -101,7 +101,7 @@
     </div>
 
     <!-- Outer division to hold information -->
-    <div class="disaster-info" v-if="!loading && descriptionModal.length > 0">
+    <div class="disaster-info" v-if="loading == false && descriptionModal.length > 0">
       <!-- <p class="disaster-info-text">
         Search results:
         <span>{{ resultArray.length ?? "No Results Found" }}</span>
@@ -152,11 +152,14 @@
             </div>
           </div>
         </div>
-        <div v-else class="noneselected">
-          Click on more of the pop-ups!
-        </div>
+       
       </div>
     </div>
+
+     <div v-else-if="loading == true && descriptionModal.length <= 0" class="noneselected">
+       <div class="loader"></div>
+          
+      </div>
 
     <!-- Iterate through the results  -->
     <!-- <div v-for="result in resultArray" :key="result" class="row">
@@ -318,9 +321,11 @@ export default {
         // this.map.dragPan.disable();
 
         this.flying = true;
+        this.loading = true 
         console.log("start fly here");
       });
       this.map.on("flyend", () => {
+        this.loading = false;
         this.flying = false;
 
         let homeCoords = [0, 20];
@@ -620,6 +625,8 @@ export default {
     },
 
     returnCenter() {
+      // Clear modal
+      this.descriptionModal = "";
       this.map.dragPan.disable();
       this.map.flyTo({
         center: [0, 20],
@@ -779,6 +786,7 @@ export default {
     padding: 1rem;
     height: 300px;
     overflow-y: scroll;
+    animation: appear 0.5s ease-in-out;
 
     &::-webkit-scrollbar {
       width: 12px;

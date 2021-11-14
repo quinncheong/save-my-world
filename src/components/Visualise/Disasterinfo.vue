@@ -78,7 +78,7 @@
                 aria-expanded="false"
                 aria-controls="collapse1"
               >
-                Details
+                More details
               </a>
               <!-- https://devastatingdisasters.com/aleppo-earthquake-syria-1138-ad/ -->
 
