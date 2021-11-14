@@ -233,15 +233,20 @@ export default {
     this.createMap();
     // Load the markers here when loading
 
+    const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+
     this.map.on("load", async () => {
       // Call get location 4 times
-      // for (let index = 0; index < 4; index++) {
-      //   await this.getLocation(); // After getting location then we add the markers
-      // }
-
-      // let x = await this.useInterval();
+      let locked = true;
 
       await this.getLocation();
+      await this.getLocation();
+      // await this.getLocation();
+      locked = false;
+
+      // while (locked) {
+      //   continue;
+      // }
 
       // Loading marker image
       this.map.loadImage(
@@ -259,8 +264,6 @@ export default {
               features: this.featuresMain,
             },
           });
-
-          console.log(this.featuresMain);
 
           console.log(this.featuresMain);
 
@@ -447,6 +450,17 @@ export default {
         console.log("map error", err);
       }
     },
+    // Create a short 10 second timer which blocks the code
+    // from running until the timer is over.
+    async createTimer() {
+      this.timer = setTimeout(() => {
+        console.log("timer is here");
+      }, 10000);
+    },
+
+    // Creates a blocktimer which blocks the code from running
+    // until the timer is over.
+
     // async useInterval() {
     //   if (this.offsetCount === 3) {
     //     clearInterval(this.queryInterval)
@@ -471,10 +485,10 @@ export default {
 
       try {
         const response = await axios.get(
-          `https://api.reliefweb.int/v1/disasters?type&fields[include][]=type.name&limit=800&offset=${this.offset}&sort[]=date:desc`
+          `https://api.reliefweb.int/v1/disasters?type&fields[include][]=type.name&limit=900&offset=${this.offset}&sort[]=date:desc`
         );
 
-        this.offset += 800;
+        this.offset += 900;
         this.offsetCount += 1;
         if (!response) {
           throw Error("Failed to get data");
@@ -489,12 +503,11 @@ export default {
         // Reset the features array since gonna loop
         this.features = [];
 
-        console.log("starting the timer");
-
         this.loading = false;
 
         // Catching the erorr
       } catch (err) {
+        this.loading = false;
         console.log("I am hitting an error inside getLocation: ", err);
       }
     },
@@ -565,12 +578,23 @@ export default {
       // console.log(geoIdDictionary);
       // Loop through features and do the lookup in the geo dictionary
       // and add it to the array
+
+      // for (let feature of this.features) {
+      //   try {
+      //     let { geoCode, desc } = geoIdDictionary[feature.properties.id];
+      //     feature.geometry.coordinates = [geoCode.lon ?? 0, geoCode.lat ?? 0];
+      //     feature.properties.description = desc;
+      //   } catch (err) {
+      //     console.log(err)
+      //     console.log('hitting this mini error')
+      //   }
+      // }
+
       this.features.forEach((feature, index) => {
         let { geoCode, desc } = geoIdDictionary[feature.properties.id];
         feature.geometry.coordinates = [geoCode.lon, geoCode.lat];
         feature.properties.description = desc;
       });
-      console.log(this.features);
     },
 
     async handleClick() {},
@@ -607,7 +631,7 @@ export default {
       this.resultArray = [];
 
       for (let indivResult of test) {
-        console.log(indivResult.properties.name);
+        // console.log(indivResult.properties.name);
 
         this.resultArray.push(indivResult.properties.name);
       }
