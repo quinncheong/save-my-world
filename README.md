@@ -1,5 +1,5 @@
 # [save-my-world](https://save-my-world.netlify.app/#/)
-The title of our project is called “Save My World”. The main purpose of this project is to convert climate change evangelists into climate change detractors. Climate change is a serious problem and we will need to harness the collective power of humans to mitigate its disastrous and dangerous effects. 
+The title of our project is called “Save My World”. The main purpose of this project is to convert climate change detractors into climate change evangelists. Climate change is a serious problem and we will need to harness the collective power of humans to mitigate its disastrous and dangerous effects. 
 
 ## Why did we build Save-My-World
 We wanted to tackle the question “How can we convert climate change skeptics into evangelists amidst the vast sea of information, such that there will be more supporters of climate change?”.  Having said that, our application helps to educate the public on why there is a need to tackle climate change by providing graphical visuals, state-of-the-art imagery, gamification, and a mapbox to allow our users to observe how Earth is changing.
